@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A70884AF1BA1F43300758049 /* StomtiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884AE1BA1F43300758049 /* StomtiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70884B51BA1F43300758049 /* StomtiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70884A91BA1F43300758049 /* StomtiOS.framework */; };
+		A70884BC1BA1F43300758049 /* StomtiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884BB1BA1F43300758049 /* StomtiOSTests.m */; };
+		A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884C61BA1F45200758049 /* LoginViewController.h */; };
+		A70884CB1BA1F45200758049 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884C71BA1F45200758049 /* LoginViewController.m */; };
+		A70884CC1BA1F45200758049 /* LoginView.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884C81BA1F45200758049 /* LoginView.h */; };
+		A70884CD1BA1F45200758049 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884C91BA1F45200758049 /* LoginView.m */; };
+		A70884D31BA1F47400758049 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884CF1BA1F47400758049 /* Stomt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70884D41BA1F47400758049 /* Stomt.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884D01BA1F47400758049 /* Stomt.m */; };
+		A70884D51BA1F47400758049 /* StomtRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884D11BA1F47400758049 /* StomtRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70884D61BA1F47400758049 /* StomtRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884D21BA1F47400758049 /* StomtRequest.m */; };
+		A70884DC1BA1F4A400758049 /* dbg.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884D91BA1F4A400758049 /* dbg.h */; };
+		A70884DD1BA1F4A400758049 /* declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DA1BA1F4A400758049 /* declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DB1BA1F4A400758049 /* block_declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7107E891BA2F607001F3B38 /* STTarget.h in Headers */ = {isa = PBXBuildFile; fileRef = A7107E871BA2F607001F3B38 /* STTarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7107E8A1BA2F607001F3B38 /* STTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = A7107E881BA2F607001F3B38 /* STTarget.m */; };
+		A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7107E8B1BA2F614001F3B38 /* STUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7107E8C1BA2F614001F3B38 /* STUser.m */; };
+		A7450D461BA4338E00DF83B8 /* STCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7450D441BA4338E00DF83B8 /* STCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D451BA4338E00DF83B8 /* STCategory.m */; };
+		A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = A7450D481BA44E9800DF83B8 /* HTTPResponseChecker.h */; };
+		A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D491BA44E9800DF83B8 /* HTTPResponseChecker.m */; };
+		A75AF2B31BA88F6700D74B9C /* strings.h in Headers */ = {isa = PBXBuildFile; fileRef = A75AF2B21BA88F6700D74B9C /* strings.h */; };
+		A75AF2B61BA893B000D74B9C /* STObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A75AF2B41BA893B000D74B9C /* STObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A75AF2B71BA893B000D74B9C /* STObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A75AF2B51BA893B000D74B9C /* STObject.m */; };
+		A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */; };
+		A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */; };
+		A768D76D1BA9EB6000466AFB /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D76B1BA9EB6000466AFB /* STImage.h */; };
+		A768D76E1BA9EB6000466AFB /* STImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D76C1BA9EB6000466AFB /* STImage.m */; };
+		A768D7711BA9FDC400466AFB /* StomtRequest+STImageRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D76F1BA9FDC400466AFB /* StomtRequest+STImageRequest.h */; };
+		A768D7721BA9FDC400466AFB /* StomtRequest+STImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7701BA9FDC400466AFB /* StomtRequest+STImageRequest.m */; };
+		A78B2E6D1BA419BC00A9E7D0 /* STSTats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STSTats.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A78B2E6E1BA419BC00A9E7D0 /* STSTats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STSTats.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A70884B61BA1F43300758049 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A70884A01BA1F43300758049 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A70884A81BA1F43300758049;
+			remoteInfo = StomtiOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A70884A91BA1F43300758049 /* StomtiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StomtiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70884AD1BA1F43300758049 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A70884AE1BA1F43300758049 /* StomtiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StomtiOS.h; sourceTree = "<group>"; };
+		A70884B41BA1F43300758049 /* StomtiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StomtiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70884BA1BA1F43300758049 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A70884BB1BA1F43300758049 /* StomtiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StomtiOSTests.m; sourceTree = "<group>"; };
+		A70884C61BA1F45200758049 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		A70884C71BA1F45200758049 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		A70884C81BA1F45200758049 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		A70884C91BA1F45200758049 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		A70884CF1BA1F47400758049 /* Stomt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stomt.h; sourceTree = "<group>"; };
+		A70884D01BA1F47400758049 /* Stomt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stomt.m; sourceTree = "<group>"; };
+		A70884D11BA1F47400758049 /* StomtRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtRequest.h; sourceTree = "<group>"; };
+		A70884D21BA1F47400758049 /* StomtRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtRequest.m; sourceTree = "<group>"; };
+		A70884D91BA1F4A400758049 /* dbg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dbg.h; sourceTree = "<group>"; };
+		A70884DA1BA1F4A400758049 /* declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = declarations.h; sourceTree = "<group>"; };
+		A70884DB1BA1F4A400758049 /* block_declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block_declarations.h; sourceTree = "<group>"; };
+		A7107E871BA2F607001F3B38 /* STTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTarget.h; sourceTree = "<group>"; };
+		A7107E881BA2F607001F3B38 /* STTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTarget.m; sourceTree = "<group>"; };
+		A7107E8B1BA2F614001F3B38 /* STUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUser.h; sourceTree = "<group>"; };
+		A7107E8C1BA2F614001F3B38 /* STUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUser.m; sourceTree = "<group>"; };
+		A7450D441BA4338E00DF83B8 /* STCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCategory.h; sourceTree = "<group>"; };
+		A7450D451BA4338E00DF83B8 /* STCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCategory.m; sourceTree = "<group>"; };
+		A7450D481BA44E9800DF83B8 /* HTTPResponseChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPResponseChecker.h; sourceTree = "<group>"; };
+		A7450D491BA44E9800DF83B8 /* HTTPResponseChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPResponseChecker.m; sourceTree = "<group>"; };
+		A75AF2B21BA88F6700D74B9C /* strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strings.h; sourceTree = "<group>"; };
+		A75AF2B41BA893B000D74B9C /* STObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STObject.h; sourceTree = "<group>"; };
+		A75AF2B51BA893B000D74B9C /* STObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STObject.m; sourceTree = "<group>"; };
+		A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601.h"; sourceTree = "<group>"; };
+		A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
+		A768D76B1BA9EB6000466AFB /* STImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImage.h; sourceTree = "<group>"; };
+		A768D76C1BA9EB6000466AFB /* STImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STImage.m; sourceTree = "<group>"; };
+		A768D76F1BA9FDC400466AFB /* StomtRequest+STImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StomtRequest+STImageRequest.h"; sourceTree = "<group>"; };
+		A768D7701BA9FDC400466AFB /* StomtRequest+STImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "StomtRequest+STImageRequest.m"; sourceTree = "<group>"; };
+		A78B2E6B1BA419BC00A9E7D0 /* STSTats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSTats.h; sourceTree = "<group>"; };
+		A78B2E6C1BA419BC00A9E7D0 /* STSTats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSTats.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A70884A51BA1F43300758049 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70884B11BA1F43300758049 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70884B51BA1F43300758049 /* StomtiOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A708849F1BA1F43300758049 = {
+			isa = PBXGroup;
+			children = (
+				A70884AB1BA1F43300758049 /* StomtiOS */,
+				A70884B81BA1F43300758049 /* StomtiOSTests */,
+				A70884AA1BA1F43300758049 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A70884AA1BA1F43300758049 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A70884A91BA1F43300758049 /* StomtiOS.framework */,
+				A70884B41BA1F43300758049 /* StomtiOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A70884AB1BA1F43300758049 /* StomtiOS */ = {
+			isa = PBXGroup;
+			children = (
+				A71D5F0D1BA7668000DC8BA1 /* Private */,
+				A7107E861BA2F5F1001F3B38 /* Stomt Objects */,
+				A70885151BA20F2900758049 /* StomtRequest */,
+				A70884D81BA1F48500758049 /* Helpers */,
+				A70884CE1BA1F45B00758049 /* Public */,
+				A70884C51BA1F44600758049 /* LoginModal */,
+				A70884AE1BA1F43300758049 /* StomtiOS.h */,
+				A70884AC1BA1F43300758049 /* Supporting Files */,
+			);
+			path = StomtiOS;
+			sourceTree = "<group>";
+		};
+		A70884AC1BA1F43300758049 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A70884AD1BA1F43300758049 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A70884B81BA1F43300758049 /* StomtiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				A70884BB1BA1F43300758049 /* StomtiOSTests.m */,
+				A70884B91BA1F43300758049 /* Supporting Files */,
+			);
+			path = StomtiOSTests;
+			sourceTree = "<group>";
+		};
+		A70884B91BA1F43300758049 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A70884BA1BA1F43300758049 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A70884C51BA1F44600758049 /* LoginModal */ = {
+			isa = PBXGroup;
+			children = (
+				A70884C61BA1F45200758049 /* LoginViewController.h */,
+				A70884C71BA1F45200758049 /* LoginViewController.m */,
+				A70884C81BA1F45200758049 /* LoginView.h */,
+				A70884C91BA1F45200758049 /* LoginView.m */,
+			);
+			name = LoginModal;
+			sourceTree = "<group>";
+		};
+		A70884CE1BA1F45B00758049 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				A70884CF1BA1F47400758049 /* Stomt.h */,
+				A70884D01BA1F47400758049 /* Stomt.m */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
+		A70884D81BA1F48500758049 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A70884D91BA1F4A400758049 /* dbg.h */,
+				A70884DA1BA1F4A400758049 /* declarations.h */,
+				A70884DB1BA1F4A400758049 /* block_declarations.h */,
+				A75AF2B21BA88F6700D74B9C /* strings.h */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A70885151BA20F2900758049 /* StomtRequest */ = {
+			isa = PBXGroup;
+			children = (
+				A70884D11BA1F47400758049 /* StomtRequest.h */,
+				A70884D21BA1F47400758049 /* StomtRequest.m */,
+				A768D76F1BA9FDC400466AFB /* StomtRequest+STImageRequest.h */,
+				A768D7701BA9FDC400466AFB /* StomtRequest+STImageRequest.m */,
+			);
+			name = StomtRequest;
+			sourceTree = "<group>";
+		};
+		A7107E861BA2F5F1001F3B38 /* Stomt Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A71D5F0C1BA7664D00DC8BA1 /* Helper objects */,
+				A7107E871BA2F607001F3B38 /* STTarget.h */,
+				A7107E881BA2F607001F3B38 /* STTarget.m */,
+				A7107E8B1BA2F614001F3B38 /* STUser.h */,
+				A7107E8C1BA2F614001F3B38 /* STUser.m */,
+				A75AF2B41BA893B000D74B9C /* STObject.h */,
+				A75AF2B51BA893B000D74B9C /* STObject.m */,
+			);
+			name = "Stomt Objects";
+			sourceTree = "<group>";
+		};
+		A71D5F0C1BA7664D00DC8BA1 /* Helper objects */ = {
+			isa = PBXGroup;
+			children = (
+				A78B2E6B1BA419BC00A9E7D0 /* STSTats.h */,
+				A78B2E6C1BA419BC00A9E7D0 /* STSTats.m */,
+				A7450D441BA4338E00DF83B8 /* STCategory.h */,
+				A7450D451BA4338E00DF83B8 /* STCategory.m */,
+				A768D76B1BA9EB6000466AFB /* STImage.h */,
+				A768D76C1BA9EB6000466AFB /* STImage.m */,
+			);
+			name = "Helper objects";
+			sourceTree = "<group>";
+		};
+		A71D5F0D1BA7668000DC8BA1 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				A7450D481BA44E9800DF83B8 /* HTTPResponseChecker.h */,
+				A7450D491BA44E9800DF83B8 /* HTTPResponseChecker.m */,
+				A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */,
+				A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A70884A61BA1F43300758049 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70884DD1BA1F4A400758049 /* declarations.h in Headers */,
+				A70884DC1BA1F4A400758049 /* dbg.h in Headers */,
+				A70884D31BA1F47400758049 /* Stomt.h in Headers */,
+				A7450D461BA4338E00DF83B8 /* STCategory.h in Headers */,
+				A70884CC1BA1F45200758049 /* LoginView.h in Headers */,
+				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
+				A70884AF1BA1F43300758049 /* StomtiOS.h in Headers */,
+				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
+				A78B2E6D1BA419BC00A9E7D0 /* STSTats.h in Headers */,
+				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,
+				A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */,
+				A768D76D1BA9EB6000466AFB /* STImage.h in Headers */,
+				A75AF2B31BA88F6700D74B9C /* strings.h in Headers */,
+				A7107E891BA2F607001F3B38 /* STTarget.h in Headers */,
+				A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */,
+				A768D7711BA9FDC400466AFB /* StomtRequest+STImageRequest.h in Headers */,
+				A70884D51BA1F47400758049 /* StomtRequest.h in Headers */,
+				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A70884A81BA1F43300758049 /* StomtiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70884BF1BA1F43300758049 /* Build configuration list for PBXNativeTarget "StomtiOS" */;
+			buildPhases = (
+				A70884A41BA1F43300758049 /* Sources */,
+				A70884A51BA1F43300758049 /* Frameworks */,
+				A70884A61BA1F43300758049 /* Headers */,
+				A70884A71BA1F43300758049 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StomtiOS;
+			productName = StomtiOS;
+			productReference = A70884A91BA1F43300758049 /* StomtiOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A70884B31BA1F43300758049 /* StomtiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70884C21BA1F43300758049 /* Build configuration list for PBXNativeTarget "StomtiOSTests" */;
+			buildPhases = (
+				A70884B01BA1F43300758049 /* Sources */,
+				A70884B11BA1F43300758049 /* Frameworks */,
+				A70884B21BA1F43300758049 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A70884B71BA1F43300758049 /* PBXTargetDependency */,
+			);
+			name = StomtiOSTests;
+			productName = StomtiOSTests;
+			productReference = A70884B41BA1F43300758049 /* StomtiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A70884A01BA1F43300758049 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Leonardo Cascianelli";
+				TargetAttributes = {
+					A70884A81BA1F43300758049 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					A70884B31BA1F43300758049 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = A70884A31BA1F43300758049 /* Build configuration list for PBXProject "StomtiOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A708849F1BA1F43300758049;
+			productRefGroup = A70884AA1BA1F43300758049 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A70884A81BA1F43300758049 /* StomtiOS */,
+				A70884B31BA1F43300758049 /* StomtiOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A70884A71BA1F43300758049 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70884B21BA1F43300758049 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A70884A41BA1F43300758049 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70884D41BA1F47400758049 /* Stomt.m in Sources */,
+				A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */,
+				A768D7721BA9FDC400466AFB /* StomtRequest+STImageRequest.m in Sources */,
+				A70884D61BA1F47400758049 /* StomtRequest.m in Sources */,
+				A7107E8A1BA2F607001F3B38 /* STTarget.m in Sources */,
+				A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */,
+				A78B2E6E1BA419BC00A9E7D0 /* STSTats.m in Sources */,
+				A768D76E1BA9EB6000466AFB /* STImage.m in Sources */,
+				A70884CD1BA1F45200758049 /* LoginView.m in Sources */,
+				A75AF2B71BA893B000D74B9C /* STObject.m in Sources */,
+				A70884CB1BA1F45200758049 /* LoginViewController.m in Sources */,
+				A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */,
+				A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70884B01BA1F43300758049 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70884BC1BA1F43300758049 /* StomtiOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A70884B71BA1F43300758049 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A70884A81BA1F43300758049 /* StomtiOS */;
+			targetProxy = A70884B61BA1F43300758049 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A70884BD1BA1F43300758049 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A70884BE1BA1F43300758049 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A70884C01BA1F43300758049 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = StomtiOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A70884C11BA1F43300758049 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = StomtiOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A70884C31BA1F43300758049 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = StomtiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A70884C41BA1F43300758049 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = StomtiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A70884A31BA1F43300758049 /* Build configuration list for PBXProject "StomtiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70884BD1BA1F43300758049 /* Debug */,
+				A70884BE1BA1F43300758049 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A70884BF1BA1F43300758049 /* Build configuration list for PBXNativeTarget "StomtiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70884C01BA1F43300758049 /* Debug */,
+				A70884C11BA1F43300758049 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A70884C21BA1F43300758049 /* Build configuration list for PBXNativeTarget "StomtiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70884C31BA1F43300758049 /* Debug */,
+				A70884C41BA1F43300758049 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A70884A01BA1F43300758049 /* Project object */;
+}
