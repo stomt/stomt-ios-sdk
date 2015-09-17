@@ -9,23 +9,23 @@
 #import "STObject.h"
 
 @interface STObject ()
-- (instancetype)initObjectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish image:(UIImage *)image;
+- (instancetype)initObjectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish;
 @end
 
 @implementation STObject
 
-+ (instancetype)objectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish image:(UIImage *)image
++ (instancetype)objectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish
 {
-	STObject* rt = [[STObject alloc] initObjectWithTextBody:body positiveOrWish:positiveOrWish image:image];
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body positiveOrWish:positiveOrWish];
 	return rt;
 }
 
-- (instancetype)initObjectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish image:(STImage *)image
+- (instancetype)initObjectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish
 {
 	self = [super init];
 	self.positive = (positiveOrWish == kSTObjectPositive) ?  YES : NO;
 	self.text = body;
-	self.image = image;
+	//self.image = image;
 	return self;
 }
 @end

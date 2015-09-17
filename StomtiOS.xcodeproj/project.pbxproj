@@ -34,10 +34,8 @@
 		A75AF2B71BA893B000D74B9C /* STObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A75AF2B51BA893B000D74B9C /* STObject.m */; };
 		A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */; };
 		A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */; };
-		A768D76D1BA9EB6000466AFB /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D76B1BA9EB6000466AFB /* STImage.h */; };
+		A768D76D1BA9EB6000466AFB /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D76B1BA9EB6000466AFB /* STImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A768D76E1BA9EB6000466AFB /* STImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D76C1BA9EB6000466AFB /* STImage.m */; };
-		A768D7711BA9FDC400466AFB /* StomtRequest+STImageRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D76F1BA9FDC400466AFB /* StomtRequest+STImageRequest.h */; };
-		A768D7721BA9FDC400466AFB /* StomtRequest+STImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7701BA9FDC400466AFB /* StomtRequest+STImageRequest.m */; };
 		A78B2E6D1BA419BC00A9E7D0 /* STSTats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STSTats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STSTats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STSTats.m */; };
 /* End PBXBuildFile section */
@@ -85,8 +83,6 @@
 		A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
 		A768D76B1BA9EB6000466AFB /* STImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImage.h; sourceTree = "<group>"; };
 		A768D76C1BA9EB6000466AFB /* STImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STImage.m; sourceTree = "<group>"; };
-		A768D76F1BA9FDC400466AFB /* StomtRequest+STImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StomtRequest+STImageRequest.h"; sourceTree = "<group>"; };
-		A768D7701BA9FDC400466AFB /* StomtRequest+STImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "StomtRequest+STImageRequest.m"; sourceTree = "<group>"; };
 		A78B2E6B1BA419BC00A9E7D0 /* STSTats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSTats.h; sourceTree = "<group>"; };
 		A78B2E6C1BA419BC00A9E7D0 /* STSTats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSTats.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,8 +200,6 @@
 			children = (
 				A70884D11BA1F47400758049 /* StomtRequest.h */,
 				A70884D21BA1F47400758049 /* StomtRequest.m */,
-				A768D76F1BA9FDC400466AFB /* StomtRequest+STImageRequest.h */,
-				A768D7701BA9FDC400466AFB /* StomtRequest+STImageRequest.m */,
 			);
 			name = StomtRequest;
 			sourceTree = "<group>";
@@ -270,7 +264,6 @@
 				A75AF2B31BA88F6700D74B9C /* strings.h in Headers */,
 				A7107E891BA2F607001F3B38 /* STTarget.h in Headers */,
 				A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */,
-				A768D7711BA9FDC400466AFB /* StomtRequest+STImageRequest.h in Headers */,
 				A70884D51BA1F47400758049 /* StomtRequest.h in Headers */,
 				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
 			);
@@ -374,7 +367,6 @@
 			files = (
 				A70884D41BA1F47400758049 /* Stomt.m in Sources */,
 				A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */,
-				A768D7721BA9FDC400466AFB /* StomtRequest+STImageRequest.m in Sources */,
 				A70884D61BA1F47400758049 /* StomtRequest.m in Sources */,
 				A7107E8A1BA2F607001F3B38 /* STTarget.m in Sources */,
 				A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */,

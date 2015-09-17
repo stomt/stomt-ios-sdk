@@ -7,7 +7,13 @@
 //
 
 #import "STImage.h"
+#import "Stomt.h"
 #import "dbg.h"
+#import "strings.h"
+
+@interface STImage ()
+
+@end
 
 @implementation STImage
 - (instancetype)init
@@ -17,17 +23,14 @@ error:
 	return nil;
 }
 
-- (instancetype)initWithImage:(UIImage *)image
+- (instancetype)initWithImageName:(NSString *)name
 {
 	self = [super init];
-	self.image = image;
-	self.imageName = nil;
-	self.isReady = NO;
+
+	self.imageName = name;
+	self.url = nil;
+	
 	return self;
 }
 
-- (void)prepare
-{
-	
-}
 @end

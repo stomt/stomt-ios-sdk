@@ -21,14 +21,14 @@
 
 @interface StomtRequest ()
 + (NSMutableURLRequest*)generateBasePOSTRequestWithPath:(NSString*)path;
-- (instancetype)initWithApiRequest:(NSURLRequest*)request requestType:(RequestType)type anonymousRequest:(BOOL)anonymous;
+- (instancetype)initWithApiRequest:(NSURLRequest*)request requestType:(RequestType)type;
 @end
 
 @implementation StomtRequest
 
 #pragma mark Setup
 
-- (instancetype)initWithApiRequest:(NSURLRequest*)request requestType:(RequestType)type anonymousRequest:(BOOL)anonymous
+- (instancetype)initWithApiRequest:(NSURLRequest*)request requestType:(RequestType)type
 {
 	self = [super init];
 	self.apiRequest = request;
@@ -67,7 +67,7 @@ error:
 	if(jsonError) _err("Error in generating JSON data. Aborting...");
 	[apiRequest setHTTPBody:jsonData];
 	
-	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kAuthRequest anonymousRequest:NO];
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kAuthRequest];
 	
 error:
 	return nil;
@@ -75,21 +75,23 @@ error:
 
 //NOT READY YET ------
 
-+ (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject targetID:(NSString*)targetID addURL:(NSString*)url geoLocation:(CLLocation*)lonLat anonymousRequest:(BOOL)anonymous
++ (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject targetID:(NSString*)targetID addURL:(NSString*)url geoLocation:(CLLocation*)lonLat image:(STImage*)image
 {
 	NSMutableURLRequest* apiRequest;
 	NSError* jsonError;
 	NSMutableDictionary* requestBody;
 	NSData* jsonData;
+	BOOL anonymous;
 	
 	if(!targetID) _err("Target id required! Aborting...");
 	
 	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kStomtCreationPath];
-	if(!anonymous)
+	anonymous = YES;
+	
+	if([Stomt sharedInstance].accessToken)
 	{
-		if([Stomt sharedInstance].accessToken) [apiRequest setValue:[Stomt sharedInstance].accessToken forHTTPHeaderField:@"accesstoken"];
-		else anonymous = YES;
-		_warn("Set anonymous = NO but no accesstoken was found. Sending anonymous...");
+		[apiRequest setValue:[Stomt sharedInstance].accessToken forHTTPHeaderField:@"accesstoken"];
+		anonymous = NO;
 	}
 	
 	requestBody = [NSMutableDictionary dictionary];
@@ -99,20 +101,54 @@ error:
 	[requestBody setObject:stomtObject.text forKey:@"text"];
 	if(url) [requestBody setObject:url forKey:@"url"];
 	[requestBody setObject:[NSNumber numberWithBool:anonymous] forKey:@"anonymous"];
-	if(stomtObject.image.imageName) [requestBody setObject:stomtObject.image.imageName forKey:@"img_name"];
+	if(image) [requestBody setObject:image.imageName forKey:@"img_name"];
 	if(lonLat) [requestBody setObject:lonLat forKey:@"lonlat"];
 	
 	jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
 	if(jsonError) _err("Error in generating JSON data. Aborting...");
 	[apiRequest setHTTPBody:jsonData];
-	
-	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kStomtCreationRequest anonymousRequest:anonymous];
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kStomtCreationRequest];
 	
 error:
 	return nil;
 }
 
 //NOT READY YET
+
++ (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category
+{
+	NSMutableURLRequest* apiRequest;
+	NSError* jsonError;
+	NSMutableDictionary* requestBody;
+	NSData* jsonData;
+	NSString* imageCategoryStr;
+	NSData* imageData;
+	NSString* imageBase64;
+	
+	if(image)
+	{
+		imageData = UIImageJPEGRepresentation(image, 1.0);
+		imageBase64 = [imageData base64EncodedStringWithOptions:0];
+	}else _err("No image provided! Aborting...");
+	
+	if (category == kSTImageCategoryAvatar) imageCategoryStr = @"avatar";
+	else if (category == kSTImageCategoryCover) imageCategoryStr = @"cover";
+	else if (category == kSTImageCategoryStomt) imageCategoryStr = @"stomt";
+	
+	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kImageUploadPath];
+	requestBody = [NSMutableDictionary dictionary];
+	if(targetID)[requestBody setObject:targetID forKey:@"id"];
+	[requestBody setObject:@{imageCategoryStr:@[@{@"data":imageBase64}]} forKey:@"images"];
+	
+	jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
+	if(jsonError) _err("Error in serializing JSON. Aborting...");
+	[apiRequest setHTTPBody:jsonData];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kImageUploadRequest];
+error:
+	return nil;
+}
+
 
 #pragma mark Send Requests
 
@@ -171,7 +207,14 @@ error:
 {
 	if(self.requestType == kStomtCreationRequest)
 	{
-		NSLog(@"Stomt sending will be implemented soon.");
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+			if([HTTPResponseChecker checkResponseCode:response] == OK)
+			{
+				_info("Stomt sent.");
+				completion(nil,nil);
+				
+			}else fprintf(stderr, "Error!");
+		}];
 		return;
 	}
 	
@@ -180,4 +223,29 @@ error:
 }
 
 //NOT READY YET ------
+
+- (void)uploadImageInBackgroundWithBlock:(ImageUploadBlock)completion
+{
+	if(self.requestType == kImageUploadRequest){
+		
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+				if([HTTPResponseChecker checkResponseCode:response] == OK)
+				{
+					NSString* category;
+					NSDictionary* rDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+					NSDictionary* basePath = [NSDictionary dictionaryWithDictionary:[[rDict objectForKey:@"data"] objectForKey:@"images"]];
+					if([basePath objectForKey:@"avatar"]) category = [[basePath objectForKey:@"avatar"] objectForKey:@"name"];
+					else if([basePath objectForKey:@"cover"]) category = [[basePath objectForKey:@"cover"] objectForKey:@"name"];
+					else if([basePath objectForKey:@"stomt"]) category = [[basePath objectForKey:@"stomt"] objectForKey:@"name"];
+					completion(connectionError,[[STImage alloc] initWithImageName:category]);
+					
+				}else fprintf(stderr, "Error!");
+		}];
+		
+		return;
+	}
+error:
+	fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
+}
+
 @end

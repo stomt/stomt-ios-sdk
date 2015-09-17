@@ -1,5 +1,4 @@
 //
-//  BlockDeclarations.h
 //  StomtiOS
 //
 //  Created by Leonardo Cascianelli on 10/09/15.
@@ -12,8 +11,10 @@
 @class Foundation;
 @class STUser;
 @class STObject;
+@class STImage;
 
 typedef void (^ BooleanCompletion)(BOOL succeeded);
 typedef void (^ AuthenticationBlock)(NSError* error, STUser* user);
-typedef void (^ StomtCreationBlock)(NSError*, STObject* stomt);
+typedef void (^ StomtCreationBlock)(NSError* error, STObject* stomt);
+typedef void (^ ImageUploadBlock)(NSError* error, STImage* image);
 #endif

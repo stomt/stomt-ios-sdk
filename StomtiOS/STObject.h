@@ -23,11 +23,11 @@ typedef enum{
 @property (nonatomic,strong) NSString* lang; //Replace with enum
 @property (nonatomic,strong) NSDate* createdAt;
 @property (nonatomic) BOOL anonym;
-@property (nonatomic,strong) STImage* image;
+//@property (nonatomic,strong) STImage* image; Not needed anymore
 @property (nonatomic,strong) STTarget* creator;
 @property (nonatomic,strong) STTarget* target;
 @property (nonatomic) int amountOfAgreements;
 @property (nonatomic) int amountOfComments;
 @property (nonatomic) BOOL agreed;
-+ (instancetype)objectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish image:(STImage *)image;
++ (instancetype)objectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish;
 @end

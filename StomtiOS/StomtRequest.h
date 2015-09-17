@@ -12,14 +12,16 @@
 
 @class STObject;
 @class CLLocation;
+@class UIImage;
 
 @interface StomtRequest : NSObject
 @property (nonatomic,strong) NSURLRequest* apiRequest;
 @property (nonatomic) RequestType requestType;
-@property (nonatomic) BOOL anonymous;
 
 + (StomtRequest*)authenticationRequestWithEmailOrUser:(NSString*)user password:(NSString*)pass;
-+ (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject targetID:(NSString*)targetID addURL:(NSString*)url geoLocation:(CLLocation*)lonLat anonymousRequest:(BOOL)anonymous;
++ (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject targetID:(NSString*)targetID addURL:(NSString*)url geoLocation:(CLLocation*)lonLat image:(STImage*)image;
++ (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category;
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion;
 - (void)sendStomtInBackgroundWithBlock:(StomtCreationBlock)completion;
+- (void)uploadImageInBackgroundWithBlock:(ImageUploadBlock)completion;
 @end

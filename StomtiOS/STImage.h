@@ -11,9 +11,7 @@
 @class UIImage;
 
 @interface STImage : NSObject
-@property (nonatomic,strong) UIImage* image;
 @property (nonatomic,strong) NSString* imageName;
-@property (nonatomic) BOOL isReady;
-- (instancetype)initWithImage:(UIImage*)image;
-- (void)prepare;
+@property (nonatomic,strong) NSURL* url;
+- (instancetype)initWithImageName:(NSString *)name;
 @end

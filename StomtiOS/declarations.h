@@ -14,10 +14,15 @@ typedef enum{
 }kState;
 
 typedef enum{
-	kAuthRequest,kStomtCreationRequest
+	kAuthRequest,kStomtCreationRequest,kImageUploadRequest
 }RequestType;
 
 typedef enum{
 	OK,ERR,OLD_TOKEN
 }HTTPHRCode;
+
+typedef enum
+{
+	kSTImageCategoryAvatar,kSTImageCategoryCover,kSTImageCategoryStomt
+}kSTImageCategory;
 #endif
