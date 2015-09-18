@@ -9,6 +9,7 @@
 #define __DBG__
 
 #import "Stomt.h"
+#import "StomtRequest.h"
 #import "LoginViewController.h"
 #import "dbg.h"
 #import "declarations.h"
@@ -67,9 +68,16 @@ error:
 
 + (void)logout
 {
-	[Stomt sharedInstance].accessToken = nil;
-	[Stomt sharedInstance].refreshToken = nil;
-	[Stomt sharedInstance].isAuthenticated = NO;
+	StomtRequest* logoutRequest = [StomtRequest logoutRequest];
+	[logoutRequest logoutInBackgroundWithBlock:^(BOOL succeeded) {
+		if(succeeded)
+		{
+			[Stomt sharedInstance].accessToken = nil;
+			[Stomt sharedInstance].refreshToken = nil;
+			[Stomt sharedInstance].isAuthenticated = NO;
+		}
+	}];
+
 }
 
 #pragma mark TODO

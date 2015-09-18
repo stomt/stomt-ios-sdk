@@ -11,7 +11,10 @@
 @class UIImage;
 
 @interface STImage : NSObject
+@property (nonatomic,strong) UIImage* image;
 @property (nonatomic,strong) NSString* imageName;
 @property (nonatomic,strong) NSURL* url;
-- (instancetype)initWithImageName:(NSString *)name;
+- (instancetype)initWithStomtImageName:(NSString *)name;
+- (instancetype)initWithUrl:(NSURL*)imageUrl;
+- (void)downloadInBackground;
 @end

@@ -15,9 +15,11 @@
 #import "STUser.h"
 #import "STObject.h"
 #import "STImage.h"
+#import <CoreLocation/CLLocation.h>
 #import "HTTPResponseChecker.h"
 #import "strings.h"
 #import "dbg.h"
+
 
 @interface StomtRequest ()
 + (NSMutableURLRequest*)generateBasePOSTRequestWithPath:(NSString*)path;
@@ -73,8 +75,6 @@ error:
 	return nil;
 }
 
-//NOT READY YET ------
-
 + (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject targetID:(NSString*)targetID addURL:(NSString*)url geoLocation:(CLLocation*)lonLat image:(STImage*)image
 {
 	NSMutableURLRequest* apiRequest;
@@ -102,7 +102,8 @@ error:
 	if(url) [requestBody setObject:url forKey:@"url"];
 	[requestBody setObject:[NSNumber numberWithBool:anonymous] forKey:@"anonymous"];
 	if(image) [requestBody setObject:image.imageName forKey:@"img_name"];
-	if(lonLat) [requestBody setObject:lonLat forKey:@"lonlat"];
+	
+	if(lonLat) [requestBody setObject:[NSString stringWithFormat:@"%f,%f",lonLat.coordinate.longitude,lonLat.coordinate.latitude] forKey:@"lonlat"];
 	
 	jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
 	if(jsonError) _err("Error in generating JSON data. Aborting...");
@@ -113,7 +114,6 @@ error:
 	return nil;
 }
 
-//NOT READY YET
 
 + (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category
 {
@@ -149,7 +149,18 @@ error:
 	return nil;
 }
 
-
++ (StomtRequest*)logoutRequest
+{
+	NSMutableURLRequest* apiRequest;
+	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kLogoutPath];
+	apiRequest.HTTPMethod = @"DELETE";
+	[apiRequest setValue:[Stomt sharedInstance].accessToken forHTTPHeaderField:@"accesstoken"];
+	if(apiRequest)
+		return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kLogoutRequest];
+	
+error:
+	return nil;
+}
 #pragma mark Send Requests
 
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion
@@ -201,8 +212,6 @@ error:
 	fprintf(stderr,"\n[ERROR] Authentication request not available for this instance.");
 }
 
-//NOT READY YET ------
-
 - (void)sendStomtInBackgroundWithBlock:(StomtCreationBlock)completion
 {
 	if(self.requestType == kStomtCreationRequest)
@@ -211,7 +220,16 @@ error:
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				_info("Stomt sent.");
-				completion(nil,nil);
+				NSError *jsonError;
+				NSDictionary* dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+				if(jsonError){NSLog(@"Error in json serializing. %@",jsonError); return;}
+				
+				if(![Stomt sharedInstance].accessToken && ![Stomt sharedInstance].refreshToken)
+				{
+					[Stomt sharedInstance].accessToken = [dataDict objectForKey:kD_AccessToken];
+					[Stomt sharedInstance].refreshToken = [dataDict objectForKey:kD_RefreshToken];
+				}
+				completion(connectionError,[STObject objectWithDataDictionary:dataDict]);
 				
 			}else fprintf(stderr, "Error!");
 		}];
@@ -222,7 +240,6 @@ error:
 	fprintf(stderr,"\n[ERROR] Stomt creation request not available for this instance.");
 }
 
-//NOT READY YET ------
 
 - (void)uploadImageInBackgroundWithBlock:(ImageUploadBlock)completion
 {
@@ -237,7 +254,7 @@ error:
 					if([basePath objectForKey:@"avatar"]) category = [[basePath objectForKey:@"avatar"] objectForKey:@"name"];
 					else if([basePath objectForKey:@"cover"]) category = [[basePath objectForKey:@"cover"] objectForKey:@"name"];
 					else if([basePath objectForKey:@"stomt"]) category = [[basePath objectForKey:@"stomt"] objectForKey:@"name"];
-					completion(connectionError,[[STImage alloc] initWithImageName:category]);
+					completion(connectionError,[[STImage alloc] initWithStomtImageName:category]);
 					
 				}else fprintf(stderr, "Error!");
 		}];
@@ -248,4 +265,22 @@ error:
 	fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
 }
 
+- (void)logoutInBackgroundWithBlock:(BooleanCompletion)completion
+{
+	if(self.requestType == kLogoutRequest)
+	{
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+			if([HTTPResponseChecker checkResponseCode:response] == OK)
+			{
+				_info("Logged out!");
+				completion(YES);
+			}
+			else fprintf(stderr, "Some kind of error. Handle.");
+		}];
+		return;
+	}
+	
+error:
+	fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
+}
 @end

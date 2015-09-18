@@ -21,7 +21,9 @@
 + (StomtRequest*)authenticationRequestWithEmailOrUser:(NSString*)user password:(NSString*)pass;
 + (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject targetID:(NSString*)targetID addURL:(NSString*)url geoLocation:(CLLocation*)lonLat image:(STImage*)image;
 + (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category;
++ (StomtRequest*)logoutRequest;
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion;
 - (void)sendStomtInBackgroundWithBlock:(StomtCreationBlock)completion;
 - (void)uploadImageInBackgroundWithBlock:(ImageUploadBlock)completion;
+- (void)logoutInBackgroundWithBlock:(BooleanCompletion)completion;
 @end

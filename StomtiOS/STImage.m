@@ -12,7 +12,7 @@
 #import "strings.h"
 
 @interface STImage ()
-
+- (void)downloadInBackground;
 @end
 
 @implementation STImage
@@ -23,7 +23,7 @@ error:
 	return nil;
 }
 
-- (instancetype)initWithImageName:(NSString *)name
+- (instancetype)initWithStomtImageName:(NSString *)name
 {
 	self = [super init];
 
@@ -33,4 +33,22 @@ error:
 	return self;
 }
 
+- (instancetype)initWithUrl:(NSURL*)imageUrl
+{
+	if(imageUrl)
+	{
+		self.url = imageUrl;
+	}
+error:
+	return nil;
+}
+
+
+- (void)downloadInBackground
+{
+	dispatch_async(dispatch_get_global_queue(0,0), ^{
+		NSData * data = [[NSData alloc] initWithContentsOfURL: self.url];
+		if(data) self.image = [UIImage imageWithData:data];
+	});
+}
 @end

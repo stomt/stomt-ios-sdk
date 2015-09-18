@@ -9,7 +9,7 @@
 #import "NSDate+ISO8601.h"
 
 @implementation NSDate (ISO8601)
-+ (NSDate*)NSDateWithISO8601String:(NSString*)date
++ (NSDate*)dateWithISO8601String:(NSString*)date
 {
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];

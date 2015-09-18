@@ -9,7 +9,6 @@
 #import "STSTats.h"
 
 @interface STSTats ()
-
 - (instancetype)initWithFollowers:(NSInteger)followers peopleItFollows:(NSInteger)follows createdStomts:(NSInteger)cStomts receivedStomts:(NSInteger)rStomts;
 @end
 
