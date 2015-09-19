@@ -81,8 +81,6 @@ error:
 - (void)setText:(NSString *)text
 {
 	NSInteger chars_required = (self.positive == YES) ? 92 : 94;
-	NSLog(@"%ld",[text length]);
-	
 	if(!([text length] <= chars_required))
 		_err("Maximum chars for this stomt: %ld",(long)chars_required);
 	_text = text;
