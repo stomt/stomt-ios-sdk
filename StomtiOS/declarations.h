@@ -21,8 +21,7 @@ typedef enum{
 	OK,ERR,OLD_TOKEN
 }HTTPHRCode;
 
-typedef enum
-{
+typedef enum{
 	kSTImageCategoryAvatar,kSTImageCategoryCover,kSTImageCategoryStomt
 }kSTImageCategory;
 
