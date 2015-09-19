@@ -55,9 +55,15 @@ error:
 		NSDictionary* imagesDict = [NSDictionary dictionaryWithDictionary:[hDict objectForKey:@"images"]];
 		NSDictionary* stomtImageDict = [NSDictionary dictionaryWithDictionary:[imagesDict objectForKey:@"stomt"]];
 		NSURL* imgUrl = [NSURL URLWithString:[stomtImageDict objectForKey:@"url"]];
-		self.image = [[STImage alloc] initWithUrl:imgUrl];
+		if(imgUrl)
+		{
+			self.image = [[STImage alloc] initWithUrl:imgUrl];
+			[self.image downloadInBackground];
+			NSLog(@"MI STRANO");
+		}
 	}
 	@catch (NSException *exception) {
+		NSLog(@"Ex: %@",exception);
 		self.image = nil;
 	}
 

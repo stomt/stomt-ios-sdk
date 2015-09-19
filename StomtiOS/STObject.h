@@ -23,7 +23,7 @@ typedef enum{
 @property (nonatomic,strong) NSString* lang;
 @property (nonatomic,strong) NSDate* createdAt;
 @property (nonatomic) BOOL anonym;
-@property (nonatomic,strong) STImage* image;
+@property (atomic,strong) STImage* image;
 @property (nonatomic,strong) STTarget* creator;
 @property (nonatomic,strong) STTarget* target;
 @property (nonatomic) NSInteger amountOfAgreements;
