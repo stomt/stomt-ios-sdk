@@ -6,11 +6,14 @@
 //  Copyright (c) 2015 Leonardo Cascianelli. All rights reserved.
 //
 
+#define __DBG__
+
 #import "STObject.h"
 #import "NSDate+ISO8601.h"
 #import "STImage.h"
 #import "STUser.h"
 #import "STTarget.h"
+#import "dbg.h"
 
 @interface STObject ()
 - (instancetype)initObjectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish;
@@ -37,8 +40,10 @@ error:
 	self = [super init];
 	self.positive = (positiveOrWish == kSTObjectPositive) ?  YES : NO;
 	self.text = body;
-	//self.image = image;
+	if(!self.text) _err("Chars length exceeded");
 	return self;
+error:
+	return nil;
 }
 
 - (instancetype)initWithDataDictionary:(NSDictionary *)dictionary
@@ -59,11 +64,9 @@ error:
 		{
 			self.image = [[STImage alloc] initWithUrl:imgUrl];
 			[self.image downloadInBackground];
-			NSLog(@"MI STRANO");
 		}
 	}
 	@catch (NSException *exception) {
-		NSLog(@"Ex: %@",exception);
 		self.image = nil;
 	}
 
@@ -75,4 +78,16 @@ error:
 	return self;
 }
 
+- (void)setText:(NSString *)text
+{
+	NSInteger chars_required = (self.positive == YES) ? 92 : 94;
+	NSLog(@"%ld",[text length]);
+	
+	if(!([text length] <= chars_required))
+		_err("Maximum chars for this stomt: %ld",(long)chars_required);
+	_text = text;
+	return;
+error:
+	_text = nil;
+}
 @end
