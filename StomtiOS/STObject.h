@@ -13,10 +13,17 @@
 @class STImage;
 @class CLLocation;
 
+
 typedef enum{
 	kSTObjectLike,kSTObjectWish
 }kSTObjectQualifier;
 
+/*!
+ 
+ @brief The actual Stomt object, which at least contains text, targetID and a type qualifier.
+ @discussion The STObject class represents the actual Stomt object that can be created from the stomt.com website.
+
+ */
 @interface STObject : NSObject
 @property (nonatomic,strong) NSString* identifier;
 @property (nonatomic,strong) NSString* targetID; //Required

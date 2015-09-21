@@ -9,7 +9,10 @@
 #import "STTarget.h"
 
 @interface STUser : STTarget
+/// Access token given by stomt.com after loggin in.
 @property (nonatomic,strong) NSString* accessToken;
+/// Refresh token given by stomt.com after loggin in.
 @property (nonatomic,strong) NSString* refreshToken;
+/// BOOL to check whether the instance of the user is newly created.
 @property (nonatomic) BOOL isNewUser;
 @end
