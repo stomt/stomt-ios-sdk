@@ -19,11 +19,11 @@ typedef enum{
 
 @interface STObject : NSObject
 @property (nonatomic,strong) NSString* identifier;
-@property (nonatomic,strong) NSString* targetID;
+@property (nonatomic,strong) NSString* targetID; //Required
 @property (nonatomic,strong) NSURL* url;
 @property (nonatomic,strong) CLLocation* geoLocation;
-@property (nonatomic) BOOL positive;
-@property (nonatomic,strong) NSString* text;
+@property (nonatomic,readonly) BOOL positive; //Required (set by constructor)
+@property (nonatomic,strong) NSString* text; //Required
 @property (nonatomic,strong) NSString* lang;
 @property (nonatomic,strong) NSDate* createdAt;
 @property (nonatomic) BOOL anonym;
@@ -33,11 +33,16 @@ typedef enum{
 @property (nonatomic) NSInteger amountOfAgreements;
 @property (nonatomic) NSInteger amountOfComments;
 @property (nonatomic) BOOL agreed;
+
+//Overloaded constructors
 + (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID;
 + (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID image:(STImage*)img;
 + (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID geoLocation:(CLLocation*)geoLocation;
 + (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID url:(NSString*)url;
+
+//Comprehensive constructor
 + (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID image:(STImage*)img url:(NSString*)url geoLocation:(CLLocation*)geoLocation;
+
+//Dictionary constructors
 + (instancetype)objectWithDataDictionary:(NSDictionary*)dictionary;
-- (instancetype)initWithDataDictionary:(NSDictionary*)dictionary;
 @end

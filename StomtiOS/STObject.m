@@ -16,13 +16,15 @@
 #import "dbg.h"
 
 
-@interface STObject ()
+@interface STObject () //Internal use only. Use class methods.
 - (instancetype)initObjectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID image:(STImage*)img url:(NSString*)url geoLocation:(CLLocation*)geoLocation;
+- (instancetype)initWithDataDictionary:(NSDictionary*)dictionary;
 @end
 
 @implementation STObject
 
 #pragma mark Overloaded Constructors
+
 + (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID
 {
 	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:nil url:nil geoLocation:nil];
@@ -59,6 +61,7 @@
 {
 	STObject* rtObject = [[STObject alloc] initWithDataDictionary:dictionary];
 	if(rtObject) return rtObject;
+	
 error:
 	return nil;
 }
@@ -66,7 +69,7 @@ error:
 - (instancetype)initObjectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID image:(STImage *)img url:(NSString *)url geoLocation:(CLLocation *)geoLocation
 {
 	self = [super init];
-	self.positive = (likeOrWish == kSTObjectLike) ?  YES : NO;
+	self->_positive = (likeOrWish == kSTObjectLike) ?  YES : NO;
 	self.text = body;
 	if(!self.text) _err("Chars length exceeded");
 	
@@ -78,6 +81,7 @@ error:
 	self.geoLocation = geoLocation;
 	
 	return self;
+	
 error:
 	return nil;
 }
@@ -87,7 +91,7 @@ error:
 	self = [super init];
 	NSDictionary* hDict = [NSDictionary dictionaryWithDictionary:[dictionary objectForKey:@"data"]];
 	self.identifier = [hDict objectForKey:@"id"];
-	self.positive = [[hDict objectForKey:@"positive"] boolValue];
+	self->_positive = [[hDict objectForKey:@"positive"] boolValue];
 	self.text = [hDict objectForKey:@"text"];
 	self.createdAt = [NSDate dateWithISO8601String:[hDict objectForKey:@"created_at"]];
 	self.anonym = [[hDict objectForKey:@"anonym"] boolValue];
@@ -121,6 +125,7 @@ error:
 		_err("Maximum chars for this stomt: %ld",(long)chars_required);
 	_text = text;
 	return;
+	
 error:
 	_text = nil;
 }

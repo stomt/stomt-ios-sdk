@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Leonardo Cascianelli. All rights reserved.
 //
 
+
+//You shouldn't really touch this file.
+
 #ifndef Stomt_Framework_dbg_h
 #define Stomt_Framework_dbg_h
 

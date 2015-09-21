@@ -34,7 +34,7 @@
 {
 	self = [super init];
 	self.apiRequest = request;
-	self.requestType = type;
+	self->_requestType = type;
 	return self;
 }
 
@@ -161,6 +161,7 @@ error:
 error:
 	return nil;
 }
+
 #pragma mark Send Requests
 
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion
@@ -261,6 +262,7 @@ error:
 		
 		return;
 	}
+	
 error:
 	fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
 }

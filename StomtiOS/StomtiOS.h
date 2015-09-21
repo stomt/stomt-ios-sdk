@@ -17,8 +17,9 @@ FOUNDATION_EXPORT const unsigned char StomtiOSVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <StomtiOS/PublicHeader.h>
 
 
-#import <StomtiOS/block_declarations.h>
+
 #import <StomtiOS/Stomt.h>
+#import <StomtiOS/block_declarations.h>
 #import <StomtiOS/StomtRequest.h>
 #import <StomtiOS/STUser.h>
 #import <StomtiOS/STCategory.h>

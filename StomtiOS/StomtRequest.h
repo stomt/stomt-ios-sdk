@@ -16,12 +16,17 @@
 
 @interface StomtRequest : NSObject
 @property (nonatomic,strong) NSURLRequest* apiRequest;
-@property (nonatomic) RequestType requestType;
+@property (nonatomic,readonly) RequestType requestType;
+
+//Request constructors
 
 + (StomtRequest*)authenticationRequestWithEmailOrUser:(NSString*)user password:(NSString*)pass;
 + (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject;
 + (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category;
 + (StomtRequest*)logoutRequest;
+
+//Request senders
+
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion;
 - (void)sendStomtInBackgroundWithBlock:(StomtCreationBlock)completion;
 - (void)uploadImageInBackgroundWithBlock:(ImageUploadBlock)completion;

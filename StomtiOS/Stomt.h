@@ -19,10 +19,13 @@
 @property (nonatomic) BOOL isAuthenticated;
 + (instancetype)sharedInstance;
 + (void)setAppID:(NSString *)appid;
+
+// Easy access
 + (NSString*)appID;
 + (NSString*)accessToken;
 + (NSString*)refreshToken;
+
 + (void)promptAuthenticationIfNecessaryWithCompletionBlock:(BooleanCompletion)completion;
-+ (void)requestNewAccessTokenInBackgroundWithBlock:(BooleanCompletion)completion;
-+ (void)logout;
++ (void)requestNewAccessTokenInBackgroundWithBlock:(BooleanCompletion)completion; //Unused!
++ (void)logout; //Only works with connection.
 @end
