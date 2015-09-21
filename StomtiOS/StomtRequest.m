@@ -75,7 +75,7 @@ error:
 	return nil;
 }
 
-+ (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject targetID:(NSString*)targetID addURL:(NSString*)url geoLocation:(CLLocation*)lonLat image:(STImage*)image
++ (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject
 {
 	NSMutableURLRequest* apiRequest;
 	NSError* jsonError;
@@ -83,7 +83,7 @@ error:
 	NSData* jsonData;
 	BOOL anonymous;
 	
-	if(!targetID) _err("Target id required! Aborting...");
+	if(!stomtObject.targetID) _err("Target id required! Aborting...");
 	
 	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kStomtCreationPath];
 	anonymous = YES;
@@ -96,14 +96,14 @@ error:
 	
 	requestBody = [NSMutableDictionary dictionary];
 	
-	[requestBody setObject:targetID forKey:@"target_id"];
+	[requestBody setObject:stomtObject.targetID forKey:@"target_id"];
 	[requestBody setObject:[NSNumber numberWithBool:stomtObject.positive] forKey:@"positive"];
 	[requestBody setObject:stomtObject.text forKey:@"text"];
-	if(url) [requestBody setObject:url forKey:@"url"];
+	if(stomtObject.url) [requestBody setObject:[stomtObject.url absoluteString] forKey:@"url"];
 	[requestBody setObject:[NSNumber numberWithBool:anonymous] forKey:@"anonymous"];
-	if(image) [requestBody setObject:image.imageName forKey:@"img_name"];
+	if(stomtObject.image) [requestBody setObject:stomtObject.image.imageName forKey:@"img_name"];
 	
-	if(lonLat) [requestBody setObject:[NSString stringWithFormat:@"%f,%f",lonLat.coordinate.longitude,lonLat.coordinate.latitude] forKey:@"lonlat"];
+	if(stomtObject.geoLocation) [requestBody setObject:[NSString stringWithFormat:@"%f,%f",stomtObject.geoLocation.coordinate.longitude,stomtObject.geoLocation.coordinate.latitude] forKey:@"lonlat"];
 	
 	jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
 	if(jsonError) _err("Error in generating JSON data. Aborting...");

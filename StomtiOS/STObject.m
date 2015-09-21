@@ -15,17 +15,45 @@
 #import "STTarget.h"
 #import "dbg.h"
 
+
 @interface STObject ()
-- (instancetype)initObjectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish;
+- (instancetype)initObjectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID image:(STImage*)img url:(NSString*)url geoLocation:(CLLocation*)geoLocation;
 @end
 
 @implementation STObject
 
-+ (instancetype)objectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish
+#pragma mark Overloaded Constructors
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID
 {
-	STObject* rt = [[STObject alloc] initObjectWithTextBody:body positiveOrWish:positiveOrWish];
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:nil url:nil geoLocation:nil];
 	return rt;
 }
+
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID geoLocation:(CLLocation *)geoLocation
+{
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:nil url:nil geoLocation:geoLocation];
+	return rt;
+}
+
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID image:(STImage *)img
+{
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:img url:nil geoLocation:nil];
+	return rt;
+}
+
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID url:(NSString *)url
+{
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:nil url:url geoLocation:nil];
+	return rt;
+}
+
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID image:(STImage *)img url:(NSString *)url geoLocation:(CLLocation *)geoLocation
+{
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:img url:url geoLocation:geoLocation];
+	return rt;
+}
+
+#pragma mark Constructors 
 
 + (instancetype)objectWithDataDictionary:(NSDictionary *)dictionary
 {
@@ -35,12 +63,20 @@ error:
 	return nil;
 }
 
-- (instancetype)initObjectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish
+- (instancetype)initObjectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID image:(STImage *)img url:(NSString *)url geoLocation:(CLLocation *)geoLocation
 {
 	self = [super init];
-	self.positive = (positiveOrWish == kSTObjectPositive) ?  YES : NO;
+	self.positive = (likeOrWish == kSTObjectLike) ?  YES : NO;
 	self.text = body;
 	if(!self.text) _err("Chars length exceeded");
+	
+	self.targetID = targetID;
+	if(!self.targetID) _err("TargetID required")
+		
+	self.image = img;
+	self.url = [NSURL URLWithString:url];
+	self.geoLocation = geoLocation;
+	
 	return self;
 error:
 	return nil;
@@ -51,10 +87,10 @@ error:
 	self = [super init];
 	NSDictionary* hDict = [NSDictionary dictionaryWithDictionary:[dictionary objectForKey:@"data"]];
 	self.identifier = [hDict objectForKey:@"id"];
-	self.positive = [hDict objectForKey:@"positive"];
+	self.positive = [[hDict objectForKey:@"positive"] boolValue];
 	self.text = [hDict objectForKey:@"text"];
 	self.createdAt = [NSDate dateWithISO8601String:[hDict objectForKey:@"created_at"]];
-	self.anonym = [hDict objectForKey:@"anonym"];
+	self.anonym = [[hDict objectForKey:@"anonym"] boolValue];
 	
 	@try {
 		NSDictionary* imagesDict = [NSDictionary dictionaryWithDictionary:[hDict objectForKey:@"images"]];

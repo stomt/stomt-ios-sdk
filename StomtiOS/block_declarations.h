@@ -5,8 +5,8 @@
 //  Copyright (c) 2015 Leonardo Cascianelli. All rights reserved.
 //
 
-#ifndef StomtiOS_BlockDeclarations_h
-#define StomtiOS_BlockDeclarations_h
+#ifndef StomtiOS_block_declarations_h
+#define StomtiOS_block_declarations_h
 
 @class Foundation;
 @class STUser;

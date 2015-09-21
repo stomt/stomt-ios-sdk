@@ -19,7 +19,7 @@
 @property (nonatomic) RequestType requestType;
 
 + (StomtRequest*)authenticationRequestWithEmailOrUser:(NSString*)user password:(NSString*)pass;
-+ (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject targetID:(NSString*)targetID addURL:(NSString*)url geoLocation:(CLLocation*)lonLat image:(STImage*)image;
++ (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject;
 + (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category;
 + (StomtRequest*)logoutRequest;
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion;

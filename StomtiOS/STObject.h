@@ -11,13 +11,17 @@
 @class UIImage;
 @class STTarget;
 @class STImage;
+@class CLLocation;
 
 typedef enum{
-	kSTObjectPositive,kSTObjectWish
+	kSTObjectLike,kSTObjectWish
 }kSTObjectQualifier;
 
 @interface STObject : NSObject
 @property (nonatomic,strong) NSString* identifier;
+@property (nonatomic,strong) NSString* targetID;
+@property (nonatomic,strong) NSURL* url;
+@property (nonatomic,strong) CLLocation* geoLocation;
 @property (nonatomic) BOOL positive;
 @property (nonatomic,strong) NSString* text;
 @property (nonatomic,strong) NSString* lang;
@@ -29,7 +33,11 @@ typedef enum{
 @property (nonatomic) NSInteger amountOfAgreements;
 @property (nonatomic) NSInteger amountOfComments;
 @property (nonatomic) BOOL agreed;
-+ (instancetype)objectWithTextBody:(NSString *)body positiveOrWish:(kSTObjectQualifier)positiveOrWish;
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID;
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID image:(STImage*)img;
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID geoLocation:(CLLocation*)geoLocation;
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID url:(NSString*)url;
++ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID image:(STImage*)img url:(NSString*)url geoLocation:(CLLocation*)geoLocation;
 + (instancetype)objectWithDataDictionary:(NSDictionary*)dictionary;
 - (instancetype)initWithDataDictionary:(NSDictionary*)dictionary;
 @end
