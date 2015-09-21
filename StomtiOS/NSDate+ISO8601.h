@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDate (ISO8601)
-
++ (NSDate*)dateWithISO8601String:(NSString*)date;
 @end
