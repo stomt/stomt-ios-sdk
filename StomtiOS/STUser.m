@@ -22,8 +22,11 @@
 
 + (instancetype)initWithDataDictionary:(NSDictionary *)data
 {
-	STUser* user = [[STUser alloc] initWithDataDictionary:data];
-	return user;
+	@synchronized(self)
+	{
+		STUser* user = [[STUser alloc] initWithDataDictionary:data];
+		return user;
+	}
 }
 
 @end

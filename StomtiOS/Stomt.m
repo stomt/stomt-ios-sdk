@@ -68,16 +68,18 @@ error:
 
 + (void)logout
 {
-	StomtRequest* logoutRequest = [StomtRequest logoutRequest];
-	[logoutRequest logoutInBackgroundWithBlock:^(BOOL succeeded) {
-		if(succeeded)
-		{
-			[Stomt sharedInstance].accessToken = nil;
-			[Stomt sharedInstance].refreshToken = nil;
-			[Stomt sharedInstance].isAuthenticated = NO;
-		}
-	}];
-
+	@synchronized(self)
+	{
+		StomtRequest* logoutRequest = [StomtRequest logoutRequest];
+		[logoutRequest logoutInBackgroundWithBlock:^(BOOL succeeded) {
+			if(succeeded)
+			{
+				[Stomt sharedInstance].accessToken = nil;
+				[Stomt sharedInstance].refreshToken = nil;
+				[Stomt sharedInstance].isAuthenticated = NO;
+			}
+		}];
+	}
 }
 
 #pragma mark TODO
@@ -121,8 +123,11 @@ error:
 
 - (void)setAccessToken:(NSString *)accessToken
 {
-	[[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:kToken];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+	@synchronized(self)
+	{
+		[[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:kToken];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
 }
 
 - (NSString*)accessToken
@@ -132,8 +137,11 @@ error:
 
 - (void)setRefreshToken:(NSString *)refreshToken
 {
-	[[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:kRToken];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+	@synchronized(self)
+	{
+		[[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:kRToken];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
 }
 
 - (NSString*)refreshToken

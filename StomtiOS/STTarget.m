@@ -33,8 +33,11 @@
 
 + (instancetype)initWithDataDictionary:(NSDictionary *)data
 {
-	STTarget* target = [[STTarget alloc] initWithDataDictionary:data];
-	return target;
+	@synchronized(self)
+	{
+		STTarget* target = [[STTarget alloc] initWithDataDictionary:data];
+		return target;
+	}
 }
 @end
 

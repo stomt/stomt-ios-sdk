@@ -51,17 +51,22 @@
 
 + (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID image:(STImage *)img url:(NSString *)url geoLocation:(CLLocation *)geoLocation
 {
-	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:img url:url geoLocation:geoLocation];
-	return rt;
+	@synchronized(self)
+	{
+		STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:img url:url geoLocation:geoLocation];
+		return rt;
+	}
 }
 
 #pragma mark Constructors 
 
 + (instancetype)objectWithDataDictionary:(NSDictionary *)dictionary
 {
-	STObject* rtObject = [[STObject alloc] initWithDataDictionary:dictionary];
-	if(rtObject) return rtObject;
-	
+	@synchronized(self)
+	{
+		STObject* rtObject = [[STObject alloc] initWithDataDictionary:dictionary];
+		if(rtObject) return rtObject;
+	}
 error:
 	return nil;
 }

@@ -49,12 +49,15 @@ error:
 
 + (NSMutableURLRequest*)generateBasePOSTRequestWithPath:(NSString*)path
 {
-	NSURL* apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIURL,path]];
-	NSMutableURLRequest* apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
-	[apiRequest setHTTPMethod:@"POST"];
-	[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
-	[apiRequest setValue:[Stomt sharedInstance].appid forHTTPHeaderField:@"appid"];
-	return apiRequest;
+	@synchronized(self)
+	{
+		NSURL* apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIURL,path]];
+		NSMutableURLRequest* apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
+		[apiRequest setHTTPMethod:@"POST"];
+		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+		[apiRequest setValue:[Stomt sharedInstance].appid forHTTPHeaderField:@"appid"];
+		return apiRequest;
+	}
 }
 
 + (StomtRequest*)authenticationRequestWithEmailOrUser:(NSString *)user password:(NSString *)pass
@@ -117,49 +120,51 @@ error:
 
 + (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category
 {
-	NSMutableURLRequest* apiRequest;
-	NSError* jsonError;
-	NSMutableDictionary* requestBody;
-	NSData* jsonData;
-	NSString* imageCategoryStr;
-	NSData* imageData;
-	NSString* imageBase64;
-	
-	if(image)
-	{
-		imageData = UIImageJPEGRepresentation(image, 1.0);
-		imageBase64 = [imageData base64EncodedStringWithOptions:0];
-	}else _err("No image provided! Aborting...");
-	
-	if (category == kSTImageCategoryAvatar) imageCategoryStr = @"avatar";
-	else if (category == kSTImageCategoryCover) imageCategoryStr = @"cover";
-	else if (category == kSTImageCategoryStomt) imageCategoryStr = @"stomt";
-	
-	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kImageUploadPath];
-	requestBody = [NSMutableDictionary dictionary];
-	if(targetID)[requestBody setObject:targetID forKey:@"id"];
-	[requestBody setObject:@{imageCategoryStr:@[@{@"data":imageBase64}]} forKey:@"images"];
-	
-	jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
-	if(jsonError) _err("Error in serializing JSON. Aborting...");
-	[apiRequest setHTTPBody:jsonData];
-	
-	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kImageUploadRequest];
+		NSMutableURLRequest* apiRequest;
+		NSError* jsonError;
+		NSMutableDictionary* requestBody;
+		NSData* jsonData;
+		NSString* imageCategoryStr;
+		NSData* imageData;
+		NSString* imageBase64;
+		
+		if(image)
+		{
+			imageData = UIImageJPEGRepresentation(image, 1.0);
+			imageBase64 = [imageData base64EncodedStringWithOptions:0];
+		}else _err("No image provided! Aborting...");
+		
+		if (category == kSTImageCategoryAvatar) imageCategoryStr = @"avatar";
+		else if (category == kSTImageCategoryCover) imageCategoryStr = @"cover";
+		else if (category == kSTImageCategoryStomt) imageCategoryStr = @"stomt";
+		
+		apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kImageUploadPath];
+		requestBody = [NSMutableDictionary dictionary];
+		if(targetID)[requestBody setObject:targetID forKey:@"id"];
+		[requestBody setObject:@{imageCategoryStr:@[@{@"data":imageBase64}]} forKey:@"images"];
+		
+		jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
+		if(jsonError) _err("Error in serializing JSON. Aborting...");
+		[apiRequest setHTTPBody:jsonData];
+		
+		return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kImageUploadRequest];
 error:
 	return nil;
 }
 
 + (StomtRequest*)logoutRequest
 {
-	NSMutableURLRequest* apiRequest;
-	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kLogoutPath];
-	apiRequest.HTTPMethod = @"DELETE";
-	[apiRequest setValue:[Stomt sharedInstance].accessToken forHTTPHeaderField:@"accesstoken"];
-	if(apiRequest)
-		return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kLogoutRequest];
-	
+	@synchronized(self)
+	{
+		NSMutableURLRequest* apiRequest;
+		apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kLogoutPath];
+		apiRequest.HTTPMethod = @"DELETE";
+		[apiRequest setValue:[Stomt sharedInstance].accessToken forHTTPHeaderField:@"accesstoken"];
+		if(apiRequest)
+			return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kLogoutRequest];
 error:
 	return nil;
+	}
 }
 
 #pragma mark Send Requests

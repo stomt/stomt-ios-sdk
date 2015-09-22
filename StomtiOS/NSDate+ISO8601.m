@@ -11,8 +11,11 @@
 @implementation NSDate (ISO8601)
 + (NSDate*)dateWithISO8601String:(NSString*)date
 {
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
-	return [dateFormatter dateFromString:date];
+	@synchronized(self)
+	{
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+		return [dateFormatter dateFromString:date];
+	}
 }
 @end
