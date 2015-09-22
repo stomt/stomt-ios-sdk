@@ -10,7 +10,7 @@
 
 /**
  
- STUser class represents a logged in user, it extends the STTarget class.
+ STUser, subclas of STTarget, represents a logged in user.
  
  */
 
