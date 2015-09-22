@@ -8,6 +8,12 @@
 
 #import "STTarget.h"
 
+/**
+ 
+ STUser class represents a logged in user, it extends the STTarget class.
+ 
+ */
+
 @interface STUser : STTarget
 /// Access token given by stomt.com after loggin in.
 @property (nonatomic,strong) NSString* accessToken;

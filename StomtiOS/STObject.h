@@ -20,8 +20,8 @@ typedef enum{
 
 /*!
  
- @brief The actual Stomt object, which at least contains text, targetID and a type qualifier.
- @discussion The STObject class represents the actual Stomt object that can be created from the stomt.com website.
+ @brief The actual stomt object, which at least contains text, targetID and a type qualifier.
+ @discussion The STObject class represents the actual stomt object that can be created on the stomt.com website.
 
  */
 @interface STObject : NSObject

@@ -14,7 +14,7 @@
 
 /**
  
- STTarget class represents a Target, one of the most important objects in Stomt.
+ STTarget class represents a Target, one of the most important objects in stomt.
  Almost any object that this library handles inherits from STTarget class or contains an instance of it.
  
  */
@@ -22,15 +22,15 @@
 @interface STTarget : NSObject
 /// Unique id of the target, also referred in stomt API as 'slug'.
 @property (nonatomic,strong) NSString* identifier;
-/// The name the target displays in Stomt.
+/// The name of the target displayed on stomt.
 @property (nonatomic,strong) NSString* displayName;
-/// Category of the target. (Stomt, Users, Games...)
+/// Category of the target. (Stomt, Users, Games...).
 @property (nonatomic,strong) STCategory* category;
 /// The profile image of the target.
 @property (nonatomic,strong) NSURL* profileImage;
 /// Statistics of the target. A comprehensive explanation can be found in the STStats class.
 @property (nonatomic,strong) STSTats* stats;
-/// BOOL to check whether the target is a verified member of the Stomt team.
+/// BOOL to check whether the target is a verified or not.
 @property (nonatomic) BOOL isVerified;
 
 /*!
