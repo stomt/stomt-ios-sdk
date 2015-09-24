@@ -64,6 +64,7 @@
 {
 	@synchronized(self)
 	{
+		if(!dictionary) NSLog(@"NAH");
 		STObject* rtObject = [[STObject alloc] initWithDataDictionary:dictionary];
 		if(rtObject) return rtObject;
 	}
@@ -114,9 +115,12 @@ error:
 	@catch (NSException *exception) {
 		self.image = nil;
 	}
-
-	self.creator = [STUser initWithDataDictionary:[hDict objectForKey:@"creator"]];
-	self.target = [STTarget initWithDataDictionary:[hDict objectForKey:@"target"]];
+	
+	if([hDict objectForKey:@"creator"] != [NSNull null])
+		self.creator = [STUser initWithDataDictionary:[hDict objectForKey:@"creator"]];
+	if([hDict objectForKey:@"target"] != [NSNull null])
+		self.target = [STTarget initWithDataDictionary:[hDict objectForKey:@"target"]];
+	
 	self.amountOfAgreements = [[hDict objectForKey:@"amountAgreements"] integerValue];
 	self.amountOfComments = [[hDict objectForKey:@"amountComments"] integerValue];
 	self.agreed = [hDict objectForKey:@"agreed"] ? YES : NO;

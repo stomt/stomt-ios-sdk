@@ -14,7 +14,7 @@ typedef enum{
 }kState;
 
 typedef enum{
-	kAuthRequest,kStomtCreationRequest,kImageUploadRequest,kLogoutRequest
+	kAuthRequest,kStomtCreationRequest,kImageUploadRequest,kLogoutRequest,kStomtRequest
 }RequestType;
 
 typedef enum{

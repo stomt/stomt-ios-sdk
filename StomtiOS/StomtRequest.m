@@ -167,6 +167,42 @@ error:
 	}
 }
 
+
++ (StomtRequest*)stomtRequestWithIdentifierOrURL:(NSString*)location
+{
+	if(location)
+	{
+		NSString* slug;
+		NSMutableURLRequest* apiRequest;
+		
+		if([location hasPrefix:@"http://"] || [location hasPrefix:@"https://"])
+		{
+			if([location hasPrefix:@"http://www.stomt.com"] || [location hasPrefix:@"https://www.stomt.com"])
+			{
+				slug = [[location componentsSeparatedByString:@"/"] lastObject];
+			}
+			else _err("Not a stomt URL! Aborting...");
+		}
+		else //Slug
+		{
+			slug = location;
+			
+		}
+		
+		NSURL* requestPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kReadStomtPath,slug]];
+		if(requestPath)
+		{
+			apiRequest = [StomtRequest generateBasePOSTRequestWithPath:[requestPath absoluteString]];
+			apiRequest.HTTPMethod = @"GET";
+			return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kStomtRequest];
+			
+		}_err("Slug not valid, aborting...");
+		
+	}_err("No slug or URL found. Aborting...");
+	
+error:
+	return nil;
+}
 #pragma mark Send Requests
 
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion
@@ -290,4 +326,26 @@ error:
 error:
 	fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
 }
+
+- (void)requestStomtInBackgroundWithBlock:(StomtCreationBlock)completion
+{
+	[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		if([HTTPResponseChecker checkResponseCode:response] == OK)
+		{
+			NSDictionary* dataDict;
+			
+			if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+			if(dataDict)
+			{
+				STObject* stomtObj = [STObject objectWithDataDictionary:dataDict];
+				completion(connectionError,stomtObj);
+				return;
+			}
+			_info("Could not retrieve data dictionary. Aborting...");
+			return;
+		}
+		else fprintf(stderr, "Some kind of error. Handle.");
+	}];
+}
+
 @end

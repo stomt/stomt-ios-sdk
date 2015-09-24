@@ -26,3 +26,4 @@ FOUNDATION_EXPORT const unsigned char StomtiOSVersionString[];
 #import <StomtiOS/STStats.h>
 #import <StomtiOS/STObject.h>
 #import <StomtiOS/STImage.h>
+#import <StomtiOS/STCreationViewController.h>

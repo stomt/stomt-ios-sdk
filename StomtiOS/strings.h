@@ -18,6 +18,7 @@
 #define kStomtCreationPath @"/stomts"
 #define kImageUploadPath @"/images"
 #define kLogoutPath @"/authentication/session"
+#define kReadStomtPath @"/stomts/"
 
 #define kD_Id @"id"
 #define kD_DisplayName @"displayname"

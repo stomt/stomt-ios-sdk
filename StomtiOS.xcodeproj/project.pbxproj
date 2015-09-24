@@ -36,6 +36,10 @@
 		A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */; };
 		A768D76D1BA9EB6000466AFB /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D76B1BA9EB6000466AFB /* STImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A768D76E1BA9EB6000466AFB /* STImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D76C1BA9EB6000466AFB /* STImage.m */; };
+		A778CA281BB1E9CE00B5783D /* STCreationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A778CA261BB1E9CE00B5783D /* STCreationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A778CA291BB1E9CE00B5783D /* STCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A778CA271BB1E9CE00B5783D /* STCreationViewController.m */; };
+		A778CA2C1BB1F6CB00B5783D /* STCreationView.h in Headers */ = {isa = PBXBuildFile; fileRef = A778CA2A1BB1F6CB00B5783D /* STCreationView.h */; };
+		A778CA2D1BB1F6CB00B5783D /* STCreationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A778CA2B1BB1F6CB00B5783D /* STCreationView.m */; };
 		A78B2E6D1BA419BC00A9E7D0 /* STSTats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STSTats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STSTats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STSTats.m */; };
 /* End PBXBuildFile section */
@@ -83,6 +87,10 @@
 		A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
 		A768D76B1BA9EB6000466AFB /* STImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImage.h; sourceTree = "<group>"; };
 		A768D76C1BA9EB6000466AFB /* STImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STImage.m; sourceTree = "<group>"; };
+		A778CA261BB1E9CE00B5783D /* STCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationViewController.h; sourceTree = "<group>"; };
+		A778CA271BB1E9CE00B5783D /* STCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationViewController.m; sourceTree = "<group>"; };
+		A778CA2A1BB1F6CB00B5783D /* STCreationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationView.h; sourceTree = "<group>"; };
+		A778CA2B1BB1F6CB00B5783D /* STCreationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationView.m; sourceTree = "<group>"; };
 		A78B2E6B1BA419BC00A9E7D0 /* STSTats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSTats.h; sourceTree = "<group>"; };
 		A78B2E6C1BA419BC00A9E7D0 /* STSTats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSTats.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				A70884AB1BA1F43300758049 /* StomtiOS */,
+				A778CA1D1BB1E42600B5783D /* UI */,
 				A70884B81BA1F43300758049 /* StomtiOSTests */,
 				A70884AA1BA1F43300758049 /* Products */,
 			);
@@ -132,7 +141,6 @@
 				A70885151BA20F2900758049 /* StomtRequest */,
 				A70884D81BA1F48500758049 /* Helpers */,
 				A70884CE1BA1F45B00758049 /* Public */,
-				A70884C51BA1F44600758049 /* LoginModal */,
 				A70884AE1BA1F43300758049 /* StomtiOS.h */,
 				A70884AC1BA1F43300758049 /* Supporting Files */,
 			);
@@ -242,6 +250,27 @@
 			name = Private;
 			sourceTree = "<group>";
 		};
+		A778CA1C1BB1E41800B5783D /* CreateStomt */ = {
+			isa = PBXGroup;
+			children = (
+				A778CA261BB1E9CE00B5783D /* STCreationViewController.h */,
+				A778CA271BB1E9CE00B5783D /* STCreationViewController.m */,
+				A778CA2A1BB1F6CB00B5783D /* STCreationView.h */,
+				A778CA2B1BB1F6CB00B5783D /* STCreationView.m */,
+			);
+			name = CreateStomt;
+			sourceTree = "<group>";
+		};
+		A778CA1D1BB1E42600B5783D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A70884C51BA1F44600758049 /* LoginModal */,
+				A778CA1C1BB1E41800B5783D /* CreateStomt */,
+			);
+			name = UI;
+			path = StomtiOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -257,6 +286,7 @@
 				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
 				A70884AF1BA1F43300758049 /* StomtiOS.h in Headers */,
 				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
+				A778CA281BB1E9CE00B5783D /* STCreationViewController.h in Headers */,
 				A78B2E6D1BA419BC00A9E7D0 /* STSTats.h in Headers */,
 				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,
 				A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */,
@@ -265,6 +295,7 @@
 				A7107E891BA2F607001F3B38 /* STTarget.h in Headers */,
 				A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */,
 				A70884D51BA1F47400758049 /* StomtRequest.h in Headers */,
+				A778CA2C1BB1F6CB00B5783D /* STCreationView.h in Headers */,
 				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,11 +402,13 @@
 				A7107E8A1BA2F607001F3B38 /* STTarget.m in Sources */,
 				A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */,
 				A78B2E6E1BA419BC00A9E7D0 /* STSTats.m in Sources */,
+				A778CA2D1BB1F6CB00B5783D /* STCreationView.m in Sources */,
 				A768D76E1BA9EB6000466AFB /* STImage.m in Sources */,
 				A70884CD1BA1F45200758049 /* LoginView.m in Sources */,
 				A75AF2B71BA893B000D74B9C /* STObject.m in Sources */,
 				A70884CB1BA1F45200758049 /* LoginViewController.m in Sources */,
 				A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */,
+				A778CA291BB1E9CE00B5783D /* STCreationViewController.m in Sources */,
 				A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

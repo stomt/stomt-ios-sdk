@@ -24,11 +24,12 @@
 + (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject;
 + (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category;
 + (StomtRequest*)logoutRequest;
-
++ (StomtRequest*)stomtRequestWithIdentifierOrURL:(NSString*)location;
 //Request senders
 
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion;
 - (void)sendStomtInBackgroundWithBlock:(StomtCreationBlock)completion;
 - (void)uploadImageInBackgroundWithBlock:(ImageUploadBlock)completion;
 - (void)logoutInBackgroundWithBlock:(BooleanCompletion)completion;
+- (void)requestStomtInBackgroundWithBlock:(StomtCreationBlock)completion;
 @end
