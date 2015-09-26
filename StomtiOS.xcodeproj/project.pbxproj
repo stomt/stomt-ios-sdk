@@ -40,8 +40,12 @@
 		A778CA291BB1E9CE00B5783D /* STCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A778CA271BB1E9CE00B5783D /* STCreationViewController.m */; };
 		A778CA2C1BB1F6CB00B5783D /* STCreationView.h in Headers */ = {isa = PBXBuildFile; fileRef = A778CA2A1BB1F6CB00B5783D /* STCreationView.h */; };
 		A778CA2D1BB1F6CB00B5783D /* STCreationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A778CA2B1BB1F6CB00B5783D /* STCreationView.m */; };
+		A7833D001BB46B1100A3F13B /* STFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = A7833CFE1BB46B1100A3F13B /* STFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7833D011BB46B1100A3F13B /* STFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = A7833CFF1BB46B1100A3F13B /* STFeed.m */; };
 		A78B2E6D1BA419BC00A9E7D0 /* STSTats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STSTats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STSTats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STSTats.m */; };
+		A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7C039A31BB5A340006A8135 /* STSearchFilterKeywords.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,8 +95,12 @@
 		A778CA271BB1E9CE00B5783D /* STCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationViewController.m; sourceTree = "<group>"; };
 		A778CA2A1BB1F6CB00B5783D /* STCreationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationView.h; sourceTree = "<group>"; };
 		A778CA2B1BB1F6CB00B5783D /* STCreationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationView.m; sourceTree = "<group>"; };
+		A7833CFE1BB46B1100A3F13B /* STFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STFeed.h; sourceTree = "<group>"; };
+		A7833CFF1BB46B1100A3F13B /* STFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STFeed.m; sourceTree = "<group>"; };
 		A78B2E6B1BA419BC00A9E7D0 /* STSTats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSTats.h; sourceTree = "<group>"; };
 		A78B2E6C1BA419BC00A9E7D0 /* STSTats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSTats.m; sourceTree = "<group>"; };
+		A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSearchFilterKeywords.h; sourceTree = "<group>"; };
+		A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSearchFilterKeywords.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +230,8 @@
 				A7107E8C1BA2F614001F3B38 /* STUser.m */,
 				A75AF2B41BA893B000D74B9C /* STObject.h */,
 				A75AF2B51BA893B000D74B9C /* STObject.m */,
+				A7833CFE1BB46B1100A3F13B /* STFeed.h */,
+				A7833CFF1BB46B1100A3F13B /* STFeed.m */,
 			);
 			name = "Stomt Objects";
 			sourceTree = "<group>";
@@ -235,6 +245,8 @@
 				A7450D451BA4338E00DF83B8 /* STCategory.m */,
 				A768D76B1BA9EB6000466AFB /* STImage.h */,
 				A768D76C1BA9EB6000466AFB /* STImage.m */,
+				A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */,
+				A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */,
 			);
 			name = "Helper objects";
 			sourceTree = "<group>";
@@ -295,6 +307,8 @@
 				A7107E891BA2F607001F3B38 /* STTarget.h in Headers */,
 				A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */,
 				A70884D51BA1F47400758049 /* StomtRequest.h in Headers */,
+				A7833D001BB46B1100A3F13B /* STFeed.h in Headers */,
+				A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */,
 				A778CA2C1BB1F6CB00B5783D /* STCreationView.h in Headers */,
 				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
 			);
@@ -398,6 +412,7 @@
 			files = (
 				A70884D41BA1F47400758049 /* Stomt.m in Sources */,
 				A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */,
+				A7C039A31BB5A340006A8135 /* STSearchFilterKeywords.m in Sources */,
 				A70884D61BA1F47400758049 /* StomtRequest.m in Sources */,
 				A7107E8A1BA2F607001F3B38 /* STTarget.m in Sources */,
 				A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */,
@@ -408,6 +423,7 @@
 				A75AF2B71BA893B000D74B9C /* STObject.m in Sources */,
 				A70884CB1BA1F45200758049 /* LoginViewController.m in Sources */,
 				A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */,
+				A7833D011BB46B1100A3F13B /* STFeed.m in Sources */,
 				A778CA291BB1E9CE00B5783D /* STCreationViewController.m in Sources */,
 				A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */,
 			);

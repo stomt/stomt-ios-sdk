@@ -15,6 +15,7 @@
 #import "STUser.h"
 #import "STObject.h"
 #import "STImage.h"
+#import "STFeed.h"
 #import <CoreLocation/CLLocation.h>
 #import "HTTPResponseChecker.h"
 #import "strings.h"
@@ -23,6 +24,7 @@
 
 @interface StomtRequest ()
 + (NSMutableURLRequest*)generateBasePOSTRequestWithPath:(NSString*)path;
++ (NSMutableURLRequest*)generateBaseGETRequestWithPath:(NSString*)path parametersPair:(NSDictionary*)pPair;
 - (instancetype)initWithApiRequest:(NSURLRequest*)request requestType:(RequestType)type;
 @end
 
@@ -54,6 +56,38 @@ error:
 		NSURL* apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIURL,path]];
 		NSMutableURLRequest* apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
 		[apiRequest setHTTPMethod:@"POST"];
+		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+		[apiRequest setValue:[Stomt sharedInstance].appid forHTTPHeaderField:@"appid"];
+		return apiRequest;
+	}
+}
+
++ (NSMutableURLRequest*)generateBaseGETRequestWithPath:(NSString *)path parametersPair:(NSDictionary *)pPair
+{
+	@synchronized(self)
+	{
+		NSMutableString* paramString = [NSMutableString string];
+		NSMutableArray* keys = [NSMutableArray array];
+		NSMutableArray* args = [NSMutableArray array];
+		[pPair enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+			[keys addObject:(NSString*)key];
+			[args addObject:(NSString*)obj];
+		}];
+		for(int g_c = 0; g_c < [keys count]; g_c++)
+		{
+			if([[keys objectAtIndex:g_c] isEqualToString:[keys firstObject]]) //First Obj
+			{
+				[paramString appendString:[NSString stringWithFormat:@"?%@=%@",[keys objectAtIndex:g_c],[args objectAtIndex:g_c]]];
+			}
+			else
+			{
+				[paramString appendString:[NSString stringWithFormat:@"&%@=%@",[keys objectAtIndex:g_c],[args objectAtIndex:g_c]]];
+			}
+		}
+		
+		NSURL* apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",kAPIURL,path,paramString]];
+		NSMutableURLRequest* apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
+		[apiRequest setHTTPMethod:@"GET"];
 		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
 		[apiRequest setValue:[Stomt sharedInstance].appid forHTTPHeaderField:@"appid"];
 		return apiRequest;
@@ -203,6 +237,20 @@ error:
 error:
 	return nil;
 }
+
++ (StomtRequest*)feedRequestWithStomtFeedObject:(STFeed*)feed
+{
+	NSMutableURLRequest* apiRequest;
+	
+	apiRequest = [StomtRequest generateBaseGETRequestWithPath:kSearchPath parametersPair:feed.params];
+	if(!feed) _err("Feed object not provided. Aborting...");
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kFeedRequest];
+	
+error:
+	return nil;
+}
+
 #pragma mark Send Requests
 
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion
@@ -329,23 +377,53 @@ error:
 
 - (void)requestStomtInBackgroundWithBlock:(StomtCreationBlock)completion
 {
-	[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-		if([HTTPResponseChecker checkResponseCode:response] == OK)
-		{
-			NSDictionary* dataDict;
-			
-			if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-			if(dataDict)
+	if(self.requestType == kStomtRequest)
+	{
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
-				STObject* stomtObj = [STObject objectWithDataDictionary:dataDict];
-				completion(connectionError,stomtObj);
+				NSDictionary* dataDict;
+				
+				if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				if(dataDict)
+				{
+					STObject* stomtObj = [STObject objectWithDataDictionary:dataDict];
+					completion(connectionError,stomtObj);
+					return;
+				}
+				_info("Could not retrieve data dictionary. Aborting...");
 				return;
 			}
-			_info("Could not retrieve data dictionary. Aborting...");
-			return;
-		}
-		else fprintf(stderr, "Some kind of error. Handle.");
-	}];
+			else fprintf(stderr, "Some kind of error. Handle.");
+		}];
+		return;
+	}
+error:
+	fprintf(stderr,"\n[ERROR] Stomt request not available for this instance.");
+}
+
+- (void)requestFeedInBackgroundWithBlock:(FeedRequestBlock)completion
+{
+	if(self.requestType == kFeedRequest)
+	{
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+			if([HTTPResponseChecker checkResponseCode:response] == OK)
+			{
+				NSDictionary* dataDict;
+				if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				if(dataDict)
+				{
+					STFeed* rtFeed = [STFeed feedWithStomtsArray:[dataDict objectForKey:@"data"]];
+					completion(connectionError,rtFeed);
+					return;
+				}
+			}
+			else fprintf(stderr,"[!] Some kind of error. Handle.");
+		}];
+		return;
+	}
+error:
+	fprintf(stderr,"\n[ERROR] Feed request not available for this instance.");
 }
 
 @end

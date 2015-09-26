@@ -64,8 +64,13 @@
 {
 	@synchronized(self)
 	{
-		if(!dictionary) NSLog(@"NAH");
-		STObject* rtObject = [[STObject alloc] initWithDataDictionary:dictionary];
+		if(!dictionary) _err("No dictionary provided. Aborting...");
+		
+		STObject* rtObject;
+		if([dictionary objectForKey:@"data"])
+			rtObject = [[STObject alloc] initWithDataDictionary:[dictionary objectForKey:@"data"]];
+		else
+			rtObject = [[STObject alloc] initWithDataDictionary:dictionary];
 		if(rtObject) return rtObject;
 	}
 error:
@@ -75,6 +80,7 @@ error:
 - (instancetype)initObjectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID image:(STImage *)img url:(NSString *)url geoLocation:(CLLocation *)geoLocation
 {
 	self = [super init];
+	if(!likeOrWish) _err("No like or wish qualifier provided. Aborting...")
 	self->_positive = (likeOrWish == kSTObjectLike) ?  YES : NO;
 	self.text = body;
 	if(!self.text) _err("Chars length exceeded");
@@ -92,10 +98,9 @@ error:
 	return nil;
 }
 
-- (instancetype)initWithDataDictionary:(NSDictionary *)dictionary
+- (instancetype)initWithDataDictionary:(NSDictionary *)hDict
 {
 	self = [super init];
-	NSDictionary* hDict = [NSDictionary dictionaryWithDictionary:[dictionary objectForKey:@"data"]];
 	self.identifier = [hDict objectForKey:@"id"];
 	self->_positive = [[hDict objectForKey:@"positive"] boolValue];
 	self.text = [hDict objectForKey:@"text"];

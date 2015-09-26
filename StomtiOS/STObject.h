@@ -7,16 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "declarations.h"
 
 @class UIImage;
 @class STTarget;
 @class STImage;
 @class CLLocation;
-
-
-typedef enum{
-	kSTObjectLike,kSTObjectWish
-}kSTObjectQualifier;
 
 /*!
  

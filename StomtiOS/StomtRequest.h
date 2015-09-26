@@ -13,6 +13,7 @@
 @class STObject;
 @class CLLocation;
 @class UIImage;
+@class STFeed;
 
 @interface StomtRequest : NSObject
 @property (nonatomic,strong) NSURLRequest* apiRequest;
@@ -25,6 +26,8 @@
 + (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category;
 + (StomtRequest*)logoutRequest;
 + (StomtRequest*)stomtRequestWithIdentifierOrURL:(NSString*)location;
++ (StomtRequest*)feedRequestWithStomtFeedObject:(STFeed*)feed;
+
 //Request senders
 
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion;
@@ -32,4 +35,5 @@
 - (void)uploadImageInBackgroundWithBlock:(ImageUploadBlock)completion;
 - (void)logoutInBackgroundWithBlock:(BooleanCompletion)completion;
 - (void)requestStomtInBackgroundWithBlock:(StomtCreationBlock)completion;
+- (void)requestFeedInBackgroundWithBlock:(FeedRequestBlock)completion;
 @end
