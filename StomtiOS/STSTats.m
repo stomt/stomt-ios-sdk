@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Leonardo Cascianelli. All rights reserved.
 //
 
-#import "STSTats.h"
+#import "STStats.h"
 
-@interface STSTats ()
+@interface STStats ()
 - (instancetype)initWithFollowers:(NSInteger)followers peopleItFollows:(NSInteger)follows createdStomts:(NSInteger)cStomts receivedStomts:(NSInteger)rStomts;
 @end
 
-@implementation STSTats
+@implementation STStats
 
 - (instancetype)init
 {
@@ -47,7 +47,7 @@
 	NSInteger cStomts = [[stats objectForKey:@"amountFollowers"] integerValue];
 	NSInteger rStomts = [[stats objectForKey:@"amountFollowers"] integerValue];
 	
-	STSTats* statsObject = [[STSTats alloc] initWithFollowers:followers peopleItFollows:follows createdStomts:cStomts receivedStomts:rStomts];
+	STStats* statsObject = [[STStats alloc] initWithFollowers:followers peopleItFollows:follows createdStomts:cStomts receivedStomts:rStomts];
 	
 	return statsObject;
 }

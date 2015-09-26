@@ -8,7 +8,7 @@
 
 #import "STTarget.h"
 #import "STCategory.h"
-#import "STSTats.h"
+#import "STStats.h"
 #import "strings.h"
 
 @implementation STTarget
@@ -25,7 +25,7 @@
 	
 	self.profileImage = [[[data objectForKey:kD_Images] objectForKey:kD_Profile] objectForKey:kD_Url];
 	
-	self.stats = [STSTats initWithStatsDictionary:[data objectForKey:kD_Stats]];
+	self.stats = [STStats initWithStatsDictionary:[data objectForKey:kD_Stats]];
 	self.isVerified = [[data objectForKey:kD_Verified] boolValue];
 	
 	return self;

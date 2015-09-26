@@ -10,7 +10,7 @@
 
 @class STCategory;
 @class UIImage;
-@class STSTats;
+@class STStats;
 
 /**
  
@@ -29,7 +29,7 @@
 /// The profile image of the target.
 @property (nonatomic,strong) NSURL* profileImage;
 /// Statistics of the target. A comprehensive explanation can be found in the STStats class.
-@property (nonatomic,strong) STSTats* stats;
+@property (nonatomic,strong) STStats* stats;
 /// BOOL to check whether the target is a verified or not.
 @property (nonatomic) BOOL isVerified;
 

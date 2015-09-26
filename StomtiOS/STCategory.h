@@ -8,8 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+/*!
+ @brief Represents a category.
+ @discussion The @p STCategory class is used to represent a category.
+ */
 @interface STCategory : NSObject
+
+///Specifies the category type.
 @property (nonatomic,strong) NSString* identifier;
+
+///Specifies the category display name.
 @property (nonatomic,strong) NSString* displayName;
+
+/*!
+ @brief Initializes a @p STCategory object with an identifier and a display name.
+ @param identifier The category identifier.
+ @param displayName The category display name.
+ */
 + (instancetype)initWithIdentifier:(NSString*)identifier displayName:(NSString*)name;
 @end
