@@ -7,13 +7,22 @@
 //
 
 #import "STCategory.h"
+#import "dbg.h"
 
 @implementation STCategory
-+ (instancetype)initWithIdentifier:(NSString*)identifier displayName:(NSString*)name
++ (instancetype)initWithIdentifier:(NSString*)identifier
+					   displayName:(NSString*)name
 {
-	STCategory* category = [[STCategory alloc] init];
+	STCategory* category;
+	
+	if(!identifier || !name) _err("Error in instantiating STCategory object. Args not valid. Aborting...");
+	category = [[STCategory alloc] init];
 	category.identifier = identifier;
 	category.displayName = name;
+	
 	return category;
+	
+error:
+	return nil;
 }
 @end

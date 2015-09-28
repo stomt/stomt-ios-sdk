@@ -44,12 +44,14 @@
  
  */
 + (void)promptAuthenticationIfNecessaryWithCompletionBlock:(BooleanCompletion)completion;
+
 /*!
  
  @brief Unused.
  
  */
 + (void)requestNewAccessTokenInBackgroundWithBlock:(BooleanCompletion)completion; //Unused!
+
 /*!
  
  @brief Logout the current user.

@@ -10,34 +10,47 @@
 #import "STCategory.h"
 #import "STStats.h"
 #import "strings.h"
+#import "dbg.h"
 
 @implementation STTarget
 
 - (instancetype)initWithDataDictionary:(NSDictionary*)data
 {
 	self = [super init];
+	if(data){
+		self.identifier = [data objectForKey:kD_Id];
+		self.displayName = [data objectForKey:kD_DisplayName];
+		
+		NSDictionary* categoryDict = [data objectForKey:kD_Category];
+		self.category = [STCategory initWithIdentifier:[categoryDict objectForKey:kD_Id]
+										   displayName:[categoryDict objectForKey:kD_DisplayName]];
+		
+		self.profileImage = [[[data objectForKey:kD_Images] objectForKey:kD_Profile] objectForKey:kD_Url];
+		
+		self.stats = [STStats initWithStatsDictionary:[data objectForKey:kD_Stats]];
+		self.isVerified = [[data objectForKey:kD_Verified] boolValue];
+		
+		return self;
+	}_err("No data passed in STTarget constructor. Aborting...");
 	
-	self.identifier = [data objectForKey:kD_Id];
-	self.displayName = [data objectForKey:kD_DisplayName];
-	
-	NSDictionary* categoryDict = [data objectForKey:kD_Category];
-	self.category = [STCategory initWithIdentifier:[categoryDict objectForKey:kD_Id] displayName:[categoryDict objectForKey:kD_DisplayName]];
-	
-	self.profileImage = [[[data objectForKey:kD_Images] objectForKey:kD_Profile] objectForKey:kD_Url];
-	
-	self.stats = [STStats initWithStatsDictionary:[data objectForKey:kD_Stats]];
-	self.isVerified = [[data objectForKey:kD_Verified] boolValue];
-	
-	return self;
+error:
+	return nil;
 }
 
 + (instancetype)initWithDataDictionary:(NSDictionary *)data
 {
 	@synchronized(self)
 	{
-		STTarget* target = [[STTarget alloc] initWithDataDictionary:data];
-		return target;
+		if(data)
+		{
+			STTarget* target = [[STTarget alloc] initWithDataDictionary:data];
+			return target;
+		}_err("No data passed in STTarget constructor. Aborting...");
+error:
+	return nil;
+		
 	}
+
 }
 @end
 

@@ -26,7 +26,9 @@
 - (instancetype)initWithUrl:(NSURL*)imageUrl;
 
 /*!
+ 
  @brief Asynchronously download the image.
+ 
  */
 - (void)downloadInBackground;
 @end

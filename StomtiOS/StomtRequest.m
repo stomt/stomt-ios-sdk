@@ -24,20 +24,28 @@
 
 @interface StomtRequest ()
 + (NSMutableURLRequest*)generateBasePOSTRequestWithPath:(NSString*)path;
-+ (NSMutableURLRequest*)generateBaseGETRequestWithPath:(NSString*)path parametersPair:(NSDictionary*)pPair;
-- (instancetype)initWithApiRequest:(NSURLRequest*)request requestType:(RequestType)type;
++ (NSMutableURLRequest*)generateBaseGETRequestWithPath:(NSString*)path
+										parametersPair:(NSDictionary*)pPair;
+- (instancetype)initWithApiRequest:(NSURLRequest*)request
+					   requestType:(RequestType)type;
 @end
 
 @implementation StomtRequest
 
 #pragma mark Setup
 
-- (instancetype)initWithApiRequest:(NSURLRequest*)request requestType:(RequestType)type
+- (instancetype)initWithApiRequest:(NSURLRequest*)request
+					   requestType:(RequestType)type
 {
 	self = [super init];
+	
+	if(!request) _err("No api request provided for request constructor. Aborting...");
 	self.apiRequest = request;
 	self->_requestType = type;
+	
 	return self;
+error:
+	return nil;
 }
 
 - (instancetype)init
@@ -53,22 +61,39 @@ error:
 {
 	@synchronized(self)
 	{
-		NSURL* apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIURL,path]];
-		NSMutableURLRequest* apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
+		NSURL* apiUrl;
+		NSMutableURLRequest* apiRequest;
+		
+		if(!path) _err("No path provided for base POST request creation. Aborting...");
+		
+		apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIURL,path]];
+		apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
 		[apiRequest setHTTPMethod:@"POST"];
 		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
 		[apiRequest setValue:[Stomt sharedInstance].appid forHTTPHeaderField:@"appid"];
+		
 		return apiRequest;
+error:
+	return nil;
 	}
 }
 
-+ (NSMutableURLRequest*)generateBaseGETRequestWithPath:(NSString *)path parametersPair:(NSDictionary *)pPair
++ (NSMutableURLRequest*)generateBaseGETRequestWithPath:(NSString *)path
+										parametersPair:(NSDictionary *)pPair
 {
 	@synchronized(self)
 	{
-		NSMutableString* paramString = [NSMutableString string];
-		NSMutableArray* keys = [NSMutableArray array];
-		NSMutableArray* args = [NSMutableArray array];
+		NSMutableString* paramString;
+		NSMutableArray* keys;
+		NSMutableArray* args;
+		NSURL* apiUrl;
+		NSMutableURLRequest* apiRequest;
+		
+		if(path && pPair)
+		{
+		paramString = [NSMutableString string];
+		keys = [NSMutableArray array];
+		args = [NSMutableArray array];
 		[pPair enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 			[keys addObject:(NSString*)key];
 			[args addObject:(NSString*)obj];
@@ -85,31 +110,44 @@ error:
 			}
 		}
 		
-		NSURL* apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",kAPIURL,path,paramString]];
-		NSMutableURLRequest* apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
+		apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",kAPIURL,path,paramString]];
+		apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
 		[apiRequest setHTTPMethod:@"GET"];
 		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
 		[apiRequest setValue:[Stomt sharedInstance].appid forHTTPHeaderField:@"appid"];
+		
 		return apiRequest;
+		}_err("Invalid args for GET request creation. Aborting...");
+		
+error:
+	return nil;
+		
 	}
 }
 
-+ (StomtRequest*)authenticationRequestWithEmailOrUser:(NSString *)user password:(NSString *)pass
++ (StomtRequest*)authenticationRequestWithEmailOrUser:(NSString *)user
+											 password:(NSString *)pass
 {
-	NSMutableURLRequest* apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kLoginPath];
-	NSError* jsonError;
-	NSDictionary* requestBody;
-	NSData* jsonData;
-	
-	requestBody = @{@"login_method":@"normal",@"emailusername":user,@"password":pass};
-	jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
-	if(jsonError) _err("Error in generating JSON data. Aborting...");
-	[apiRequest setHTTPBody:jsonData];
-	
-	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kAuthRequest];
+	@synchronized(self)
+	{
+		
+		NSMutableURLRequest* apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kLoginPath];
+		NSError* jsonError;
+		NSDictionary* requestBody;
+		NSData* jsonData;
+		
+		if(!user || !pass) _err("Missing args for authentication request. Aborting...");
+		
+		requestBody = @{@"login_method":@"normal",@"emailusername":user,@"password":pass};
+		jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
+		if(jsonError) _err("Error in generating JSON data. Aborting...");
+		[apiRequest setHTTPBody:jsonData];
+		
+		return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kAuthRequest];
 	
 error:
 	return nil;
+	}
 }
 
 + (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject
@@ -120,6 +158,7 @@ error:
 	NSData* jsonData;
 	BOOL anonymous;
 	
+	if(!stomtObject) _err("No stomtObject found. Aborting...");
 	if(!stomtObject.targetID) _err("Target id required! Aborting...");
 	
 	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kStomtCreationPath];
@@ -152,7 +191,9 @@ error:
 }
 
 
-+ (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image forTargetID:(NSString*)targetID withImageCategory:(kSTImageCategory)category
++ (StomtRequest*)imageUploadRequestWithImage:(UIImage *)image
+								 forTargetID:(NSString*)targetID
+						   withImageCategory:(kSTImageCategory)category
 {
 		NSMutableURLRequest* apiRequest;
 		NSError* jsonError;
@@ -242,8 +283,9 @@ error:
 {
 	NSMutableURLRequest* apiRequest;
 	
+	if(!feed) _err("No feed object provided. Aborting...");
+	
 	apiRequest = [StomtRequest generateBaseGETRequestWithPath:kSearchPath parametersPair:feed.params];
-	if(!feed) _err("Feed object not provided. Aborting...");
 	
 	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kFeedRequest];
 	
@@ -260,7 +302,9 @@ error:
 	
 	if(self.requestType == kAuthRequest){
 	
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
+							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+		{
 			
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
@@ -275,7 +319,7 @@ error:
 						[Stomt sharedInstance].refreshToken = currentUser.refreshToken;
 						[Stomt sharedInstance].isAuthenticated = YES;
 					}
-					completion(connectionError,currentUser);
+					if(completion) completion(connectionError,currentUser);
 				}
 				
 			}
@@ -293,6 +337,7 @@ error:
 				 */
 				
 			} //Better error handler will be implemented
+			else if(completion) completion(connectionError,nil);
 			
 		}];
 		
@@ -306,7 +351,9 @@ error:
 {
 	if(self.requestType == kStomtCreationRequest)
 	{
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
+							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+		{
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				_info("Stomt sent.");
@@ -319,9 +366,24 @@ error:
 					[Stomt sharedInstance].accessToken = [dataDict objectForKey:kD_AccessToken];
 					[Stomt sharedInstance].refreshToken = [dataDict objectForKey:kD_RefreshToken];
 				}
-				completion(connectionError,[STObject objectWithDataDictionary:dataDict]);
+				if(completion) completion(connectionError,[STObject objectWithDataDictionary:dataDict]);
 				
-			}else fprintf(stderr, "Error!");
+			}
+			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
+			{
+				[Stomt logout]; //Temporary behavior
+				
+				/*
+				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
+					
+				 }];
+				 
+				 To be implemented soon.
+				 
+				 */
+				
+			} //Better error handler will be implemented
+			else if(completion) completion(connectionError,nil);
 		}];
 		return;
 	}
@@ -335,7 +397,9 @@ error:
 {
 	if(self.requestType == kImageUploadRequest){
 		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
+							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+		{
 				if([HTTPResponseChecker checkResponseCode:response] == OK)
 				{
 					NSString* category;
@@ -344,9 +408,24 @@ error:
 					if([basePath objectForKey:@"avatar"]) category = [[basePath objectForKey:@"avatar"] objectForKey:@"name"];
 					else if([basePath objectForKey:@"cover"]) category = [[basePath objectForKey:@"cover"] objectForKey:@"name"];
 					else if([basePath objectForKey:@"stomt"]) category = [[basePath objectForKey:@"stomt"] objectForKey:@"name"];
-					completion(connectionError,[[STImage alloc] initWithStomtImageName:category]);
+					if(completion) completion(connectionError,[[STImage alloc] initWithStomtImageName:category]);
 					
-				}else fprintf(stderr, "Error!");
+				}
+				else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
+				{
+					[Stomt logout]; //Temporary behavior
+					
+					/*
+					 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
+					 
+					 }];
+					 
+					 To be implemented soon.
+					 
+					 */
+					
+				} //Better error handler will be implemented
+				else if(completion) completion(connectionError,nil);
 		}];
 		
 		return;
@@ -360,13 +439,29 @@ error:
 {
 	if(self.requestType == kLogoutRequest)
 	{
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
+							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+		{
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				_info("Logged out!");
-				completion(YES);
+				if(completion) completion(YES);
 			}
-			else fprintf(stderr, "Some kind of error. Handle.");
+			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
+			{
+				[Stomt logout]; //Temporary behavior
+				
+				/*
+				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
+					
+				 }];
+				 
+				 To be implemented soon.
+				 
+				 */
+				
+			} //Better error handler will be implemented
+			else if(completion) completion(NO);
 		}];
 		return;
 	}
@@ -379,7 +474,9 @@ error:
 {
 	if(self.requestType == kStomtRequest)
 	{
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
+							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+		 {
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				NSDictionary* dataDict;
@@ -388,13 +485,27 @@ error:
 				if(dataDict)
 				{
 					STObject* stomtObj = [STObject objectWithDataDictionary:dataDict];
-					completion(connectionError,stomtObj);
+					if(completion) completion(connectionError,stomtObj);
 					return;
 				}
 				_info("Could not retrieve data dictionary. Aborting...");
 				return;
 			}
-			else fprintf(stderr, "Some kind of error. Handle.");
+			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
+			{
+				[Stomt logout]; //Temporary behavior
+				
+				/*
+				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
+					
+				 }];
+				 
+				 To be implemented soon.
+				 
+				 */
+				
+			} //Better error handler will be implemented
+			else if(completion) completion(connectionError,nil);
 		}];
 		return;
 	}
@@ -406,7 +517,9 @@ error:
 {
 	if(self.requestType == kFeedRequest)
 	{
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
+							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+		{
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				NSDictionary* dataDict;
@@ -414,11 +527,25 @@ error:
 				if(dataDict)
 				{
 					STFeed* rtFeed = [STFeed feedWithStomtsArray:[dataDict objectForKey:@"data"]];
-					completion(connectionError,rtFeed);
+					if(completion) completion(connectionError,rtFeed);
 					return;
 				}
 			}
-			else fprintf(stderr,"[!] Some kind of error. Handle.");
+			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
+			{
+				[Stomt logout]; //Temporary behavior
+				
+				/*
+				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
+					
+				 }];
+				 
+				 To be implemented soon.
+				 
+				 */
+				
+			} //Better error handler will be implemented
+			else if(completion) completion(connectionError,nil);
 		}];
 		return;
 	}

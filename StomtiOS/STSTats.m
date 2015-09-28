@@ -7,9 +7,13 @@
 //
 
 #import "STStats.h"
+#import "dbg.h"
 
 @interface STStats ()
-- (instancetype)initWithFollowers:(NSInteger)followers peopleItFollows:(NSInteger)follows createdStomts:(NSInteger)cStomts receivedStomts:(NSInteger)rStomts;
+- (instancetype)initWithFollowers:(NSInteger)followers
+				  peopleItFollows:(NSInteger)follows
+					createdStomts:(NSInteger)cStomts
+				   receivedStomts:(NSInteger)rStomts;
 @end
 
 @implementation STStats
@@ -27,7 +31,10 @@
 	return self;
 }
 
-- (instancetype)initWithFollowers:(NSInteger)followers peopleItFollows:(NSInteger)follows createdStomts:(NSInteger)cStomts receivedStomts:(NSInteger)rStomts
+- (instancetype)initWithFollowers:(NSInteger)followers
+				  peopleItFollows:(NSInteger)follows
+					createdStomts:(NSInteger)cStomts
+				   receivedStomts:(NSInteger)rStomts
 {
 	self = [super init];
 	if(self)
@@ -42,13 +49,23 @@
 
 + (instancetype)initWithStatsDictionary:(NSDictionary*)stats
 {
-	NSInteger followers = [[stats objectForKey:@"amountFollowers"] integerValue];
-	NSInteger follows = [[stats objectForKey:@"amountFollowers"] integerValue];
-	NSInteger cStomts = [[stats objectForKey:@"amountFollowers"] integerValue];
-	NSInteger rStomts = [[stats objectForKey:@"amountFollowers"] integerValue];
+	NSInteger followers,follows,cStomts,rStomts;
+	STStats* statsObject;
 	
-	STStats* statsObject = [[STStats alloc] initWithFollowers:followers peopleItFollows:follows createdStomts:cStomts receivedStomts:rStomts];
+	if(!stats) _err("No stats dictionary provided. Aborting...");
+	 followers = [[stats objectForKey:@"amountFollowers"] integerValue];
+	 follows = [[stats objectForKey:@"amountFollowers"] integerValue];
+	 cStomts = [[stats objectForKey:@"amountFollowers"] integerValue];
+	 rStomts = [[stats objectForKey:@"amountFollowers"] integerValue];
 	
-	return statsObject;
+	statsObject = [[STStats alloc] initWithFollowers:followers
+											  peopleItFollows:follows
+												createdStomts:cStomts
+											   receivedStomts:rStomts];
+	if(statsObject)
+		return statsObject;
+	else _err("Could not create stats object.");
+error: //FT INTENDED
+	return nil;
 }
 @end

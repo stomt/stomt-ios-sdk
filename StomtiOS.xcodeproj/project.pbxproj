@@ -42,10 +42,10 @@
 		A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STStats.m */; };
 		A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039A31BB5A340006A8135 /* STSearchFilterKeywords.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */; };
-		A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B71BB6FDCF006A8135 /* STCategory.h */; };
-		A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B91BB6FEA3006A8135 /* STFeed.h */; };
-		A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BB1BB6FEB5006A8135 /* STImage.h */; };
-		A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BD1BB6FEC1006A8135 /* Stomt.h */; };
+		A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B71BB6FDCF006A8135 /* STCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B91BB6FEA3006A8135 /* STFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BB1BB6FEB5006A8135 /* STImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BD1BB6FEC1006A8135 /* Stomt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,15 +300,15 @@
 				A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */,
 				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,
 				A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */,
-				A75AF2B31BA88F6700D74B9C /* strings.h in Headers */,
-				A7107E891BA2F607001F3B38 /* STTarget.h in Headers */,
-				A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */,
-				A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */,
-				A70884D51BA1F47400758049 /* StomtRequest.h in Headers */,
-				A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */,
-				A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */,
 				A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */,
 				A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */,
+				A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */,
+				A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */,
+				A75AF2B31BA88F6700D74B9C /* strings.h in Headers */,
+				A7107E891BA2F607001F3B38 /* STTarget.h in Headers */,
+				A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */,
+				A70884D51BA1F47400758049 /* StomtRequest.h in Headers */,
+				A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */,
 				A778CA2C1BB1F6CB00B5783D /* STCreationView.h in Headers */,
 				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
 			);

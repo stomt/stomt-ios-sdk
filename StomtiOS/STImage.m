@@ -26,11 +26,15 @@ error:
 - (instancetype)initWithStomtImageName:(NSString *)name
 {
 	self = [super init];
-
+	if(!self) _err("Could not instantiate STImage.");
+	if(!name) _err("Could not instantiate STImage. Name is not valid.");
 	self.imageName = name;
 	self.url = nil;
 	
 	return self;
+
+error:
+	return nil;
 }
 
 - (instancetype)initWithUrl:(NSURL*)imageUrl
@@ -40,10 +44,10 @@ error:
 	if(imageUrl)
 	{
 		self.url = imageUrl;
+		return self;
 	}
 	
-	return self;
-	
+	_err("Could not instantiate STImage. ImageUrl not valid.");
 error:
 	return nil;
 }
@@ -56,6 +60,7 @@ error:
 			NSData * data = [[NSData alloc] initWithContentsOfURL: self.url];
 			dispatch_async(dispatch_get_main_queue(), ^{
 				if(data) self.image = [UIImage imageWithData:data];
+				else fprintf(stderr,"Could not retrieve data from async request for STImage.");
 			});
 		});
 	}

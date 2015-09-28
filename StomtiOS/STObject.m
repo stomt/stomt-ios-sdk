@@ -17,43 +17,92 @@
 
 
 @interface STObject () //Internal use only. Use class methods.
-- (instancetype)initObjectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID image:(STImage*)img url:(NSString*)url geoLocation:(CLLocation*)geoLocation;
+
+- (instancetype)initObjectWithTextBody:(NSString *)body
+							likeOrWish:(kSTObjectQualifier)likeOrWish
+							  targetID:(NSString*)targetID
+								 image:(STImage*)img
+								   url:(NSString*)url
+						   geoLocation:(CLLocation*)geoLocation;
+
 - (instancetype)initWithDataDictionary:(NSDictionary*)dictionary;
+
 @end
 
 @implementation STObject
 
 #pragma mark Overloaded Constructors
 
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString *)targetID
 {
-	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:nil url:nil geoLocation:nil];
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body
+												 likeOrWish:likeOrWish
+												   targetID:targetID
+													  image:nil
+														url:nil
+												geoLocation:nil];
 	return rt;
 }
 
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID geoLocation:(CLLocation *)geoLocation
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString *)targetID
+					   geoLocation:(CLLocation *)geoLocation
 {
-	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:nil url:nil geoLocation:geoLocation];
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body
+												 likeOrWish:likeOrWish
+												   targetID:targetID
+													  image:nil
+														url:nil
+												geoLocation:geoLocation];
 	return rt;
 }
 
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID image:(STImage *)img
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString *)targetID
+							 image:(STImage *)img
 {
-	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:img url:nil geoLocation:nil];
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body
+												 likeOrWish:likeOrWish
+												   targetID:targetID
+													  image:img
+														url:nil
+												geoLocation:nil];
 	return rt;
 }
 
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID url:(NSString *)url
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString *)targetID
+							   url:(NSString *)url
 {
-	STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:nil url:url geoLocation:nil];
+	STObject* rt = [[STObject alloc] initObjectWithTextBody:body
+												 likeOrWish:likeOrWish
+												   targetID:targetID
+													  image:nil
+														url:url
+												geoLocation:nil];
 	return rt;
 }
 
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID image:(STImage *)img url:(NSString *)url geoLocation:(CLLocation *)geoLocation
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString *)targetID
+							 image:(STImage *)img
+							   url:(NSString *)url
+					   geoLocation:(CLLocation *)geoLocation
 {
 	@synchronized(self)
 	{
-		STObject* rt = [[STObject alloc] initObjectWithTextBody:body likeOrWish:likeOrWish targetID:targetID image:img url:url geoLocation:geoLocation];
+		STObject* rt = [[STObject alloc] initObjectWithTextBody:body
+													 likeOrWish:likeOrWish
+													   targetID:targetID
+														  image:img
+															url:url
+													geoLocation:geoLocation];
 		return rt;
 	}
 }
@@ -64,20 +113,27 @@
 {
 	@synchronized(self)
 	{
-		if(!dictionary) _err("No dictionary provided. Aborting...");
-		
 		STObject* rtObject;
+		if(!dictionary) _err("No dictionary provided. Aborting...");
+
 		if([dictionary objectForKey:@"data"])
 			rtObject = [[STObject alloc] initWithDataDictionary:[dictionary objectForKey:@"data"]];
 		else
 			rtObject = [[STObject alloc] initWithDataDictionary:dictionary];
 		if(rtObject) return rtObject;
-	}
+		
 error:
 	return nil;
+	}
+
 }
 
-- (instancetype)initObjectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID image:(STImage *)img url:(NSString *)url geoLocation:(CLLocation *)geoLocation
+- (instancetype)initObjectWithTextBody:(NSString *)body
+							likeOrWish:(kSTObjectQualifier)likeOrWish
+							  targetID:(NSString *)targetID
+								 image:(STImage *)img
+								   url:(NSString *)url
+						   geoLocation:(CLLocation *)geoLocation
 {
 	self = [super init];
 	if(!likeOrWish) _err("No like or wish qualifier provided. Aborting...")

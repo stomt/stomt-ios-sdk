@@ -12,22 +12,163 @@
 #import "dbg.h"
 
 @interface STFeed ()
-- (instancetype)initWithTerm:(NSString *)term belongsTo:(NSString *)belongsTargetID directlyReceivedBy:(NSArray *)directTargetIDs sentBy:(NSArray *)fromTargetIDs filterKeywords:(STSearchFilterKeywords *)keywords likeOrWish:(kSTObjectQualifier)likeOrWish containsLabels:(NSArray *)labels;
+
+- (instancetype)initWithTerm:(NSString *)term
+				   belongsTo:(NSString *)belongsTargetID
+		  directlyReceivedBy:(NSArray *)directTargetIDs
+					  sentBy:(NSArray *)fromTargetIDs
+			  filterKeywords:(STSearchFilterKeywords *)keywords
+				  likeOrWish:(kSTObjectQualifier)likeOrWish
+			  containsLabels:(NSArray *)labels;
+
 - (instancetype)initFeedWithStomtsArray:(NSArray*)array;
+
 @end
 
 @implementation STFeed
 
-+ (instancetype)feedWithTerm:(NSString *)term belongsTo:(NSString *)belongsTargetID directlyReceivedBy:(NSArray *)directTargetIDs sentBy:(NSArray *)fromTargetIDs filterKeywords:(STSearchFilterKeywords *)keywords likeOrWish:(kSTObjectQualifier)likeOrWish containsLabels:(NSArray *)labels
++ (instancetype)feedWithTerm:(NSString *)term
 {
-	STFeed* privFeed = [[STFeed alloc] initWithTerm:term belongsTo:belongsTargetID directlyReceivedBy:directTargetIDs sentBy:fromTargetIDs filterKeywords:keywords likeOrWish:likeOrWish containsLabels:labels];
+	STFeed* privFeed = [[STFeed alloc] initWithTerm:term
+										  belongsTo:nil
+								 directlyReceivedBy:nil
+											 sentBy:nil
+									 filterKeywords:nil
+										 likeOrWish:kStobjectNil
+									 containsLabels:nil];
 	if(privFeed) return  privFeed;
 	
 error: // FT Intended
 	return nil;
 }
 
-- (instancetype)initWithTerm:(NSString *)term belongsTo:(NSString *)belongsTargetID directlyReceivedBy:(NSArray *)directTargetIDs sentBy:(NSArray *)fromTargetIDs filterKeywords:(STSearchFilterKeywords *)keywords likeOrWish:(kSTObjectQualifier)likeOrWish containsLabels:(NSArray *)labels
++ (instancetype)feedWhichBelongsTo:(NSString *)belongsTargetID
+{
+	STFeed* privFeed = [[STFeed alloc] initWithTerm:nil
+										  belongsTo:belongsTargetID
+								 directlyReceivedBy:nil
+											 sentBy:nil
+									 filterKeywords:nil
+										 likeOrWish:kStobjectNil
+									 containsLabels:nil];
+	if(privFeed) return  privFeed;
+	
+error: // FT Intended
+	return nil;
+}
+
++ (instancetype)feedWhichContainsLabels:(NSArray *)labels
+{
+	STFeed* privFeed = [[STFeed alloc] initWithTerm:nil
+										  belongsTo:nil
+								 directlyReceivedBy:nil
+											 sentBy:nil
+									 filterKeywords:nil
+										 likeOrWish:kStobjectNil
+									 containsLabels:labels];
+	if(privFeed) return  privFeed;
+	
+error: // FT Intended
+	return nil;
+}
+
++ (instancetype)feedWithFilterKeywords:(STSearchFilterKeywords *)keywords
+{
+	STFeed* privFeed = [[STFeed alloc] initWithTerm:nil
+										  belongsTo:nil
+								 directlyReceivedBy:nil
+											 sentBy:nil
+									 filterKeywords:keywords
+										 likeOrWish:kStobjectNil
+									 containsLabels:nil];
+	if(privFeed) return  privFeed;
+	
+error: // FT Intended
+	return nil;
+}
+
++ (instancetype)feedWithLikeOrWish:(kSTObjectQualifier)likeOrWish
+{
+	STFeed* privFeed = [[STFeed alloc] initWithTerm:nil
+										  belongsTo:nil
+								 directlyReceivedBy:nil
+											 sentBy:nil
+									 filterKeywords:nil
+										 likeOrWish:likeOrWish
+									 containsLabels:nil];
+	if(privFeed) return  privFeed;
+	
+error: // FT Intended
+	return nil;
+}
+
++ (instancetype)feedWithStomtsDirectlyReceivedBy:(NSArray *)directTargetIDs
+{
+	STFeed* privFeed = [[STFeed alloc] initWithTerm:nil
+										  belongsTo:nil
+								 directlyReceivedBy:directTargetIDs
+											 sentBy:nil
+									 filterKeywords:nil
+										 likeOrWish:kStobjectNil
+									 containsLabels:nil];
+	if(privFeed) return  privFeed;
+	
+error: // FT Intended
+	return nil;
+}
+
++ (instancetype)feedWithTerm:(NSString *)term
+				   belongsTo:(NSString *)belongsTargetID
+		  directlyReceivedBy:(NSArray *)directTargetIDs
+					  sentBy:(NSArray *)fromTargetIDs
+			  filterKeywords:(STSearchFilterKeywords *)keywords
+				  likeOrWish:(kSTObjectQualifier)likeOrWish
+			  containsLabels:(NSArray *)labels
+{
+	STFeed* privFeed = [[STFeed alloc] initWithTerm:term
+										  belongsTo:belongsTargetID
+								 directlyReceivedBy:directTargetIDs
+											 sentBy:fromTargetIDs
+									 filterKeywords:keywords
+										 likeOrWish:likeOrWish
+									 containsLabels:labels];
+	if(privFeed) return  privFeed;
+	
+error: // FT Intended
+	return nil;
+}
+
++ (instancetype)feedWithStomtsArray:(NSArray *)array
+{
+	STFeed* feed;
+	if(!array) _err("No array provided for STFeed constructor. Aborting...");
+	feed = [[STFeed alloc] initFeedWithStomtsArray:array];
+	if(feed) return feed;
+	_err("Could not instantiate STFeed object. Aborting...");
+error:
+	return nil;
+}
+
+- (instancetype)initFeedWithStomtsArray:(NSArray *)array
+{
+	self = [super init];
+	if(!self.stomts) self.stomts = [NSMutableArray array];
+	for(NSDictionary* stDict in array)
+	{
+		STObject* obj = [STObject objectWithDataDictionary:stDict];
+		
+		[self.stomts addObject:obj];
+	}
+	return self;
+}
+
+- (instancetype)initWithTerm:(NSString *)term
+				   belongsTo:(NSString *)belongsTargetID
+		  directlyReceivedBy:(NSArray *)directTargetIDs
+					  sentBy:(NSArray *)fromTargetIDs
+			  filterKeywords:(STSearchFilterKeywords *)keywords
+				  likeOrWish:(kSTObjectQualifier)likeOrWish
+			  containsLabels:(NSArray *)labels
 {
 	self = [super init];
 	if(!self.params) self.params = [NSMutableDictionary dictionary];
@@ -81,25 +222,4 @@ error: // FT Intended
 	return self;
 }
 
-+ (instancetype)feedWithStomtsArray:(NSArray *)array
-{
-	STFeed* feed = [[STFeed alloc] initFeedWithStomtsArray:array];
-	if(feed) return feed;
-	_err("Could not instantiate STFee object. Aborting...");
-error:
-	return nil;
-}
-
-- (instancetype)initFeedWithStomtsArray:(NSArray *)array
-{
-	self = [super init];
-	if(!self.stomts) self.stomts = [NSMutableArray array];
-	for(NSDictionary* stDict in array)
-	{
-		STObject* obj = [STObject objectWithDataDictionary:stDict];
-		
-		[self.stomts addObject:obj];
-	}
-	return self;
-}
 @end

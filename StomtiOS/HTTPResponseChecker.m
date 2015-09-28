@@ -7,6 +7,7 @@
 //
 
 #import "HTTPResponseChecker.h"
+#import "dbg.h"
 
 @implementation HTTPResponseChecker
 
@@ -14,6 +15,7 @@
 {
 	@synchronized(self)
 	{
+		if(!response) _err("No response object given! Aborting...");
 		HTTPHRCode rt = ERR;
 		NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
 		NSInteger statusCode = [httpResponse statusCode];
@@ -27,5 +29,7 @@
 		}
 		return rt;
 	}
+error:
+	return 0;
 }
 @end

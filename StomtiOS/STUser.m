@@ -8,6 +8,7 @@
 
 #import "STUser.h"
 #import "strings.h"
+#import "dbg.h"
 
 @implementation STUser
 
@@ -24,8 +25,15 @@
 {
 	@synchronized(self)
 	{
-		STUser* user = [[STUser alloc] initWithDataDictionary:data];
-		return user;
+		if(data)
+		{
+			STUser* user = [[STUser alloc] initWithDataDictionary:data];
+			return user;
+		}_err("No data provided for STUser constructor. Aborting...");
+		
+error:
+	return nil;
+		
 	}
 }
 

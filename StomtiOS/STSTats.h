@@ -32,7 +32,7 @@
  @params dictionary Dictionary provided by the raw HTML response.
  @warning This method is not meant to be used directly by the user.
  @returns An instance of STStats.
+ 
  */
-
 + (instancetype)initWithStatsDictionary:(NSDictionary*)stats;
 @end

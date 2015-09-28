@@ -26,10 +26,13 @@
 @property (nonatomic,strong) NSMutableString* keywordFilters;
 
 /*!
+ 
  @brief Create a filter list with positive and negated keywords
  @param positiveKeywords Positive filter keywords combined with XOR
  @param negatedKeywords Negated filter keywords combined with XOR
  @returns An instance of STSearchFilterKeywords
+ 
  */
-+ (instancetype)searchFilterWithPositiveKeywords:(STKeywordFilter)positive negatedKeywords:(STKeywordFilter)negated;
++ (instancetype)searchFilterWithPositiveKeywords:(STKeywordFilter)positive
+								 negatedKeywords:(STKeywordFilter)negated;
 @end

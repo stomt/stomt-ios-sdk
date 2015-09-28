@@ -62,7 +62,9 @@
  @returns An instance of STObject.
  
  */
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID;
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString*)targetID;
 
 /*!
  
@@ -74,7 +76,10 @@
  @returns An instance of STObject.
  
  */
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID image:(STImage*)img;
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString*)targetID
+							 image:(STImage*)img;
 
 /*!
  
@@ -86,7 +91,10 @@
  @returns An instance of STObject.
  
  */
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID geoLocation:(CLLocation*)geoLocation;
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString*)targetID
+					   geoLocation:(CLLocation*)geoLocation;
 
 /*!
  
@@ -98,7 +106,10 @@
  @returns An instance of STObject.
  
  */
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID url:(NSString*)url;
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString*)targetID
+							   url:(NSString*)url;
 
 //Comprehensive constructor
 
@@ -114,7 +125,12 @@
  @returns An instance of STObject.
  
  */
-+ (instancetype)objectWithTextBody:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString*)targetID image:(STImage*)img url:(NSString*)url geoLocation:(CLLocation*)geoLocation;
++ (instancetype)objectWithTextBody:(NSString *)body
+						likeOrWish:(kSTObjectQualifier)likeOrWish
+						  targetID:(NSString*)targetID
+							 image:(STImage*)img
+							   url:(NSString*)url
+					   geoLocation:(CLLocation*)geoLocation;
 
 //Dictionary constructors
 
