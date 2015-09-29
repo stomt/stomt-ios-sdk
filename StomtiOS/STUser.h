@@ -8,17 +8,27 @@
 
 #import "STTarget.h"
 
-/**
- 
- STUser, subclas of STTarget, represents a logged in user.
- 
+/*!
+ * STUser, subclas of STTarget, represents a logged in user.
+ */
+@interface STUser : STTarget
+
+
+/*!
+ * @brief Access token given by stomt.com after loggin in.
+ */
+@property (nonatomic,strong) NSString* accessToken;
+
+/*!
+ * @brief Refresh token given by stomt.com after loggin in.
  */
 
-@interface STUser : STTarget
-/// Access token given by stomt.com after loggin in.
-@property (nonatomic,strong) NSString* accessToken;
-/// Refresh token given by stomt.com after loggin in.
 @property (nonatomic,strong) NSString* refreshToken;
-/// BOOL to check whether the instance of the user is newly created.
+
+/*!
+ * @brief  BOOL to check whether the instance of the user is newly created.
+ */
 @property (nonatomic) BOOL isNewUser;
+
+
 @end
