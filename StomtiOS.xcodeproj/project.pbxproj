@@ -51,6 +51,7 @@
 		FEA5D0AB1BBC44E900274390 /* StomtTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0AA1BBC44E900274390 /* StomtTestCase.m */; settings = {ASSET_TAGS = (); }; };
 		FEA5D0B01BBC49AD00274390 /* StomtTestCaseWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0AF1BBC49AD00274390 /* StomtTestCaseWithLogin.m */; settings = {ASSET_TAGS = (); }; };
 		FEA5D0B31BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0B21BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m */; settings = {ASSET_TAGS = (); }; };
+		FEA5D0B51BBC4D6800274390 /* RetrieveFeedWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0B41BBC4D6800274390 /* RetrieveFeedWithoutLogin.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		FEA5D0AE1BBC49AD00274390 /* StomtTestCaseWithLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtTestCaseWithLogin.h; sourceTree = "<group>"; };
 		FEA5D0AF1BBC49AD00274390 /* StomtTestCaseWithLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtTestCaseWithLogin.m; sourceTree = "<group>"; };
 		FEA5D0B21BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveSingleStomtWithLogin.m; sourceTree = "<group>"; };
+		FEA5D0B41BBC4D6800274390 /* RetrieveFeedWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveFeedWithoutLogin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +307,7 @@
 			children = (
 				FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */,
 				FEA5D0B21BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m */,
+				FEA5D0B41BBC4D6800274390 /* RetrieveFeedWithoutLogin.m */,
 			);
 			name = RetrieveStomts;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEA5D0AB1BBC44E900274390 /* StomtTestCase.m in Sources */,
+				FEA5D0B51BBC4D6800274390 /* RetrieveFeedWithoutLogin.m in Sources */,
 				FEA5D0B01BBC49AD00274390 /* StomtTestCaseWithLogin.m in Sources */,
 				FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */,
 				FEA5D0B31BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m in Sources */,
