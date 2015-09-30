@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A70884AF1BA1F43300758049 /* StomtiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884AE1BA1F43300758049 /* StomtiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70884B51BA1F43300758049 /* StomtiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70884A91BA1F43300758049 /* StomtiOS.framework */; };
-		A70884BC1BA1F43300758049 /* StomtiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884BB1BA1F43300758049 /* StomtiOSTests.m */; };
 		A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884C61BA1F45200758049 /* LoginViewController.h */; };
 		A70884CB1BA1F45200758049 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884C71BA1F45200758049 /* LoginViewController.m */; };
 		A70884CC1BA1F45200758049 /* LoginView.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884C81BA1F45200758049 /* LoginView.h */; };
@@ -48,6 +47,10 @@
 		A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BD1BB6FEC1006A8135 /* Stomt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */; settings = {ASSET_TAGS = (); }; };
 		FEA5D0A61BBC2C0900274390 /* CreateStomtsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */; settings = {ASSET_TAGS = (); }; };
+		FEA5D0A81BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */; settings = {ASSET_TAGS = (); }; };
+		FEA5D0AB1BBC44E900274390 /* StomtTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0AA1BBC44E900274390 /* StomtTestCase.m */; settings = {ASSET_TAGS = (); }; };
+		FEA5D0B01BBC49AD00274390 /* StomtTestCaseWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0AF1BBC49AD00274390 /* StomtTestCaseWithLogin.m */; settings = {ASSET_TAGS = (); }; };
+		FEA5D0B31BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0B21BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +69,6 @@
 		A70884AE1BA1F43300758049 /* StomtiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StomtiOS.h; sourceTree = "<group>"; };
 		A70884B41BA1F43300758049 /* StomtiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StomtiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A70884BA1BA1F43300758049 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A70884BB1BA1F43300758049 /* StomtiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StomtiOSTests.m; sourceTree = "<group>"; };
 		A70884C61BA1F45200758049 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A70884C71BA1F45200758049 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A70884C81BA1F45200758049 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -105,6 +107,12 @@
 		A7C039BD1BB6FEC1006A8135 /* Stomt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stomt.h; sourceTree = "<group>"; };
 		FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtWithLogin.m; sourceTree = "<group>"; };
 		FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtsWithoutLogin.m; sourceTree = "<group>"; };
+		FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveSingleStomtWithoutLogin.m; sourceTree = "<group>"; };
+		FEA5D0A91BBC44E900274390 /* StomtTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtTestCase.h; sourceTree = "<group>"; };
+		FEA5D0AA1BBC44E900274390 /* StomtTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtTestCase.m; sourceTree = "<group>"; };
+		FEA5D0AE1BBC49AD00274390 /* StomtTestCaseWithLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtTestCaseWithLogin.h; sourceTree = "<group>"; };
+		FEA5D0AF1BBC49AD00274390 /* StomtTestCaseWithLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtTestCaseWithLogin.m; sourceTree = "<group>"; };
+		FEA5D0B21BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveSingleStomtWithLogin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,9 +178,12 @@
 		A70884B81BA1F43300758049 /* StomtiOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				A70884BB1BA1F43300758049 /* StomtiOSTests.m */,
-				FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */,
-				FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */,
+				FEA5D0A91BBC44E900274390 /* StomtTestCase.h */,
+				FEA5D0AA1BBC44E900274390 /* StomtTestCase.m */,
+				FEA5D0AE1BBC49AD00274390 /* StomtTestCaseWithLogin.h */,
+				FEA5D0AF1BBC49AD00274390 /* StomtTestCaseWithLogin.m */,
+				FEA5D0AC1BBC491D00274390 /* RetrieveStomts */,
+				FEA5D0AD1BBC493B00274390 /* CreateStomts */,
 				A70884B91BA1F43300758049 /* Supporting Files */,
 			);
 			path = StomtiOSTests;
@@ -287,6 +298,24 @@
 			);
 			name = UI;
 			path = StomtiOS;
+			sourceTree = "<group>";
+		};
+		FEA5D0AC1BBC491D00274390 /* RetrieveStomts */ = {
+			isa = PBXGroup;
+			children = (
+				FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */,
+				FEA5D0B21BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m */,
+			);
+			name = RetrieveStomts;
+			sourceTree = "<group>";
+		};
+		FEA5D0AD1BBC493B00274390 /* CreateStomts */ = {
+			isa = PBXGroup;
+			children = (
+				FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */,
+				FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */,
+			);
+			name = CreateStomts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,9 +468,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A70884BC1BA1F43300758049 /* StomtiOSTests.m in Sources */,
+				FEA5D0AB1BBC44E900274390 /* StomtTestCase.m in Sources */,
+				FEA5D0B01BBC49AD00274390 /* StomtTestCaseWithLogin.m in Sources */,
 				FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */,
+				FEA5D0B31BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m in Sources */,
 				FEA5D0A61BBC2C0900274390 /* CreateStomtsWithoutLogin.m in Sources */,
+				FEA5D0A81BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

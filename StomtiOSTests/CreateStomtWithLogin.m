@@ -6,37 +6,16 @@
 //  Copyright © 2015 Leonardo Cascianelli. All rights reserved.
 //
 
+#import "StomtTestCaseWithLogin.h"
 #import <XCTest/XCTest.h>
 #import <StomtiOS/StomtiOS.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface CreateStomtWithLogin : XCTestCase
-
-@property (nonatomic) int timeout;
-@property (nonatomic) NSString *username;
-@property (nonatomic) NSString *password;
+@interface CreateStomtWithLogin : StomtTestCaseWithLogin
 
 @end
 
 @implementation CreateStomtWithLogin
-
-- (void)setUp {
-    [super setUp];
-    
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-    self.timeout = 5;
-    self.username = @"test";
-    self.password = @"test";
-    [Stomt setAppID:@"t2rxe5v3Ru9nGoGio7fNchE04"];
-    [self authenticate];
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [Stomt logout];
-    
-    [super tearDown];
-}
 
 - (void)authenticate {
     StomtRequest* authRequest = [StomtRequest authenticationRequestWithEmailOrUser:self.username password:self.password];
@@ -57,22 +36,6 @@
 //-----------------------------------------------------------------------------
 // Helper
 //-----------------------------------------------------------------------------
-- createImage {
-    UIImage *image1 = [UIImage imageNamed:@"image1.png"];
-    UIImage *image2 = [UIImage imageNamed:@"image2.png"];
-    
-    CGSize newSize = CGSizeMake(300, 300);
-    UIGraphicsBeginImageContext( newSize );
-    
-    [image1 drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    
-    [image2 drawInRect:CGRectMake(0,0,newSize.width,newSize.height) blendMode:kCGBlendModeNormal alpha:0.8];
-    UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return finalImage;
-}
 
 - (void)createStomtWithImage:(STImage *)image
                  expectation:(XCTestExpectation *) expectation {

@@ -252,7 +252,7 @@ error:
 		
 		if([location hasPrefix:@"http://"] || [location hasPrefix:@"https://"])
 		{
-			if([location hasPrefix:@"http://www.stomt.com"] || [location hasPrefix:@"https://www.stomt.com"])
+			if([location hasPrefix:@"http://www.stomt.com"] || [location hasPrefix:@"https://www.stomt.com"] || [location hasPrefix:@"http://test.stomt.com"] || [location hasPrefix:@"https://test.stomt.com"])
 			{
 				slug = [[location componentsSeparatedByString:@"/"] lastObject];
 			}
