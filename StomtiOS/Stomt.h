@@ -13,21 +13,31 @@
 @class STUser;
 
 /*!
- @brief Handles connection to Stomt.
+ * @brief Handles connection to Stomt.
  */
 @interface Stomt : NSObject
 
-/// The application ID.
+/*!
+ * @brief The application ID.
+ */
 @property (nonatomic,strong) NSString* appid;
 
-/// The access token.
+/*!
+ * @brief The access token.
+ */
 @property (nonatomic,strong) NSString* accessToken;
 
-/// The refresh token, used to regenerate an access token.
+/*!
+ * @brief The refresh token, used to regenerate an access token.
+ */
 @property (nonatomic,strong) NSString* refreshToken;
 
-/// Is the user authenticated?
+/*!
+ * @brief Is the user authenticated?
+ */
 @property (nonatomic) BOOL isAuthenticated;
+
+
 
 + (instancetype)sharedInstance;
 + (void)setAppID:(NSString *)appid;
@@ -37,25 +47,24 @@
 + (NSString*)accessToken;
 + (NSString*)refreshToken;
 
+
+
 /*!
- 
- @brief Prompts an authentication modal if no access token is present
- @param completion Completion block to be executed after login;
- 
+ * @brief Prompts an authentication modal if no access token is present
+ *
+ * @param completion Completion block to be executed after login;
  */
 + (void)promptAuthenticationIfNecessaryWithCompletionBlock:(BooleanCompletion)completion;
 
 /*!
- 
- @brief Unused.
- 
+ * @brief Unused.
  */
 + (void)requestNewAccessTokenInBackgroundWithBlock:(BooleanCompletion)completion; //Unused!
 
 /*!
- 
- @brief Logout the current user.
- 
+ * @brief Logout the current user.
  */
 + (void)logout; //Only works with connection.
+
+
 @end

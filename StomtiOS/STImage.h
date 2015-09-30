@@ -10,25 +10,50 @@
 
 @class UIImage;
 
+/*!
+ * STImage represents any kind of image from the stomt api.
+ */
 @interface STImage : NSObject
 
-///The actual image.
+
+/*!
+* @brief The actual image.
+*/
 @property (nonatomic,strong) UIImage* image;
 
-/// The image name, associated with the image on Stomt servers.
+/*!
+ * @brief The image name, associated with the image on the stomt servers.
+ */
 @property (nonatomic,strong) NSString* imageName;
 
-///The image URL on Stomt servers.
+/*!
+ * @brief The image URL on the stomt servers.
+ */
 @property (nonatomic,strong) NSURL* url;
 
 
+/*!
+ * @brief Creates STImage instance by providing the image name.
+ *
+ * @params name
+ *
+ * @return Newly created UIImage instance.
+ */
 - (instancetype)initWithStomtImageName:(NSString *)name;
+
+/*!
+ * @brief
+ *
+ * @params imageUrl
+ *
+ * @return Newly created UIImage instance.
+ */
 - (instancetype)initWithUrl:(NSURL*)imageUrl;
 
 /*!
- 
- @brief Asynchronously download the image.
- 
+ * @brief Asynchronously download the image.
  */
 - (void)downloadInBackground;
+
+
 @end
