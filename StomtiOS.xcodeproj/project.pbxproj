@@ -46,6 +46,8 @@
 		A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B91BB6FEA3006A8135 /* STFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BB1BB6FEB5006A8135 /* STImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BD1BB6FEC1006A8135 /* Stomt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */; settings = {ASSET_TAGS = (); }; };
+		FEA5D0A61BBC2C0900274390 /* CreateStomtsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		A7C039B91BB6FEA3006A8135 /* STFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STFeed.h; sourceTree = "<group>"; };
 		A7C039BB1BB6FEB5006A8135 /* STImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImage.h; sourceTree = "<group>"; };
 		A7C039BD1BB6FEC1006A8135 /* Stomt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stomt.h; sourceTree = "<group>"; };
+		FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtWithLogin.m; sourceTree = "<group>"; };
+		FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtsWithoutLogin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				A70884BB1BA1F43300758049 /* StomtiOSTests.m */,
+				FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */,
+				FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */,
 				A70884B91BA1F43300758049 /* Supporting Files */,
 			);
 			path = StomtiOSTests;
@@ -434,6 +440,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A70884BC1BA1F43300758049 /* StomtiOSTests.m in Sources */,
+				FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */,
+				FEA5D0A61BBC2C0900274390 /* CreateStomtsWithoutLogin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -70,15 +70,14 @@ error:
 {
 	@synchronized(self)
 	{
+        // logout on client side
+        [Stomt sharedInstance].accessToken = nil;
+        [Stomt sharedInstance].refreshToken = nil;
+        [Stomt sharedInstance].isAuthenticated = NO;
+        
+        // logout on server side
 		StomtRequest* logoutRequest = [StomtRequest logoutRequest];
-		[logoutRequest logoutInBackgroundWithBlock:^(BOOL succeeded) {
-			if(succeeded)
-			{
-				[Stomt sharedInstance].accessToken = nil;
-				[Stomt sharedInstance].refreshToken = nil;
-				[Stomt sharedInstance].isAuthenticated = NO;
-			}
-		}];
+		[logoutRequest logoutInBackgroundWithBlock:^(BOOL succeeded) {}];
 	}
 }
 
