@@ -55,6 +55,57 @@
 }
 
 //-----------------------------------------------------------------------------
+// Helper
+//-----------------------------------------------------------------------------
+- createImage {
+    UIImage *image1 = [UIImage imageNamed:@"image1.png"];
+    UIImage *image2 = [UIImage imageNamed:@"image2.png"];
+    
+    CGSize newSize = CGSizeMake(300, 300);
+    UIGraphicsBeginImageContext( newSize );
+    
+    [image1 drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    
+    [image2 drawInRect:CGRectMake(0,0,newSize.width,newSize.height) blendMode:kCGBlendModeNormal alpha:0.8];
+    UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return finalImage;
+}
+
+- (void)createStomtWithImage:(STImage *)image
+                 expectation:(XCTestExpectation *) expectation {
+    // new request
+    NSString *textBody = @"would create a stomt with image. #unitTest";
+    NSString *targetID = @"stomt-ios";
+    STObject *ob = [STObject
+                    objectWithTextBody: textBody
+                    likeOrWish: kSTObjectWish
+                    targetID: targetID
+                    image: image
+                    ];
+    StomtRequest* sendStomt = [StomtRequest stomtCreationRequestWithStomtObject:ob];
+    
+    
+    // perform request
+    [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
+        if (stomt) {
+            [expectation fulfill];
+            XCTAssertFalse(stomt.anonym);
+            // TODO XCTAssertEqualObjects(stomt.creator.identifier, self.username);
+            
+            XCTAssertEqualObjects(stomt.text, textBody);
+            XCTAssertEqualObjects(stomt.target.identifier, targetID);
+            XCTAssertNotNil(stomt.image);
+        } else {
+            NSLog(@"%@",[error localizedDescription]);
+        }
+        
+    }];
+}
+
+//-----------------------------------------------------------------------------
 // STObject
 //-----------------------------------------------------------------------------
 
@@ -156,34 +207,18 @@
 }
 
 - (void)testWithImage {
-    // new request
-    NSString *textBody = @"would create a stomt with image. #unitTest";
-    NSString *targetID = @"stomt-ios";
-    STImage *image = nil; // TODO
-    STObject *ob = [STObject
-                    objectWithTextBody: textBody
-                    likeOrWish: kSTObjectWish
-                    targetID: targetID
-                    image: image
-                    ];
-    StomtRequest* sendStomt = [StomtRequest stomtCreationRequestWithStomtObject:ob];
+    UIImage *image = [self createImage];
     
+    StomtRequest* uploadImage = [StomtRequest imageUploadRequestWithImage:image forTargetID:nil withImageCategory:kSTImageCategoryStomt];
     
     // perform request
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
-    [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
-        if (stomt) {
-            [expectation fulfill];
-            XCTAssertFalse(stomt.anonym);
-            // TODO XCTAssertEqualObjects(stomt.creator.identifier, self.username);
-            
-            XCTAssertEqualObjects(stomt.text, textBody);
-            XCTAssertEqualObjects(stomt.target.identifier, targetID);
-            XCTAssertEqualObjects(stomt.image, image);
+    [uploadImage uploadImageInBackgroundWithBlock:^(NSError *error, STImage *image) {
+        if (image) {
+            [self createStomtWithImage:image expectation:expectation];
         } else {
             NSLog(@"%@",[error localizedDescription]);
         }
-        
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
