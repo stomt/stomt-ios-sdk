@@ -25,6 +25,7 @@
     [authRequest autenticateInBackgroundWithBlock:^(NSError *error, STUser *user) {
         if (user) {
             [expectation fulfill];
+			NSLog(@"USER %@",user);
             XCTAssertEqualObjects(user.identifier, self.username);
         } else {
             NSLog(@"%@",[error localizedDescription]);
@@ -56,7 +57,7 @@
         if (stomt) {
             [expectation fulfill];
             XCTAssertFalse(stomt.anonym);
-            // TODO XCTAssertEqualObjects(stomt.creator.identifier, self.username);
+            XCTAssertEqualObjects(stomt.creator.identifier, self.username);
             
             XCTAssertEqualObjects(stomt.text, textBody);
             XCTAssertEqualObjects(stomt.target.identifier, targetID);
@@ -90,7 +91,7 @@
         if (stomt) {
             [expectation fulfill];
             XCTAssertFalse(stomt.anonym);
-            // TODO XCTAssertEqualObjects(stomt.creator.identifier, self.username);
+            XCTAssertEqualObjects(stomt.creator.identifier, self.username);
             
             XCTAssertEqualObjects(stomt.text, textBody);
             XCTAssertEqualObjects(stomt.target.identifier, targetID);
@@ -122,11 +123,11 @@
         if (stomt) {
             [expectation fulfill];
             XCTAssertFalse(stomt.anonym);
-            // TODO XCTAssertEqualObjects(stomt.creator.identifier, self.username);
+            XCTAssertEqualObjects(stomt.creator.identifier, self.username);
             
             XCTAssertEqualObjects(stomt.text, textBody);
             XCTAssertEqualObjects(stomt.target.identifier, targetID);
-            // TODO XCTAssertEqualObjects(stomt.geoLocation, location);
+            // Need to review. XCTAssertEqualObjects(stomt.geoLocation, location);
         } else {
             NSLog(@"%@",[error localizedDescription]);
         }
@@ -155,12 +156,14 @@
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         if (stomt) {
             [expectation fulfill];
+			
             XCTAssertFalse(stomt.anonym);
-            // TODO XCTAssertEqualObjects(stomt.creator.identifier, self.username);
-            
+			
+            XCTAssertEqualObjects(stomt.creator.identifier, self.username);
+			NSLog(@"STC: %@",stomt.creator);
+			
             XCTAssertEqualObjects(stomt.text, textBody);
             XCTAssertEqualObjects(stomt.target.identifier, targetID);
-            // TODO XCTAssertEqualObjects(stomt.url, url);
         } else {
             NSLog(@"%@",[error localizedDescription]);
         }

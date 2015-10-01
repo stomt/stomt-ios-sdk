@@ -162,7 +162,6 @@ error:
 	self.text = [hDict objectForKey:@"text"];
 	self.createdAt = [NSDate dateWithISO8601String:[hDict objectForKey:@"created_at"]];
 	self.anonym = [[hDict objectForKey:@"anonym"] boolValue];
-	
 	@try {
 		NSDictionary* imagesDict = [NSDictionary dictionaryWithDictionary:[hDict objectForKey:@"images"]];
 		NSDictionary* stomtImageDict = [NSDictionary dictionaryWithDictionary:[imagesDict objectForKey:@"stomt"]];
@@ -185,6 +184,7 @@ error:
 	self.amountOfAgreements = [[hDict objectForKey:@"amountAgreements"] integerValue];
 	self.amountOfComments = [[hDict objectForKey:@"amountComments"] integerValue];
 	self.agreed = [hDict objectForKey:@"agreed"] ? YES : NO;
+	
 	return self;
 }
 

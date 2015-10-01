@@ -45,13 +45,13 @@
 		A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B91BB6FEA3006A8135 /* STFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BB1BB6FEB5006A8135 /* STImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BD1BB6FEC1006A8135 /* Stomt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */; settings = {ASSET_TAGS = (); }; };
-		FEA5D0A61BBC2C0900274390 /* CreateStomtsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */; settings = {ASSET_TAGS = (); }; };
-		FEA5D0A81BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */; settings = {ASSET_TAGS = (); }; };
-		FEA5D0AB1BBC44E900274390 /* StomtTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0AA1BBC44E900274390 /* StomtTestCase.m */; settings = {ASSET_TAGS = (); }; };
-		FEA5D0B01BBC49AD00274390 /* StomtTestCaseWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0AF1BBC49AD00274390 /* StomtTestCaseWithLogin.m */; settings = {ASSET_TAGS = (); }; };
-		FEA5D0B31BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0B21BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m */; settings = {ASSET_TAGS = (); }; };
-		FEA5D0B51BBC4D6800274390 /* RetrieveFeedWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0B41BBC4D6800274390 /* RetrieveFeedWithoutLogin.m */; settings = {ASSET_TAGS = (); }; };
+		FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */; };
+		FEA5D0A61BBC2C0900274390 /* CreateStomtsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */; };
+		FEA5D0A81BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */; };
+		FEA5D0AB1BBC44E900274390 /* StomtTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0AA1BBC44E900274390 /* StomtTestCase.m */; };
+		FEA5D0B01BBC49AD00274390 /* StomtTestCaseWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0AF1BBC49AD00274390 /* StomtTestCaseWithLogin.m */; };
+		FEA5D0B31BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0B21BBC4A7300274390 /* RetrieveSingleStomtWithLogin.m */; };
+		FEA5D0B51BBC4D6800274390 /* RetrieveFeedWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0B41BBC4D6800274390 /* RetrieveFeedWithoutLogin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

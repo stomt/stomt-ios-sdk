@@ -63,7 +63,7 @@
  *
  * @return Returns an @p STFeed object on success. Returns @p nil on error.
  */
-+ (instancetype)feedWithFilterKeywords:(NSArray*)keywords;
++ (instancetype)feedWithFilterKeywords:(STSearchFilterKeywords*)keywords;
 
 /*!
  * @brief Return a filtered STFeed object.
@@ -82,6 +82,15 @@
  * @return Returns an @p STFeed object on success. Returns @p nil on error.
  */
 + (instancetype)feedWhichContainsLabels:(NSArray*)labels;
+
+/*!
+ * @brief Return a filtered STFeed object.
+ *
+ * @param from Filter for stomts created by given users.
+ *
+ * @return Returns an @p STFeed object on success. Returns @p nil on error.
+ */
++ (instancetype)feedFrom:(NSArray*)IDs;
 
 /*!
  * @brief Return a filtered STFeed object.

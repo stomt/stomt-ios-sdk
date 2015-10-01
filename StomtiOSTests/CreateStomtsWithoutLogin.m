@@ -135,7 +135,7 @@
             XCTAssertTrue(stomt.anonym);
             XCTAssertEqualObjects(stomt.text, textBody);
             XCTAssertEqualObjects(stomt.target.identifier, targetID);
-            // TODO XCTAssertEqualObjects(stomt.url, url);
+            // Need to review XCTAssertEqualObjects(stomt.url, url);
         } else {
             NSLog(@"%@",[error localizedDescription]);
         }

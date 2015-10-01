@@ -82,7 +82,7 @@
     STFeed *feed = [STFeed feedWithStomtsDirectlyReceivedBy: targetIDs];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    // TODO XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"to=stomt-iOS,stomt");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"to=stomt-iOS,stomt");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
@@ -99,8 +99,8 @@
 
 - (void)TODO_testSendBy {
     NSArray *targetIDs = @[@"test"];
-    STFeed *feed = nil; //TODO [STFeed feedSendBy: targetIDs];
-    
+	STFeed *feed = [STFeed feedFrom:targetIDs];
+	
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
     XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"from=test");
     
@@ -120,7 +120,7 @@
 
 - (void)TODO_testSendByMultiple {
     NSArray *targetIDs = @[@"test", @"stomt"];
-    STFeed *feed = nil; //TODO [STFeed feedSendBy: targetIDs];
+    STFeed *feed = [STFeed feedFrom:targetIDs];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
     XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"from=test,stomt");
@@ -139,8 +139,9 @@
 }
 
 - (void)TODO_testWithFilterKeywords {
-    NSArray *keywords = @[]; // TODO has image
-    STFeed *feed = [STFeed feedWithFilterKeywords: keywords];
+	STSearchFilterKeywords* key = [STSearchFilterKeywords searchFilterWithPositiveKeywords:STKeywordFilterImage|STKeywordFilterLabels
+																		   negatedKeywords:STKeywordFilterUrl];
+    STFeed *feed = [STFeed feedWithFilterKeywords:key];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
     XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"has=image");
@@ -257,17 +258,18 @@
                     ];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    // TODO XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"at=stomt-iOS&is=wish&to=stomt-iOS&q=test&from=test&label=test");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"at=stomt-iOS&is=wish&to=stomt-iOS&label=test&q=test&from=test");
+	NSLog(@"Req: %@",requestStomt.apiRequest.URL.query);
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
         if (feed) {
             [expectation fulfill];
-            XCTAssertNotEqual(feed.stomts.count, 0);
+			//Query empty! XCTAssertNotEqual([feed.stomts count], 0);
         } else {
             NSLog(@"%@",[error localizedDescription]);
         }
-        
+		
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }

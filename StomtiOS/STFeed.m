@@ -117,6 +117,21 @@ error: // FT Intended
 	return nil;
 }
 
++ (instancetype)feedFrom:(NSArray*)IDs
+{
+	STFeed* privFeed = [[STFeed alloc] initWithTerm:nil
+										  belongsTo:nil
+								 directlyReceivedBy:nil
+											 sentBy:IDs
+									 filterKeywords:nil
+										 likeOrWish:kStobjectNil
+									 containsLabels:nil];
+	if(privFeed) return  privFeed;
+	
+error: // FT Intended
+	return nil;
+}
+
 + (instancetype)feedWithTerm:(NSString *)term
 				   belongsTo:(NSString *)belongsTargetID
 		  directlyReceivedBy:(NSArray *)directTargetIDs
@@ -182,7 +197,7 @@ error:
 			if([[directTargetIDs objectAtIndex:c] isEqualToString:[directTargetIDs lastObject]])
 				[directStr appendString:[NSString stringWithFormat:@"%@",[directTargetIDs objectAtIndex:c]]];
 			
-			else [directStr appendString:[NSString stringWithFormat:@"%@,",[fromTargetIDs objectAtIndex:c]]];
+			else [directStr appendString:[NSString stringWithFormat:@"%@,",[directTargetIDs objectAtIndex:c]]];
 		}
 		[self.params setObject:directStr forKey:@"to"];
 	}
@@ -217,7 +232,7 @@ error:
 			
 			else [labelsStr appendString:[NSString stringWithFormat:@"%@,",[labels objectAtIndex:c]]];
 		}
-		[self.params setObject:labelsStr forKey:@"from"];
+		[self.params setObject:labelsStr forKey:@"label"];
 	}
 	return self;
 }

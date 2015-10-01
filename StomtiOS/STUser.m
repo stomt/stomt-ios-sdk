@@ -14,7 +14,11 @@
 
 - (instancetype)initWithDataDictionary:(NSDictionary *)data
 {
-	self = [super initWithDataDictionary:[data objectForKey:kD_User]];
+	if([data objectForKey:kD_User])
+		self = [super initWithDataDictionary:[data objectForKey:kD_User]];
+	else
+		self = [super initWithDataDictionary:data];
+	
 	self.accessToken = [data objectForKey:kD_AccessToken];
 	self.refreshToken = [data objectForKey:kD_RefreshToken];
 	self.isNewUser = [[data objectForKey:kD_NewUser] boolValue];
