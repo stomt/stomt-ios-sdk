@@ -59,7 +59,7 @@
 /*!
  * @brief Return a filtered STFeed object.
  *
- * @param keywords Filter for stomts matching the criteria. Possible keywords are: @p votes, @p reaction, @p image, @p labels, @p url
+ * @param keywords Filter for stomts matching the criteria. @see STKeywordFilter
  *
  * @return Returns an @p STFeed object on success. Returns @p nil on error.
  */
