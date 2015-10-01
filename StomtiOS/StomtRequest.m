@@ -312,7 +312,7 @@ error:
 				if(!dictErr)
 				{
 					STUser* currentUser = [STUser initWithDataDictionary:[dataDict objectForKey:@"data"]];
-					//if([[NSUserDefaults standardUserDefaults] objectForKey:kToken]) [Stomt logout];
+					if([[NSUserDefaults standardUserDefaults] objectForKey:kToken]) [Stomt logout];
 					if(currentUser.accessToken && currentUser.refreshToken)
 					{
 						[Stomt sharedInstance].accessToken = currentUser.accessToken;
