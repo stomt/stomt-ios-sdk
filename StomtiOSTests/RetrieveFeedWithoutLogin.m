@@ -258,14 +258,13 @@
                     ];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"at=stomt-iOS&is=wish&to=stomt-iOS&label=test&q=test&from=test");
-	NSLog(@"Req: %@",requestStomt.apiRequest.URL.query);
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"at=stomt-iOS&is=wish&to=stomt-iOS&q=test&label=test&from=test");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
         if (feed) {
             [expectation fulfill];
-			//Query empty! XCTAssertNotEqual([feed.stomts count], 0);
+			XCTAssertNotEqual([feed.stomts count], 0);
         } else {
             NSLog(@"%@",[error localizedDescription]);
         }
