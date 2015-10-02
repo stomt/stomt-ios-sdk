@@ -72,7 +72,7 @@
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
-- (void)TODO_testWithUrlWithoutProtocol {
+- (void)testWithUrlWithoutProtocol {
     NSString *identifier = @"wow-so-much-hashtag-but-we-need-more-dafaq-and--much-amazing-such-stomt-very-amazing-l21";
     NSString *url = @"test.stomt.com/stomt/";
     url = [url stringByAppendingString:identifier];
@@ -81,17 +81,18 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
+        [expectation fulfill];
         if (stomt) {
-            [expectation fulfill];
             XCTAssertEqualObjects(stomt.identifier, identifier);
         } else {
-            NSLog(@"%@",[error localizedDescription]);
+            XCTAssertNotNil(stomt);
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
-- (void)TODO_testWithWwwUrl {
+- (void)testWithWwwUrl {
     NSString *identifier = @"wow-so-much-hashtag-but-we-need-more-dafaq-and--much-amazing-such-stomt-very-amazing-l21";
     NSString *url = @"www.test.stomt.com/stomt/";
     url = [url stringByAppendingString:identifier];
@@ -100,11 +101,12 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
+        [expectation fulfill];
         if (stomt) {
-            [expectation fulfill];
             XCTAssertEqualObjects(stomt.identifier, identifier);
         } else {
-            NSLog(@"%@",[error localizedDescription]);
+            XCTAssertNotNil(stomt);
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];

@@ -97,7 +97,7 @@
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
-- (void)TODO_testSendBy {
+- (void)testSendBy {
     NSArray *targetIDs = @[@"test"];
 	STFeed *feed = [STFeed feedFrom:targetIDs];
 	
@@ -118,7 +118,7 @@
 }
 
 
-- (void)TODO_testSendByMultiple {
+- (void)testSendByMultiple {
     NSArray *targetIDs = @[@"test", @"stomt"];
     STFeed *feed = [STFeed feedFrom:targetIDs];
     
@@ -138,19 +138,19 @@
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
-- (void)TODO_testWithFilterKeywords {
+- (void)testWithFilterKeywords {
 	STSearchFilterKeywords* key = [STSearchFilterKeywords searchFilterWithPositiveKeywords:STKeywordFilterImage|STKeywordFilterLabels
 																		   negatedKeywords:STKeywordFilterUrl];
     STFeed *feed = [STFeed feedWithFilterKeywords:key];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"has=image");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"has=labels,image,!url");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
         if (feed) {
             [expectation fulfill];
-            XCTAssertEqual(feed.stomts.count, 15);
+            XCTAssertNotEqual(feed.stomts.count, 0);
         } else {
             NSLog(@"%@",[error localizedDescription]);
         }
@@ -200,7 +200,7 @@
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
-- (void)TODO_testWithLabel {
+- (void)testWithLabel {
     NSArray *labels = @[@"faq"];
     STFeed *feed = [STFeed feedWhichContainsLabels: labels];
     
@@ -220,12 +220,12 @@
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
-- (void)TODO_testWithLabels {
+- (void)testWithLabels {
     NSArray *labels = @[@"faq", @"test"];
     STFeed *feed = [STFeed feedWhichContainsLabels: labels];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"label=faq,text");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"label=faq,test");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
