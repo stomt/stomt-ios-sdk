@@ -136,7 +136,6 @@
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
-// TODO
 - (void)testWithUrl {
     // new request
     NSString *textBody = @"would create a stomt with url. #unitTest";
@@ -158,12 +157,12 @@
             [expectation fulfill];
 			
             XCTAssertFalse(stomt.anonym);
-			
             XCTAssertEqualObjects(stomt.creator.identifier, self.username);
-			NSLog(@"STC: %@",stomt.creator);
 			
-            XCTAssertEqualObjects(stomt.text, textBody);
             XCTAssertEqualObjects(stomt.target.identifier, targetID);
+            
+            XCTAssertEqualObjects(stomt.text, textBody);
+            XCTAssertEqualObjects(stomt.url, url);
         } else {
             NSLog(@"%@",[error localizedDescription]);
         }
