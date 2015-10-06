@@ -32,10 +32,6 @@
 		A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */; };
 		A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */; };
 		A768D76E1BA9EB6000466AFB /* STImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D76C1BA9EB6000466AFB /* STImage.m */; };
-		A778CA281BB1E9CE00B5783D /* STCreationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A778CA261BB1E9CE00B5783D /* STCreationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A778CA291BB1E9CE00B5783D /* STCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A778CA271BB1E9CE00B5783D /* STCreationViewController.m */; };
-		A778CA2C1BB1F6CB00B5783D /* STCreationView.h in Headers */ = {isa = PBXBuildFile; fileRef = A778CA2A1BB1F6CB00B5783D /* STCreationView.h */; };
-		A778CA2D1BB1F6CB00B5783D /* STCreationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A778CA2B1BB1F6CB00B5783D /* STCreationView.m */; };
 		A7833D011BB46B1100A3F13B /* STFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = A7833CFF1BB46B1100A3F13B /* STFeed.m */; };
 		A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STStats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STStats.m */; };
@@ -45,6 +41,28 @@
 		A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B91BB6FEA3006A8135 /* STFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BB1BB6FEB5006A8135 /* STImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BD1BB6FEC1006A8135 /* Stomt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7E248301BC3253E00811B36 /* STCreationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2482C1BC3253E00811B36 /* STCreationViewController.h */; };
+		A7E248311BC3253E00811B36 /* STCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E2482D1BC3253E00811B36 /* STCreationViewController.m */; };
+		A7E248321BC3253E00811B36 /* STCreationView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2482E1BC3253E00811B36 /* STCreationView.h */; };
+		A7E248331BC3253E00811B36 /* STCreationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E2482F1BC3253E00811B36 /* STCreationView.m */; };
+		A7E248381BC3254A00811B36 /* STCreationTop.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248341BC3254A00811B36 /* STCreationTop.h */; };
+		A7E248391BC3254A00811B36 /* STTargetNameRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248351BC3254A00811B36 /* STTargetNameRectangle.h */; };
+		A7E2483A1BC3254A00811B36 /* STTargetNameRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248361BC3254A00811B36 /* STTargetNameRectangle.m */; };
+		A7E2483B1BC3254A00811B36 /* STCreationTop.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248371BC3254A00811B36 /* STCreationTop.m */; };
+		A7E248411BC3255D00811B36 /* STTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2483D1BC3255D00811B36 /* STTextView.h */; };
+		A7E248421BC3255D00811B36 /* STTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E2483E1BC3255D00811B36 /* STTextView.m */; };
+		A7E248431BC3255D00811B36 /* STCharCountLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2483F1BC3255D00811B36 /* STCharCountLabel.h */; };
+		A7E248441BC3255D00811B36 /* STCharCountLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248401BC3255D00811B36 /* STCharCountLabel.m */; };
+		A7E2484A1BC3256A00811B36 /* STLikeOrWishView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248461BC3256A00811B36 /* STLikeOrWishView.h */; };
+		A7E2484B1BC3256A00811B36 /* STLikeOrWishView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248471BC3256A00811B36 /* STLikeOrWishView.m */; };
+		A7E2484C1BC3256A00811B36 /* STQualifierView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248481BC3256A00811B36 /* STQualifierView.h */; };
+		A7E2484D1BC3256A00811B36 /* STQualifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248491BC3256A00811B36 /* STQualifierView.m */; };
+		A7E248531BC3257700811B36 /* STTargetDisplayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2484F1BC3257700811B36 /* STTargetDisplayer.h */; };
+		A7E248541BC3257700811B36 /* STTargetDisplayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248501BC3257700811B36 /* STTargetDisplayer.m */; };
+		A7E248551BC3257700811B36 /* STTargetDisplayerContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248511BC3257700811B36 /* STTargetDisplayerContainer.h */; };
+		A7E248561BC3257700811B36 /* STTargetDisplayerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248521BC3257700811B36 /* STTargetDisplayerContainer.m */; };
+		A7E2485A1BC3258400811B36 /* STButtonLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248581BC3258400811B36 /* STButtonLabel.h */; };
+		A7E2485B1BC3258400811B36 /* STButtonLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248591BC3258400811B36 /* STButtonLabel.m */; };
 		FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */; };
 		FEA5D0A61BBC2C0900274390 /* CreateStomtsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */; };
 		FEA5D0A81BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */; };
@@ -93,10 +111,6 @@
 		A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601.h"; sourceTree = "<group>"; };
 		A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
 		A768D76C1BA9EB6000466AFB /* STImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STImage.m; sourceTree = "<group>"; };
-		A778CA261BB1E9CE00B5783D /* STCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationViewController.h; sourceTree = "<group>"; };
-		A778CA271BB1E9CE00B5783D /* STCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationViewController.m; sourceTree = "<group>"; };
-		A778CA2A1BB1F6CB00B5783D /* STCreationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationView.h; sourceTree = "<group>"; };
-		A778CA2B1BB1F6CB00B5783D /* STCreationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationView.m; sourceTree = "<group>"; };
 		A7833CFF1BB46B1100A3F13B /* STFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STFeed.m; sourceTree = "<group>"; };
 		A78B2E6B1BA419BC00A9E7D0 /* STStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STStats.h; sourceTree = "<group>"; };
 		A78B2E6C1BA419BC00A9E7D0 /* STStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STStats.m; sourceTree = "<group>"; };
@@ -106,6 +120,28 @@
 		A7C039B91BB6FEA3006A8135 /* STFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STFeed.h; sourceTree = "<group>"; };
 		A7C039BB1BB6FEB5006A8135 /* STImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImage.h; sourceTree = "<group>"; };
 		A7C039BD1BB6FEC1006A8135 /* Stomt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stomt.h; sourceTree = "<group>"; };
+		A7E2482C1BC3253E00811B36 /* STCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationViewController.h; sourceTree = "<group>"; };
+		A7E2482D1BC3253E00811B36 /* STCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationViewController.m; sourceTree = "<group>"; };
+		A7E2482E1BC3253E00811B36 /* STCreationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationView.h; sourceTree = "<group>"; };
+		A7E2482F1BC3253E00811B36 /* STCreationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationView.m; sourceTree = "<group>"; };
+		A7E248341BC3254A00811B36 /* STCreationTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationTop.h; sourceTree = "<group>"; };
+		A7E248351BC3254A00811B36 /* STTargetNameRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTargetNameRectangle.h; sourceTree = "<group>"; };
+		A7E248361BC3254A00811B36 /* STTargetNameRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTargetNameRectangle.m; sourceTree = "<group>"; };
+		A7E248371BC3254A00811B36 /* STCreationTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationTop.m; sourceTree = "<group>"; };
+		A7E2483D1BC3255D00811B36 /* STTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTextView.h; sourceTree = "<group>"; };
+		A7E2483E1BC3255D00811B36 /* STTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTextView.m; sourceTree = "<group>"; };
+		A7E2483F1BC3255D00811B36 /* STCharCountLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCharCountLabel.h; sourceTree = "<group>"; };
+		A7E248401BC3255D00811B36 /* STCharCountLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCharCountLabel.m; sourceTree = "<group>"; };
+		A7E248461BC3256A00811B36 /* STLikeOrWishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLikeOrWishView.h; sourceTree = "<group>"; };
+		A7E248471BC3256A00811B36 /* STLikeOrWishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLikeOrWishView.m; sourceTree = "<group>"; };
+		A7E248481BC3256A00811B36 /* STQualifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STQualifierView.h; sourceTree = "<group>"; };
+		A7E248491BC3256A00811B36 /* STQualifierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQualifierView.m; sourceTree = "<group>"; };
+		A7E2484F1BC3257700811B36 /* STTargetDisplayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTargetDisplayer.h; sourceTree = "<group>"; };
+		A7E248501BC3257700811B36 /* STTargetDisplayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTargetDisplayer.m; sourceTree = "<group>"; };
+		A7E248511BC3257700811B36 /* STTargetDisplayerContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTargetDisplayerContainer.h; sourceTree = "<group>"; };
+		A7E248521BC3257700811B36 /* STTargetDisplayerContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTargetDisplayerContainer.m; sourceTree = "<group>"; };
+		A7E248581BC3258400811B36 /* STButtonLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STButtonLabel.h; sourceTree = "<group>"; };
+		A7E248591BC3258400811B36 /* STButtonLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STButtonLabel.m; sourceTree = "<group>"; };
 		FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtWithLogin.m; sourceTree = "<group>"; };
 		FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtsWithoutLogin.m; sourceTree = "<group>"; };
 		FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveSingleStomtWithoutLogin.m; sourceTree = "<group>"; };
@@ -284,10 +320,9 @@
 		A778CA1C1BB1E41800B5783D /* CreateStomt */ = {
 			isa = PBXGroup;
 			children = (
-				A778CA261BB1E9CE00B5783D /* STCreationViewController.h */,
-				A778CA271BB1E9CE00B5783D /* STCreationViewController.m */,
-				A778CA2A1BB1F6CB00B5783D /* STCreationView.h */,
-				A778CA2B1BB1F6CB00B5783D /* STCreationView.m */,
+				A7E2482B1BC3252A00811B36 /* Components */,
+				A7E2482A1BC3252200811B36 /* CoreGraphics */,
+				A7E248291BC3251F00811B36 /* Core */,
 			);
 			name = CreateStomt;
 			sourceTree = "<group>";
@@ -300,6 +335,81 @@
 			);
 			name = UI;
 			path = StomtiOS;
+			sourceTree = "<group>";
+		};
+		A7E248291BC3251F00811B36 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A7E2482C1BC3253E00811B36 /* STCreationViewController.h */,
+				A7E2482D1BC3253E00811B36 /* STCreationViewController.m */,
+				A7E2482E1BC3253E00811B36 /* STCreationView.h */,
+				A7E2482F1BC3253E00811B36 /* STCreationView.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		A7E2482A1BC3252200811B36 /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				A7E248341BC3254A00811B36 /* STCreationTop.h */,
+				A7E248351BC3254A00811B36 /* STTargetNameRectangle.h */,
+				A7E248361BC3254A00811B36 /* STTargetNameRectangle.m */,
+				A7E248371BC3254A00811B36 /* STCreationTop.m */,
+			);
+			name = CoreGraphics;
+			sourceTree = "<group>";
+		};
+		A7E2482B1BC3252A00811B36 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A7E248571BC3257F00811B36 /* Top */,
+				A7E2484E1BC3257100811B36 /* TargetDisplayer */,
+				A7E248451BC3255F00811B36 /* QualifierView */,
+				A7E2483C1BC3255400811B36 /* Text */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		A7E2483C1BC3255400811B36 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				A7E2483D1BC3255D00811B36 /* STTextView.h */,
+				A7E2483E1BC3255D00811B36 /* STTextView.m */,
+				A7E2483F1BC3255D00811B36 /* STCharCountLabel.h */,
+				A7E248401BC3255D00811B36 /* STCharCountLabel.m */,
+			);
+			name = Text;
+			sourceTree = "<group>";
+		};
+		A7E248451BC3255F00811B36 /* QualifierView */ = {
+			isa = PBXGroup;
+			children = (
+				A7E248461BC3256A00811B36 /* STLikeOrWishView.h */,
+				A7E248471BC3256A00811B36 /* STLikeOrWishView.m */,
+				A7E248481BC3256A00811B36 /* STQualifierView.h */,
+				A7E248491BC3256A00811B36 /* STQualifierView.m */,
+			);
+			name = QualifierView;
+			sourceTree = "<group>";
+		};
+		A7E2484E1BC3257100811B36 /* TargetDisplayer */ = {
+			isa = PBXGroup;
+			children = (
+				A7E2484F1BC3257700811B36 /* STTargetDisplayer.h */,
+				A7E248501BC3257700811B36 /* STTargetDisplayer.m */,
+				A7E248511BC3257700811B36 /* STTargetDisplayerContainer.h */,
+				A7E248521BC3257700811B36 /* STTargetDisplayerContainer.m */,
+			);
+			name = TargetDisplayer;
+			sourceTree = "<group>";
+		};
+		A7E248571BC3257F00811B36 /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				A7E248581BC3258400811B36 /* STButtonLabel.h */,
+				A7E248591BC3258400811B36 /* STButtonLabel.m */,
+			);
+			name = Top;
 			sourceTree = "<group>";
 		};
 		FEA5D0AC1BBC491D00274390 /* RetrieveStomts */ = {
@@ -328,26 +438,35 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E2484C1BC3256A00811B36 /* STQualifierView.h in Headers */,
 				A70884DD1BA1F4A400758049 /* declarations.h in Headers */,
+				A7E2484A1BC3256A00811B36 /* STLikeOrWishView.h in Headers */,
+				A7E248431BC3255D00811B36 /* STCharCountLabel.h in Headers */,
+				A7E2485A1BC3258400811B36 /* STButtonLabel.h in Headers */,
 				A70884DC1BA1F4A400758049 /* dbg.h in Headers */,
+				A7E248381BC3254A00811B36 /* STCreationTop.h in Headers */,
+				A7E248551BC3257700811B36 /* STTargetDisplayerContainer.h in Headers */,
 				A70884CC1BA1F45200758049 /* LoginView.h in Headers */,
 				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
 				A70884AF1BA1F43300758049 /* StomtiOS.h in Headers */,
 				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
-				A778CA281BB1E9CE00B5783D /* STCreationViewController.h in Headers */,
 				A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */,
 				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,
 				A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */,
 				A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */,
 				A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */,
 				A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */,
+				A7E248321BC3253E00811B36 /* STCreationView.h in Headers */,
+				A7E248391BC3254A00811B36 /* STTargetNameRectangle.h in Headers */,
 				A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */,
 				A75AF2B31BA88F6700D74B9C /* strings.h in Headers */,
+				A7E248411BC3255D00811B36 /* STTextView.h in Headers */,
 				A7107E891BA2F607001F3B38 /* STTarget.h in Headers */,
+				A7E248301BC3253E00811B36 /* STCreationViewController.h in Headers */,
 				A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */,
+				A7E248531BC3257700811B36 /* STTargetDisplayer.h in Headers */,
 				A70884D51BA1F47400758049 /* StomtRequest.h in Headers */,
 				A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */,
-				A778CA2C1BB1F6CB00B5783D /* STCreationView.h in Headers */,
 				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,19 +569,28 @@
 			files = (
 				A70884D41BA1F47400758049 /* Stomt.m in Sources */,
 				A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */,
+				A7E2483A1BC3254A00811B36 /* STTargetNameRectangle.m in Sources */,
+				A7E2483B1BC3254A00811B36 /* STCreationTop.m in Sources */,
+				A7E2485B1BC3258400811B36 /* STButtonLabel.m in Sources */,
+				A7E248331BC3253E00811B36 /* STCreationView.m in Sources */,
+				A7E248561BC3257700811B36 /* STTargetDisplayerContainer.m in Sources */,
 				A7C039A31BB5A340006A8135 /* STSearchFilterKeywords.m in Sources */,
+				A7E248541BC3257700811B36 /* STTargetDisplayer.m in Sources */,
 				A70884D61BA1F47400758049 /* StomtRequest.m in Sources */,
 				A7107E8A1BA2F607001F3B38 /* STTarget.m in Sources */,
+				A7E248311BC3253E00811B36 /* STCreationViewController.m in Sources */,
 				A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */,
 				A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */,
-				A778CA2D1BB1F6CB00B5783D /* STCreationView.m in Sources */,
+				A7E248441BC3255D00811B36 /* STCharCountLabel.m in Sources */,
 				A768D76E1BA9EB6000466AFB /* STImage.m in Sources */,
 				A70884CD1BA1F45200758049 /* LoginView.m in Sources */,
+				A7E2484B1BC3256A00811B36 /* STLikeOrWishView.m in Sources */,
 				A75AF2B71BA893B000D74B9C /* STObject.m in Sources */,
+				A7E248421BC3255D00811B36 /* STTextView.m in Sources */,
 				A70884CB1BA1F45200758049 /* LoginViewController.m in Sources */,
 				A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */,
 				A7833D011BB46B1100A3F13B /* STFeed.m in Sources */,
-				A778CA291BB1E9CE00B5783D /* STCreationViewController.m in Sources */,
+				A7E2484D1BC3256A00811B36 /* STQualifierView.m in Sources */,
 				A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

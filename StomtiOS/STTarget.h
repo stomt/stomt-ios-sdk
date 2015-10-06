@@ -60,6 +60,16 @@
 + (instancetype)initWithDataDictionary:(NSDictionary*)data;
 
 /*!
+ * @brief Create a STTarget instance with given paramenters.
+ *
+ * @param displayName The extended name of the target.
+ * @param targetID The identifier of the target.
+ *
+ * @return A newly created STTarget instance.
+ */
++ (instancetype)targetWithDisplayName:(NSString*)displayName identifier:(NSString*)identifier;
+
+/*!
  * @brief (Private!) Create a STTarget instance with a given target dictionary.
  *
  * @param data Target dictionary

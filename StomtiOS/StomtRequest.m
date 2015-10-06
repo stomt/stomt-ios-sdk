@@ -394,7 +394,8 @@ error:
 				 */
 				
 			} //Better error handler will be implemented
-			else if(completion) completion(connectionError,nil);
+			else if(completion)
+				completion(connectionError,nil);
 		}];
 		return;
 	}

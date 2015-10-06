@@ -14,6 +14,8 @@
 #import "dbg.h"
 #import "declarations.h"
 #import "strings.h"
+#import "STCreationViewController.h"
+#import "STTarget.h"
 
 @interface Stomt ()
 - (void)setup;
@@ -59,7 +61,6 @@ error:
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:controllerToPresent animated:YES completion:nil];
 	}
 	else _info("Already logged in. Continuing execution...");
-
 	return;
 	
 error:
@@ -148,5 +149,17 @@ error:
 	return [[NSUserDefaults standardUserDefaults] objectForKey:kRToken];
 }
 
-
++ (void)presentStomtCreationPanelWithTarget:(STTarget*)target defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion
+{
+	@synchronized(self)
+	{
+		STCreationViewController* cont = [[STCreationViewController alloc] initWithBody:defaultText
+																			 likeOrWish:likeOrWish
+																				 target:target
+																		completionBlock:completion];
+		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:cont
+																					 animated:YES
+																				   completion:nil];
+	}
+}
 @end

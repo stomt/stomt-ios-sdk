@@ -6,8 +6,16 @@
 //  Copyright (c) 2015 Leonardo Cascianelli. All rights reserved.
 //
 
+
+#define __DBG__
+
 #import "STCreationViewController.h"
 #import "STCreationView.h"
+#import "STTextView.h"
+#import "STTarget.h"
+#import "STObject.h"
+#import "StomtRequest.h"
+#import "dbg.h"
 
 CGFloat const ThrowingThreshold = 1000;
 CGFloat const ThrowingVelocityPadding = 20;
@@ -17,27 +25,65 @@ CGFloat const ThrowingVelocityPadding = 20;
 #define baseSize CGRectMake(100,100,MAX(sWidth/3,sHeight/3),50)
 
 @interface STCreationViewController ()
+@property (nonatomic) CGSize centerTranslation;
 - (void)handlePanGesture:(UIPanGestureRecognizer*)gesture;
 - (void)returnCenter;
+- (void)keyboardWillShow:(NSNotification*)notification;
+- (void)keyboardWillHide:(NSNotification*)notification;
+- (void)dismiss;
+- (void)sendStomtWithDict:(NSNotification*)notification;
 @end
 
 @implementation STCreationViewController
 
 - (instancetype)init
 {
+	fprintf(stderr, "Init method disabled. Use designated constructor initWithBody:likeOrWIsh:targetID: .");
+error:
+	return nil;
+}
+
+- (instancetype)initWithBody:(NSString*)body likeOrWish:(kSTObjectQualifier)likeOrWish target:(STTarget*)target completionBlock:(StomtCreationBlock)completion
+{
+	UIPanGestureRecognizer* pan;
+	
 	self = [super init];
+	
+	int maxChars = (likeOrWish == kSTObjectLike) ? 100-8 : 100-5;
+	if(strlen([body UTF8String]) > maxChars) _err("Text needs to be less than %d chars long!",maxChars);
 	
 	if(!self.view)
 		self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	self.view.backgroundColor = [UIColor clearColor];
 	
-	self.STView = [[STCreationView alloc] initWithFrame:CGRectMake(0,0,MAX(sWidth/3,sHeight/3),50)];
+	if(!self.backgroundView)
+		self.backgroundView  = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	self.backgroundView.backgroundColor = [UIColor blackColor];
+	self.backgroundView.alpha = 0.2;
+	
+	self.STView = [[STCreationView alloc] initWithFrame:CGRectMake(0,0,sWidth-20,150) textBody:body likeOrWish:likeOrWish target:target];
 	self.STView.center = self.view.center;
 	
-	UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+	self.completionBlock = completion;
+	
+	pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
 	[self.STView addGestureRecognizer:pan];
+	[self.view addSubview:self.backgroundView];
 	[self.view addSubview:self.STView];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareForDismiss) name:@"PrepareForDismiss-StomtCreation" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"Dismiss-StomtCreation" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendStomtWithDict:) name:@"Send-Stomt-Notification" object:nil];
+	
+	self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+	self.modalPresentationStyle = UIModalPresentationCustom;
+	
 	return self;
+	
+error:
+	return nil;
 }
 
 - (void)viewDidLoad
@@ -45,7 +91,12 @@ CGFloat const ThrowingVelocityPadding = 20;
 	[super viewDidLoad];
 	self.dyAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 	self.originalCenter = self.view.center;
-	
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	[self.STView.textView becomeFirstResponder];
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer*)gesture
@@ -90,6 +141,7 @@ CGFloat const ThrowingVelocityPadding = 20;
 				self.itemBehavior.allowsRotation = YES;
 				[self.itemBehavior addAngularVelocity:angle forItem:self.STView];
 				[self.dyAnimator addBehavior:self.itemBehavior];
+				[NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(dismiss) userInfo:nil repeats:NO];
 			}
 			
 			else
@@ -110,6 +162,52 @@ CGFloat const ThrowingVelocityPadding = 20;
 	[self.dyAnimator removeAllBehaviors];
 	UISnapBehavior* snap = [[UISnapBehavior alloc] initWithItem:self.STView snapToPoint:self.originalCenter];
 	[self.dyAnimator addBehavior:snap];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+	[self dismiss];
+}
+
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+	self.STView.center = CGPointMake(self.STView.center.x,self.STView.center.y - self.STView.frame.size.height/2 - [UIScreen mainScreen].bounds.size.height/12);
+	self.originalCenter = self.STView.center;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+	self.STView.center = CGPointMake(self.STView.center.x,self.STView.center.y + self.STView.frame.size.height/2 + [UIScreen mainScreen].bounds.size.height/12);
+	self.originalCenter = self.STView.center;
+	self.centerTranslation = CGSizeZero;
+}
+
+- (void)dismiss
+{
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)prepareForDismiss
+{
+	[self.dyAnimator removeAllBehaviors];
+	self.STView.userInteractionEnabled = NO;
+	
+	UIGravityBehavior* gB = [[UIGravityBehavior alloc] initWithItems:@[self.STView]];
+	gB.magnitude = 60.0;
+	
+	[NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(dismiss) userInfo:nil repeats:NO];
+	[self.dyAnimator addBehavior:gB];
+}
+
+- (void)sendStomtWithDict:(NSNotification*)notification//Body:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID
+{
+	NSDictionary* userInfo = [notification userInfo];
+	STObject* stomtObject = [STObject objectWithTextBody:[userInfo objectForKey:@"body"] likeOrWish:[[userInfo objectForKey:@"likeOrWish"] integerValue] targetID:[userInfo objectForKey:@"targetID"]];
+	StomtRequest* request = [StomtRequest stomtCreationRequestWithStomtObject:stomtObject];
+	
+	[request sendStomtInBackgroundWithBlock:self.completionBlock];
+	[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(prepareForDismiss) userInfo:nil repeats:NO];
 }
 
 @end

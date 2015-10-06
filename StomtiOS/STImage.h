@@ -55,5 +55,6 @@
  */
 - (void)downloadInBackground;
 
+- (void)downloadInBackgroundToPointer;
 
 @end

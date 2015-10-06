@@ -52,5 +52,22 @@ error:
 	}
 
 }
+
++ (instancetype)targetWithDisplayName:(NSString*)displayName identifier:(NSString*)identifier
+{
+	@synchronized(self)
+	{
+		if(displayName && identifier)
+		{
+			STTarget* target = [[STTarget alloc] init];
+			target.displayName = displayName;
+			target.identifier = identifier;
+			return target;
+		}_err("Display name and identifier required.");
+	}
+	
+error:
+	return nil;
+}
 @end
 
