@@ -171,7 +171,7 @@ error:
 		rt = YES;
 	}else
 	{
-		if([self.textView textFits:text])
+		if([[text componentsSeparatedByString:@"\n"] count] == 1)
 		{
 			if([self.charCounter decreaseChars:(int)strlen([text UTF8String])])
 			{

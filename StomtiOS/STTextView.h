@@ -12,6 +12,5 @@
 @interface STTextView : UITextView
 @property (nonatomic) unsigned int lines;
 - (void)appendText:(NSString*)text;
-- (unsigned int)textFits:(NSString*)text;
 - (instancetype)initWithFrame:(CGRect)frame likeOrWish:(kSTObjectQualifier)likeOrWish;
 @end

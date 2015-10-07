@@ -39,15 +39,4 @@
 	self.text = [self.text stringByAppendingString:text];
 }
 
-- (unsigned int)textFits:(NSString *)text
-{
-	self.lines = (unsigned int)[[self.text componentsSeparatedByString:@"\n"] count]-1;
-	NSArray* newLines = [text componentsSeparatedByString:@"\n"];
-	if(self.lines+[newLines count] > maxLines)
-	{
-		return 0;
-	}
-	self.lines += (unsigned int)[newLines count];
-	return 1;
-}
 @end
