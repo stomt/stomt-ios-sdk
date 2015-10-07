@@ -7,7 +7,7 @@
 //
 
 #define threshold 4
-#define kPlaceholderImage @"https://scontent-frt3-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/18484_956324564401523_8885595067265640344_n.jpg?oh=8f0fd86da670f821cc30dd42efeb4a5c&oe=568B972E"
+#define kPlaceholderImage @"https://rest.stomt.com/uploads/tOBR/s302x302/tOBRT5XdZe4tVPbn74i3EhysW9ZZ9IwNYirm0C5y_s302x302.png"
 
 #import "STTargetDisplayerContainer.h"
 #import "STTarget.h"
