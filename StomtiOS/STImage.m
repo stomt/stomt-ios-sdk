@@ -12,10 +12,11 @@
 #import "strings.h"
 
 @interface STImage ()
-- (void)downloadInBackground;
+
 @end
 
 @implementation STImage
+
 - (instancetype)init
 {
 	_err("Use class initializer -[[STImage alloc] initWithImage:(UIImage*)]");
@@ -52,15 +53,21 @@ error:
 	return nil;
 }
 
-- (void)downloadInBackground
+- (void)downloadInBackgroundWithBlock:(BooleanCompletion)completion
 {
 	@synchronized(self)
 	{
 		dispatch_async(dispatch_get_global_queue(0,0), ^{
 			NSData * data = [[NSData alloc] initWithContentsOfURL: self.url];
 			dispatch_async(dispatch_get_main_queue(), ^{
-				if(data) self.image = [UIImage imageWithData:data];
+				if(data)
+				{
+					self.image = [UIImage imageWithData:data];
+					if(completion) completion(YES);
+					return;
+				}
 				else fprintf(stderr,"Could not retrieve data from async request for STImage.");
+				if(completion) completion(NO);
 			});
 		});
 	}

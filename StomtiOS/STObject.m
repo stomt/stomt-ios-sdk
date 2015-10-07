@@ -178,7 +178,7 @@ error:
 		if(imgUrl)
 		{
 			self.image = [[STImage alloc] initWithUrl:imgUrl];
-			[self.image downloadInBackground];
+			[self.image downloadInBackgroundWithBlock:nil];
 		}
 	}
 	@catch (NSException *exception) {

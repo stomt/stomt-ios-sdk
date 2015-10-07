@@ -32,6 +32,8 @@
 		A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */; };
 		A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */; };
 		A768D76E1BA9EB6000466AFB /* STImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D76C1BA9EB6000466AFB /* STImage.m */; };
+		A76DFE281BC57CC200017C32 /* STImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DFE261BC57CC200017C32 /* STImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A76DFE291BC57CC200017C32 /* STImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DFE271BC57CC200017C32 /* STImageView.m */; };
 		A7833D011BB46B1100A3F13B /* STFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = A7833CFF1BB46B1100A3F13B /* STFeed.m */; };
 		A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STStats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STStats.m */; };
@@ -111,6 +113,8 @@
 		A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601.h"; sourceTree = "<group>"; };
 		A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
 		A768D76C1BA9EB6000466AFB /* STImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STImage.m; sourceTree = "<group>"; };
+		A76DFE261BC57CC200017C32 /* STImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImageView.h; sourceTree = "<group>"; };
+		A76DFE271BC57CC200017C32 /* STImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STImageView.m; sourceTree = "<group>"; };
 		A7833CFF1BB46B1100A3F13B /* STFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STFeed.m; sourceTree = "<group>"; };
 		A78B2E6B1BA419BC00A9E7D0 /* STStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STStats.h; sourceTree = "<group>"; };
 		A78B2E6C1BA419BC00A9E7D0 /* STStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STStats.m; sourceTree = "<group>"; };
@@ -302,6 +306,8 @@
 				A768D76C1BA9EB6000466AFB /* STImage.m */,
 				A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */,
 				A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */,
+				A76DFE261BC57CC200017C32 /* STImageView.h */,
+				A76DFE271BC57CC200017C32 /* STImageView.m */,
 			);
 			name = "Helper objects";
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 				A70884DC1BA1F4A400758049 /* dbg.h in Headers */,
 				A7E248381BC3254A00811B36 /* STCreationTop.h in Headers */,
 				A7E248551BC3257700811B36 /* STTargetDisplayerContainer.h in Headers */,
+				A76DFE281BC57CC200017C32 /* STImageView.h in Headers */,
 				A70884CC1BA1F45200758049 /* LoginView.h in Headers */,
 				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
 				A70884AF1BA1F43300758049 /* StomtiOS.h in Headers */,
@@ -590,6 +597,7 @@
 				A70884CB1BA1F45200758049 /* LoginViewController.m in Sources */,
 				A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */,
 				A7833D011BB46B1100A3F13B /* STFeed.m in Sources */,
+				A76DFE291BC57CC200017C32 /* STImageView.m in Sources */,
 				A7E2484D1BC3256A00811B36 /* STQualifierView.m in Sources */,
 				A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */,
 			);

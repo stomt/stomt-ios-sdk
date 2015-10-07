@@ -7,10 +7,12 @@
 //
 
 #define threshold 4
+#define kPlaceholderImage @"https://scontent-frt3-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/18484_956324564401523_8885595067265640344_n.jpg?oh=8f0fd86da670f821cc30dd42efeb4a5c&oe=568B972E"
 
 #import "STTargetDisplayerContainer.h"
 #import "STTarget.h"
 #import "STImage.h"
+#import "STImageView.h"
 
 @interface STTargetDisplayerContainer ()
 @property (nonatomic,strong) STImage* imageDownloader;
@@ -26,12 +28,9 @@
 	
 	if(!self.imageView)
 	{
-		self.imageDownloader = [[STImage alloc] initWithUrl:target.profileImage];
-		[self.imageDownloader downloadInBackground];
+		NSString* imageLocation = ([target.profileImage absoluteString]) ? [target.profileImage absoluteString] : kPlaceholderImage;
 		
-		self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMidY(frame)-8, 16, 16)];
-		self.imageView.image = self.imageDownloader.image;
-		self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+		self.imageView = [[STImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMidY(frame)-8, 16, 16) STImage:[[STImage alloc] initWithUrl:[NSURL URLWithString:imageLocation]] placeholder:nil];
 	}
 	
 	if(!self.nameLabel)
@@ -50,7 +49,7 @@
 	
 	if((labSize.width >= frame.size.width-self.imageView.image.size.width-threshold))
 	{
-		finWidth = (frame.size.width-self.imageView.image.size.width-threshold);
+		finWidth = (frame.size.width-self.imageView.bounds.size.width-threshold);
 	}
 	self.nameLabel.frame = CGRectMake(self.imageView.frame.size.width+threshold, 0, finWidth, frame.size.height);
 	

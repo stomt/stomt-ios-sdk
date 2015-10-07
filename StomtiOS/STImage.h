@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "block_declarations.h"
 
 @class UIImage;
 
@@ -52,9 +53,9 @@
 
 /*!
  * @brief Asynchronously download the image.
+ *
+ * @param The completion block to be called after the download process is completed.
  */
-- (void)downloadInBackground;
-
-- (void)downloadInBackgroundToPointer;
+- (void)downloadInBackgroundWithBlock:(BooleanCompletion)completion;
 
 @end

@@ -1,0 +1,46 @@
+//
+//  STImageView.m
+//  StomtiOS
+//
+//  Created by Leonardo Cascianelli on 07/10/15.
+//  Copyright (c) 2015 Leonardo Cascianelli. All rights reserved.
+//
+
+#define __DBG__
+
+#import "STImageView.h"
+#import "STImage.h"
+#import "dbg.h"
+
+@implementation STImageView
+
+- (instancetype)initWithFrame:(CGRect)frame STImage:(STImage*)stImage placeholder:(UIImage*)placeholder
+{
+	self = [super initWithFrame:frame];
+	
+	if(stImage)
+	{
+		self.downloadManager = stImage;
+		if(placeholder) self.placeholder = placeholder;
+		
+		self.image = self.placeholder;
+		
+		[self.downloadManager downloadInBackgroundWithBlock:^(BOOL success){
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				if(success)
+					self.image = self.downloadManager.image;
+			});
+			
+		}];
+		
+		self.contentMode = UIViewContentModeScaleAspectFill;
+		
+		return self;
+	}
+
+error: //FT INTENDED
+	return nil;
+}
+
+@end
