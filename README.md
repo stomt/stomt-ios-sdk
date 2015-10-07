@@ -5,3 +5,15 @@
 
 
 iOS SDK for the stomt API
+
+## Contribution
+
+We would love to see you contributing to our iOS SDK. Feel free to fork it and we're also awaiting your pull-requests!
+
+## Author
+
+[Leonardo Cascianelli](https://github.com/h3xept)
+
+## About stomt
+
+// ToDo
