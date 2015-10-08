@@ -77,10 +77,8 @@ error:
 
 + (void)retrieveEssentialTargetWithTargetID:(NSString *)identifier completionBlock:(TargetRequestBlock)completion
 {
-	//TEMP FULL TARGET REQUEST
 	StomtRequest* tarRequest = [StomtRequest basicTargetRequestWithTargetID:identifier];
 	[tarRequest requestBasicTargetInBackgroundWithBlock:completion];
-
 }
 
 @end
