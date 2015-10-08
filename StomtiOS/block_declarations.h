@@ -13,10 +13,12 @@
 @class STObject;
 @class STImage;
 @class STFeed;
+@class STTarget;
 
 typedef void (^ BooleanCompletion)(BOOL succeeded);
 typedef void (^ AuthenticationBlock)(NSError* error, STUser* user);
 typedef void (^ StomtCreationBlock)(NSError* error, STObject* stomt);
 typedef void (^ ImageUploadBlock)(NSError* error, STImage* image);
 typedef void (^ FeedRequestBlock)(NSError* error, STFeed* feed);
+typedef void (^ TargetRequestBlock)(NSError* error, STTarget* target);
 #endif

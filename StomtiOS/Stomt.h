@@ -39,8 +39,6 @@
  */
 @property (nonatomic) BOOL isAuthenticated;
 
-
-
 + (instancetype)sharedInstance;
 + (void)setAppID:(NSString *)appid;
 
@@ -48,8 +46,6 @@
 + (NSString*)appID;
 + (NSString*)accessToken;
 + (NSString*)refreshToken;
-
-
 
 /*!
  * @brief Prompts an authentication modal if no access token is present
@@ -79,4 +75,16 @@
  * @param completionBlock The completion handler to be called after the stomtCreation request.
  */
 + (void)presentStomtCreationPanelWithTarget:(STTarget*)target defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion;
+
+/*!
+ * @brief Present a panel to let the user create and send a stomt.
+ * @discussion A panel is presented with the specified target, default text, stomt qualifier
+ and completion block.
+ *
+ * @param targetID The identifier of the desired target.
+ * @param defaultText The inial text of the stomt. Can be modified by the user.
+ * @param likeOrWish Stomt qualifier.
+ * @param completionBlock The completion handler to be called after the stomtCreation request.
+ */
++ (void)presentStomtCreationPanelWithTargetID:(NSString*)targetID defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion;
 @end

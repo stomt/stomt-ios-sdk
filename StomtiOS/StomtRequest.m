@@ -304,6 +304,35 @@ error:
 	return nil;
 }
 
++ (StomtRequest*)targetRequestWithTargetID:(NSString *)targetID
+{
+	NSMutableURLRequest* apiRequest;
+	
+	if(!targetID) _err("No targetID provided. Aborting...");
+	
+	apiRequest = [StomtRequest generateBaseGETRequestWithPath:[NSString stringWithFormat:@"%@%@",kGetTargetPath,targetID] parametersPair:@{}];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kTargetRequest];
+	
+error:
+	return nil;
+}
+
++ (StomtRequest*)basicTargetRequestWithTargetID:(NSString *)targetID
+{
+	NSMutableURLRequest* apiRequest;
+	
+	if(!targetID) _err("No targetID provided. Aborting...");
+	
+	apiRequest = [StomtRequest generateBaseGETRequestWithPath:[NSString stringWithFormat:@"%@%@/%@",kGetBasicTargetPath,targetID,@"basic"] parametersPair:@{}];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kBasicTargetRequest];
+	
+error:
+	return nil;
+}
+
+
 #pragma mark Send Requests
 
 - (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion
@@ -565,4 +594,87 @@ error:
 	fprintf(stderr,"\n[ERROR] Feed request not available for this instance.");
 }
 
+- (void)requestTargetInBackgroundWithBlock:(TargetRequestBlock)completion
+{
+	if(self.requestType == kTargetRequest)
+	{
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+			
+			if([HTTPResponseChecker checkResponseCode:response] == OK)
+			{
+				NSDictionary* dataDict;
+				if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				if(dataDict)
+				{
+					STTarget* target = [[STTarget alloc] initWithDataDictionary:[dataDict objectForKey:@"data"]];
+		
+					if(completion) completion(connectionError,target);
+					return;
+				}
+			}
+			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
+			{
+				[Stomt logout]; //Temporary behavior
+				
+				/*
+				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
+					
+				 }];
+				 
+				 To be implemented soon.
+				 
+				 */
+				
+			} //Better error handler will be implemented
+			else if(completion) completion(connectionError,nil);
+		}];
+		
+		return;
+	}
+	
+error:
+	fprintf(stderr,"\n[ERROR] Target request not available for this instance.");
+}
+
+- (void)requestBasicTargetInBackgroundWithBlock:(TargetRequestBlock)completion
+{
+	if(self.requestType == kBasicTargetRequest)
+	{
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+			
+			if([HTTPResponseChecker checkResponseCode:response] == OK)
+			{
+				NSDictionary* dataDict;
+				if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				if(dataDict)
+				{
+					STTarget* target = [[STTarget alloc] initWithDataDictionary:[dataDict objectForKey:@"data"]];
+					
+					if(completion) completion(connectionError,target);
+					return;
+				}
+			}
+			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
+			{
+				[Stomt logout]; //Temporary behavior
+				
+				/*
+				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
+					
+				 }];
+				 
+				 To be implemented soon.
+				 
+				 */
+				
+			} //Better error handler will be implemented
+			else if(completion) completion(connectionError,nil);
+		}];
+		
+		return;
+	}
+	
+error:
+	fprintf(stderr,"\n[ERROR] Basic target request not available for this instance.");
+}
 @end

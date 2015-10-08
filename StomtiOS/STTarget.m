@@ -11,6 +11,7 @@
 #import "STStats.h"
 #import "strings.h"
 #import "dbg.h"
+#import "StomtRequest.h"
 
 @implementation STTarget
 
@@ -25,7 +26,11 @@
 		self.category = [STCategory initWithIdentifier:[categoryDict objectForKey:kD_Id]
 										   displayName:[categoryDict objectForKey:kD_DisplayName]];
 		
-		self.profileImage = [[[data objectForKey:kD_Images] objectForKey:kD_Profile] objectForKey:kD_Url];
+		// TODO: Optimize -> Images array
+		self.profileImage = [NSURL URLWithString:[[[data objectForKey:kD_Images] objectForKey:kD_Profile] objectForKey:kD_Url]];
+		if(!self.profileImage)
+			self.profileImage = [NSURL URLWithString:[[[data objectForKey:kD_Images] objectForKey:kD_Avatar] objectForKey:kD_Url]];
+		// --
 		
 		self.stats = [STStats initWithStatsDictionary:[data objectForKey:kD_Stats]];
 		self.isVerified = [[data objectForKey:kD_Verified] boolValue];
@@ -69,5 +74,14 @@ error:
 error:
 	return nil;
 }
+
++ (void)retrieveEssentialTargetWithTargetID:(NSString *)identifier completionBlock:(TargetRequestBlock)completion
+{
+	//TEMP FULL TARGET REQUEST
+	StomtRequest* tarRequest = [StomtRequest basicTargetRequestWithTargetID:identifier];
+	[tarRequest requestBasicTargetInBackgroundWithBlock:completion];
+
+}
+
 @end
 

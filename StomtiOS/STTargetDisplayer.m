@@ -13,6 +13,10 @@
 #import "STTargetDisplayerContainer.h"
 #import "STTarget.h"
 
+@interface STTargetDisplayer()
+
+@end
+
 @implementation STTargetDisplayer
 
 - (instancetype)initWithFrame:(CGRect)frame target:(STTarget*)target
@@ -40,6 +44,13 @@ error:
 														   , rect.origin.y
 														   , self.container.bounds.size.width,
 														   self.container.bounds.size.height)];
+	if(!self.container.displayName)
+	{
+		[STTarget retrieveEssentialTargetWithTargetID:self.container.target.identifier completionBlock:^(NSError *error, STTarget *target) {
+			[self.container updateDisplayContainerWithTarget:target];
+		}];
+		
+	}
 }
 
 @end

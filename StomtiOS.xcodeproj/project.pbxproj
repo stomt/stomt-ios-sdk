@@ -14,13 +14,9 @@
 		A70884CC1BA1F45200758049 /* LoginView.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884C81BA1F45200758049 /* LoginView.h */; };
 		A70884CD1BA1F45200758049 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884C91BA1F45200758049 /* LoginView.m */; };
 		A70884D41BA1F47400758049 /* Stomt.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884D01BA1F47400758049 /* Stomt.m */; };
-		A70884D51BA1F47400758049 /* StomtRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884D11BA1F47400758049 /* StomtRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A70884D61BA1F47400758049 /* StomtRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884D21BA1F47400758049 /* StomtRequest.m */; };
 		A70884DC1BA1F4A400758049 /* dbg.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884D91BA1F4A400758049 /* dbg.h */; };
 		A70884DD1BA1F4A400758049 /* declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DA1BA1F4A400758049 /* declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DB1BA1F4A400758049 /* block_declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7107E891BA2F607001F3B38 /* STTarget.h in Headers */ = {isa = PBXBuildFile; fileRef = A7107E871BA2F607001F3B38 /* STTarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7107E8A1BA2F607001F3B38 /* STTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = A7107E881BA2F607001F3B38 /* STTarget.m */; };
 		A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7107E8B1BA2F614001F3B38 /* STUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7107E8C1BA2F614001F3B38 /* STUser.m */; };
 		A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D451BA4338E00DF83B8 /* STCategory.m */; };
@@ -34,6 +30,10 @@
 		A768D76E1BA9EB6000466AFB /* STImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D76C1BA9EB6000466AFB /* STImage.m */; };
 		A76DFE281BC57CC200017C32 /* STImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DFE261BC57CC200017C32 /* STImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A76DFE291BC57CC200017C32 /* STImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DFE271BC57CC200017C32 /* STImageView.m */; };
+		A76DFE2C1BC5AF1E00017C32 /* STTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DFE2A1BC5AF1E00017C32 /* STTarget.m */; };
+		A76DFE2D1BC5AF1E00017C32 /* STTarget.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DFE2B1BC5AF1E00017C32 /* STTarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A76DFE301BC5AF2800017C32 /* StomtRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DFE2E1BC5AF2800017C32 /* StomtRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A76DFE311BC5AF2800017C32 /* StomtRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DFE2F1BC5AF2800017C32 /* StomtRequest.m */; };
 		A7833D011BB46B1100A3F13B /* STFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = A7833CFF1BB46B1100A3F13B /* STFeed.m */; };
 		A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STStats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STStats.m */; };
@@ -95,13 +95,9 @@
 		A70884C81BA1F45200758049 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		A70884C91BA1F45200758049 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		A70884D01BA1F47400758049 /* Stomt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stomt.m; sourceTree = "<group>"; };
-		A70884D11BA1F47400758049 /* StomtRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtRequest.h; sourceTree = "<group>"; };
-		A70884D21BA1F47400758049 /* StomtRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtRequest.m; sourceTree = "<group>"; };
 		A70884D91BA1F4A400758049 /* dbg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dbg.h; sourceTree = "<group>"; };
 		A70884DA1BA1F4A400758049 /* declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = declarations.h; sourceTree = "<group>"; };
 		A70884DB1BA1F4A400758049 /* block_declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block_declarations.h; sourceTree = "<group>"; };
-		A7107E871BA2F607001F3B38 /* STTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTarget.h; sourceTree = "<group>"; };
-		A7107E881BA2F607001F3B38 /* STTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTarget.m; sourceTree = "<group>"; };
 		A7107E8B1BA2F614001F3B38 /* STUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUser.h; sourceTree = "<group>"; };
 		A7107E8C1BA2F614001F3B38 /* STUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUser.m; sourceTree = "<group>"; };
 		A7450D451BA4338E00DF83B8 /* STCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCategory.m; sourceTree = "<group>"; };
@@ -115,6 +111,10 @@
 		A768D76C1BA9EB6000466AFB /* STImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STImage.m; sourceTree = "<group>"; };
 		A76DFE261BC57CC200017C32 /* STImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImageView.h; sourceTree = "<group>"; };
 		A76DFE271BC57CC200017C32 /* STImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STImageView.m; sourceTree = "<group>"; };
+		A76DFE2A1BC5AF1E00017C32 /* STTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTarget.m; sourceTree = "<group>"; };
+		A76DFE2B1BC5AF1E00017C32 /* STTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTarget.h; sourceTree = "<group>"; };
+		A76DFE2E1BC5AF2800017C32 /* StomtRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtRequest.h; sourceTree = "<group>"; };
+		A76DFE2F1BC5AF2800017C32 /* StomtRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtRequest.m; sourceTree = "<group>"; };
 		A7833CFF1BB46B1100A3F13B /* STFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STFeed.m; sourceTree = "<group>"; };
 		A78B2E6B1BA419BC00A9E7D0 /* STStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STStats.h; sourceTree = "<group>"; };
 		A78B2E6C1BA419BC00A9E7D0 /* STStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STStats.m; sourceTree = "<group>"; };
@@ -273,8 +273,8 @@
 		A70885151BA20F2900758049 /* StomtRequest */ = {
 			isa = PBXGroup;
 			children = (
-				A70884D11BA1F47400758049 /* StomtRequest.h */,
-				A70884D21BA1F47400758049 /* StomtRequest.m */,
+				A76DFE2E1BC5AF2800017C32 /* StomtRequest.h */,
+				A76DFE2F1BC5AF2800017C32 /* StomtRequest.m */,
 			);
 			name = StomtRequest;
 			sourceTree = "<group>";
@@ -283,11 +283,11 @@
 			isa = PBXGroup;
 			children = (
 				A71D5F0C1BA7664D00DC8BA1 /* Helper objects */,
-				A7107E871BA2F607001F3B38 /* STTarget.h */,
-				A7107E881BA2F607001F3B38 /* STTarget.m */,
 				A7107E8B1BA2F614001F3B38 /* STUser.h */,
 				A7107E8C1BA2F614001F3B38 /* STUser.m */,
 				A75AF2B41BA893B000D74B9C /* STObject.h */,
+				A76DFE2A1BC5AF1E00017C32 /* STTarget.m */,
+				A76DFE2B1BC5AF1E00017C32 /* STTarget.h */,
 				A75AF2B51BA893B000D74B9C /* STObject.m */,
 				A7C039B91BB6FEA3006A8135 /* STFeed.h */,
 				A7833CFF1BB46B1100A3F13B /* STFeed.m */,
@@ -323,6 +323,14 @@
 			name = Private;
 			sourceTree = "<group>";
 		};
+		A76DFE321BC6F7D400017C32 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				A778CA1C1BB1E41800B5783D /* CreateStomt */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
 		A778CA1C1BB1E41800B5783D /* CreateStomt */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,8 +344,8 @@
 		A778CA1D1BB1E42600B5783D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A76DFE321BC6F7D400017C32 /* Private */,
 				A70884C51BA1F44600758049 /* LoginModal */,
-				A778CA1C1BB1E41800B5783D /* CreateStomt */,
 			);
 			name = UI;
 			path = StomtiOS;
@@ -459,20 +467,20 @@
 				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
 				A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */,
 				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,
+				A76DFE2D1BC5AF1E00017C32 /* STTarget.h in Headers */,
 				A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */,
 				A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */,
 				A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */,
 				A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */,
+				A76DFE301BC5AF2800017C32 /* StomtRequest.h in Headers */,
 				A7E248321BC3253E00811B36 /* STCreationView.h in Headers */,
 				A7E248391BC3254A00811B36 /* STTargetNameRectangle.h in Headers */,
 				A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */,
 				A75AF2B31BA88F6700D74B9C /* strings.h in Headers */,
 				A7E248411BC3255D00811B36 /* STTextView.h in Headers */,
-				A7107E891BA2F607001F3B38 /* STTarget.h in Headers */,
 				A7E248301BC3253E00811B36 /* STCreationViewController.h in Headers */,
 				A70884CA1BA1F45200758049 /* LoginViewController.h in Headers */,
 				A7E248531BC3257700811B36 /* STTargetDisplayer.h in Headers */,
-				A70884D51BA1F47400758049 /* StomtRequest.h in Headers */,
 				A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */,
 				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
 			);
@@ -579,12 +587,12 @@
 				A7E2483A1BC3254A00811B36 /* STTargetNameRectangle.m in Sources */,
 				A7E2483B1BC3254A00811B36 /* STCreationTop.m in Sources */,
 				A7E2485B1BC3258400811B36 /* STButtonLabel.m in Sources */,
+				A76DFE2C1BC5AF1E00017C32 /* STTarget.m in Sources */,
 				A7E248331BC3253E00811B36 /* STCreationView.m in Sources */,
+				A76DFE311BC5AF2800017C32 /* StomtRequest.m in Sources */,
 				A7E248561BC3257700811B36 /* STTargetDisplayerContainer.m in Sources */,
 				A7C039A31BB5A340006A8135 /* STSearchFilterKeywords.m in Sources */,
 				A7E248541BC3257700811B36 /* STTargetDisplayer.m in Sources */,
-				A70884D61BA1F47400758049 /* StomtRequest.m in Sources */,
-				A7107E8A1BA2F607001F3B38 /* STTarget.m in Sources */,
 				A7E248311BC3253E00811B36 /* STCreationViewController.m in Sources */,
 				A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */,
 				A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */,

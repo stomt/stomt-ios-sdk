@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "block_declarations.h"
 
 @class STCategory;
 @class UIImage;
@@ -68,6 +69,15 @@
  * @return A newly created STTarget instance.
  */
 + (instancetype)targetWithDisplayName:(NSString*)displayName identifier:(NSString*)identifier;
+
+/*!
+ * @brief Retrieve an instance of STTarget with base properties.
+ * @discussion Retrieve an instance of STTarget containing its identifier, display name, images array and category.
+ * 
+ * @param identifier The identifier of the desired target
+ * @param completionBlock A completion block to be called when the request is completed.
+ */
++ (void)retrieveEssentialTargetWithTargetID:(NSString*)identifier completionBlock:(TargetRequestBlock)completion;
 
 /*!
  * @brief (Private!) Create a STTarget instance with a given target dictionary.

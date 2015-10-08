@@ -101,6 +101,24 @@
  */
 + (StomtRequest*)feedRequestWithStomtFeedObject:(STFeed*)feed;
 
+/*!
+ * @brief Create a request to retrieve a Target.
+ * 
+ * @param targetID The target id or stomt username
+ *
+ * @return StomtRequest instance with time kTargetRequest
+ */
++ (StomtRequest*)targetRequestWithTargetID:(NSString*)targetID;
+
+/*!
+ * @brief Create a request to retrieve a Target with basic properties.
+ * @discussion The target will contain its identifier, display name, images array and category.
+ *
+ * @param targetID The target id or stomt username
+ *
+ * @return StomtRequest instance with time kBasicTargetRequest
+ */
++ (StomtRequest*)basicTargetRequestWithTargetID:(NSString*)targetID;
 
 //-----------------------------------------------------------------------------
 // Request senders
@@ -145,5 +163,14 @@
 */
 - (void)requestFeedInBackgroundWithBlock:(FeedRequestBlock)completion;
 
+/*!
+ * @brief Request a target with the given targetID
+ */
+- (void)requestTargetInBackgroundWithBlock:(TargetRequestBlock)completion;
+
+/*!
+ * @brief Request a target with the given targetID
+ */
+- (void)requestBasicTargetInBackgroundWithBlock:(TargetRequestBlock)completion;
 
 @end

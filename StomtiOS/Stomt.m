@@ -162,4 +162,21 @@ error:
 																				   completion:nil];
 	}
 }
+
++ (void)presentStomtCreationPanelWithTargetID:(NSString*)targetID defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion
+{
+	STTarget* target = [[STTarget alloc] init];
+	target.identifier = targetID;
+	
+	@synchronized(self)
+	{
+		STCreationViewController* cont = [[STCreationViewController alloc] initWithBody:defaultText
+																			 likeOrWish:likeOrWish
+																				 target:target
+																		completionBlock:completion];
+		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:cont
+																					 animated:YES
+																				   completion:nil];
+	}
+}
 @end
