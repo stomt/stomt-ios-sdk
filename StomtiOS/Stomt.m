@@ -54,6 +54,8 @@ error:
 
 + (void)promptAuthenticationIfNecessaryWithCompletionBlock:(BooleanCompletion)completion
 {
+	if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting authentication modal presentation...");
+	
 	if(![[NSUserDefaults standardUserDefaults] objectForKey:kToken])
 	{
 		LoginViewController* controllerToPresent = [[LoginViewController alloc] init];
@@ -69,6 +71,8 @@ error:
 
 + (void)logout
 {
+	if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting logout...");
+	
 	@synchronized(self)
 	{
         // logout on client side
@@ -78,8 +82,11 @@ error:
         
         // logout on server side
 		StomtRequest* logoutRequest = [StomtRequest logoutRequest];
-		[logoutRequest logoutInBackgroundWithBlock:^(BOOL succeeded) {}];
+		[logoutRequest logoutInBackgroundWithBlock:nil];
 	}
+	
+error:
+	return;
 }
 
 #pragma mark TODO
@@ -153,30 +160,30 @@ error:
 {
 	@synchronized(self)
 	{
-		STCreationViewController* cont = [[STCreationViewController alloc] initWithBody:defaultText
+		STCreationViewController* cont;
+		
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting stomt creation modal presentation...");
+		
+		cont = [[STCreationViewController alloc] initWithBody:defaultText
 																			 likeOrWish:likeOrWish
 																				 target:target
 																		completionBlock:completion];
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:cont
 																					 animated:YES
 																				   completion:nil];
+error:
+	return;
+		
 	}
 }
 
 + (void)presentStomtCreationPanelWithTargetID:(NSString*)targetID defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion
 {
-	STTarget* target = [[STTarget alloc] init];
-	target.identifier = targetID;
-	
 	@synchronized(self)
 	{
-		STCreationViewController* cont = [[STCreationViewController alloc] initWithBody:defaultText
-																			 likeOrWish:likeOrWish
-																				 target:target
-																		completionBlock:completion];
-		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:cont
-																					 animated:YES
-																				   completion:nil];
+		STTarget* target = [[STTarget alloc] init];
+		target.identifier = targetID;
+		[Stomt presentStomtCreationPanelWithTarget:target defaultText:defaultText likeOrWish:likeOrWish completionBlock:completion];
 	}
 }
 @end

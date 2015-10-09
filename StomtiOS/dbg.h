@@ -16,12 +16,12 @@
 #define _warn(M,...)
 #define _err(M,...) goto error;
 #define _info(M,...)
-#define _check(O,M,...)
+#define __check(O,M,...)
 #else
 #define _warn(M,...) fprintf(stderr, "[!?] " M "\n", ##__VA_ARGS__)
 #define _err(M,...) {fprintf(stderr, "[!!] " M "\n", ##__VA_ARGS__); errno=0; goto error;}
 #define _info(M,...) fprintf(stderr, "[@] " M "\n", ##__VA_ARGS__)
-#define _check(O,M,...) if(!O) _err(M,...)
+#define __check(O,M,...) if(!O) _err(M,...)
 #endif
 
 #endif

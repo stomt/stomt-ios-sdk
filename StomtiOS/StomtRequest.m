@@ -342,6 +342,8 @@ error:
 	
 	if(self.requestType == kAuthRequest){
 	
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
 		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
 							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
 		{
@@ -382,15 +384,18 @@ error:
 		}];
 		
 		return;
-	}
+	} fprintf(stderr,"\n[ERROR] Authentication request not available for this instance.");
+	
 error:
-	fprintf(stderr,"\n[ERROR] Authentication request not available for this instance.");
+	return;
 }
 
 - (void)sendStomtInBackgroundWithBlock:(StomtCreationBlock)completion
 {
 	if(self.requestType == kStomtCreationRequest)
 	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
 		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
 							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
 		{
@@ -427,16 +432,18 @@ error:
 				completion(connectionError,nil);
 		}];
 		return;
-	}
+	}fprintf(stderr,"\n[ERROR] Stomt creation request not available for this instance.");
 	
 error:
-	fprintf(stderr,"\n[ERROR] Stomt creation request not available for this instance.");
+	return;
 }
 
 
 - (void)uploadImageInBackgroundWithBlock:(ImageUploadBlock)completion
 {
 	if(self.requestType == kImageUploadRequest){
+		
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
 		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
 							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
@@ -470,16 +477,18 @@ error:
 		}];
 		
 		return;
-	}
+	}fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
 	
 error:
-	fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
+	return;
 }
 
 - (void)logoutInBackgroundWithBlock:(BooleanCompletion)completion
 {
 	if(self.requestType == kLogoutRequest)
 	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
 		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
 							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
 		{
@@ -505,16 +514,18 @@ error:
 			else if(completion) completion(NO);
 		}];
 		return;
-	}
+	}fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
 	
 error:
-	fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
+	return;
 }
 
 - (void)requestStomtInBackgroundWithBlock:(StomtCreationBlock)completion
 {
 	if(self.requestType == kStomtRequest)
 	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
 		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
 							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
 		 {
@@ -549,15 +560,17 @@ error:
 			else if(completion) completion(connectionError,nil);
 		}];
 		return;
-	}
+	}fprintf(stderr,"\n[ERROR] Stomt request not available for this instance.");
 error:
-	fprintf(stderr,"\n[ERROR] Stomt request not available for this instance.");
+	return;
 }
 
 - (void)requestFeedInBackgroundWithBlock:(FeedRequestBlock)completion
 {
 	if(self.requestType == kFeedRequest)
 	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
 		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
 							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
 		{
@@ -589,15 +602,17 @@ error:
 			else if(completion) completion(connectionError,nil);
 		}];
 		return;
-	}
+	}fprintf(stderr,"\n[ERROR] Feed request not available for this instance.");
 error:
-	fprintf(stderr,"\n[ERROR] Feed request not available for this instance.");
+	return;
 }
 
 - (void)requestTargetInBackgroundWithBlock:(TargetRequestBlock)completion
 {
 	if(self.requestType == kTargetRequest)
 	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
 		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 			
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
@@ -630,16 +645,18 @@ error:
 		}];
 		
 		return;
-	}
+	}fprintf(stderr,"\n[ERROR] Target request not available for this instance.");
 	
 error:
-	fprintf(stderr,"\n[ERROR] Target request not available for this instance.");
+	return;
 }
 
 - (void)requestBasicTargetInBackgroundWithBlock:(TargetRequestBlock)completion
 {
 	if(self.requestType == kBasicTargetRequest)
 	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
 		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 			
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
@@ -672,9 +689,9 @@ error:
 		}];
 		
 		return;
-	}
+	}fprintf(stderr,"\n[ERROR] Basic target request not available for this instance.");
 	
 error:
-	fprintf(stderr,"\n[ERROR] Basic target request not available for this instance.");
+	return;
 }
 @end
