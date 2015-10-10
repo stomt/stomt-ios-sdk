@@ -57,7 +57,7 @@ error:
 	
 	if(!self.textView)
 		self.textView = [[STTextView alloc] initWithFrame:CGRectMake(0,0,self.frame.size.width-5,self.frame.size.height-self.frame.size.height/2) likeOrWish:self.type];
-	self.textView.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height-self.textView.bounds.size.height/2);
+	self.textView.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height-self.textView.bounds.size.height/2+2);
 	self.textView.delegate = self;
 	if(!self.charCounter)
 	{
@@ -126,7 +126,7 @@ error:
 	
 	if(!self.targetDisplay)
 	{
-		self.targetDisplay = [[STTargetDisplayer alloc] initWithFrame:CGRectMake(self.likeOrWishView.bounds.size.width + 10+ 20,topRect.size.height+10+(self.likeOrWishView.bounds.size.height/2 - 12),topRect.size.width-self.likeOrWishView.bounds.size.width+40,24) target:self.target];
+		self.targetDisplay = [[STTargetDisplayer alloc] initWithFrame:CGRectMake(self.likeOrWishView.bounds.size.width + 10+ 20,topRect.size.height+10+(self.likeOrWishView.bounds.size.height/2 - 14),topRect.size.width-self.likeOrWishView.bounds.size.width+40,28) target:self.target];
 	}
 	
 	[self addSubview:self.charCounter];
