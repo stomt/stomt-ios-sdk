@@ -125,31 +125,6 @@ error:
 	}
 }
 
-+ (StomtRequest*)authenticationRequestWithEmailOrUser:(NSString *)user
-											 password:(NSString *)pass
-{
-	@synchronized(self)
-	{
-		
-		NSMutableURLRequest* apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kLoginPath];
-		NSError* jsonError;
-		NSDictionary* requestBody;
-		NSData* jsonData;
-		
-		if(!user || !pass) _err("Missing args for authentication request. Aborting...");
-		
-		requestBody = @{@"login_method":@"normal",@"emailusername":user,@"password":pass};
-		jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
-		if(jsonError) _err("Error in generating JSON data. Aborting...");
-		[apiRequest setHTTPBody:jsonData];
-		
-		return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kAuthRequest];
-	
-error:
-	return nil;
-	}
-}
-
 + (StomtRequest*)stomtCreationRequestWithStomtObject:(STObject *)stomtObject
 {
 	NSMutableURLRequest* apiRequest;
@@ -334,61 +309,6 @@ error:
 
 
 #pragma mark Send Requests
-
-- (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion
-{
-	__block NSError* dictErr;
-	__block NSDictionary* dataDict;
-	
-	if(self.requestType == kAuthRequest){
-	
-		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
-		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
-							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-		{
-			
-			if([HTTPResponseChecker checkResponseCode:response] == OK)
-			{
-				dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&dictErr];
-				if(!dictErr)
-				{
-					STUser* currentUser = [STUser initWithDataDictionary:[dataDict objectForKey:@"data"]];
-					if([[NSUserDefaults standardUserDefaults] objectForKey:kToken]) [Stomt logout];
-					if(currentUser.accessToken && currentUser.refreshToken)
-					{
-						[Stomt sharedInstance].accessToken = currentUser.accessToken;
-						[Stomt sharedInstance].refreshToken = currentUser.refreshToken;
-						[Stomt sharedInstance].isAuthenticated = YES;
-					}
-					if(completion) completion(connectionError,currentUser);
-				}
-				
-			}
-			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
-			{
-				[Stomt logout]; //Temporary behavior
-				
-				/*
-				[Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
-					
-				}];
-				 
-				 To be implemented soon. 
-				 
-				 */
-				
-			} //Better error handler will be implemented
-			else if(completion) completion(connectionError,nil);
-			
-		}];
-		
-		return;
-	} fprintf(stderr,"\n[ERROR] Authentication request not available for this instance.");
-	
-error:
-	return;
-}
 
 - (void)sendStomtInBackgroundWithBlock:(StomtCreationBlock)completion
 {

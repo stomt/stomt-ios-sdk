@@ -17,22 +17,22 @@
 
 @implementation CreateStomtWithLogin
 
-- (void)authenticate {
-    StomtRequest* authRequest = [StomtRequest authenticationRequestWithEmailOrUser:self.username password:self.password];
-    
-    // perform request
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
-    [authRequest autenticateInBackgroundWithBlock:^(NSError *error, STUser *user) {
-        if (user) {
-            [expectation fulfill];
-			NSLog(@"USER %@",user);
-            XCTAssertEqualObjects(user.identifier, self.username);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-    }];
-    [self waitForExpectationsWithTimeout:self.timeout handler:nil];
-}
+//- (void)authenticate {
+//    StomtRequest* authRequest = [StomtRequest authenticationRequestWithEmailOrUser:self.username password:self.password];
+//    
+//    // perform request
+//    XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
+//    [authRequest autenticateInBackgroundWithBlock:^(NSError *error, STUser *user) {
+//        if (user) {
+//            [expectation fulfill];
+//			NSLog(@"USER %@",user);
+//            XCTAssertEqualObjects(user.identifier, self.username);
+//        } else {
+//            NSLog(@"%@",[error localizedDescription]);
+//        }
+//    }];
+//    [self waitForExpectationsWithTimeout:self.timeout handler:nil];
+//}
 
 //-----------------------------------------------------------------------------
 // Helper

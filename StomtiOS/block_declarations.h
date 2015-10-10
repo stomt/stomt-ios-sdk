@@ -16,7 +16,7 @@
 @class STTarget;
 
 typedef void (^ BooleanCompletion)(BOOL succeeded);
-typedef void (^ AuthenticationBlock)(NSError* error, STUser* user);
+typedef void (^ AuthenticationBlock)(BOOL succeeded,NSError* error, STUser* user);
 typedef void (^ StomtCreationBlock)(NSError* error, STObject* stomt);
 typedef void (^ ImageUploadBlock)(NSError* error, STImage* image);
 typedef void (^ FeedRequestBlock)(NSError* error, STFeed* feed);

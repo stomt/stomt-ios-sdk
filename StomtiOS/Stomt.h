@@ -52,7 +52,7 @@
  *
  * @param completion Completion block to be executed after login;
  */
-+ (void)promptAuthenticationIfNecessaryWithCompletionBlock:(BooleanCompletion)completion;
++ (void)promptAuthenticationIfNecessaryWithCompletionBlock:(AuthenticationBlock)completion;
 
 /*!
  * @brief Unused.
@@ -87,4 +87,5 @@
  * @param completionBlock The completion handler to be called after the stomtCreation request.
  */
 + (void)presentStomtCreationPanelWithTargetID:(NSString*)targetID defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion;
+
 @end

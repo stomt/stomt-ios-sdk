@@ -14,7 +14,7 @@
 
 #define kAPIURL @"https://test.rest.stomt.com"
 
-#define kLoginPath @"/authentication/session"
+#define kLoginPath @"/authentication/authorize/token"
 #define kStomtCreationPath @"/stomts"
 #define kImageUploadPath @"/images"
 #define kLogoutPath @"/authentication/session"

@@ -41,17 +41,6 @@
 //-----------------------------------------------------------------------------
 
 /*!
- * @brief Create a request to send an authentication request to stomt.com
- *
- * @param emailOrUser Email or Username
- * @param password Password
- *
- * @return StomtRequest instance with type kAuthRequest
- */
-+ (StomtRequest*)authenticationRequestWithEmailOrUser:(NSString*)user
-											 password:(NSString*)pass;
-
-/*!
  * @brief Create a request to send a stomt with a STObject instance.
  *
  * @param stomtObject an instance of STObject. @see STObject
@@ -123,14 +112,6 @@
 //-----------------------------------------------------------------------------
 // Request senders
 //-----------------------------------------------------------------------------
-
-/*!
- * @brief Send an authentication request to stomt.com
- * @discussion An authentication request is sent to the stomt.com servers.
- *			 The access token and refresh tokens of the user are auto-handled.
- *			 The completion block will be called with the retrieved STUser object.
- */
-- (void)autenticateInBackgroundWithBlock:(AuthenticationBlock)completion;
 
 /*!
  * @brief Send the stomt saved in the request.

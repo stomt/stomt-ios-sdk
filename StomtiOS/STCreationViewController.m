@@ -203,7 +203,7 @@ error:
 - (void)sendStomtWithDict:(NSNotification*)notification//Body:(NSString *)body likeOrWish:(kSTObjectQualifier)likeOrWish targetID:(NSString *)targetID
 {
 	NSDictionary* userInfo = [notification userInfo];
-	STObject* stomtObject = [STObject objectWithTextBody:[userInfo objectForKey:@"body"] likeOrWish:[[userInfo objectForKey:@"likeOrWish"] integerValue] targetID:[userInfo objectForKey:@"targetID"]];
+	STObject* stomtObject = [STObject objectWithTextBody:[userInfo objectForKey:@"body"] likeOrWish:(int)[userInfo objectForKey:@"likeOrWish"] targetID:[userInfo objectForKey:@"targetID"]];
 	StomtRequest* request = [StomtRequest stomtCreationRequestWithStomtObject:stomtObject];
 	
 	[request sendStomtInBackgroundWithBlock:self.completionBlock];

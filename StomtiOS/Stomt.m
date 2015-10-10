@@ -10,12 +10,13 @@
 
 #import "Stomt.h"
 #import "StomtRequest.h"
-#import "LoginViewController.h"
 #import "dbg.h"
 #import "declarations.h"
 #import "strings.h"
 #import "STCreationViewController.h"
 #import "STTarget.h"
+#import "ModalAuthenticationController.h"
+#import "STUser.h"
 
 @interface Stomt ()
 - (void)setup;
@@ -52,15 +53,21 @@ error:
 
 #pragma mark Authentication Related
 
-+ (void)promptAuthenticationIfNecessaryWithCompletionBlock:(BooleanCompletion)completion
++ (void)promptAuthenticationIfNecessaryWithCompletionBlock:(AuthenticationBlock)completion
 {
-	if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting authentication modal presentation...");
+	if(![Stomt appID]) _err("No AppID set. Aborting authentication modal presentation...");
 	
 	if(![[NSUserDefaults standardUserDefaults] objectForKey:kToken])
 	{
-		LoginViewController* controllerToPresent = [[LoginViewController alloc] init];
-		controllerToPresent.completionBlock = completion;
-		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:controllerToPresent animated:YES completion:nil];
+		ModalAuthenticationController* modal = [[ModalAuthenticationController alloc] initWithAppID:[Stomt appID] redirectUri:@"http://localhost" completionBlock:^(BOOL succeeded, NSError *error, STUser *user) {
+			if(succeeded)
+			{
+				[Stomt sharedInstance].accessToken = user.accessToken;
+				[Stomt sharedInstance].refreshToken = user.refreshToken;
+				[Stomt sharedInstance].isAuthenticated = YES;
+			}completion(succeeded,error,user);
+		}];
+		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:modal animated:YES completion:nil];
 	}
 	else _info("Already logged in. Continuing execution...");
 	return;

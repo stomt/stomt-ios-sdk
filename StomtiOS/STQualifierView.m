@@ -17,7 +17,7 @@
 	self = [super initWithFrame:frame_];
 	
 	self.backgroundColor = (qualifier == kSTObjectLike) ? [UIColor colorWithRed:131.0f/255.0f green:198.0f/255.0f blue:72.0f/255.0f alpha:1.0f] : [UIColor colorWithRed:0.0f/255.0f green:134.0f/255.0f blue:194.0f/255.0f alpha:1.0f];
-	self.layer.cornerRadius = 1;
+	self.layer.cornerRadius = self.frame.size.height/2;
 	
 	if(!self.label)
 		self.label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,self.bounds.size.width,self.bounds.size.height)];
@@ -25,7 +25,7 @@
 	self.label.text = (qualifier == kSTObjectLike) ? @"I like" : @"I wish";
 	
 	self.label.textAlignment = NSTextAlignmentCenter;
-	self.label.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:9];
+	self.label.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12];
 	self.label.textColor = [UIColor whiteColor];
 	
 	self.type = qualifier;

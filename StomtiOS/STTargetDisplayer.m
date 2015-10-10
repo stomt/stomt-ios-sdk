@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Leonardo Cascianelli. All rights reserved.
 //
 
-#define threshold 4
+#define threshold 8
 
 #import "STTargetDisplayer.h"
 #import "STTargetNameRectangle.h"
@@ -42,7 +42,7 @@ error:
 - (void)drawRect:(CGRect)rect {
 	[STTargetNameRectangle drawCanvas1WithFrame:CGRectMake(rect.origin.x
 														   , rect.origin.y
-														   , self.container.bounds.size.width,
+														   , self.container.bounds.size.width+8,
 														   self.container.bounds.size.height)];
 	if(!self.container.displayName)
 	{

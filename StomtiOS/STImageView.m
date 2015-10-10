@@ -30,12 +30,14 @@
 			dispatch_async(dispatch_get_main_queue(), ^{
 				if(success)
 					self.image = self.downloadManager.image;
+				
 			});
 			
 		}];
 		
 		self.contentMode = UIViewContentModeScaleAspectFill;
-		
+		self.layer.cornerRadius = self.frame.size.width/2;
+		self.layer.masksToBounds = YES;
 		return self;
 	}
 
