@@ -23,12 +23,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
-        if (stomt) {
-            [expectation fulfill];
-            XCTAssertEqualObjects(stomt.identifier, identifier);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
+        [expectation fulfill];
+        XCTAssertEqualObjects(stomt.identifier, identifier);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -43,12 +39,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
-        if (stomt) {
-            [expectation fulfill];
-            XCTAssertEqualObjects(stomt.identifier, identifier);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
+        [expectation fulfill];
+        XCTAssertEqualObjects(stomt.identifier, identifier);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -62,12 +54,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
-        if (stomt) {
-            [expectation fulfill];
-            XCTAssertEqualObjects(stomt.identifier, identifier);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
+        [expectation fulfill];
+        XCTAssertEqualObjects(stomt.identifier, identifier);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -82,12 +70,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        if (stomt) {
-            XCTAssertEqualObjects(stomt.identifier, identifier);
-        } else {
-            XCTAssertNotNil(stomt);
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
+        XCTAssertEqualObjects(stomt.identifier, identifier);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -102,12 +85,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        if (stomt) {
-            XCTAssertEqualObjects(stomt.identifier, identifier);
-        } else {
-            XCTAssertNotNil(stomt);
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
+        XCTAssertEqualObjects(stomt.identifier, identifier);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }

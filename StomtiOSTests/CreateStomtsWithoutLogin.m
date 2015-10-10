@@ -17,43 +17,6 @@
 
 @implementation CreateStomtsWithoutLogin
 
-//-----------------------------------------------------------------------------
-// Helper
-//-----------------------------------------------------------------------------
-
-- (void)createStomtWithImage:(STImage *)image
-                 expectation:(XCTestExpectation *) expectation {
-    // new request
-    NSString *textBody = @"would create a anonym stomt with image. #unitTest";
-    NSString *targetID = @"stomt-ios";
-    STObject *ob = [STObject
-                    objectWithTextBody: textBody
-                    likeOrWish: kSTObjectWish
-                    targetID: targetID
-                    image: image
-                    ];
-    StomtRequest* sendStomt = [StomtRequest stomtCreationRequestWithStomtObject:ob];
-    
-    
-    // perform request
-    [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
-        if (stomt) {
-            [expectation fulfill];
-            XCTAssertTrue(stomt.anonym);
-            XCTAssertEqualObjects(stomt.text, textBody);
-            XCTAssertEqualObjects(stomt.target.identifier, targetID);
-            XCTAssertNotNil(stomt.image);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
-    }];
-}
-
-//-----------------------------------------------------------------------------
-// STObject
-//-----------------------------------------------------------------------------
-
 - (void)testSimple {
     // new request
     NSString *textBody = @"would create a simple anonym stomt. #unitTest";
@@ -70,15 +33,9 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        if (stomt) {
-            XCTAssertTrue(stomt.anonym);
-            XCTAssertEqualObjects(stomt.text, textBody);
-            XCTAssertEqualObjects(stomt.target.identifier, targetID);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-            XCTAssertNil(error);
-        }
-        
+        XCTAssertTrue(stomt.anonym);
+        XCTAssertEqualObjects(stomt.text, textBody);
+        XCTAssertEqualObjects(stomt.target.identifier, targetID);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -100,16 +57,11 @@
     // perform request
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
-        if (stomt) {
-            [expectation fulfill];
-            XCTAssertTrue(stomt.anonym);
-            XCTAssertEqualObjects(stomt.text, textBody);
-            XCTAssertEqualObjects(stomt.target.identifier, targetID);
-            XCTAssertEqualObjects(stomt.geoLocation, location);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertTrue(stomt.anonym);
+        XCTAssertEqualObjects(stomt.text, textBody);
+        XCTAssertEqualObjects(stomt.target.identifier, targetID);
+        XCTAssertEqualObjects(stomt.geoLocation, location);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -131,16 +83,11 @@
     // perform request
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
-        if (stomt) {
-            [expectation fulfill];
-            XCTAssertTrue(stomt.anonym);
-            XCTAssertEqualObjects(stomt.text, textBody);
-            XCTAssertEqualObjects(stomt.target.identifier, targetID);
-            XCTAssertEqualObjects(stomt.url, url);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertTrue(stomt.anonym);
+        XCTAssertEqualObjects(stomt.text, textBody);
+        XCTAssertEqualObjects(stomt.target.identifier, targetID);
+        XCTAssertEqualObjects(stomt.url, url);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -154,13 +101,32 @@
     // perform request
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [uploadImage uploadImageInBackgroundWithBlock:^(NSError *error, STImage *image) {
-        if (image) {
-            [self createStomtWithImage:image expectation:expectation];
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
+        [self createStomtWithImage:image expectation:expectation];
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
+}
+- (void)createStomtWithImage:(STImage *)image
+                 expectation:(XCTestExpectation *) expectation {
+    // new request
+    NSString *textBody = @"would create a anonym stomt with image. #unitTest";
+    NSString *targetID = @"stomt-ios";
+    STObject *ob = [STObject
+                    objectWithTextBody: textBody
+                    likeOrWish: kSTObjectWish
+                    targetID: targetID
+                    image: image
+                    ];
+    StomtRequest* sendStomt = [StomtRequest stomtCreationRequestWithStomtObject:ob];
+    
+    
+    // perform request
+    [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
+        [expectation fulfill];
+        XCTAssertTrue(stomt.anonym);
+        XCTAssertEqualObjects(stomt.text, textBody);
+        XCTAssertEqualObjects(stomt.target.identifier, targetID);
+        XCTAssertNotNil(stomt.image);
+    }];
 }
 
 @end

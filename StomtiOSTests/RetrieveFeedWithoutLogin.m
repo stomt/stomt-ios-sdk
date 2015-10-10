@@ -25,13 +25,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertEqual(feed.stomts.count, 15);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-
+        [expectation fulfill];
+        XCTAssertEqual(feed.stomts.count, 15);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -45,13 +40,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertEqual(feed.stomts.count, 15);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertEqual(feed.stomts.count, 15);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -66,13 +56,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertEqual(feed.stomts.count, 15);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertEqual(feed.stomts.count, 15);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -86,13 +71,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertEqual(feed.stomts.count, 15);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertEqual(feed.stomts.count, 15);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -106,13 +86,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertEqual(feed.stomts.count, 15);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertEqual(feed.stomts.count, 15);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -127,13 +102,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertEqual(feed.stomts.count, 15);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertEqual(feed.stomts.count, 15);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -148,13 +118,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertNotEqual(feed.stomts.count, 0);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertNotEqual(feed.stomts.count, 0);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -169,13 +134,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertEqual(feed.stomts.count, 15);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertEqual(feed.stomts.count, 15);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -189,13 +149,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertEqual(feed.stomts.count, 15);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertEqual(feed.stomts.count, 15);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -209,13 +164,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertNotEqual(feed.stomts.count, 0);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertNotEqual(feed.stomts.count, 0);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -229,13 +179,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-            XCTAssertNotEqual(feed.stomts.count, 0);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-        
+        [expectation fulfill];
+        XCTAssertNotEqual(feed.stomts.count, 0);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
@@ -262,13 +207,8 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
-        if (feed) {
-            [expectation fulfill];
-			XCTAssertNotEqual([feed.stomts count], 0);
-        } else {
-            NSLog(@"%@",[error localizedDescription]);
-        }
-		
+        [expectation fulfill];
+		XCTAssertNotEqual([feed.stomts count], 0);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
