@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Leonardo Cascianelli. All rights reserved.
 //
 
-#define authorizeURL @"https://test.rest.stomt.com/authentication/authorize"
+#define __DBG__
 
 #import "AuthenticationView.h"
 #import "STUser.h"
 
-@interface AuthenticationView () <UIWebViewDelegate,NSURLConnectionDataDelegate>
+@interface AuthenticationView () <UIWebViewDelegate,NSURLConnectionDataDelegate,NSURLConnectionDelegate>
 @property (nonatomic,strong) UIWebView* webView;
 @property (nonatomic,strong) NSString* clientID;
 @property (nonatomic,strong) NSString* redirectUri;
@@ -60,7 +60,7 @@ error:
 
 - (void)authorize
 {
-	NSURL* authorizationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@",authorizeURL,self.clientID,self.redirectUri]];
+	NSURL* authorizationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@",[NSString stringWithFormat:@"%@%@",kAPIURL,kAuthorizePath],self.clientID,self.redirectUri]];
 	[self.webView loadRequest:[NSURLRequest requestWithURL:authorizationURL]];
 }
 
@@ -75,7 +75,7 @@ error:
 		NSMutableDictionary* bodyDict;
 		NSURLConnection* conn;
 		
-		apiUrl = [NSURL URLWithString:kLoginPath];
+		apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIURL,kLoginPath]];
 		apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
 		[apiRequest setHTTPMethod:@"POST"];
 		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
@@ -84,7 +84,7 @@ error:
 		[bodyDict setObject:self.authorizationCode forKey:@"code"];
 		[bodyDict setObject:self.state forKey:@"state"];
 		[apiRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:bodyDict options:0 error:&error]];
-		if(error) goto error;
+		if(error) _err("Json parse error.");
 		
 		conn = [[NSURLConnection alloc] initWithRequest:apiRequest delegate:self];
 		[conn start];
@@ -103,6 +103,7 @@ error:
 
 #pragma mark Delegates
 
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	NSError* error;
@@ -111,7 +112,10 @@ error:
 	{
 		STUser* user = [STUser initWithDataDictionary:[dataDict objectForKey:@"data"]];
 		if(user)
+		{
 			[[NSNotificationCenter defaultCenter] postNotificationName:@"Dismiss-OAuth" object:nil userInfo:@{@"user":user}];
+			return;
+		}
 		else
 		{
 			NSError* error = [[NSError alloc] initWithDomain:@"Authentication" code:401 userInfo:@{@"description":@"Authentication failed. Check credentials."}];
@@ -165,6 +169,7 @@ error:
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+	
 	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"There was an error while connecting to the stomt's servers." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
 	[alertView show];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"Dismiss-OAuth" object:nil userInfo:nil];

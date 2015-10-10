@@ -22,6 +22,7 @@
 #define kSearchPath @"/search/stomts/"
 #define kGetTargetPath @"/targets/"
 #define kGetBasicTargetPath @"/targets/"
+#define kAuthorizePath @"/authentication/authorize"
 
 #define kD_Id @"id"
 #define kD_DisplayName @"displayname"
