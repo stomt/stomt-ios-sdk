@@ -11,6 +11,5 @@
 @interface StomtTestCaseWithLogin : StomtTestCase
 
 @property (nonatomic) NSString *username;
-@property (nonatomic) NSString *password;
 
 @end

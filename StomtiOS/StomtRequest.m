@@ -227,19 +227,22 @@ error:
 		
 		if([location hasPrefix:@"http://"]
 		   || [location hasPrefix:@"https://"]
-		   || [location hasPrefix:@"www."]
-		   || [location hasPrefix:@"stomt.com"])
+           || [location hasPrefix:@"www."]
+           || [location hasPrefix:@"stomt.com"]
+           || [location hasPrefix:@"test.stomt.com"])
 		{
-			if([location hasPrefix:@"http://www.stomt.com"]
-			   || [location hasPrefix:@"https://www.stomt.com"]
-			   || [location hasPrefix:@"https://stomt.com"]
+			if([location hasPrefix:@"www.stomt.com"]
+               || [location hasPrefix:@"http://www.stomt.com"]
+               || [location hasPrefix:@"https://www.stomt.com"]
+               || [location hasPrefix:@"stomt.com"]
 			   || [location hasPrefix:@"http://stomt.com"]
+			   || [location hasPrefix:@"https://stomt.com"]
+               || [location hasPrefix:@"test.stomt.com"]
 			   || [location hasPrefix:@"http://test.stomt.com"]
 			   || [location hasPrefix:@"https://test.stomt.com"]
-			   || [location hasPrefix:@"https://www.test.stomt.com"]
+               || [location hasPrefix:@"www.test.stomt.com"]
 			   || [location hasPrefix:@"http://www.test.stomt.com"]
-			   || [location hasPrefix:@"www.stomt.com"]
-			   || [location hasPrefix:@"stomt.com"])
+			   || [location hasPrefix:@"https://www.test.stomt.com"])
 			{
 				slug = [[location componentsSeparatedByString:@"/"] lastObject];
 			}

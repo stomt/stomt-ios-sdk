@@ -69,13 +69,14 @@
     // perform request
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
+        [expectation fulfill];
         if (stomt) {
-            [expectation fulfill];
             XCTAssertTrue(stomt.anonym);
             XCTAssertEqualObjects(stomt.text, textBody);
             XCTAssertEqualObjects(stomt.target.identifier, targetID);
         } else {
             NSLog(@"%@",[error localizedDescription]);
+            XCTAssertNil(error);
         }
         
     }];

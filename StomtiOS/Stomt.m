@@ -46,7 +46,6 @@
 {
 	if(!appid) _err("No appid. Aborting...");
 	[Stomt sharedInstance].appid = appid;
-	if([Stomt sharedInstance].accessToken && [Stomt sharedInstance].refreshToken) [Stomt sharedInstance].isAuthenticated = YES;
 error:
 	return;
 }
@@ -64,7 +63,6 @@ error:
 			{
 				[Stomt sharedInstance].accessToken = user.accessToken;
 				[Stomt sharedInstance].refreshToken = user.refreshToken;
-				[Stomt sharedInstance].isAuthenticated = YES;
 			}completion(succeeded,error,user);
 		}];
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:modal animated:YES completion:nil];
@@ -85,7 +83,6 @@ error:
         // logout on client side
         [Stomt sharedInstance].accessToken = nil;
         [Stomt sharedInstance].refreshToken = nil;
-        [Stomt sharedInstance].isAuthenticated = NO;
         
         // logout on server side
 		StomtRequest* logoutRequest = [StomtRequest logoutRequest];
@@ -132,10 +129,10 @@ error:
 
 + (BOOL)isAuthenticated //Easy access isAuthenticated from class
 {
-	return [Stomt sharedInstance].isAuthenticated;
+	return [Stomt sharedInstance].accessToken != nil;
 }
 
-- (void)setAccessToken:(NSString *)accessToken
++ (void)setAccessToken:(NSString *)accessToken
 {
 	@synchronized(self)
 	{

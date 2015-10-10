@@ -16,31 +16,14 @@
     
     // custom setUp
     self.username = @"test";
-    self.password = @"test";
-    //[self authenticate];
+    [Stomt setAccessToken:@"3m2jPXc2ZsvhiECT8rPBtsqCXV4gPGGr0vEDLR09"];
 }
 
 - (void)tearDown {
     // custom tearDown
-    [Stomt logout];
+    [Stomt setAccessToken:nil];
     
     [super tearDown];
 }
-
-//- (void)authenticate {
-//    StomtRequest* authRequest = [StomtRequest authenticationRequestWithEmailOrUser:self.username password:self.password];
-//    
-//    // perform request
-//    XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
-//    [authRequest autenticateInBackgroundWithBlock:^(NSError *error, STUser *user) {
-//        if (user) {
-//            [expectation fulfill];
-//            XCTAssertEqualObjects(user.identifier, self.username);
-//        } else {
-//            NSLog(@"%@",[error localizedDescription]);
-//        }
-//    }];
-//    [self waitForExpectationsWithTimeout:self.timeout handler:nil];
-//}
 
 @end
