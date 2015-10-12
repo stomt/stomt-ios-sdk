@@ -50,6 +50,10 @@ error:
 	self = [super init];
 	
 	int maxChars = (likeOrWish == kSTObjectLike) ? 100-8 : 100-5;
+	if(!body)
+	{
+		body = @"";
+	}
 	if(strlen([body UTF8String]) > maxChars) _err("Text needs to be less than %d chars long!",maxChars);
 	
 	if(!self.view)

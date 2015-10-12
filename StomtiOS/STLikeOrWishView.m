@@ -53,8 +53,21 @@ error:
 			self.wishView = [[STQualifierView alloc] initWithFrame:frame likeOrWish:kSTObjectWish];
 		}
 		
-		self.likeView.frame = (self.likeOrWish == kSTObjectLike) ? CGRectMake(0,frame.size.height/4,frame.size.width,frame.size.height-frame.size.height/4) : CGRectMake(frame.size.height/4,0,frame.size.width,frame.size.height-frame.size.height/4);
-		self.wishView.frame = (self.likeOrWish == kSTObjectLike) ? CGRectMake(frame.size.height/4,0,frame.size.width,frame.size.height-frame.size.height/4) : CGRectMake(frame.size.height/4,0,frame.size.width,frame.size.height-frame.size.height/4);
+		
+//		self.likeView.frame = (self.likeOrWish == kSTObjectLike) ? CGRectMake(0,frame.size.height/4,frame.size.width,frame.size.height-frame.size.height/4) :
+//		self.wishView.frame = (self.likeOrWish == kSTObjectWish) ? CGRectMake(frame.size.height/4,0,frame.size.width,frame.size.height-frame.size.height/4) : CGRectMake(frame.size.height/4,0,frame.size.width,frame.size.height-frame.size.height/4);
+//		
+
+		if(self.likeOrWish == kSTObjectLike)
+		{
+			self.likeView.frame = CGRectMake(0,frame.size.height/4,frame.size.width,frame.size.height-frame.size.height/4);
+			self.wishView.frame = CGRectMake(frame.size.height/4,0,frame.size.width,frame.size.height-frame.size.height/4);
+		}
+		else
+		{
+			self.likeView.frame = CGRectMake(frame.size.height/4,0,frame.size.width,frame.size.height-frame.size.height/4);
+			self.wishView.frame = CGRectMake(0,frame.size.height/4,frame.size.width,frame.size.height-frame.size.height/4);
+		}
 		
 		switch (self.likeOrWish) {
 			case kSTObjectLike:

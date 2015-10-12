@@ -1,0 +1,10 @@
+AlignEscapedNewlinesLeft: true
+AlignTrailingComments: false
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortFunctionsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+BreakBeforeBraces: Allman
+UseTab: Always
+SpaceBeforeParens: Never
+IndentCaseLabels: true

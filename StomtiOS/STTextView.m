@@ -37,6 +37,7 @@
 - (void)appendText:(NSString*)text
 {
 	self.text = [self.text stringByAppendingString:text];
+	self.selectedRange = NSMakeRange([self.text length], 0);
 }
 
 @end
