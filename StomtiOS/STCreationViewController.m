@@ -208,7 +208,7 @@ error:
 {
 	NSDictionary* userInfo = [notification userInfo];
 	STObject* stomtObject = [STObject objectWithTextBody:[userInfo objectForKey:@"body"] likeOrWish:[[userInfo objectForKey:@"likeOrWish"] intValue] targetID:[userInfo objectForKey:@"targetID"]];
-	StomtRequest* request = [StomtRequest stomtCreationRequestWithStomtObject:stomtObject]; //TEST
+	StomtRequest* request = [StomtRequest stomtCreationRequestWithStomtObject:stomtObject];
 	
 	[request sendStomtInBackgroundWithBlock:self.completionBlock];
 	[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(prepareForDismiss) userInfo:nil repeats:NO];

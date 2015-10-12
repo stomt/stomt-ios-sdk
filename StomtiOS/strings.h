@@ -12,7 +12,7 @@
 #define kToken @"[STOMT]Token"
 #define kRToken @"[STOMT]RefreshToken"
 
-#define kAPIURL @"https://test.rest.stomt.com"
+#define kAPIURL @"https://rest.stomt.com"
 
 #define kLoginPath @"/authentication/authorize/token"
 #define kStomtCreationPath @"/stomts"
