@@ -351,6 +351,8 @@ error:
 				 */
 				
 			} //Better error handler will be implemented
+			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
+				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion)
 				completion(connectionError,nil);
 		}];
@@ -396,6 +398,8 @@ error:
 					 */
 					
 				} //Better error handler will be implemented
+				else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
+					fprintf(stderr, "[!!]AppID not valid! Aborting...");
 				else if(completion) completion(connectionError,nil);
 		}];
 		
@@ -434,6 +438,8 @@ error:
 				 */
 				
 			} //Better error handler will be implemented
+			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
+				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(NO);
 		}];
 		return;
@@ -480,6 +486,8 @@ error:
 				 */
 				
 			} //Better error handler will be implemented
+			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
+				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(connectionError,nil);
 		}];
 		return;
@@ -522,6 +530,8 @@ error:
 				 */
 				
 			} //Better error handler will be implemented
+			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
+				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(connectionError,nil);
 		}];
 		return;
@@ -564,6 +574,8 @@ error:
 				 */
 				
 			} //Better error handler will be implemented
+			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
+				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(connectionError,nil);
 		}];
 		
@@ -608,6 +620,8 @@ error:
 				 */
 				
 			} //Better error handler will be implemented
+			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
+				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(connectionError,nil);
 		}];
 		
