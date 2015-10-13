@@ -5,7 +5,7 @@
 
 Our SDK allows you to add the feedback solution [www.stomt.com](https://www.stomt.com/) in your iPhone or iPad app. 
 
-To connect your app to stomt, first create the projects page on [stomt](https://www.stomt.com/).
+To connect your app to stomt, first create the project's page on [stomt](https://www.stomt.com/).
 
 
 ## Installation
