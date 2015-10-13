@@ -29,7 +29,7 @@ pod 'Stomt-iOS-SDK', '~> 0.0.x'
 Done!
 
 
-### Configuration
+## Configuration
 
 Import the SDK:
 
@@ -42,7 +42,7 @@ Import the SDK:
 #import <StomtiOS/Stomt.h>
 ```
 
-Last step is to initialize the framework:
+Initialize the framework:
 ```Objective-C
 // Setup Stomt with your AppID
 // -> get yours at: https://www.stomt.com/dev/my-apps
@@ -51,11 +51,9 @@ Last step is to initialize the framework:
 ```
 
 
-You can now start to use the Stomt SDK.
-
 ## Documentation
 
-#Common Usages
+###Common Usages
 
 The most common action while using the SDK is to send a Stomt.
 ```Objective-C
