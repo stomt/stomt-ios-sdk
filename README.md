@@ -35,7 +35,7 @@ Import the SDK:
 
 **(If installed via CocoaPods)**
 ```Objective-C
-#import <Stomt-iOS-SDK/Stomt.h>
+#import "Stomt.h"
 ```
 **(If installed manually)**
 ```Objective-C
