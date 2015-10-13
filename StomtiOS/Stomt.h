@@ -8,8 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 #import "block_declarations.h"
-#import "declarations.h"
+#import "StomtRequest.h"
+#import "STUser.h"
+#import "STCategory.h"
+#import "STStats.h"
+#import "STObject.h"
+#import "STImage.h"
+#import "STImageView.h"
+#import "STFeed.h"
+#import "STSearchFilterKeywords.h"
+
 
 @class STUser;
 @class STTarget;

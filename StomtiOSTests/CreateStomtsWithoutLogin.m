@@ -8,7 +8,7 @@
 
 #import "StomtTestCase.h"
 #import <XCTest/XCTest.h>
-#import <StomtiOS/StomtiOS.h>
+#import "Stomt.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface CreateStomtsWithoutLogin : StomtTestCase

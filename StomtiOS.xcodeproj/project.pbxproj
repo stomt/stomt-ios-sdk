@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A70884AF1BA1F43300758049 /* StomtiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884AE1BA1F43300758049 /* StomtiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70884B51BA1F43300758049 /* StomtiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70884A91BA1F43300758049 /* StomtiOS.framework */; };
 		A70884D41BA1F47400758049 /* Stomt.m in Sources */ = {isa = PBXBuildFile; fileRef = A70884D01BA1F47400758049 /* Stomt.m */; };
 		A70884DC1BA1F4A400758049 /* dbg.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884D91BA1F4A400758049 /* dbg.h */; };
@@ -89,7 +88,6 @@
 /* Begin PBXFileReference section */
 		A70884A91BA1F43300758049 /* StomtiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StomtiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A70884AD1BA1F43300758049 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A70884AE1BA1F43300758049 /* StomtiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StomtiOS.h; sourceTree = "<group>"; };
 		A70884B41BA1F43300758049 /* StomtiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StomtiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A70884BA1BA1F43300758049 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A70884D01BA1F47400758049 /* Stomt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stomt.m; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 				A70885151BA20F2900758049 /* StomtRequest */,
 				A70884D81BA1F48500758049 /* Helpers */,
 				A70884CE1BA1F45B00758049 /* Public */,
-				A70884AE1BA1F43300758049 /* StomtiOS.h */,
 				A70884AC1BA1F43300758049 /* Supporting Files */,
 			);
 			path = StomtiOS;
@@ -470,7 +467,6 @@
 				A76DFE281BC57CC200017C32 /* STImageView.h in Headers */,
 				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
 				A71C9E261BC9676800398B0B /* AuthenticationViewController.h in Headers */,
-				A70884AF1BA1F43300758049 /* StomtiOS.h in Headers */,
 				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
 				A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */,
 				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,

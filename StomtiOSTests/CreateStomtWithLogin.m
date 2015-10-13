@@ -8,7 +8,7 @@
 
 #import "StomtTestCaseWithLogin.h"
 #import <XCTest/XCTest.h>
-#import <StomtiOS/StomtiOS.h>
+#import "Stomt.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface CreateStomtWithLogin : StomtTestCaseWithLogin

@@ -7,7 +7,7 @@
 //
 
 #import "StomtTestCaseWithLogin.h"
-#import <StomtiOS/StomtiOS.h>
+#import "Stomt.h"
 
 @implementation StomtTestCaseWithLogin
 
