@@ -3,14 +3,14 @@
 [![Stomt API](https://img.shields.io/badge/stomt-v2.0.X-brightgreen.svg)](https://rest.stomt.com/)
 [![CocoaPod](https://img.shields.io/cocoapods/v/Stomt-iOS-SDK.svg)](https://github.com/stomt/ios-sdk)
 
-Our SDK allows you to add the feedback solution [www.stomt.com](https://www.stomt.com/) in your iPhone or iPad app. 
+Our SDK allows you to add the feedback solution [www.stomt.com](https://www.stomt.com/) to your iPhone or iPad app. 
 
-To connect your app to stomt, first create the project's page on [stomt](https://www.stomt.com/).
+To connect your app to stomt, [create a project page on stomt](https://www.stomt.com/createTarget) first.
 
 
 ## Installation
 
-To install Stomt-iOS-SDK you have multiple choices.
+To install the stomt-iOS-SDK you have multiple choices.
 
 ### CocoaPods - (Easiest method)
 
