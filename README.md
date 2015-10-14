@@ -1,4 +1,4 @@
-# Stomt-iOS-SDK
+# stomt iOS-SDK
 [![Build Status](https://travis-ci.org/stomt/stomt-ios-sdk.svg?branch=master)](https://travis-ci.org/stomt/stomt-ios-sdk)
 [![Stomt API](https://img.shields.io/badge/stomt-v2.0.X-brightgreen.svg)](https://rest.stomt.com/)
 [![CocoaPod](https://img.shields.io/cocoapods/v/Stomt-iOS-SDK.svg)](https://github.com/stomt/ios-sdk)
