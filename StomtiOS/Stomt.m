@@ -39,7 +39,7 @@
 
 - (void)setup
 {
-	//SETUP
+	kAPIURL = @"https://rest.stomt.com";
 }
 
 + (void)setAppID:(NSString *)appid
@@ -109,6 +109,12 @@ error:
 	_warn("Requesting new token without logging in first!");
 }
 // NOT YET IMPLEMENTED -----------
+
+#pragma mark Private
++ (void)setAPIHost:(NSString *)host
+{
+	kAPIURL = host;
+}
 
 #pragma mark Accessory
 

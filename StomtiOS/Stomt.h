@@ -58,6 +58,10 @@
 + (NSString*)accessToken;
 + (NSString*)refreshToken;
 
+// Private
+/// @warning Private usage only.
++ (void)setAPIHost:(NSString*)host;
+
 /*!
  * @brief Prompts an authentication modal if no access token is present
  *
