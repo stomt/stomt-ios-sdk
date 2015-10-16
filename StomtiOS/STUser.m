@@ -41,4 +41,49 @@ error:
 	}
 }
 
++ (instancetype)initWithDictionaryRepresentation:(NSDictionary *)dict
+{
+	
+#define ezOut(X,Y) if([dict objectForKey:Y]) target.X = [dict objectForKey:Y];
+	
+	if(dict)
+	{
+		STUser* target = [[STUser alloc] init];
+		ezOut(identifier, @"identifier");
+		ezOut(displayName, @"displayName");
+		ezOut(category, @"category");
+		ezOut(profileImage, @"profileImage");
+		ezOut(stats, @"stats");
+		if([dict objectForKey:@"isVerified"]) target.isVerified = [[dict objectForKey:@"isVerified"] boolValue];
+		ezOut(accessToken, @"accessToken");
+		ezOut(refreshToken, @"refreshToken");
+		if([dict objectForKey:@"isNewUser"]) target.isVerified = [[dict objectForKey:@"isNewUser"] boolValue];
+		
+#undef ezOut
+		
+		if(target) return target;
+		
+	}_err("No dictionary passed. Aborting...");
+	
+error:
+	return nil;
+}
+
+- (NSDictionary*)dictionaryRepresentation
+{
+	NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:[super dictionaryRepresentation]];
+	
+#define ezIn(X,Y) if(X) [dict setObject:X forKey:Y];
+	
+	ezIn(self.accessToken, @"accessToken");
+	ezIn(self.refreshToken, @"refreshToken");
+	ezIn([NSNumber numberWithBool:self.isNewUser], @"isNewUser");
+
+#undef ezIn
+	if(dict) return dict;
+	_err("STUser dictionary representation could not be created. Aborting...");
+error:
+	return nil;
+}
+
 @end

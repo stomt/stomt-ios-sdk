@@ -46,8 +46,11 @@
 
 /*!
  * @brief Is the user authenticated?
+ * @warning Returns 'YES' even if anonymously authenticated.
  */
 @property (nonatomic) BOOL isAuthenticated;
+
+@property (nonatomic,strong) STUser* loggedUser;
 
 + (instancetype)sharedInstance;
 + (void)setAppID:(NSString *)appid;

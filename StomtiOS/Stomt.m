@@ -24,6 +24,8 @@
 
 @implementation Stomt
 
+@synthesize loggedUser;
+
 #pragma mark Setup
 
 + (instancetype)sharedInstance
@@ -63,6 +65,7 @@ error:
 			{
 				[Stomt sharedInstance].accessToken = user.accessToken;
 				[Stomt sharedInstance].refreshToken = user.refreshToken;
+				if(user) [[Stomt sharedInstance] setLoggedUser:user];
 			}completion(succeeded,error,user);
 		}];
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:modal animated:YES completion:nil];
@@ -166,6 +169,8 @@ error:
 	return [[NSUserDefaults standardUserDefaults] objectForKey:kRToken];
 }
 
+#pragma mark UI
+
 + (void)presentStomtCreationPanelWithTarget:(STTarget*)target defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion
 {
 	@synchronized(self)
@@ -175,9 +180,10 @@ error:
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting stomt creation modal presentation...");
 		
 		cont = [[STCreationViewController alloc] initWithBody:defaultText
-																			 likeOrWish:likeOrWish
-																				 target:target
-																		completionBlock:completion];
+												   likeOrWish:likeOrWish
+													   target:target
+											  completionBlock:completion];
+		
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:cont
 																					 animated:YES
 																				   completion:nil];

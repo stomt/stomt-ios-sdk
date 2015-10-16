@@ -61,6 +61,16 @@
 + (instancetype)initWithDataDictionary:(NSDictionary*)data;
 
 /*!
+ * @brief Create a STTarget instance with target dictionary representation.
+ * @discussion This method should be used exclusively to retrieve a target previously stored into an NSDictionary with the 'dictionaryRepresentation' instance method.
+ *
+ * @param NSDictionary representation of the target
+ *
+ * @return A newly created STTarget instance
+ */
++ (instancetype)initWithDictionaryRepresentation:(NSDictionary*)dict;
+
+/*!
  * @brief Create a STTarget instance with given paramenters.
  *
  * @param displayName The extended name of the target.
@@ -78,7 +88,6 @@
  * @param completionBlock A completion block to be called when the request is completed.
  */
 + (void)retrieveEssentialTargetWithTargetID:(NSString*)identifier completionBlock:(TargetRequestBlock)completion;
-
 /*!
  * @brief (Private!) Create a STTarget instance with a given target dictionary.
  *
@@ -88,5 +97,12 @@
  */
 - (instancetype)initWithDataDictionary:(NSDictionary*)data;
 
+/*!
+ * @brief The NSDictionary representation of the target.
+ * @discussion The dictionary representation can be useful to easely store an instance of a target when dealing with non object graph databases. The naming convention for keys conforms to the names convention used in the target properties.
+ *
+ * @return An instance of NSDictionary.
+ */
+- (NSDictionary*)dictionaryRepresentation;
 
 @end

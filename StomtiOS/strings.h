@@ -11,6 +11,7 @@
 
 #define kToken @"[STOMT]Token"
 #define kRToken @"[STOMT]RefreshToken"
+#define kCurrentUser @"[STOMT]CurrentUser"
 
 const NSString* kAPIURL;
 

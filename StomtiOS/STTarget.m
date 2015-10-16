@@ -42,6 +42,27 @@ error:
 	return nil;
 }
 
+- (NSDictionary*)dictionaryRepresentation
+{
+	
+#define ezIn(X,Y) if(X) [dict setObject:X forKey:Y];
+	
+	NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+	ezIn(self.identifier, @"identifier");
+	ezIn(self.displayName, @"displayName");
+	ezIn(self.category, @"category");
+	ezIn(self.profileImage, @"profileImage");
+	ezIn(self.stats, @"stats");
+	ezIn([NSNumber numberWithBool:self.isVerified], @"isVerified");
+	
+#undef ezIn
+	
+	if(dict) return dict;
+	_err("STTarget dictionary representation could not be created. Aborting...");
+error:
+	return nil;
+}
+
 + (instancetype)initWithDataDictionary:(NSDictionary *)data
 {
 	@synchronized(self)
@@ -56,6 +77,31 @@ error:
 		
 	}
 
+}
+
++ (instancetype)initWithDictionaryRepresentation:(NSDictionary *)dict
+{
+	
+#define ezOut(X,Y) if([dict objectForKey:Y]) target.X = [dict objectForKey:Y];
+	
+	if(dict)
+	{
+		STTarget* target = [[STTarget alloc] init];
+		ezOut(identifier, @"identifier");
+		ezOut(displayName, @"displayName");
+		ezOut(category, @"category");
+		ezOut(profileImage, @"profileImage");
+		ezOut(stats, @"stats");
+		if([dict objectForKey:@"isVerified"]) target.isVerified = [[dict objectForKey:@"isVerified"] boolValue];
+		
+#undef ezOut
+		
+		if(target) return target;
+		
+	}_err("No dictionary passed. Aborting...");
+	
+error:
+	return nil;
 }
 
 + (instancetype)targetWithDisplayName:(NSString*)displayName identifier:(NSString*)identifier
