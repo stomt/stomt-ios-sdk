@@ -1,36 +1,48 @@
-# Stomt-iOS-SDK
-[![Build Status](https://travis-ci.org/stomt/stomt-ios-sdk.svg?branch=master)](https://travis-ci.org/stomt/stomt-ios-sdk)
-[![Stomt API](https://img.shields.io/badge/stomt-v2.0.X-brightgreen.svg)](https://rest.stomt.com/)
-[![CocoaPod](https://img.shields.io/cocoapods/v/Stomt-iOS-SDK.svg)](https://github.com/stomt/ios-sdk)
+# stomt iOS-SDK [![Build Status](https://travis-ci.org/stomt/stomt-ios-sdk.svg?branch=master)](https://travis-ci.org/stomt/stomt-ios-sdk) [![Stomt API](https://img.shields.io/badge/stomt-v2.1.X-brightgreen.svg)](https://rest.stomt.com/) [![CocoaPod](https://img.shields.io/cocoapods/v/Stomt-iOS-SDK.svg)](https://github.com/stomt/ios-sdk)
 
-Our SDK allows you to add the feedback solution [www.stomt.com](https://www.stomt.com/) in your iPhone or iPad app. 
+<img alt="Easy integration" src="https://rest.stomt.com/uploads/y8I4/origin/y8I4ZtARHa0ReOOT8SIkZAzDMawN9c671SlEtVVf_origin.png" width="500">
 
-To connect your app to stomt, first create the projects page on [stomt](https://www.stomt.com/).
+Our SDK allows you to add the feedback solution [www.stomt.com](https://www.stomt.com/) to your iPhone or iPad app. 
+
+
+To connect your app to stomt, [create a project page on stomt](https://www.stomt.com/createTarget) first.
 
 
 ## Installation
 
-To install Stomt-iOS-SDK you just need to add the projects source to your app and add a simple configuration.
+To install the stomt-iOS-SDK you have multiple choices.
 
-### CocoaPods
+### CocoaPods - (Easiest method)
 
-Add the SDK to your app by adding the following line to your Podfile.
+Add the SDK to your app by adding the following line into your Podfile.
 ```
 pod 'Stomt-iOS-SDK', '~> 0.0.x'
 ```
+*(Version can be omitted)*
 
-(Alternatively [download](https://github.com/stomt/stomt-ios-sdk/archive/master.zip) the source from GitHub and add it to your project.)
+### Manually
+
+- Issue from command line `git clone https://github.com/stomt/stomt-ios-sdk` to download the github project. 
+- Locate `StomtiOS.xcodeproj` in the cloned repo and drag it into your current XCode project. **Be sure to place it outside your project hierarchy!**
+- Goto *Build Phases* pane of your app and add **StomtiOS.framework** inside *Link Bynary With Libraries*.
+
+Done!
 
 
-### Configuration
+## Configuration
 
 Import the SDK:
+
+**(If installed via CocoaPods)**
 ```Objective-C
-#import <Stomt-iOS-SDK/Stomt-iOS-SDK.h>
+#import "Stomt.h"
+```
+**(If installed manually)**
+```Objective-C
+#import <StomtiOS/Stomt.h>
 ```
 
-
-Next initilize the package once:
+Initialize the framework:
 ```Objective-C
 // Setup Stomt with your AppID
 // -> get yours at: https://www.stomt.com/dev/my-apps
@@ -39,21 +51,23 @@ Next initilize the package once:
 ```
 
 
-You can now start to use the full [API](http://cocoadocs.org/docsets/Stomt-iOS-SDK/) of the SDK, the most important method will be opening a feedback form:
+## Documentation
+
+###Common Usages
+
+The most common action while using the SDK is to send a Stomt.
 ```Objective-C
 // Open a creation modal for your applications page
 // -> the targetID is your pages identifier you can copy it from the pages url
 //    https://www.stomt.com/stomt-ios-sdk -> stomt-ios-sdk
 //
 [Stomt presentStomtCreationPanelWithTargetID:@"stomt-ios-sdk"
-								 defaultText:@" "
-								  likeOrWish:kSTObjectWish
-							 completionBlock:^(NSError *error, STObject *stomt) {}];
+							defaultText:@" "
+							likeOrWish:kSTObjectWish
+							 completionBlock:^(NSError *error, STObject *stomt) {
+							 	//Completion block
+							 }];
 ```
-
-## Documentation
-
-The full documentation of the SDK can be found on [CocoaDocs](http://cocoadocs.org/docsets/Stomt-iOS-SDK/).
 
 
 ## Contribution
