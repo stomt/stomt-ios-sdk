@@ -63,6 +63,8 @@ error:
 	return nil;
 }
 
+#pragma mark Class Methods
+
 + (instancetype)initWithDataDictionary:(NSDictionary *)data
 {
 	@synchronized(self)
