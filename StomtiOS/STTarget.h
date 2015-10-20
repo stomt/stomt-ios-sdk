@@ -17,7 +17,7 @@
  * STTarget class represents a Target, one of the most important objects in stomt.
  * Almost any object that this library handles inherits from STTarget class or contains an instance of it.
  */
-@interface STTarget : NSObject
+@interface STTarget : NSObject <NSCoding>
 
 
 /*!

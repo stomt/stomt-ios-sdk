@@ -11,7 +11,7 @@
 /*!
  * STUser, subclas of STTarget, represents a logged in user.
  */
-@interface STUser : STTarget
+@interface STUser : STTarget <NSCoding>
 
 
 /*!

@@ -60,6 +60,7 @@
 + (NSString*)appID;
 + (NSString*)accessToken;
 + (NSString*)refreshToken;
++ (STUser*)loggedUser;
 
 // Private
 /// @warning Private usage only.

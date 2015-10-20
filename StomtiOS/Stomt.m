@@ -119,6 +119,27 @@ error:
 	kAPIURL = host;
 }
 
+- (void)setLoggedUser:(STUser *)user
+{
+	NSData *usr = [NSKeyedArchiver archivedDataWithRootObject:user];
+	[[NSUserDefaults standardUserDefaults] setObject:usr forKey:kCurrentUser];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (STUser*)loggedUser
+{
+	if(!loggedUser)
+	{
+		NSData *extUser = [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentUser];
+		STUser *usr = [NSKeyedUnarchiver unarchiveObjectWithData:extUser];
+		if(usr)
+		{
+			loggedUser = usr;
+		}
+	}
+	return loggedUser;
+}
+
 #pragma mark Accessory
 
 + (NSString*)appID //Easy access appid from class
@@ -134,6 +155,11 @@ error:
 + (NSString*)refreshToken //Easy access refreshToken from class
 {
 	return [Stomt sharedInstance].refreshToken;
+}
+
++ (STUser*)loggedUser //Easy access to the authenticated user. (Not anonymous!)
+{
+	return [Stomt sharedInstance].loggedUser;
 }
 
 + (BOOL)isAuthenticated //Easy access isAuthenticated from class

@@ -11,7 +11,7 @@
 /*!
  * Represents a category of @p STTargets.
  */
-@interface STCategory : NSObject
+@interface STCategory : NSObject <NSCoding>
 
 
 /*!

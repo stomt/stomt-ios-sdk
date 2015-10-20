@@ -86,4 +86,33 @@ error:
 	return nil;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[super encodeWithCoder:aCoder];
+	
+	if(self.accessToken)
+		[aCoder encodeObject:self.accessToken forKey:@"accessToken"];
+	if(self.refreshToken)
+		[aCoder encodeObject:self.refreshToken forKey:@"refreshToken"];
+	
+	[aCoder encodeBool:self.isNewUser forKey:@"isNewUser"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super initWithCoder:aDecoder];
+	if(self)
+	{
+		self.accessToken = [aDecoder decodeObjectForKey:@"accessToken"];
+		self.refreshToken = [aDecoder decodeObjectForKey:@"refreshToken"];
+		self.isNewUser = [aDecoder decodeBoolForKey:@"isNewUser"];
+		
+		return self;
+		
+	}_err("Could not init with coder. Aborting...");
+	
+error:
+	return nil;
+}
+
 @end

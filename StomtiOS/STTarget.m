@@ -63,6 +63,50 @@ error:
 	return nil;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	
+#define ezIn(X,Y) if(self.X) [aCoder encodeObject:self.X forKey:Y];
+	
+	ezIn(identifier, @"identifier");
+	ezIn(displayName, @"displayName");
+	ezIn(category, @"category");
+	ezIn(profileImage, @"profileImage");
+	ezIn(stats, @"stats");
+	[aCoder encodeBool:self.isVerified forKey:@"isVerified"];
+	
+#ifdef ezIn
+#undef ezIn
+#endif
+	
+}
+
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	if(self)
+	{
+		
+#define ezOut(X,Y) self.X = [aDecoder decodeObjectForKey:Y];
+		
+		ezOut(identifier, @"identifier");
+		ezOut(displayName, @"displayName");
+		ezOut(category, @"category");
+		ezOut(profileImage, @"profileImage");
+		ezOut(stats, @"stats");
+		self.isVerified = [aDecoder decodeBoolForKey:@"isVerified"];
+		
+#ifdef ezOut
+#undef ezOut
+#endif
+		return self;
+		
+	}_err("Could not init with coder. Aborting...");
+error:
+	return nil;
+}
+
 #pragma mark Class Methods
 
 + (instancetype)initWithDataDictionary:(NSDictionary *)data
@@ -96,7 +140,9 @@ error:
 		ezOut(stats, @"stats");
 		if([dict objectForKey:@"isVerified"]) target.isVerified = [[dict objectForKey:@"isVerified"] boolValue];
 		
+#ifdef ezOut
 #undef ezOut
+#endif
 		
 		if(target) return target;
 		

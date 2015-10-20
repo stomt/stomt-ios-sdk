@@ -47,6 +47,42 @@
 	return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+#define ezIn(X,Y) [aCoder encodeInteger:self.X forKey:Y];
+	ezIn(followers,@"followers");
+	ezIn(follows, @"follows");
+	ezIn(createdStomts, @"createdStomts");
+	ezIn(receivedStomts, @"receivedStomts");
+	
+#ifdef ezIn
+#undef ezIn
+#endif
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	if(self)
+	{
+		
+#define ezOut(X,Y) self.X = [aDecoder decodeIntegerForKey:Y];
+		
+		ezOut(followers,@"followers");
+		ezOut(follows, @"follows");
+		ezOut(createdStomts, @"createdStomts");
+		ezOut(receivedStomts, @"receivedStomts");
+		
+#ifdef ezOut
+#undef ezOut
+#endif
+		return self;
+		
+	} _err("Could not init with coder. Aborting...");
+error:
+	return nil;
+}
+
 + (instancetype)initWithStatsDictionary:(NSDictionary*)stats
 {
 	NSInteger followers,follows,cStomts,rStomts;

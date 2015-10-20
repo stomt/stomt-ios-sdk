@@ -25,4 +25,22 @@
 error:
 	return nil;
 }
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject:self.identifier forKey:@"identifier"];
+	[aCoder encodeObject:self.displayName forKey:@"displayName"];
+}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	if(self)
+	{
+		self.identifier = [aDecoder decodeObjectForKey:@"identifier"];
+		self.displayName = [aDecoder decodeObjectForKey:@"displayName"];
+		return self;
+	} _err("Could not init with coder. Aborting...");
+error:
+	return nil;
+}
 @end
