@@ -19,6 +19,7 @@ const NSString* kAPIURL;
 #define kStomtCreationPath @"/stomts"
 #define kImageUploadPath @"/images"
 #define kLogoutPath @"/authentication/session"
+#define kFacebookLoginPath @"/authentication/session"
 #define kReadStomtPath @"/stomts/"
 #define kSearchPath @"/search/stomts/"
 #define kGetTargetPath @"/targets/"

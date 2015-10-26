@@ -95,7 +95,7 @@
  * 
  * @param targetID The target id or stomt username
  *
- * @return StomtRequest instance with time kTargetRequest
+ * @return StomtRequest instance with type kTargetRequest
  */
 + (StomtRequest*)targetRequestWithTargetID:(NSString*)targetID;
 
@@ -105,9 +105,23 @@
  *
  * @param targetID The target id or stomt username
  *
- * @return StomtRequest instance with time kBasicTargetRequest
+ * @return StomtRequest instance with type kBasicTargetRequest
  */
 + (StomtRequest*)basicTargetRequestWithTargetID:(NSString*)targetID;
+
+/*!
+ * @brief Authenticate or register an user via Facebook login.
+ * @discussion This method accepts raw data retrieved by a successuful login using the Facebook SDK.
+ * You will have to provide properties contained in the 'FBSDKProfile' class and in the 'FBSDKAccessToken' class.
+ *
+ * @param accessToken The access token retrieved by the +[FBSDKAccessToken currentAccessToken] method in the Facebook SDK.
+ * @param userID The user identifier retrieved by the @userID property in the FacebookSDK (FBSDKProfile class).
+ *
+ * @warning This documentation refers to the Facebook SDK version '20151007'.
+ *
+ * @return StomtRequest instance with type kFacebookAuthenticationRequest
+ */
++ (StomtRequest*)facebookAuthenticationRequestWithAccessToken:(NSString*)accessToken userID:(NSString*)userID;
 
 //-----------------------------------------------------------------------------
 // Request senders
@@ -150,8 +164,13 @@
 - (void)requestTargetInBackgroundWithBlock:(TargetRequestBlock)completion;
 
 /*!
- * @brief Request a target with the given targetID
+ * @brief Request a basic target (restricted target) with the given targetID
  */
 - (void)requestBasicTargetInBackgroundWithBlock:(TargetRequestBlock)completion;
+
+/*!
+ * @brief Authenticate the user to Stomt through Facebook.
+ */
+- (void)authenticateWithFacebookInBackgroundWithBlock:(AuthenticationBlock)completion;
 
 @end

@@ -10,11 +10,20 @@
 #define __declarations__
 
 typedef enum{
-	kStateError,kStateSuccess
+	kStateError,
+	kStateSuccess
 }kState;
 
 typedef enum{
-	kAuthRequest,kStomtCreationRequest,kImageUploadRequest,kLogoutRequest,kStomtRequest,kFeedRequest,kTargetRequest,kBasicTargetRequest
+	kAuthRequest,
+	kStomtCreationRequest,
+	kImageUploadRequest,
+	kLogoutRequest,
+	kStomtRequest,
+	kFeedRequest,
+	kTargetRequest,
+	kBasicTargetRequest,
+	kFacebookAuthenticationRequest
 }RequestType;
 
 typedef enum{

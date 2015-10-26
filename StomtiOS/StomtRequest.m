@@ -310,6 +310,34 @@ error:
 	return nil;
 }
 
++ (StomtRequest*)facebookAuthenticationRequestWithAccessToken:(NSString *)accessToken userID:(NSString *)userID
+{
+	NSMutableURLRequest* apiRequest;
+	NSMutableDictionary* dictBody;
+	NSData* jsonData;
+	NSError* error;
+	
+	if(accessToken && userID)
+	{
+		apiRequest =  [StomtRequest generateBasePOSTRequestWithPath:kFacebookLoginPath];
+		dictBody = [NSMutableDictionary dictionary];
+		
+		[dictBody setObject:@"facebook" forKey:@"login_method"];
+		[dictBody setObject:accessToken forKey:@"fb_access_token"];
+		[dictBody setObject:userID forKey:@"fb_user_id"];
+		
+		jsonData = [NSJSONSerialization dataWithJSONObject:dictBody options:0 error:&error];
+		if(error) _err("Error while creating jsonData. Aborting...");
+		
+		[apiRequest setHTTPBody:jsonData];
+		
+		return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kFacebookAuthenticationRequest];
+		
+	}_err("Missing paramenters. Aborting...");
+	
+error:
+	return nil;
+}
 
 #pragma mark Send Requests
 
@@ -631,4 +659,59 @@ error:
 error:
 	return;
 }
+
+- (void)authenticateWithFacebookInBackgroundWithBlock:(AuthenticationBlock)completion
+{
+	if(self.requestType == kFacebookAuthenticationRequest)
+	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
+		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+			
+			if([HTTPResponseChecker checkResponseCode:response] == OK)
+			{
+				NSDictionary* dataDict;
+				if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				if(dataDict)
+				{
+					NSError* error;
+					BOOL rt = YES;
+					STUser* user = [STUser initWithDataDictionary:[dataDict objectForKey:@"data"]];
+					if(!user) error = [NSError errorWithDomain:@"Authentication error" code:0 userInfo:@{@"info":@"Could not instantiate an STUser."}];
+					
+					[Stomt sharedInstance].accessToken = user.accessToken;
+					[Stomt sharedInstance].refreshToken = user.refreshToken;
+					[[Stomt sharedInstance] setLoggedUser:user];
+					
+					completion(rt,error,user);
+					return;
+						
+				}
+			}
+			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
+			{
+				[Stomt logout]; //Temporary behavior
+				
+				/*
+				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
+					
+				 }];
+				 
+				 To be implemented soon.
+				 
+				 */
+				
+			} //Better error handler will be implemented
+			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
+				fprintf(stderr, "[!!]AppID not valid! Aborting...");
+			else if(completion) completion(NO,connectionError,nil);
+		}];
+		
+		return;
+//		
+	}_err("Authentication request not available for this instance.");
+error:
+	return;
+}
+
 @end
