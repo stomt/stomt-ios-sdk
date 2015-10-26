@@ -100,27 +100,27 @@ Or via **Facebook connect**. This approach requires some setup, which is explain
 
 1. Insert in "ViewController.m" file:
 
-```Objective-C
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-```
+	```Objective-C
+	#import <FBSDKCoreKit/FBSDKCoreKit.h>
+	#import <FBSDKLoginKit/FBSDKLoginKit.h>
+	```
 2. Create the login button and set the delegate to **self** *(Ensure that the ViewController class conforms to 'FBSDKLoginButtonDelegate' protocol, and implement the required methods)*:
 
-```Objective-C
-	FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-	// Optional: Place the button in the center of your view.
-	loginButton.center = self.view.center;
-	loginButton.delegate = self;
-	[self.view addSubview:loginButton];
-```
+	```Objective-C
+		FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+		// Optional: Place the button in the center of your view.
+		loginButton.center = self.view.center;
+		loginButton.delegate = self;
+		[self.view addSubview:loginButton];
+	```
 3. Once the Facebook login has been completed, execute the following code in the *loginButton:didCompleteWithResult:error:* method.
 
-```Objective-C
-		StomtRequest* req = [StomtRequest facebookAuthenticationRequestWithAccessToken:result.token.tokenString userID:result.token.userID];
-		[req authenticateWithFacebookInBackgroundWithBlock:^(BOOL succeeded, NSError *error, STUser *user) {
-			// Code...
-		}];
-```
+	```Objective-C
+			StomtRequest* req = [StomtRequest facebookAuthenticationRequestWithAccessToken:result.token.tokenString userID:result.token.userID];
+			[req authenticateWithFacebookInBackgroundWithBlock:^(BOOL succeeded, NSError *error, STUser *user) {
+				// Code...
+			}];
+	```
 
 
 
