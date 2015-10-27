@@ -1,0 +1,6 @@
+framework module StomtiOS {
+umbrella header "Stomt.h"
+
+export *
+module * { export * }
+}
