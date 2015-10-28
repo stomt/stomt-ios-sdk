@@ -66,7 +66,7 @@ error:
 				[Stomt sharedInstance].accessToken = user.accessToken;
 				[Stomt sharedInstance].refreshToken = user.refreshToken;
 				if(user) [[Stomt sharedInstance] setLoggedUser:user];
-			}completion(succeeded,error,user);
+			}if(completion) completion(succeeded,error,user);
 		}];
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:modal animated:YES completion:nil];
 	}

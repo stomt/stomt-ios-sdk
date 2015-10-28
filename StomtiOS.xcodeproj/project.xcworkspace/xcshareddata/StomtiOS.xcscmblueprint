@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "264804F419203D76F7016174919570CA4998A38F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4D9BA052C773DAACCE01BDD7CB12717C1E38F537" : 0,
+    "264804F419203D76F7016174919570CA4998A38F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5CB012AB-81EE-4E2F-A798-DF923DB294FD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4D9BA052C773DAACCE01BDD7CB12717C1E38F537" : "stomt-ios-sdk-sample\/",
+    "264804F419203D76F7016174919570CA4998A38F" : "StomtiOS"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "StomtiOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "StomtiOS.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/stomt\/ios-sdk",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "264804F419203D76F7016174919570CA4998A38F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/stomt\/stomt-ios-sdk-sample",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4D9BA052C773DAACCE01BDD7CB12717C1E38F537"
+    }
+  ]
+}
