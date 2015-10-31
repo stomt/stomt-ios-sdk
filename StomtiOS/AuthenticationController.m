@@ -54,14 +54,12 @@ error:
 
 - (BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-	NSLog(@"%@",url);
 	NSArray* respArray = [((NSString*)[[[url absoluteString] componentsSeparatedByString:@"?"] lastObject]) componentsSeparatedByString:@"&"];
 	NSMutableArray* tempArray = [NSMutableArray array];
 	
 	for(NSString* aggregate in respArray)
 	{
 		tempArray = [NSMutableArray arrayWithArray:[(NSString*)aggregate componentsSeparatedByString:@"="]];
-		NSLog(@"Array %@",tempArray);
 		if([[tempArray firstObject] isEqualToString:@"code"])
 			self.authorizationCode = [tempArray lastObject];
 		if([[tempArray firstObject] isEqualToString:@"state"])
@@ -110,7 +108,7 @@ error:
 		NSDictionary* rtDict = [NSDictionary dictionaryWithDictionary:[self evaluateResult:data response:response error:error]];
 		if(rtDict)
 		{
-			[self gracefullyDismiss:[[rtDict objectForKey:@"success"] boolValue] error:[rtDict objectForKey:@"error"] user:[rtDict objectForKey:@"user"]];
+			[self gracefullyDismiss:[[rtDict objectForKey:@"success"] boolValue]  error:[rtDict objectForKey:@"error"] user:[rtDict objectForKey:@"user"]];
 			return;
 		}_err("Data evaluation error. Aborting...");
 	}_err("Could not retrieve data. Aborting...");
@@ -128,7 +126,7 @@ error:
 	/* Error handler class to be implemented. Temporary behavior. */
 	if([HTTPResponseChecker checkResponseCode:response] == OK && !error)
 	{
-		[rtDict setObject:[NSNumber numberWithBool:YES] forKey:@"succeeded"];
+		[rtDict setObject:[NSNumber numberWithBool:YES] forKey:@"success"];
 		[rtDict setObject:[NSNull null] forKey:@"error"];
 		[rtDict setObject:[STUser initWithDataDictionary:[dataDict objectForKey:@"data"]] forKey:@"user"];
 	}
@@ -140,7 +138,7 @@ error:
 
 - (void)gracefullyDismiss:(BOOL)succeeded error:(NSError*)error user:(STUser*)user
 {
-	NSLog(@"%@",user); //HERE
+	if(self.completion){ self.completion(succeeded,error,user); }
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -58,10 +58,16 @@ error:
 + (void)promptAuthenticationIfNecessaryWithCompletionBlock:(AuthenticationBlock)completion
 {
 	if(![Stomt appID]) _err("No AppID set. Aborting authentication modal presentation...");
-	
-	if(![[NSUserDefaults standardUserDefaults] objectForKey:kToken])
+	if(![Stomt accessToken])
 	{
-		[Stomt sharedInstance].authController = [[AuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:completion];
+		[Stomt sharedInstance].authController = [[AuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(BOOL succeeded, NSError *error, STUser *user) {
+			if(succeeded)
+			{
+				[[Stomt sharedInstance] setAccessToken:user.accessToken];
+				[[Stomt sharedInstance] setRefreshToken:user.refreshToken];
+				if(user) [[Stomt sharedInstance] setLoggedUser:user];
+			}if(completion) completion(succeeded,error,user);
+		}];
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
 	}
 	else _info("Already logged in. Continuing execution...");
@@ -162,7 +168,7 @@ error:
 	return [Stomt sharedInstance].accessToken != nil;
 }
 
-+ (void)setAccessToken:(NSString *)accessToken
+- (void)setAccessToken:(NSString *)accessToken
 {
 	@synchronized(self)
 	{
