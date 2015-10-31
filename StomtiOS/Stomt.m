@@ -168,6 +168,8 @@ error:
 	return [Stomt sharedInstance].accessToken != nil;
 }
 
+#pragma mark Private accessors
+
 - (void)setAccessToken:(NSString *)accessToken
 {
 	@synchronized(self)

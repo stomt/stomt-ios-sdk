@@ -54,7 +54,7 @@
 
 + (instancetype)sharedInstance;
 + (void)setAppID:(NSString *)appid;
-+ (void)setAccessToken:(NSString *)accessToken;
+- (void)setAccessToken:(NSString *)accessToken;
 
 // Easy access
 + (NSString*)appID;
