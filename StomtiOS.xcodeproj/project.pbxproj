@@ -12,14 +12,10 @@
 		A70884DC1BA1F4A400758049 /* dbg.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884D91BA1F4A400758049 /* dbg.h */; };
 		A70884DD1BA1F4A400758049 /* declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DA1BA1F4A400758049 /* declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DB1BA1F4A400758049 /* block_declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70D8DA81BE3F5440099BAB8 /* AuthenticationController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D8DA61BE3F5440099BAB8 /* AuthenticationController.h */; };
+		A70D8DA91BE3F5440099BAB8 /* AuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D8DA71BE3F5440099BAB8 /* AuthenticationController.m */; };
 		A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7107E8B1BA2F614001F3B38 /* STUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7107E8C1BA2F614001F3B38 /* STUser.m */; };
-		A71C9E241BC9676800398B0B /* ModalAuthenticationController.h in Headers */ = {isa = PBXBuildFile; fileRef = A71C9E1E1BC9676800398B0B /* ModalAuthenticationController.h */; };
-		A71C9E251BC9676800398B0B /* ModalAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A71C9E1F1BC9676800398B0B /* ModalAuthenticationController.m */; };
-		A71C9E261BC9676800398B0B /* AuthenticationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A71C9E201BC9676800398B0B /* AuthenticationViewController.h */; };
-		A71C9E271BC9676800398B0B /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A71C9E211BC9676800398B0B /* AuthenticationViewController.m */; };
-		A71C9E281BC9676800398B0B /* AuthenticationView.h in Headers */ = {isa = PBXBuildFile; fileRef = A71C9E221BC9676800398B0B /* AuthenticationView.h */; };
-		A71C9E291BC9676800398B0B /* AuthenticationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A71C9E231BC9676800398B0B /* AuthenticationView.m */; };
 		A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D451BA4338E00DF83B8 /* STCategory.m */; };
 		A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = A7450D481BA44E9800DF83B8 /* HTTPResponseChecker.h */; };
 		A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D491BA44E9800DF83B8 /* HTTPResponseChecker.m */; };
@@ -95,14 +91,10 @@
 		A70884D91BA1F4A400758049 /* dbg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dbg.h; sourceTree = "<group>"; };
 		A70884DA1BA1F4A400758049 /* declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = declarations.h; sourceTree = "<group>"; };
 		A70884DB1BA1F4A400758049 /* block_declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block_declarations.h; sourceTree = "<group>"; };
+		A70D8DA61BE3F5440099BAB8 /* AuthenticationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationController.h; sourceTree = "<group>"; };
+		A70D8DA71BE3F5440099BAB8 /* AuthenticationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationController.m; sourceTree = "<group>"; };
 		A7107E8B1BA2F614001F3B38 /* STUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUser.h; sourceTree = "<group>"; };
 		A7107E8C1BA2F614001F3B38 /* STUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUser.m; sourceTree = "<group>"; };
-		A71C9E1E1BC9676800398B0B /* ModalAuthenticationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalAuthenticationController.h; sourceTree = "<group>"; };
-		A71C9E1F1BC9676800398B0B /* ModalAuthenticationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalAuthenticationController.m; sourceTree = "<group>"; };
-		A71C9E201BC9676800398B0B /* AuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
-		A71C9E211BC9676800398B0B /* AuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
-		A71C9E221BC9676800398B0B /* AuthenticationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationView.h; sourceTree = "<group>"; };
-		A71C9E231BC9676800398B0B /* AuthenticationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationView.m; sourceTree = "<group>"; };
 		A7450D451BA4338E00DF83B8 /* STCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCategory.m; sourceTree = "<group>"; };
 		A7450D481BA44E9800DF83B8 /* HTTPResponseChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPResponseChecker.h; sourceTree = "<group>"; };
 		A7450D491BA44E9800DF83B8 /* HTTPResponseChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPResponseChecker.m; sourceTree = "<group>"; };
@@ -291,12 +283,8 @@
 		A71C9E1D1BC9675C00398B0B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				A71C9E1E1BC9676800398B0B /* ModalAuthenticationController.h */,
-				A71C9E1F1BC9676800398B0B /* ModalAuthenticationController.m */,
-				A71C9E201BC9676800398B0B /* AuthenticationViewController.h */,
-				A71C9E211BC9676800398B0B /* AuthenticationViewController.m */,
-				A71C9E221BC9676800398B0B /* AuthenticationView.h */,
-				A71C9E231BC9676800398B0B /* AuthenticationView.m */,
+				A70D8DA61BE3F5440099BAB8 /* AuthenticationController.h */,
+				A70D8DA71BE3F5440099BAB8 /* AuthenticationController.m */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -467,17 +455,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7E2484C1BC3256A00811B36 /* STQualifierView.h in Headers */,
+				A70D8DA81BE3F5440099BAB8 /* AuthenticationController.h in Headers */,
 				A70884DD1BA1F4A400758049 /* declarations.h in Headers */,
 				A7E2484A1BC3256A00811B36 /* STLikeOrWishView.h in Headers */,
 				A7E248431BC3255D00811B36 /* STCharCountLabel.h in Headers */,
 				A7E2485A1BC3258400811B36 /* STButtonLabel.h in Headers */,
 				A70884DC1BA1F4A400758049 /* dbg.h in Headers */,
-				A71C9E241BC9676800398B0B /* ModalAuthenticationController.h in Headers */,
 				A7E248381BC3254A00811B36 /* STCreationTop.h in Headers */,
 				A7E248551BC3257700811B36 /* STTargetDisplayerContainer.h in Headers */,
 				A76DFE281BC57CC200017C32 /* STImageView.h in Headers */,
 				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
-				A71C9E261BC9676800398B0B /* AuthenticationViewController.h in Headers */,
 				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
 				A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */,
 				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,
@@ -490,7 +477,6 @@
 				A76DFE301BC5AF2800017C32 /* StomtRequest.h in Headers */,
 				A7E248321BC3253E00811B36 /* STCreationView.h in Headers */,
 				A7EB48041BC81172008B34C9 /* STTargetNameRectangle.h in Headers */,
-				A71C9E281BC9676800398B0B /* AuthenticationView.h in Headers */,
 				A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */,
 				A75AF2B31BA88F6700D74B9C /* strings.h in Headers */,
 				A7E248411BC3255D00811B36 /* STTextView.h in Headers */,
@@ -599,7 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7EB48051BC81172008B34C9 /* STTargetNameRectangle.m in Sources */,
-				A71C9E251BC9676800398B0B /* ModalAuthenticationController.m in Sources */,
+				A70D8DA91BE3F5440099BAB8 /* AuthenticationController.m in Sources */,
 				A70884D41BA1F47400758049 /* Stomt.m in Sources */,
 				A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */,
 				A7E2483B1BC3254A00811B36 /* STCreationTop.m in Sources */,
@@ -617,8 +603,6 @@
 				A768D76E1BA9EB6000466AFB /* STImage.m in Sources */,
 				A7E2484B1BC3256A00811B36 /* STLikeOrWishView.m in Sources */,
 				A75AF2B71BA893B000D74B9C /* STObject.m in Sources */,
-				A71C9E291BC9676800398B0B /* AuthenticationView.m in Sources */,
-				A71C9E271BC9676800398B0B /* AuthenticationViewController.m in Sources */,
 				A7E248421BC3255D00811B36 /* STTextView.m in Sources */,
 				A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */,
 				A7833D011BB46B1100A3F13B /* STFeed.m in Sources */,

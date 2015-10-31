@@ -107,4 +107,6 @@
  */
 + (void)presentStomtCreationPanelWithTargetID:(NSString*)targetID defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion;
 
+- (BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+
 @end

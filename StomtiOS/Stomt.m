@@ -17,8 +17,10 @@
 #import "STTarget.h"
 #import "ModalAuthenticationController.h"
 #import "STUser.h"
+#import "AuthenticationController.h"
 
 @interface Stomt ()
+@property (nonatomic,strong) AuthenticationController* authController;
 - (void)setup;
 @end
 
@@ -60,6 +62,7 @@ error:
 	
 	if(![[NSUserDefaults standardUserDefaults] objectForKey:kToken])
 	{
+		/*
 		ModalAuthenticationController* modal = [[ModalAuthenticationController alloc] initWithAppID:[Stomt appID] redirectUri:@"http://localhost" completionBlock:^(BOOL succeeded, NSError *error, STUser *user) {
 			if(succeeded)
 			{
@@ -69,6 +72,10 @@ error:
 			}if(completion) completion(succeeded,error,user);
 		}];
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:modal animated:YES completion:nil];
+		 */
+		
+		[Stomt sharedInstance].authController = [[AuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:completion];
+		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
 	}
 	else _info("Already logged in. Continuing execution...");
 	return;
@@ -229,4 +236,16 @@ error:
 		[Stomt presentStomtCreationPanelWithTarget:target defaultText:defaultText likeOrWish:likeOrWish completionBlock:completion];
 	}
 }
+
+- (BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+	if(self.authController)
+	{
+		return [self.authController application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+	}_err("No authentication controller set. Aborting...");
+	
+error:
+	return NO;
+}
+
 @end
