@@ -15,7 +15,7 @@ To install the stomt-iOS-SDK you have multiple choices.
 ### CocoaPods - (Easiest method)
 
 Add the SDK to your app by adding the following line into your Podfile.
-
+```
 pod 'Stomt-iOS-SDK', '~> 0.0.x'
 ```
 
