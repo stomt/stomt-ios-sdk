@@ -4,8 +4,10 @@ Todos and requests can be seen in the [Stomt-SDK(iOS) page](https://www.stomt.co
 
 For platform independent questions feel free to address a stomt to @h3xept or contact via twitter.
 
+##[Unreleased]
+- Authentication delegate
 
-## [Unreleased]
+## [0.0.3] - 2015-11-02
 - Provide access to the current logged in user instance.
 - Add dictionary representation of STTarget and subclasses.
 - Create encoding and decoding methods for instances of the framework classes.
