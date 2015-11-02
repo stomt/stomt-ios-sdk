@@ -23,8 +23,8 @@ pod 'Stomt-iOS-SDK', '~> 0.0.x'
 
 If you are including the SDK with CocoaPods, be sure to use the desired version. 
 
-- iOS8 version --> `"pod 'Stomt-iOS-SDK', '~> 2.0.0'"`
-- iOS9 version --> `"pod 'Stomt-iOS-SDK', '~> 3.0.0'"`
+- iOS8 version --> `"pod 'Stomt-iOS-SDK', '< 2.0.0'"`
+- iOS9 version --> `"pod 'Stomt-iOS-SDK', '~> 2.0.0'"`
 
 This will ensure you to have the latest version of the desired OS.
 
