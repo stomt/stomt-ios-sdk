@@ -5,6 +5,7 @@ Todos and requests can be seen in the [Stomt-SDK(iOS) page](https://www.stomt.co
 For platform independent questions feel free to address a stomt to @h3xept or contact via twitter.
 
 ## [Unreleased]
+- Authentication delegate
 
 ## [2.0.0] 2015-11-2
 - Updated authentication to Stomt with SFSafariViewController.
