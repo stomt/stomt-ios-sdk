@@ -8,14 +8,15 @@
 
 #define __DBG__
 
-#import "AuthenticationController.h"
+#import "STAuthenticationController.h"
 #import "block_declarations.h"
 #import "strings.h"
 #import "HTTPResponseChecker.h"
 #import "STUser.h"
 #import "dbg.h"
+#import "STAuthenticationDelegate.h"
 
-@interface AuthenticationController ()
+@interface STAuthenticationController ()
 @property (nonatomic,strong) NSString* clientID;
 @property (nonatomic,strong) NSString* authorizationCode;
 @property (nonatomic,strong) NSString* authorizationState;
@@ -23,10 +24,10 @@
 - (void)authenticate;
 - (void)prepareToDismiss:(NSData*)data response:(NSURLResponse*)response error:(NSError*)error;
 - (NSDictionary*)evaluateResult:(NSData*)data response:(NSURLResponse*)response error:(NSError*)error;
-- (void)gracefullyDismiss:(BOOL)succeeded error:(NSError*)error user:(STUser*)user;
+- (void)gracefullyDismiss:(NSDictionary*)retDict;
 @end
 
-@implementation AuthenticationController
+@implementation STAuthenticationController
 
 - (instancetype)init
 {
@@ -106,9 +107,9 @@ error:
 	if(data)
 	{
 		NSDictionary* rtDict = [NSDictionary dictionaryWithDictionary:[self evaluateResult:data response:response error:error]];
-		if(rtDict)
+		if([rtDict objectForKey:@"user"])
 		{
-			[self gracefullyDismiss:[[rtDict objectForKey:@"success"] boolValue]  error:[rtDict objectForKey:@"error"] user:[rtDict objectForKey:@"user"]];
+			[self gracefullyDismiss:rtDict];
 			return;
 		}_err("Data evaluation error. Aborting...");
 	}_err("Could not retrieve data. Aborting...");
@@ -120,25 +121,45 @@ error:
 {
 	NSError* jsonError;
 	NSDictionary* dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-	NSMutableDictionary* rtDict = [NSMutableDictionary dictionary];
+	NSMutableDictionary* rtDict;
 	if(jsonError) _err("Error in creating JSON, malformed response. Aborting...");
 	
-	/* Error handler class to be implemented. Temporary behavior. */
-	if([HTTPResponseChecker checkResponseCode:response] == OK && !error)
-	{
-		[rtDict setObject:[NSNumber numberWithBool:YES] forKey:@"success"];
-		[rtDict setObject:[NSNull null] forKey:@"error"];
-		[rtDict setObject:[STUser initWithDataDictionary:[dataDict objectForKey:@"data"]] forKey:@"user"];
-	}
+
+	rtDict = [NSMutableDictionary dictionary];
+	[rtDict setObject:[NSNumber numberWithBool:YES] forKey:@"success"];
+	[rtDict setObject:[NSNull null] forKey:@"error"];
+	[rtDict setObject:[STUser initWithDataDictionary:[dataDict objectForKey:@"data"]] forKey:@"user"];
+	[rtDict setObject:data forKey:@"data"];
+	[rtDict setObject:response forKey:@"response"];
+	
 	return rtDict;
 	
 error:
 	return nil;
 }
 
-- (void)gracefullyDismiss:(BOOL)succeeded error:(NSError*)error user:(STUser*)user
+- (void)gracefullyDismiss:(NSDictionary*)retDict
 {
+	BOOL succeeded = [[retDict objectForKey:@"success"] boolValue];
+	NSError* error = [retDict objectForKey:@"error"];
+	STUser* user = [retDict objectForKey:@"user"];
+	NSData* data = [retDict objectForKey:@"data"];
+	NSURLResponse* response = [retDict objectForKey:@"response"];
+	
 	if(self.completion){ self.completion(succeeded,error,user); }
+	if(self.privDelegate)
+	{
+		if(succeeded){ if([self.privDelegate respondsToSelector:@selector(authenticationController:successfullyLoggedInWithUser:)]){
+			[self.privDelegate authenticationController:self successfullyLoggedInWithUser:user];
+		}}
+		else
+		{
+			if([self.privDelegate respondsToSelector:@selector(authenticationController:loginFailedWithResponse:receivedData:error:)])
+			{
+				[self.privDelegate authenticationController:self loginFailedWithResponse:response receivedData:data error:error];
+			}
+		}
+	}
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 

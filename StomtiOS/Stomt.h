@@ -19,7 +19,7 @@
 #import "STImageView.h"
 #import "STFeed.h"
 #import "STSearchFilterKeywords.h"
-
+#import "STAuthenticationDelegate.h"
 
 @class STUser;
 @class STTarget;
@@ -72,6 +72,13 @@
  * @param completion Completion block to be executed after login;
  */
 + (void)promptAuthenticationIfNecessaryWithCompletionBlock:(AuthenticationBlock)completion;
+
+/*!
+ * @brief Prompts an authentication modal if no access token is present
+ *
+ * @param delegate The delegate to be called when an event occurs.
+ */
++ (void)promptAuthenticationIfNecessaryWithDelegate:(id<STAuthenticationDelegate>)delegate;
 
 /*!
  * @brief Unused.

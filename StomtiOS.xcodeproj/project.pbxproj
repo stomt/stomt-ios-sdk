@@ -12,8 +12,8 @@
 		A70884DC1BA1F4A400758049 /* dbg.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884D91BA1F4A400758049 /* dbg.h */; };
 		A70884DD1BA1F4A400758049 /* declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DA1BA1F4A400758049 /* declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DB1BA1F4A400758049 /* block_declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A70D8DA81BE3F5440099BAB8 /* AuthenticationController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D8DA61BE3F5440099BAB8 /* AuthenticationController.h */; };
-		A70D8DA91BE3F5440099BAB8 /* AuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D8DA71BE3F5440099BAB8 /* AuthenticationController.m */; };
+		A70D8DA81BE3F5440099BAB8 /* STAuthenticationController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D8DA61BE3F5440099BAB8 /* STAuthenticationController.h */; };
+		A70D8DA91BE3F5440099BAB8 /* STAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D8DA71BE3F5440099BAB8 /* STAuthenticationController.m */; };
 		A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7107E8B1BA2F614001F3B38 /* STUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7107E8C1BA2F614001F3B38 /* STUser.m */; };
 		A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D451BA4338E00DF83B8 /* STCategory.m */; };
@@ -40,7 +40,7 @@
 		A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B91BB6FEA3006A8135 /* STFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BB1BB6FEB5006A8135 /* STImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BD1BB6FEC1006A8135 /* Stomt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7C2174A1BE17A6B00F8EB52 /* STAuthenticationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C217491BE17A6B00F8EB52 /* STAuthenticationDelegate.h */; };
+		A7C2174A1BE17A6B00F8EB52 /* STAuthenticationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C217491BE17A6B00F8EB52 /* STAuthenticationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7E248301BC3253E00811B36 /* STCreationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2482C1BC3253E00811B36 /* STCreationViewController.h */; };
 		A7E248311BC3253E00811B36 /* STCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E2482D1BC3253E00811B36 /* STCreationViewController.m */; };
 		A7E248321BC3253E00811B36 /* STCreationView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2482E1BC3253E00811B36 /* STCreationView.h */; };
@@ -91,8 +91,8 @@
 		A70884D91BA1F4A400758049 /* dbg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dbg.h; sourceTree = "<group>"; };
 		A70884DA1BA1F4A400758049 /* declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = declarations.h; sourceTree = "<group>"; };
 		A70884DB1BA1F4A400758049 /* block_declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block_declarations.h; sourceTree = "<group>"; };
-		A70D8DA61BE3F5440099BAB8 /* AuthenticationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationController.h; sourceTree = "<group>"; };
-		A70D8DA71BE3F5440099BAB8 /* AuthenticationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationController.m; sourceTree = "<group>"; };
+		A70D8DA61BE3F5440099BAB8 /* STAuthenticationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAuthenticationController.h; sourceTree = "<group>"; };
+		A70D8DA71BE3F5440099BAB8 /* STAuthenticationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAuthenticationController.m; sourceTree = "<group>"; };
 		A7107E8B1BA2F614001F3B38 /* STUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUser.h; sourceTree = "<group>"; };
 		A7107E8C1BA2F614001F3B38 /* STUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUser.m; sourceTree = "<group>"; };
 		A7450D451BA4338E00DF83B8 /* STCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCategory.m; sourceTree = "<group>"; };
@@ -283,8 +283,8 @@
 		A71C9E1D1BC9675C00398B0B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				A70D8DA61BE3F5440099BAB8 /* AuthenticationController.h */,
-				A70D8DA71BE3F5440099BAB8 /* AuthenticationController.m */,
+				A70D8DA61BE3F5440099BAB8 /* STAuthenticationController.h */,
+				A70D8DA71BE3F5440099BAB8 /* STAuthenticationController.m */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -455,7 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7E2484C1BC3256A00811B36 /* STQualifierView.h in Headers */,
-				A70D8DA81BE3F5440099BAB8 /* AuthenticationController.h in Headers */,
+				A70D8DA81BE3F5440099BAB8 /* STAuthenticationController.h in Headers */,
 				A70884DD1BA1F4A400758049 /* declarations.h in Headers */,
 				A7E2484A1BC3256A00811B36 /* STLikeOrWishView.h in Headers */,
 				A7E248431BC3255D00811B36 /* STCharCountLabel.h in Headers */,
@@ -585,7 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7EB48051BC81172008B34C9 /* STTargetNameRectangle.m in Sources */,
-				A70D8DA91BE3F5440099BAB8 /* AuthenticationController.m in Sources */,
+				A70D8DA91BE3F5440099BAB8 /* STAuthenticationController.m in Sources */,
 				A70884D41BA1F47400758049 /* Stomt.m in Sources */,
 				A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */,
 				A7E2483B1BC3254A00811B36 /* STCreationTop.m in Sources */,

@@ -11,7 +11,8 @@
 
 @import SafariServices;
 
-@interface AuthenticationController : SFSafariViewController
+@interface STAuthenticationController : SFSafariViewController
+@property (nonatomic,strong) id privDelegate;
 - (instancetype)initWithAppID:(NSString *)appID redirectURI:(NSString *)redirectURI completionBlock:(AuthenticationBlock)completion;
 - (BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 @end

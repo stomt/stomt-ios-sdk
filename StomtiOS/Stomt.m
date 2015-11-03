@@ -16,10 +16,11 @@
 #import "STCreationViewController.h"
 #import "STTarget.h"
 #import "STUser.h"
-#import "AuthenticationController.h"
+#import "STAuthenticationController.h"
+#import "STAuthenticationDelegate.h"
 
 @interface Stomt ()
-@property (nonatomic,strong) AuthenticationController* authController;
+@property (nonatomic,strong) STAuthenticationController* authController;
 - (void)setup;
 @end
 
@@ -60,7 +61,9 @@ error:
 	if(![Stomt appID]) _err("No AppID set. Aborting authentication modal presentation...");
 	if(![Stomt accessToken])
 	{
-		[Stomt sharedInstance].authController = [[AuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(BOOL succeeded, NSError *error, STUser *user) {
+		if([Stomt sharedInstance].authController) [Stomt sharedInstance].authController = nil;
+		
+		[Stomt sharedInstance].authController = [[STAuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(BOOL succeeded, NSError *error, STUser *user) {
 			if(succeeded)
 			{
 				[[Stomt sharedInstance] setAccessToken:user.accessToken];
@@ -73,6 +76,30 @@ error:
 	else _info("Already logged in. Continuing execution...");
 	return;
 	
+error:
+	return;
+}
+
++ (void)promptAuthenticationIfNecessaryWithDelegate:(id<STAuthenticationDelegate>)delegate
+{
+	if(![Stomt appID]) _err("No AppID set. Aborting authentication modal presentation...");
+	if(![Stomt accessToken])
+	{
+		if([Stomt sharedInstance].authController) [Stomt sharedInstance].authController = nil;
+		
+		[Stomt sharedInstance].authController = [[STAuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(BOOL succeeded, NSError *error, STUser *user) {
+			if(succeeded)
+			{
+				[[Stomt sharedInstance] setAccessToken:user.accessToken];
+				[[Stomt sharedInstance] setRefreshToken:user.refreshToken];
+				if(user) [[Stomt sharedInstance] setLoggedUser:user];
+			}
+		}];
+		[Stomt sharedInstance].authController.privDelegate = delegate;
+		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
+		
+	}else _info("Already logged in. Continuing execution...");
+	return;
 error:
 	return;
 }

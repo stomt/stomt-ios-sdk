@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol STAuthenticationDelegate <NSObject>
 
+@class STAuthenticationController;
+@class STUser;
+
+@protocol STAuthenticationDelegate <NSObject>
+@optional
+- (void)authenticationController:(STAuthenticationController*)authController successfullyLoggedInWithUser:(STUser*)user;
+- (void)authenticationController:(STAuthenticationController*)authController loginFailedWithResponse:(NSURLResponse*)response receivedData:(NSData*)data error:(NSError*)error;
 @end
