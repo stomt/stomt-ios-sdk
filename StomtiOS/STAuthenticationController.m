@@ -128,8 +128,8 @@ error:
 	rtDict = [NSMutableDictionary dictionary];
 	[rtDict setObject:[NSNumber numberWithBool:YES] forKey:@"success"];
 	[rtDict setObject:[NSNull null] forKey:@"error"];
-	[rtDict setObject:[STUser initWithDataDictionary:[dataDict objectForKey:@"data"]] forKey:@"user"];
-	[rtDict setObject:data forKey:@"data"];
+	if([[dataDict objectForKey:@"data"] count]) [rtDict setObject:[STUser initWithDataDictionary:[dataDict objectForKey:@"data"]] forKey:@"user"];
+	if(data) [rtDict setObject:data forKey:@"data"];
 	[rtDict setObject:response forKey:@"response"];
 	
 	return rtDict;

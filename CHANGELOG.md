@@ -6,6 +6,7 @@ For platform independent questions feel free to address a stomt to @h3xept or co
 
 ## [Unreleased]
 - Authentication delegate
+- Gracefully handle error codes
 
 ## [2.0.0] 2015-11-2
 - Updated authentication to Stomt with SFSafariViewController.

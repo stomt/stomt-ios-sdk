@@ -14,6 +14,8 @@
 
 - (instancetype)initWithDataDictionary:(NSDictionary *)data
 {
+	if(!data || ![data count]) _err("No data dictionary provided!");
+		
 	if([data objectForKey:kD_User])
 		self = [super initWithDataDictionary:[data objectForKey:kD_User]];
 	else
@@ -23,6 +25,9 @@
 	self.refreshToken = [data objectForKey:kD_RefreshToken];
 	self.isNewUser = [[data objectForKey:kD_NewUser] boolValue];
 	return self;
+	
+error:
+	return nil;
 }
 
 + (instancetype)initWithDataDictionary:(NSDictionary *)data

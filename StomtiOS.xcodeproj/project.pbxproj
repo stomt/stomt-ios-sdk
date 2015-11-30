@@ -267,7 +267,7 @@
 		A7107E861BA2F5F1001F3B38 /* Stomt Objects */ = {
 			isa = PBXGroup;
 			children = (
-				A71D5F0C1BA7664D00DC8BA1 /* Helper objects */,
+				A71D5F0C1BA7664D00DC8BA1 /* Helper Objects */,
 				A7107E8B1BA2F614001F3B38 /* STUser.h */,
 				A7107E8C1BA2F614001F3B38 /* STUser.m */,
 				A75AF2B41BA893B000D74B9C /* STObject.h */,
@@ -289,7 +289,7 @@
 			name = Authentication;
 			sourceTree = "<group>";
 		};
-		A71D5F0C1BA7664D00DC8BA1 /* Helper objects */ = {
+		A71D5F0C1BA7664D00DC8BA1 /* Helper Objects */ = {
 			isa = PBXGroup;
 			children = (
 				A78B2E6B1BA419BC00A9E7D0 /* STStats.h */,
@@ -303,7 +303,7 @@
 				A76DFE261BC57CC200017C32 /* STImageView.h */,
 				A76DFE271BC57CC200017C32 /* STImageView.m */,
 			);
-			name = "Helper objects";
+			name = "Helper Objects";
 			sourceTree = "<group>";
 		};
 		A71D5F0D1BA7668000DC8BA1 /* Private */ = {
