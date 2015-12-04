@@ -347,9 +347,8 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
-							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-		{
+		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		 {
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				_info("Stomt sent.");
@@ -398,9 +397,8 @@ error:
 		
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
-							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-		{
+		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		 {
 				if([HTTPResponseChecker checkResponseCode:response] == OK)
 				{
 					NSString* category;
@@ -444,9 +442,8 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
-							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-		{
+		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		 {
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				_info("Logged out!");
@@ -483,8 +480,7 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
-							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
@@ -530,9 +526,8 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init]
-							   completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-		{
+		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		 {
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				NSDictionary* dataDict;
@@ -574,7 +569,8 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		 {
 			
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
@@ -620,7 +616,8 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		 {
 			
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
@@ -666,7 +663,8 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[NSURLConnection sendAsynchronousRequest:self.apiRequest queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		 {
 			
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
