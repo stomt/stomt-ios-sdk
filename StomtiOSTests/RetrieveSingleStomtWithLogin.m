@@ -11,81 +11,86 @@
 #import "Stomt.h"
 
 @interface RetrieveSingleStomtWithLogin : StomtTestCaseWithLogin
-
+@property (strong,nonatomic) NSString* surelyExistingIdentifier;
+@property (strong,nonatomic) NSString* surelyExistingProfile;
 @end
 
 @implementation RetrieveSingleStomtWithLogin
 
+- (void)setUp
+{
+	[super setUp];
+	self.surelyExistingIdentifier = @"cheezus";
+	self.surelyExistingProfile = @"santa";
+}
+
 - (void)testWithIdentifier {
-    NSString *identifier = @"wow-so-much-hashtag-but-we-need-more-dafaq-and--much-amazing-such-stomt-very-amazing-l21";
     
-    StomtRequest *requestStomt = [StomtRequest stomtRequestWithIdentifierOrURL:identifier];
+    StomtRequest *requestStomt = [StomtRequest stomtRequestWithIdentifierOrURL:self.surelyExistingIdentifier];
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        XCTAssertEqualObjects(stomt.identifier, identifier);
+        XCTAssertEqualObjects(stomt.identifier, self.surelyExistingIdentifier);
     }];
+	
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
 
 - (void)testWithHttpsUrl {
-    NSString *identifier = @"wow-so-much-hashtag-but-we-need-more-dafaq-and--much-amazing-such-stomt-very-amazing-l21";
-    NSString *url = @"https://test.stomt.com/stomt/";
-    url = [url stringByAppendingString:identifier];
+    NSString *url = [NSString stringWithFormat:@"https://test.stomt.com/%@/",self.surelyExistingProfile];
+    url = [url stringByAppendingString:self.surelyExistingIdentifier];
     
     StomtRequest *requestStomt = [StomtRequest stomtRequestWithIdentifierOrURL:url];
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        XCTAssertEqualObjects(stomt.identifier, identifier);
+        XCTAssertEqualObjects(stomt.identifier, self.surelyExistingIdentifier);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
 - (void)testWithHttpUrl {
-    NSString *identifier = @"wow-so-much-hashtag-but-we-need-more-dafaq-and--much-amazing-such-stomt-very-amazing-l21";
-    NSString *url = @"http://test.stomt.com/stomt/";
-    url = [url stringByAppendingString:identifier];
+	
+    NSString *url = [NSString stringWithFormat:@"https://test.stomt.com/%@/",self.surelyExistingProfile];
+    url = [url stringByAppendingString:self.surelyExistingIdentifier];
     
     StomtRequest *requestStomt = [StomtRequest stomtRequestWithIdentifierOrURL:url];
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        XCTAssertEqualObjects(stomt.identifier, identifier);
+        XCTAssertEqualObjects(stomt.identifier, self.surelyExistingIdentifier);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
 - (void)testWithUrlWithoutProtocol {
-    NSString *identifier = @"wow-so-much-hashtag-but-we-need-more-dafaq-and--much-amazing-such-stomt-very-amazing-l21";
-    NSString *url = @"test.stomt.com/stomt/";
-    url = [url stringByAppendingString:identifier];
+	NSString *url = [NSString stringWithFormat:@"https://test.stomt.com/%@/",self.surelyExistingProfile];
+    url = [url stringByAppendingString:self.surelyExistingIdentifier];
     
     StomtRequest *requestStomt = [StomtRequest stomtRequestWithIdentifierOrURL:url];
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        XCTAssertEqualObjects(stomt.identifier, identifier);
+        XCTAssertEqualObjects(stomt.identifier,self.surelyExistingIdentifier);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
 - (void)testWithWwwUrl {
-    NSString *identifier = @"wow-so-much-hashtag-but-we-need-more-dafaq-and--much-amazing-such-stomt-very-amazing-l21";
-    NSString *url = @"www.test.stomt.com/stomt/";
-    url = [url stringByAppendingString:identifier];
+	NSString *url = [NSString stringWithFormat:@"https://test.stomt.com/%@/",self.surelyExistingProfile];
+    url = [url stringByAppendingString:self.surelyExistingIdentifier];
     
     StomtRequest *requestStomt = [StomtRequest stomtRequestWithIdentifierOrURL:url];
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        XCTAssertEqualObjects(stomt.identifier, identifier);
+        XCTAssertEqualObjects(stomt.identifier, self.surelyExistingIdentifier);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }

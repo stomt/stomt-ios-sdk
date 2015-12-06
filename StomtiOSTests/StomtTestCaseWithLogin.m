@@ -16,7 +16,7 @@
     
     // custom setUp
     self.username = @"test";
-    [[Stomt sharedInstance] setAccessToken:@"3m2jPXc2ZsvhiECT8rPBtsqCXV4gPGGr0vEDLR09"];
+    [[Stomt sharedInstance] setAccessToken:@"Sz4qWBSCSlQXqsB94rCpe41wnVgnyRM7338nKuOM"];
 }
 
 - (void)tearDown {
