@@ -15,7 +15,7 @@
     [super setUp];
     
     // custom setUp
-    [Stomt setAppID:@"VpOIQItMBIcE1i3jz7Sec6Tqf"];
+    [Stomt setAppID:@"6RO2ZZbA5PGQtYddPyvTvGLzp"];
 	[Stomt setAPIHost:@"https://test.rest.stomt.com"];
     self.timeout = 5;
 }
@@ -23,7 +23,7 @@
 //-----------------------------------------------------------------------------
 // Helper
 //-----------------------------------------------------------------------------
-- createImage {
+- (UIImage*)createImage {
     UIImage *image1 = [UIImage imageNamed:@"image1.png"];
     UIImage *image2 = [UIImage imageNamed:@"image2.png"];
     

@@ -48,7 +48,7 @@
  * @brief Is the user authenticated?
  * @warning Returns 'YES' even if anonymously authenticated.
  */
-@property (nonatomic) BOOL isAuthenticated;
+@property (nonatomic,readonly) BOOL isAuthenticated;
 
 @property (nonatomic,strong) STUser* loggedUser;
 

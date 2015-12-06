@@ -347,7 +347,7 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
@@ -382,7 +382,7 @@ error:
 				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion)
 				completion(connectionError,nil);
-		}];
+		}] resume];
 		return;
 	}fprintf(stderr,"\n[ERROR] Stomt creation request not available for this instance.");
 	
@@ -397,7 +397,7 @@ error:
 		
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
 				if([HTTPResponseChecker checkResponseCode:response] == OK)
 				{
@@ -427,7 +427,7 @@ error:
 				else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
 					fprintf(stderr, "[!!]AppID not valid! Aborting...");
 				else if(completion) completion(connectionError,nil);
-		}];
+		}] resume];
 		
 		return;
 	}fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
@@ -442,7 +442,7 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
@@ -466,7 +466,7 @@ error:
 			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
 				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(NO);
-		}];
+		}] resume];
 		return;
 	}fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
 	
@@ -480,7 +480,7 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
@@ -513,7 +513,7 @@ error:
 			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
 				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(connectionError,nil);
-		}];
+		}] resume];
 		return;
 	}fprintf(stderr,"\n[ERROR] Stomt request not available for this instance.");
 error:
@@ -526,7 +526,7 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
@@ -556,7 +556,7 @@ error:
 			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
 				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(connectionError,nil);
-		}];
+		}] resume];
 		return;
 	}fprintf(stderr,"\n[ERROR] Feed request not available for this instance.");
 error:
@@ -569,7 +569,7 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
 			
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
@@ -601,7 +601,7 @@ error:
 			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
 				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(connectionError,nil);
-		}];
+		}] resume];
 		
 		return;
 	}fprintf(stderr,"\n[ERROR] Target request not available for this instance.");
@@ -616,7 +616,7 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
 			
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
@@ -648,7 +648,7 @@ error:
 			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
 				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(connectionError,nil);
-		}];
+		}] resume];
 		
 		return;
 	}fprintf(stderr,"\n[ERROR] Basic target request not available for this instance.");
@@ -663,7 +663,7 @@ error:
 	{
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
 		
-		[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
 			
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
@@ -703,7 +703,7 @@ error:
 			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
 				fprintf(stderr, "[!!]AppID not valid! Aborting...");
 			else if(completion) completion(NO,connectionError,nil);
-		}];
+		}] resume];
 		
 		return;
 //		

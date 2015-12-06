@@ -192,7 +192,7 @@ error:
 
 + (BOOL)isAuthenticated //Easy access isAuthenticated from class
 {
-	return [Stomt sharedInstance].accessToken != nil;
+	return [Stomt sharedInstance].isAuthenticated;
 }
 
 #pragma mark Private accessors
@@ -223,6 +223,11 @@ error:
 - (NSString*)refreshToken
 {
 	return [[NSUserDefaults standardUserDefaults] objectForKey:kRToken];
+}
+
+- (BOOL)isAuthenticated
+{
+	return ([Stomt accessToken] != nil);
 }
 
 #pragma mark UI
