@@ -40,7 +40,7 @@
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
-- (void)testWithLocation {
+- (void)nontestWithLocation {
     // new request
     NSString *textBody = @"would create a anonym stomt with location. #unitTest";
     NSString *targetID = @"stomt-ios";
