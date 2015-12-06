@@ -38,15 +38,15 @@
 	    <key>NSExceptionDomains</key>
 	    <dict>
 	        <key>stomt.com</key>
-	        <dict>
-	            <key>NSIncludesSubdomains</key>
-	            <true/>
-	            <key>NSAllowsArbitraryLoads</key>
-	            <true/>
-	            <key>NSTemporaryExceptionMinimumTLSVersion</key>
-	            <string>TLSv1.1</string>
-	            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-	            <true/>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSAllowsArbitraryLoads</key>
+				<true/>
+				<key>NSTemporaryExceptionMinimumTLSVersion</key>
+				<string>TLSv1.1</string>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
 	        </dict>
 	    </dict>
 	</dict>
