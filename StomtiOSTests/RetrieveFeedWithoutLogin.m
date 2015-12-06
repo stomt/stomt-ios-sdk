@@ -208,7 +208,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
         [expectation fulfill];
-		XCTAssertNotEqual([feed.stomts count], 0);
+		XCTAssertNil(error);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
