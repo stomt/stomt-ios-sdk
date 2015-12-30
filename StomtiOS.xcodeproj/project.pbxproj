@@ -22,6 +22,7 @@
 		A75AF2B31BA88F6700D74B9C /* strings.h in Headers */ = {isa = PBXBuildFile; fileRef = A75AF2B21BA88F6700D74B9C /* strings.h */; };
 		A75AF2B61BA893B000D74B9C /* STObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A75AF2B41BA893B000D74B9C /* STObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A75AF2B71BA893B000D74B9C /* STObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A75AF2B51BA893B000D74B9C /* STObject.m */; };
+		A76611871C347565009013C1 /* IntentionalErrorsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = A76611861C347565009013C1 /* IntentionalErrorsWithoutLogin.m */; };
 		A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */; };
 		A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */; };
 		A768D76E1BA9EB6000466AFB /* STImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D76C1BA9EB6000466AFB /* STImage.m */; };
@@ -101,6 +102,7 @@
 		A75AF2B21BA88F6700D74B9C /* strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strings.h; sourceTree = "<group>"; };
 		A75AF2B41BA893B000D74B9C /* STObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STObject.h; sourceTree = "<group>"; };
 		A75AF2B51BA893B000D74B9C /* STObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STObject.m; sourceTree = "<group>"; };
+		A76611861C347565009013C1 /* IntentionalErrorsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionalErrorsWithoutLogin.m; sourceTree = "<group>"; };
 		A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601.h"; sourceTree = "<group>"; };
 		A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
 		A768D76C1BA9EB6000466AFB /* STImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STImage.m; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		A70884B81BA1F43300758049 /* StomtiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				A76611861C347565009013C1 /* IntentionalErrorsWithoutLogin.m */,
 				FEA5D0A91BBC44E900274390 /* StomtTestCase.h */,
 				FEA5D0AA1BBC44E900274390 /* StomtTestCase.m */,
 				FEA5D0AE1BBC49AD00274390 /* StomtTestCaseWithLogin.h */,
@@ -616,6 +619,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76611871C347565009013C1 /* IntentionalErrorsWithoutLogin.m in Sources */,
 				FEA5D0AB1BBC44E900274390 /* StomtTestCase.m in Sources */,
 				FEA5D0B51BBC4D6800274390 /* RetrieveFeedWithoutLogin.m in Sources */,
 				FEA5D0B01BBC49AD00274390 /* StomtTestCaseWithLogin.m in Sources */,

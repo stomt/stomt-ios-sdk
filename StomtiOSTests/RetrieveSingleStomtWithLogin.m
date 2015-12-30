@@ -20,8 +20,8 @@
 - (void)setUp
 {
 	[super setUp];
-	self.surelyExistingIdentifier = @"cheezus";
-	self.surelyExistingProfile = @"santa";
+	self.surelyExistingIdentifier = @"test";
+	self.surelyExistingProfile = @"stomt-ios";
 }
 
 - (void)testWithIdentifier {

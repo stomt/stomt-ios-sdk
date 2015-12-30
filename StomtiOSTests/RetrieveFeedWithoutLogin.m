@@ -17,11 +17,11 @@
 @implementation RetrieveFeedWithoutLogin
 
 - (void)testWithTerm {
-    NSString *term = @"test";
+    NSString *term = @"iOSUnitTest";
     STFeed *feed = [STFeed feedWithTerm: term];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"q=test");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"q=iOSUnitTest");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
@@ -32,27 +32,28 @@
 }
 
 - (void)testWithBelongsTo {
-    NSString *targetID = @"stomt-iOS";
+
+    NSString *targetID = @"stomt-ios";
     STFeed *feed = [STFeed feedWhichBelongsTo: targetID];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"at=stomt-iOS");
+	XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"at=stomt-ios");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
         [expectation fulfill];
-        XCTAssertEqual(feed.stomts.count, 15);
+        XCTAssertGreaterThan(feed.stomts.count, 0);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
 
 - (void)testReceivedDirectly {
-    NSArray *targetIDs = @[@"stomt-iOS"];
+    NSArray *targetIDs = @[@"stomt-ios"];
     STFeed *feed = [STFeed feedWithStomtsDirectlyReceivedBy: targetIDs];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"to=stomt-iOS");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"to=stomt-ios");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
@@ -63,11 +64,11 @@
 }
 
 - (void)testReceivedDirectlyMultiple {
-    NSArray *targetIDs = @[@"stomt-iOS", @"stomt"];
+    NSArray *targetIDs = @[@"stomt-ios", @"stomt"];
     STFeed *feed = [STFeed feedWithStomtsDirectlyReceivedBy: targetIDs];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"to=stomt-iOS,stomt");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"to=stomt-ios,stomt");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
@@ -78,11 +79,11 @@
 }
 
 - (void)testSendBy {
-    NSArray *targetIDs = @[@"test"];
+    NSArray *targetIDs = @[@"stomt-ios"];
 	STFeed *feed = [STFeed feedFrom:targetIDs];
 	
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"from=test");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"from=stomt-ios");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
@@ -94,11 +95,11 @@
 
 
 - (void)testSendByMultiple {
-    NSArray *targetIDs = @[@"test", @"stomt"];
+    NSArray *targetIDs = @[@"stomt-ios", @"stomt"];
     STFeed *feed = [STFeed feedFrom:targetIDs];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"from=test,stomt");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"from=stomt-ios,stomt");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
@@ -156,11 +157,11 @@
 }
 
 - (void)testWithLabel {
-    NSArray *labels = @[@"faq"];
+    NSArray *labels = @[@"test"];
     STFeed *feed = [STFeed feedWhichContainsLabels: labels];
     
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"label=faq");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"label=test");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
@@ -186,10 +187,10 @@
 }
 
 - (void)testWithAll {
-    NSString *term = @"test";
-    NSString *belongsTargetID = @"stomt-iOS";
-    NSArray *directTargetIDs = @[@"stomt-iOS"];
-    NSArray *fromTargetIDs = @[@"test"];
+    NSString *term = @"iOSUnitTest";
+    NSString *belongsTargetID = @"stomt-ios";
+    NSArray *directTargetIDs = @[@"stomt-ios"];
+    NSArray *fromTargetIDs = @[@"stomt-ios"];
     STSearchFilterKeywords *keywords = nil;
     kSTObjectQualifier likeOrWish = kSTObjectWish;
     NSArray *labels = @[@"test"];
