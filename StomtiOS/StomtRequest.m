@@ -712,4 +712,9 @@ error:
 	return;
 }
 
+- (NSString*)description
+{
+	return [NSString stringWithFormat:@"<StomtRequest: %d>",self.requestType];
+}
+
 @end

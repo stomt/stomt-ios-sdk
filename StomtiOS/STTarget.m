@@ -175,5 +175,9 @@ error:
 	[tarRequest requestBasicTargetInBackgroundWithBlock:completion];
 }
 
+- (NSString*)description
+{
+	return [NSString stringWithFormat:@"<STTarget: %@>",self.identifier];
+}
 @end
 

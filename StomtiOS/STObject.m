@@ -210,4 +210,9 @@ error:
 error:
 	_text = nil;
 }
+
+- (NSString*)description
+{
+	return [NSString stringWithFormat:@"<STObject: %@>",self.text];
+}
 @end

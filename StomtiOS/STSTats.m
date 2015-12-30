@@ -104,4 +104,10 @@ error:
 error: //FT INTENDED
 	return nil;
 }
+
+- (NSString*)description
+{
+	return [NSString stringWithFormat:@"<STTats Object\nFollowers: %d\nFollows:%d\nCreated stomts:%d\nReceived stomts:%d\n>",self.followers,self.follows,self.createdStomts,self.receivedStomts];
+}
+
 @end

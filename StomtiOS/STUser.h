@@ -30,5 +30,6 @@
  */
 @property (nonatomic) BOOL isNewUser;
 
+@property (nonatomic,strong) NSString* completeName;
 
 @end

@@ -120,4 +120,11 @@ error:
 	return nil;
 }
 
+
+- (NSString*)description
+{
+	NSString* name = self.completeName ? self.completeName : @"Anonymous user";
+	return [NSString stringWithFormat:@"<STUser: %@>",name];
+}
+
 @end

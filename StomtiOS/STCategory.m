@@ -43,4 +43,9 @@ error:
 error:
 	return nil;
 }
+
+- (NSString*)description
+{
+	return [NSString stringWithFormat:@"<STCategory: %@>",self.displayName];
+}
 @end
