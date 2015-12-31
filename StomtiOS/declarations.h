@@ -27,8 +27,8 @@ typedef enum{
 }RequestType;
 
 typedef enum{
-	OK,ERR,OLD_TOKEN,WRONG_APPID
-}HTTPHRCode;
+	OK,ERR,OLD_TOKEN,WRONG_APPID,NOT_FOUND
+}HTTPERCode;
 
 typedef enum{
 	kSTImageCategoryAvatar,kSTImageCategoryCover,kSTImageCategoryStomt

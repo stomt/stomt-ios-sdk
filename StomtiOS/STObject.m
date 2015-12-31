@@ -162,7 +162,8 @@ error:
 	self.text = [hDict objectForKey:@"text"];
 	self.createdAt = [NSDate dateWithISO8601String:[hDict objectForKey:@"created_at"]];
 	self.anonym = [[hDict objectForKey:@"anonym"] boolValue];
-    
+	if([hDict objectForKey:@"shortlink"])
+		self.shortLink = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[hDict objectForKey:@"shortlink"]]];
     // parse urls to url
     if([hDict objectForKey:@"urls"] != [NSNull null]) {
         NSArray *urls = [hDict objectForKey:@"urls"];

@@ -63,11 +63,12 @@ error:
 				if(data)
 				{
 					self.image = [UIImage imageWithData:data];
-					if(completion) completion(YES);
+					if(completion) completion(nil, [NSNumber numberWithBool:YES]);
 					return;
 				}
 				else fprintf(stderr,"Could not retrieve data from async request for STImage.");
-				if(completion) completion(NO);
+				NSError* err = [NSError errorWithDomain:@"StomtConnectionDomain" code:0 userInfo:@{@"NSLocalizedDescriptionKey":@"The image could not be retrieved from remote server.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Check your firewall and connection. If the error persists, contact @H3xept"}];
+				if(completion) completion(err, [NSNumber numberWithBool:NO]);
 			});
 		});
 	}

@@ -63,13 +63,13 @@ error:
 	{
 		if([Stomt sharedInstance].authController) [Stomt sharedInstance].authController = nil;
 		
-		[Stomt sharedInstance].authController = [[STAuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(BOOL succeeded, NSError *error, STUser *user) {
-			if(succeeded)
+		[Stomt sharedInstance].authController = [[STAuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(NSError *error, STUser *user) {
+			if(user)
 			{
 				[[Stomt sharedInstance] setAccessToken:user.accessToken];
 				[[Stomt sharedInstance] setRefreshToken:user.refreshToken];
 				if(user) [[Stomt sharedInstance] setLoggedUser:user];
-			}if(completion) completion(succeeded,error,user);
+			}if(completion) completion(error,user);
 		}];
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
 	}
@@ -87,8 +87,8 @@ error:
 	{
 		if([Stomt sharedInstance].authController) [Stomt sharedInstance].authController = nil;
 		
-		[Stomt sharedInstance].authController = [[STAuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(BOOL succeeded, NSError *error, STUser *user) {
-			if(succeeded)
+		[Stomt sharedInstance].authController = [[STAuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(NSError *error, STUser *user) {
+			if(user)
 			{
 				[[Stomt sharedInstance] setAccessToken:user.accessToken];
 				[[Stomt sharedInstance] setRefreshToken:user.refreshToken];
@@ -134,6 +134,7 @@ error:
 	if(access && refresh)
 	{
 		//Magic not available.
+		_warn("METHOD NOT AVAILABLE!");
 		return;
 	}
 error:

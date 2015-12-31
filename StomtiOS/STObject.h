@@ -32,6 +32,11 @@
 @property (nonatomic,strong) NSString* targetID; //Required
 
 /*!
+ * @brief The shortlink to the stomt.
+ */
+@property (nonatomic,strong) NSURL* shortLink;
+
+/*!
  * @brief The url associated with the stomt.
  */
 @property (nonatomic,strong) NSURL* url;

@@ -25,7 +25,7 @@
 		
 		self.image = self.placeholder;
 		
-		[self.downloadManager downloadInBackgroundWithBlock:^(BOOL success){
+		[self.downloadManager downloadInBackgroundWithBlock:^(NSError* error, NSNumber* success){
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
 				if(success)

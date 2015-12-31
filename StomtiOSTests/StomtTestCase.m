@@ -15,7 +15,7 @@
     [super setUp];
     
     // custom setUp
-    [Stomt setAppID:@"MOoLYKDcyIbpKYL49AgbgyRTX"];
+    [Stomt setAppID:@"sXUs7glmc2xeCpceIgrSorG6z"];
 	[Stomt setAPIHost:@"https://test.rest.stomt.com"];
     self.timeout = 5;
 }

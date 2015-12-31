@@ -21,6 +21,25 @@
 #import "strings.h"
 #import "dbg.h"
 
+/* Private use only */
+#define checkConnectionErrors(ERR,COMP) if(ERR && COMP) { COMP(ERR,nil); return; }\
+if(ERR){\
+	if([ERR localizedDescription])_warn("%s",[[ERR localizedDescription] UTF8String]);\
+	if([ERR localizedFailureReason])_warn("%s",[[ERR localizedFailureReason] UTF8String]);\
+	if([ERR localizedFailureReason])_warn("%s",[[ERR localizedRecoverySuggestion] UTF8String]);\
+	return;\
+}
+#define handleResponseErrors(ERRNO,DATA,COMP,...) if(ERRNO != OK){\
+	NSError* err = [HTTPResponseChecker errorWithResponseCode:ERRNO withData:DATA];\
+	if(COMP) { COMP(err,nil); return; }\
+	if(err){\
+		if([err localizedDescription])_warn("%s",[[err localizedDescription] UTF8String]);\
+		if([err localizedFailureReason])_warn("%s",[[err localizedFailureReason] UTF8String]);\
+		if([err localizedFailureReason])_warn("%s",[[err localizedRecoverySuggestion] UTF8String]);\
+		return;\
+	}\
+}
+/* Private use only */
 
 @interface StomtRequest ()
 + (NSMutableURLRequest*)generateBasePOSTRequestWithPath:(NSString*)path;
@@ -349,8 +368,10 @@ error:
 		
 		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
-			if([HTTPResponseChecker checkResponseCode:response] == OK)
-			{
+			 checkConnectionErrors(connectionError,completion);
+			 handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
+			 if([HTTPResponseChecker checkResponseCode:response] == OK)
+			 {
 				_info("Stomt sent.");
 				NSError *jsonError;
 				NSDictionary* dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
@@ -362,26 +383,7 @@ error:
 					[Stomt sharedInstance].refreshToken = [dataDict objectForKey:kD_RefreshToken];
 				}
 				if(completion) completion(connectionError,[STObject objectWithDataDictionary:dataDict]);
-				
-			}
-			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
-			{
-				[Stomt logout]; //Temporary behavior
-				
-				/*
-				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
-					
-				 }];
-				 
-				 To be implemented soon.
-				 
-				 */
-				
-			} //Better error handler will be implemented
-			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
-				fprintf(stderr, "[!!]AppID not valid! Aborting...");
-			else if(completion)
-				completion(connectionError,nil);
+			 }
 		}] resume];
 		return;
 	}fprintf(stderr,"\n[ERROR] Stomt creation request not available for this instance.");
@@ -399,6 +401,8 @@ error:
 		
 		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
+			checkConnectionErrors(connectionError,completion);
+			handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
 				if([HTTPResponseChecker checkResponseCode:response] == OK)
 				{
 					NSString* category;
@@ -410,26 +414,9 @@ error:
 					if(completion) completion(connectionError,[[STImage alloc] initWithStomtImageName:category]);
 					
 				}
-				else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
-				{
-					[Stomt logout]; //Temporary behavior
-					
-					/*
-					 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
-					 
-					 }];
-					 
-					 To be implemented soon.
-					 
-					 */
-					
-				} //Better error handler will be implemented
-				else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
-					fprintf(stderr, "[!!]AppID not valid! Aborting...");
-				else if(completion) completion(connectionError,nil);
 		}] resume];
-		
 		return;
+		
 	}fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
 	
 error:
@@ -444,28 +431,13 @@ error:
 		
 		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
+			checkConnectionErrors(connectionError,completion);
+			handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				_info("Logged out!");
-				if(completion) completion(YES);
+				if(completion) completion(nil,[NSNumber numberWithBool:YES]);
 			}
-			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
-			{
-				[Stomt logout]; //Temporary behavior
-				
-				/*
-				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
-					
-				 }];
-				 
-				 To be implemented soon.
-				 
-				 */
-				
-			} //Better error handler will be implemented
-			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
-				fprintf(stderr, "[!!]AppID not valid! Aborting...");
-			else if(completion) completion(NO);
 		}] resume];
 		return;
 	}fprintf(stderr,"\n[ERROR] Image upload request not available for this instance.");
@@ -482,6 +454,8 @@ error:
 		
 		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
+			checkConnectionErrors(connectionError,completion);
+			handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				NSDictionary* dataDict;
@@ -496,23 +470,6 @@ error:
 				_info("Could not retrieve data dictionary. Aborting...");
 				return;
 			}
-			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
-			{
-				[Stomt logout]; //Temporary behavior
-				
-				/*
-				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
-					
-				 }];
-				 
-				 To be implemented soon.
-				 
-				 */
-				
-			} //Better error handler will be implemented
-			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
-				fprintf(stderr, "[!!]AppID not valid! Aborting...");
-			else if(completion) completion(connectionError,nil);
 		}] resume];
 		return;
 	}fprintf(stderr,"\n[ERROR] Stomt request not available for this instance.");
@@ -528,6 +485,8 @@ error:
 		
 		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
+			checkConnectionErrors(connectionError,completion);
+			handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				NSDictionary* dataDict;
@@ -539,23 +498,6 @@ error:
 					return;
 				}
 			}
-			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
-			{
-				[Stomt logout]; //Temporary behavior
-				
-				/*
-				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
-					
-				 }];
-				 
-				 To be implemented soon.
-				 
-				 */
-				
-			} //Better error handler will be implemented
-			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
-				fprintf(stderr, "[!!]AppID not valid! Aborting...");
-			else if(completion) completion(connectionError,nil);
 		}] resume];
 		return;
 	}fprintf(stderr,"\n[ERROR] Feed request not available for this instance.");
@@ -571,7 +513,8 @@ error:
 		
 		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
-			
+			checkConnectionErrors(connectionError,completion);
+			handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				NSDictionary* dataDict;
@@ -584,23 +527,6 @@ error:
 					return;
 				}
 			}
-			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
-			{
-				[Stomt logout]; //Temporary behavior
-				
-				/*
-				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
-					
-				 }];
-				 
-				 To be implemented soon.
-				 
-				 */
-				
-			} //Better error handler will be implemented
-			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
-				fprintf(stderr, "[!!]AppID not valid! Aborting...");
-			else if(completion) completion(connectionError,nil);
 		}] resume];
 		
 		return;
@@ -618,7 +544,8 @@ error:
 		
 		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
-			
+			checkConnectionErrors(connectionError,completion);
+			handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				NSDictionary* dataDict;
@@ -631,23 +558,6 @@ error:
 					return;
 				}
 			}
-			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
-			{
-				[Stomt logout]; //Temporary behavior
-				
-				/*
-				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
-					
-				 }];
-				 
-				 To be implemented soon.
-				 
-				 */
-				
-			} //Better error handler will be implemented
-			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
-				fprintf(stderr, "[!!]AppID not valid! Aborting...");
-			else if(completion) completion(connectionError,nil);
 		}] resume];
 		
 		return;
@@ -665,7 +575,8 @@ error:
 		
 		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
 		 {
-			
+			checkConnectionErrors(connectionError,completion);
+			handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
 			if([HTTPResponseChecker checkResponseCode:response] == OK)
 			{
 				NSDictionary* dataDict;
@@ -673,7 +584,6 @@ error:
 				if(dataDict)
 				{
 					NSError* error;
-					BOOL rt = YES;
 					STUser* user = [STUser initWithDataDictionary:[dataDict objectForKey:@"data"]];
 					if(!user) error = [NSError errorWithDomain:@"Authentication error" code:0 userInfo:@{@"info":@"Could not instantiate an STUser."}];
 					
@@ -681,28 +591,11 @@ error:
 					[Stomt sharedInstance].refreshToken = user.refreshToken;
 					[[Stomt sharedInstance] setLoggedUser:user];
 					
-					completion(rt,error,user);
+					completion(error,user);
 					return;
 						
 				}
 			}
-			else if([HTTPResponseChecker checkResponseCode:response] == OLD_TOKEN)
-			{
-				[Stomt logout]; //Temporary behavior
-				
-				/*
-				 [Stomt requestNewAccessTokenInBackgroundWithBlock:^(BOOL succeeded) {
-					
-				 }];
-				 
-				 To be implemented soon.
-				 
-				 */
-				
-			} //Better error handler will be implemented
-			else if([HTTPResponseChecker checkResponseCode:response] == WRONG_APPID)
-				fprintf(stderr, "[!!]AppID not valid! Aborting...");
-			else if(completion) completion(NO,connectionError,nil);
 		}] resume];
 		
 		return;

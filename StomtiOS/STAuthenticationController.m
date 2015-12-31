@@ -146,7 +146,7 @@ error:
 	NSData* data = [retDict objectForKey:@"data"];
 	NSURLResponse* response = [retDict objectForKey:@"response"];
 	
-	if(self.completion){ self.completion(succeeded,error,user); }
+	if(self.completion){ self.completion(error,user); }
 	if(self.privDelegate)
 	{
 		if(succeeded){ if([self.privDelegate respondsToSelector:@selector(authenticationController:successfullyLoggedInWithUser:)]){

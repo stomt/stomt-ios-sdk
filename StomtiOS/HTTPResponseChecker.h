@@ -10,5 +10,6 @@
 #import "declarations.h"
 
 @interface HTTPResponseChecker : NSObject
-+ (HTTPHRCode)checkResponseCode:(NSURLResponse*)response;
++ (HTTPERCode)checkResponseCode:(NSURLResponse*)response;
++ (NSError*)errorWithResponseCode:(HTTPERCode)responseCode withData:(NSData*)data;
 @end
