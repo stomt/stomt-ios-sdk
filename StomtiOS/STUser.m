@@ -123,7 +123,7 @@ error:
 
 - (NSString*)description
 {
-	NSString* name = self.completeName ? self.completeName : @"Anonymous user";
+	NSString* name = self.displayName ? self.displayName : @"Anonymous user";
 	return [NSString stringWithFormat:@"<STUser: %@>",name];
 }
 

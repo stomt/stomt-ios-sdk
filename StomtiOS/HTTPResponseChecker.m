@@ -78,7 +78,7 @@ error:
 			}
 			default:
 			{
-				rt = [[NSError alloc] initWithDomain:@"StomtUnknownErrorDomain" code:0 userInfo:@{@"NSLocalizedDescriptionKey":@"UNKNOWN ERROR",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Contact @H3xept for further details."}];
+				rt = [[NSError alloc] initWithDomain:@"StomtUnknownErrorDomain" code:0 userInfo:@{@"NSLocalizedDescriptionKey":@"UNKNOWN ERROR",@"NSLocalizedFailureReasonErrorKey":[NSString stringWithFormat:@"%s",data.bytes],@"NSLocalizedRecoverySuggestionErrorKey":@"Contact @H3xept for further details."}];
 				break;
 			}
 		}

@@ -110,14 +110,18 @@ error:
 	
 	@synchronized(self)
 	{
+		// logout on server side
+		StomtRequest* logoutRequest = [StomtRequest logoutRequest];
+		[logoutRequest logoutInBackgroundWithBlock:^(NSError *error, NSNumber *succeeded) {
+			if(error) NSLog(@"%@",error);
+		}];
+		
         // logout on client side
         [Stomt sharedInstance].accessToken = nil;
         [Stomt sharedInstance].refreshToken = nil;
 		[Stomt sharedInstance].loggedUser = nil;
 		
-        // logout on server side
-		StomtRequest* logoutRequest = [StomtRequest logoutRequest];
-		[logoutRequest logoutInBackgroundWithBlock:nil];
+
 	}
 	
 error:

@@ -1,4 +1,4 @@
-//
+
 //  StomtRequest.m
 //  StomtiOS
 //
@@ -228,7 +228,7 @@ error:
 		NSMutableURLRequest* apiRequest;
 		apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kLogoutPath];
 		apiRequest.HTTPMethod = @"DELETE";
-		[apiRequest setValue:[Stomt sharedInstance].accessToken forHTTPHeaderField:@"accesstoken"];
+		[apiRequest setValue:[Stomt accessToken] forHTTPHeaderField:@"accesstoken"];
 		if(apiRequest)
 			return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kLogoutRequest];
 error:
