@@ -79,16 +79,16 @@
 }
 
 - (void)testSendBy {
-    NSArray *targetIDs = @[@"stomt-ios"];
+    NSArray *targetIDs = @[@"test"];
 	STFeed *feed = [STFeed feedFrom:targetIDs];
 	
     StomtRequest *requestStomt = [StomtRequest feedRequestWithStomtFeedObject:feed];
-    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"from=stomt-ios");
+    XCTAssertEqualObjects(requestStomt.apiRequest.URL.query, @"from=test");
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [requestStomt requestFeedInBackgroundWithBlock:^(NSError *error, STFeed *feed) {
         [expectation fulfill];
-        XCTAssertEqual(feed.stomts.count, 15);
+        XCTAssertGreaterThan(feed.stomts.count, 0);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
