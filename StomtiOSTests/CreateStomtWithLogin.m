@@ -35,7 +35,7 @@
         [expectation fulfill];
         
         XCTAssertFalse(stomt.anonym);
-        XCTAssertEqualObjects(stomt.creator.identifier, self.username);
+        XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
             
         XCTAssertEqualObjects(stomt.text, textBody);
         XCTAssertEqualObjects(stomt.target.identifier, targetID);
@@ -63,7 +63,7 @@
         [expectation fulfill];
         
         XCTAssertFalse(stomt.anonym);
-        XCTAssertEqualObjects(stomt.creator.identifier, self.username);
+        XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
             
         XCTAssertEqualObjects(stomt.text, textBody);
         XCTAssertEqualObjects(stomt.target.identifier, targetID);
@@ -92,7 +92,7 @@
         [expectation fulfill];
 			
         XCTAssertFalse(stomt.anonym);
-        XCTAssertEqualObjects(stomt.creator.identifier, self.username);
+        XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
 			
         XCTAssertEqualObjects(stomt.target.identifier, targetID);
             
@@ -133,7 +133,7 @@
         [expectation fulfill];
         
         XCTAssertFalse(stomt.anonym);
-        XCTAssertEqualObjects(stomt.creator.identifier, self.username);
+        XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
             
         XCTAssertEqualObjects(stomt.text, textBody);
         XCTAssertEqualObjects(stomt.target.identifier, targetID);

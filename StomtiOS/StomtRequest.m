@@ -342,8 +342,8 @@ error:
 		dictBody = [NSMutableDictionary dictionary];
 		
 		[dictBody setObject:@"facebook" forKey:@"login_method"];
-		[dictBody setObject:accessToken forKey:@"fb_access_token"];
-		[dictBody setObject:userID forKey:@"fb_user_id"];
+		[dictBody setObject:accessToken forKey:@"accesstoken"];
+		//[dictBody setObject:userID forKey:@"fb_user_id"];
 		
 		jsonData = [NSJSONSerialization dataWithJSONObject:dictBody options:0 error:&error];
 		if(error) _err("Error while creating jsonData. Aborting...");

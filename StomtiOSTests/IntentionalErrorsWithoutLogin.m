@@ -42,8 +42,8 @@
 	XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
 	[sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
 		[expectation fulfill];
-		XCTAssertTrue(!stomt);
-		XCTAssertTrue(error);
+		XCTAssertTrue(stomt);
+		XCTAssertTrue(!error);
 	}];
 	[self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }

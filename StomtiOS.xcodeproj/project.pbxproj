@@ -122,6 +122,7 @@
 		A7C039BB1BB6FEB5006A8135 /* STImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImage.h; sourceTree = "<group>"; };
 		A7C039BD1BB6FEC1006A8135 /* Stomt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stomt.h; sourceTree = "<group>"; };
 		A7C217491BE17A6B00F8EB52 /* STAuthenticationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAuthenticationDelegate.h; sourceTree = "<group>"; };
+		A7C47BEF1C396034003D27D1 /* StomtRequest_PrivateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtRequest_PrivateTests.h; sourceTree = "<group>"; };
 		A7E2482C1BC3253E00811B36 /* STCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationViewController.h; sourceTree = "<group>"; };
 		A7E2482D1BC3253E00811B36 /* STCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationViewController.m; sourceTree = "<group>"; };
 		A7E2482E1BC3253E00811B36 /* STCreationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationView.h; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 		A70884B81BA1F43300758049 /* StomtiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				A7C47BEF1C396034003D27D1 /* StomtRequest_PrivateTests.h */,
 				A76611861C347565009013C1 /* IntentionalErrorsWithoutLogin.m */,
 				FEA5D0A91BBC44E900274390 /* StomtTestCase.h */,
 				FEA5D0AA1BBC44E900274390 /* StomtTestCase.m */,
