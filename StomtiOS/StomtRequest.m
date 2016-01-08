@@ -210,6 +210,7 @@ error:
 		apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kImageUploadPath];
 		requestBody = [NSMutableDictionary dictionary];
 		if(targetID)[requestBody setObject:targetID forKey:@"id"];
+	if(!imageCategoryStr) _err("Image category string not provided. Aborting...");
 		[requestBody setObject:@{imageCategoryStr:@[@{@"data":imageBase64}]} forKey:@"images"];
 		
 		jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&jsonError];
@@ -591,7 +592,7 @@ error:
 					[Stomt sharedInstance].refreshToken = user.refreshToken;
 					[[Stomt sharedInstance] setLoggedUser:user];
 					
-					completion(error,user);
+					if(completion) completion(error,user);
 					return;
 						
 				}

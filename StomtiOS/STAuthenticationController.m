@@ -56,7 +56,7 @@ error:
 - (BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
 	NSArray* respArray = [((NSString*)[[[url absoluteString] componentsSeparatedByString:@"?"] lastObject]) componentsSeparatedByString:@"&"];
-	NSMutableArray* tempArray = [NSMutableArray array];
+	NSMutableArray* tempArray;
 	
 	for(NSString* aggregate in respArray)
 	{

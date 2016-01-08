@@ -6,10 +6,12 @@
 //  Copyright © 2015 Leonardo Cascianelli. All rights reserved.
 //
 
+#define __DBG__
 #import "StomtTestCaseWithLogin.h"
 #import <XCTest/XCTest.h>
 #import "Stomt.h"
 #import <CoreLocation/CoreLocation.h>
+#import "dbg.h"
 
 @interface CreateStomtWithLogin : StomtTestCaseWithLogin
 
@@ -33,7 +35,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        
+		if(error.code == POST_ALR) { _info("Stomt already sent, continuing..."); return; }
         XCTAssertFalse(stomt.anonym);
         XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
             
@@ -90,7 +92,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-			
+		if(error.code == POST_ALR) { _info("Stomt already sent, continuing..."); return; }
         XCTAssertFalse(stomt.anonym);
         XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
 			
@@ -131,7 +133,7 @@
     // perform request
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        
+        if(error.code == POST_ALR) { _info("Stomt already sent, continuing..."); return; }
         XCTAssertFalse(stomt.anonym);
         XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
             

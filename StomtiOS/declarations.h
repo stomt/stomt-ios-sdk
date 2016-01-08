@@ -27,7 +27,7 @@ typedef enum{
 }RequestType;
 
 typedef enum{
-	OK,ERR,OLD_TOKEN,WRONG_APPID,NOT_FOUND
+	OK=200,ERR,OLD_TOKEN=419,WRONG_APPID=500,NOT_FOUND=404,POST_ALR=413
 }HTTPERCode;
 
 typedef enum{

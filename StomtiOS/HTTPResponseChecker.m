@@ -23,8 +23,16 @@
 		
 		switch(statusCode){
 			case 200:
+			{
 				rt = OK;
 				break;
+			}
+			case 403:
+			{
+				rt = POST_ALR;
+				_warn("Stomt already posted.");
+				break;
+			}
 			case 419:
 			{
 				rt = OLD_TOKEN;
@@ -69,6 +77,11 @@ error:
 			case WRONG_APPID:
 			{
 				rt = [[NSError alloc] initWithDomain:@"StomtWrongAppIDDomain" code:WRONG_APPID userInfo:@{@"NSLocalizedDescriptionKey":@"The used appID is not valid.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Request a new appID from stomt's app section."}];
+				break;
+			}
+			case POST_ALR:
+			{
+				rt = [[NSError alloc] initWithDomain:@"StomtAlreadyPostedDomain" code:POST_ALR userInfo:@{@"NSLocalizedDescriptionKey":@"The stomt you are trying to send has already been posted.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Change the stomt's text body."}];
 				break;
 			}
 			case NOT_FOUND:
