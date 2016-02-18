@@ -31,7 +31,7 @@ This will ensure you to have the latest version of the desired OS.
 ### Manually
 
 - Issue from command line `git clone https://github.com/stomt/stomt-ios-sdk` to download the github project. 
-- Locate `StomtiOS.xcodeproj` in the cloned repo and drag it into your current XCode project. **Be sure to place it outside your project hierarchy!**
+- Locate `StomtiOS.xcodeproj` in the cloned repo and drag it into your current Xcode project. **Be sure to place it outside your project hierarchy!**
 - Goto *Build Phases* pane of your app and add **StomtiOS.framework** inside *Link Bynary With Libraries*.
 
 Done!
