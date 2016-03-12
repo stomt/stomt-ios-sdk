@@ -1,6 +1,6 @@
 # stomt iOS-SDK [![Build Status](https://travis-ci.org/stomt/stomt-ios-sdk.svg?branch=master)](https://travis-ci.org/stomt/stomt-ios-sdk) [![Stomt API](https://img.shields.io/badge/stomt-v2.1.X-brightgreen.svg)](https://rest.stomt.com/) [![CocoaPod](https://img.shields.io/cocoapods/v/Stomt-iOS-SDK.svg)](https://github.com/stomt/ios-sdk)
 
-<img alt="Easy integration" src="https://rest.stomt.com/uploads/y8I4/origin/y8I4ZtARHa0ReOOT8SIkZAzDMawN9c671SlEtVVf_origin.png" width="500">
+<img alt="Easy integration" src="https://cdn.stomt.com/uploads/kmZ4/origin/kmZ4G24Tu5gy4e2mgAR46hf8n8I086atp3QENLJD_origin.png" align="right" width="300">
 
 Our SDK allows you to add the feedback solution [www.stomt.com](https://www.stomt.com/) to your iPhone or iPad app. 
 
@@ -23,8 +23,8 @@ pod 'Stomt-iOS-SDK', '~> 0.0.x'
 
 If you are including the SDK with CocoaPods, be sure to use the desired version. 
 
-- iOS8 version --> `"pod 'Stomt-iOS-SDK', '< 2.0.0'"`
-- iOS9 version --> `"pod 'Stomt-iOS-SDK', '~> 2.0.0'"`
+- iOS8 version --> `pod 'Stomt-iOS-SDK', '< 2.0.0'`
+- iOS9 version --> `pod 'Stomt-iOS-SDK', '~> 2.0.0'`
 
 This will ensure you to have the latest version of the desired OS.
 
@@ -82,7 +82,7 @@ The most common action while using the SDK is to send a Stomt.
 ####Authenticate
 Authentication to Stomt can be accomplished in two ways: 
 
-Via normal OAuth flow, using the handy method `+[Stomt promptAuthenticationIfNecessaryWithCompletionBlock:]
+Via normal OAuth flow, using the handy class method `+[Stomt promptAuthenticationIfNecessaryWithCompletionBlock:]`
 
 Or via **Facebook connect**.
 
