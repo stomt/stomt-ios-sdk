@@ -43,7 +43,7 @@
 
 - (void)setup
 {
-	kAPIURL = @"https://test.rest.stomt.com";
+	kAPIURL = @"https://rest.stomt.com";
 }
 
 + (void)setAppID:(NSString *)appid
