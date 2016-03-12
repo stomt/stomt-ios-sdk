@@ -13,7 +13,6 @@
 #import "dbg.h"
 #import "declarations.h"
 #import "strings.h"
-#import "STCreationViewController.h"
 #import "STTarget.h"
 #import "STUser.h"
 #import "STAuthenticationController.h"
