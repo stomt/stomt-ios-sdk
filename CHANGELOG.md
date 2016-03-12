@@ -8,6 +8,7 @@ For platform independent questions feel free to address a stomt to @h3xept or co
 - Authentication delegate
 - Gracefully handle error codes
 - Update of deprecated methods
+- Re-implementation of stomt sending modal
 
 ## [2.0.0] 2015-11-2
 - Updated authentication to Stomt with SFSafariViewController.

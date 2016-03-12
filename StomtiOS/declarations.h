@@ -23,7 +23,8 @@ typedef enum{
 	kFeedRequest,
 	kTargetRequest,
 	kBasicTargetRequest,
-	kFacebookAuthenticationRequest
+	kFacebookAuthenticationRequest,
+	kAvailabilityRequest
 }RequestType;
 
 typedef enum{

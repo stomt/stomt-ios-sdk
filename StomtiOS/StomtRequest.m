@@ -359,6 +359,32 @@ error:
 	return nil;
 }
 
++ (StomtRequest*)availabilityRequestForUsername:(NSString *)username
+{
+	NSMutableURLRequest* apiRequest;
+	if(!username) _err("No username given. Aborting...");
+	
+	apiRequest = [StomtRequest generateBaseGETRequestWithPath:kAvailabilityPath parametersPair:@{@"property":@"username",@"value":username}];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kAvailabilityRequest];
+	
+error:
+	return nil;
+}
+
++ (StomtRequest*)availabilityRequestForEmail:(NSString *)email
+{
+	NSMutableURLRequest* apiRequest;
+	if(!email) _err("No email given. Aborting...");
+	
+	apiRequest = [StomtRequest generateBaseGETRequestWithPath:kAvailabilityPath parametersPair:@{@"property":@"email",@"value":email}];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kAvailabilityRequest];
+	
+error:
+	return nil;
+}
+
 #pragma mark Send Requests
 
 - (void)sendStomtInBackgroundWithBlock:(StomtCreationBlock)completion
@@ -602,6 +628,38 @@ error:
 		return;
 //		
 	}_err("Authentication request not available for this instance.");
+error:
+	return;
+}
+
+- (void)requestUserCredentialsAvailabilityWithBlock:(UserAvailabilityBlock)completion
+{
+	if(self.requestType == kAvailabilityRequest)
+	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		  {
+			  checkConnectionErrors(connectionError,completion);
+			  handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
+			  if([HTTPResponseChecker checkResponseCode:response] == OK)
+			  {
+				  NSDictionary* dataDict;
+				  if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				  if(dataDict)
+				  {
+					  NSDictionary* rawDataDict = [dataDict objectForKey:@"data"];
+					  NSNumber* success = [rawDataDict objectForKey:@"success"];
+					  if(completion) completion(nil,success);
+					  return;
+				  }
+			  }
+		  }] resume];
+		
+		return;
+		
+	}_err("Availability request not available for this instance");
+
 error:
 	return;
 }

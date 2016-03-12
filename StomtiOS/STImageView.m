@@ -45,4 +45,36 @@ error: //FT INTENDED
 	return nil;
 }
 
+
+- (instancetype)initWithImage:(STImage *)stImage placeholder:(UIImage *)placeholder
+{
+	self = [super init];
+	
+	if(stImage)
+	{
+		self.downloadManager = stImage;
+		if(placeholder) self.placeholder = placeholder;
+		
+		self.image = self.placeholder;
+		
+		[self.downloadManager downloadInBackgroundWithBlock:^(NSError* error, NSNumber* success){
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				if(success)
+					self.image = self.downloadManager.image;
+				
+			});
+			
+		}];
+		
+		self.contentMode = UIViewContentModeScaleAspectFill;
+		self.layer.cornerRadius = self.frame.size.width/2;
+		self.layer.masksToBounds = YES;
+		return self;
+	}
+	
+error: //FT INTENDED
+	return nil;
+}
+
 @end

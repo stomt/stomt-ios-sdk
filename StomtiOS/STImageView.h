@@ -29,5 +29,6 @@
  *
  * @return An instance of STImageView
  */
+- (instancetype)initWithImage:(STImage*)stImage placeholder:(UIImage*)placeholder;
 - (instancetype)initWithFrame:(CGRect)frame STImage:(STImage*)stImage placeholder:(UIImage*)placeholder;
 @end

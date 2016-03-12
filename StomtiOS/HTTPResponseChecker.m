@@ -52,7 +52,7 @@
 				break;
 			}
 			default:
-				return statusCode;
+				return (HTTPERCode)statusCode;
 		}
 		return rt;
 	}

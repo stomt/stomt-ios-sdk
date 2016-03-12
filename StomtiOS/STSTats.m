@@ -107,7 +107,7 @@ error: //FT INTENDED
 
 - (NSString*)description
 {
-	return [NSString stringWithFormat:@"<STTats Object\nFollowers: %d\nFollows:%d\nCreated stomts:%d\nReceived stomts:%d\n>",self.followers,self.follows,self.createdStomts,self.receivedStomts];
+	return [NSString stringWithFormat:@"<STTats Object\nFollowers: %ld\nFollows:%ld\nCreated stomts:%ld\nReceived stomts:%ld\n>",(long)self.followers,(long)self.follows,(long)self.createdStomts,(long)self.receivedStomts];
 }
 
 @end

@@ -123,6 +123,24 @@
  */
 + (StomtRequest*)facebookAuthenticationRequestWithAccessToken:(NSString*)accessToken userID:(NSString*)userID;
 
+/*!
+ * @brief Check whether a specific username is available.
+ *
+ * @param username The username to check the availability for.
+ *
+ * @return StomtRequest instance with type kAvailabilityRequest
+ */
++ (StomtRequest*)availabilityRequestForUsername:(NSString*)username;
+
+/*!
+ * @brief Check whether a specific email is available.
+ *
+ * @param email The email to check the availability for.
+ *
+ * @return StomtRequest instance with type kAvailabilityRequest
+ */
++ (StomtRequest*)availabilityRequestForEmail:(NSString*)email;
+
 //-----------------------------------------------------------------------------
 // Request senders
 //-----------------------------------------------------------------------------
@@ -172,5 +190,10 @@
  * @brief Authenticate the user to Stomt through Facebook.
  */
 - (void)authenticateWithFacebookInBackgroundWithBlock:(AuthenticationBlock)completion;
+
+/*!
+ * @brief Chech whether username or email are available
+ */
+- (void)requestUserCredentialsAvailabilityWithBlock:(UserAvailabilityBlock)completion;
 
 @end

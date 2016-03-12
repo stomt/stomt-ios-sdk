@@ -18,6 +18,7 @@
 #import "STUser.h"
 #import "STAuthenticationController.h"
 #import "STAuthenticationDelegate.h"
+#import "StomtCreationViewController.h"
 
 @interface Stomt ()
 @property (nonatomic,strong) STAuthenticationController* authController;
@@ -43,7 +44,7 @@
 
 - (void)setup
 {
-	kAPIURL = @"https://rest.stomt.com";
+	kAPIURL = @"https://test.rest.stomt.com";
 }
 
 + (void)setAppID:(NSString *)appid
@@ -164,6 +165,7 @@ error:
 	if(!loggedUser)
 	{
 		NSData *extUser = [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentUser];
+		if(!extUser) return nil;
 		STUser *usr = [NSKeyedUnarchiver unarchiveObjectWithData:extUser];
 		if(usr)
 		{
@@ -241,14 +243,11 @@ error:
 {
 	@synchronized(self)
 	{
-		STCreationViewController* cont;
+		StomtCreationViewController* cont;
 		
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting stomt creation modal presentation...");
 		
-		cont = [[STCreationViewController alloc] initWithBody:defaultText
-												   likeOrWish:likeOrWish
-													   target:target
-											  completionBlock:completion];
+		cont = [[StomtCreationViewController alloc] initWithNibName:@"StomtCreationViewController" bundle:[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] target:target defaultText:defaultText likeOrWish:likeOrWish];
 		
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:cont
 																					 animated:YES
@@ -263,9 +262,19 @@ error:
 {
 	@synchronized(self)
 	{
-		STTarget* target = [[STTarget alloc] init];
-		target.identifier = targetID;
-		[Stomt presentStomtCreationPanelWithTarget:target defaultText:defaultText likeOrWish:likeOrWish completionBlock:completion];
+		__block NSString* __defaultText = defaultText;
+		__block kSTObjectQualifier __likeOrWish = likeOrWish;
+		__block StomtCreationBlock __completion = completion;
+		
+		[STTarget retrieveEssentialTargetWithTargetID:targetID completionBlock:^(NSError *error, STTarget *target) {
+			if(target){
+				dispatch_sync(dispatch_get_main_queue(), ^{
+					[Stomt presentStomtCreationPanelWithTarget:target defaultText:__defaultText likeOrWish:__likeOrWish completionBlock:__completion];
+				});
+			}
+			else
+				fprintf(stderr, "[!] Error in retrieving target. Aborting...");
+		}];
 	}
 }
 

@@ -25,6 +25,7 @@ const NSString* kAPIURL;
 #define kGetTargetPath @"/targets/"
 #define kGetBasicTargetPath @"/targets/"
 #define kAuthorizePath @"/authentication/authorize"
+#define kAvailabilityPath @"/authentication/checkAvailability"
 
 #define kD_Id @"id"
 #define kD_DisplayName @"displayname"

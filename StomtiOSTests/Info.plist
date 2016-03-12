@@ -33,11 +33,11 @@
 	<string>1</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-	    <key>NSAllowsArbitraryLoads</key>
-	    <false/>
-	    <key>NSExceptionDomains</key>
-	    <dict>
-	        <key>stomt.com</key>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>stomt.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
@@ -47,8 +47,8 @@
 				<string>TLSv1.1</string>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
-	        </dict>
-	    </dict>
+			</dict>
+		</dict>
 	</dict>
 </dict>
 </plist>

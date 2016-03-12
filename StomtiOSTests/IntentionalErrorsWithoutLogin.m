@@ -26,7 +26,8 @@
     [super tearDown];
 }
 
-- (void)testCreateStomtWithNonExistingID {
+- (void)testCreateStomtWithNonExistingID
+{
 	// new request
 	NSString *textBody = @"would NOT create a simple anonym stomt. #iOSUnitTest";
 	NSString *notExistingID = @"E)=FIU=£$)KOJ03049";
@@ -48,4 +49,19 @@
 	[self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
 
+- (void)testValidateCredentialsEmail
+{
+	NSString* email = @"h3xept@gmail.com";
+	StomtRequest* availabilityRequest = [StomtRequest availabilityRequestForEmail:email];
+	
+	XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
+	
+	[availabilityRequest requestUserCredentialsAvailabilityWithBlock:^(NSError *error, NSNumber *available) {
+		[expectation fulfill];
+		NSLog(@"[!!!!!] %d",[available boolValue]);
+		XCTAssertTrue(!error);
+	}];
+	[self waitForExpectationsWithTimeout:self.timeout handler:nil];
+	
+}
 @end

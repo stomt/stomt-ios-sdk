@@ -16,12 +16,19 @@
 		A70D8DA91BE3F5440099BAB8 /* STAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D8DA71BE3F5440099BAB8 /* STAuthenticationController.m */; };
 		A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7107E8B1BA2F614001F3B38 /* STUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7107E8C1BA2F614001F3B38 /* STUser.m */; };
+		A71166141C872C8200ED4E44 /* LikeWishView.h in Headers */ = {isa = PBXBuildFile; fileRef = A71166121C872C8200ED4E44 /* LikeWishView.h */; };
+		A71166151C872C8200ED4E44 /* LikeWishView.m in Sources */ = {isa = PBXBuildFile; fileRef = A71166131C872C8200ED4E44 /* LikeWishView.m */; };
 		A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D451BA4338E00DF83B8 /* STCategory.m */; };
 		A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = A7450D481BA44E9800DF83B8 /* HTTPResponseChecker.h */; };
 		A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D491BA44E9800DF83B8 /* HTTPResponseChecker.m */; };
+		A75384D01C84E32600328B79 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A75384CF1C84E32600328B79 /* Images.xcassets */; };
 		A75AF2B31BA88F6700D74B9C /* strings.h in Headers */ = {isa = PBXBuildFile; fileRef = A75AF2B21BA88F6700D74B9C /* strings.h */; };
 		A75AF2B61BA893B000D74B9C /* STObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A75AF2B41BA893B000D74B9C /* STObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A75AF2B71BA893B000D74B9C /* STObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A75AF2B51BA893B000D74B9C /* STObject.m */; };
+		A75C1F641C88C329002D38F4 /* TargetView.h in Headers */ = {isa = PBXBuildFile; fileRef = A75C1F621C88C329002D38F4 /* TargetView.h */; };
+		A75C1F651C88C329002D38F4 /* TargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = A75C1F631C88C329002D38F4 /* TargetView.m */; };
+		A75C1F781C88E777002D38F4 /* TargetViewOutline.h in Headers */ = {isa = PBXBuildFile; fileRef = A75C1F761C88E777002D38F4 /* TargetViewOutline.h */; };
+		A75C1F791C88E777002D38F4 /* TargetViewOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = A75C1F771C88E777002D38F4 /* TargetViewOutline.m */; };
 		A76611871C347565009013C1 /* IntentionalErrorsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = A76611861C347565009013C1 /* IntentionalErrorsWithoutLogin.m */; };
 		A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */; };
 		A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */; };
@@ -33,6 +40,8 @@
 		A76DFE301BC5AF2800017C32 /* StomtRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DFE2E1BC5AF2800017C32 /* StomtRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A76DFE311BC5AF2800017C32 /* StomtRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DFE2F1BC5AF2800017C32 /* StomtRequest.m */; };
 		A7833D011BB46B1100A3F13B /* STFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = A7833CFF1BB46B1100A3F13B /* STFeed.m */; };
+		A78A1A201C8632CD0076E266 /* DoubleSideView.h in Headers */ = {isa = PBXBuildFile; fileRef = A78A1A1E1C8632CD0076E266 /* DoubleSideView.h */; };
+		A78A1A211C8632CD0076E266 /* DoubleSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A78A1A1F1C8632CD0076E266 /* DoubleSideView.m */; };
 		A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STStats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STStats.m */; };
 		A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,28 +51,14 @@
 		A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BB1BB6FEB5006A8135 /* STImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BD1BB6FEC1006A8135 /* Stomt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C2174A1BE17A6B00F8EB52 /* STAuthenticationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C217491BE17A6B00F8EB52 /* STAuthenticationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7E248301BC3253E00811B36 /* STCreationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2482C1BC3253E00811B36 /* STCreationViewController.h */; };
-		A7E248311BC3253E00811B36 /* STCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E2482D1BC3253E00811B36 /* STCreationViewController.m */; };
-		A7E248321BC3253E00811B36 /* STCreationView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2482E1BC3253E00811B36 /* STCreationView.h */; };
-		A7E248331BC3253E00811B36 /* STCreationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E2482F1BC3253E00811B36 /* STCreationView.m */; };
-		A7E248381BC3254A00811B36 /* STCreationTop.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248341BC3254A00811B36 /* STCreationTop.h */; };
-		A7E2483B1BC3254A00811B36 /* STCreationTop.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248371BC3254A00811B36 /* STCreationTop.m */; };
-		A7E248411BC3255D00811B36 /* STTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2483D1BC3255D00811B36 /* STTextView.h */; };
-		A7E248421BC3255D00811B36 /* STTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E2483E1BC3255D00811B36 /* STTextView.m */; };
-		A7E248431BC3255D00811B36 /* STCharCountLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2483F1BC3255D00811B36 /* STCharCountLabel.h */; };
-		A7E248441BC3255D00811B36 /* STCharCountLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248401BC3255D00811B36 /* STCharCountLabel.m */; };
-		A7E2484A1BC3256A00811B36 /* STLikeOrWishView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248461BC3256A00811B36 /* STLikeOrWishView.h */; };
-		A7E2484B1BC3256A00811B36 /* STLikeOrWishView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248471BC3256A00811B36 /* STLikeOrWishView.m */; };
-		A7E2484C1BC3256A00811B36 /* STQualifierView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248481BC3256A00811B36 /* STQualifierView.h */; };
-		A7E2484D1BC3256A00811B36 /* STQualifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248491BC3256A00811B36 /* STQualifierView.m */; };
-		A7E248531BC3257700811B36 /* STTargetDisplayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E2484F1BC3257700811B36 /* STTargetDisplayer.h */; };
-		A7E248541BC3257700811B36 /* STTargetDisplayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248501BC3257700811B36 /* STTargetDisplayer.m */; };
-		A7E248551BC3257700811B36 /* STTargetDisplayerContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248511BC3257700811B36 /* STTargetDisplayerContainer.h */; };
-		A7E248561BC3257700811B36 /* STTargetDisplayerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248521BC3257700811B36 /* STTargetDisplayerContainer.m */; };
-		A7E2485A1BC3258400811B36 /* STButtonLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E248581BC3258400811B36 /* STButtonLabel.h */; };
-		A7E2485B1BC3258400811B36 /* STButtonLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E248591BC3258400811B36 /* STButtonLabel.m */; };
-		A7EB48041BC81172008B34C9 /* STTargetNameRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = A7EB48021BC81172008B34C9 /* STTargetNameRectangle.h */; };
-		A7EB48051BC81172008B34C9 /* STTargetNameRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EB48031BC81172008B34C9 /* STTargetNameRectangle.m */; };
+		A7CB51FB1C94C90600DCF7A3 /* SimpleButtonDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CB51FA1C94C90600DCF7A3 /* SimpleButtonDelegate.h */; };
+		A7D4A5881C9326E400B7E78C /* CharCounterLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D4A5861C9326E400B7E78C /* CharCounterLabel.h */; };
+		A7D4A5891C9326E400B7E78C /* CharCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D4A5871C9326E400B7E78C /* CharCounterLabel.m */; };
+		A7D4A58C1C9374E400B7E78C /* StomtCreationAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D4A58A1C9374E400B7E78C /* StomtCreationAccessoryView.h */; };
+		A7D4A58D1C9374E400B7E78C /* StomtCreationAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D4A58B1C9374E400B7E78C /* StomtCreationAccessoryView.m */; };
+		A7FF4FE51C8372A10050F849 /* StomtCreationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FF4FE21C8372A10050F849 /* StomtCreationViewController.h */; };
+		A7FF4FE61C8372A10050F849 /* StomtCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FF4FE31C8372A10050F849 /* StomtCreationViewController.m */; };
+		A7FF4FE71C8372A10050F849 /* StomtCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7FF4FE41C8372A10050F849 /* StomtCreationViewController.xib */; };
 		FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */; };
 		FEA5D0A61BBC2C0900274390 /* CreateStomtsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */; };
 		FEA5D0A81BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */; };
@@ -96,12 +91,19 @@
 		A70D8DA71BE3F5440099BAB8 /* STAuthenticationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAuthenticationController.m; sourceTree = "<group>"; };
 		A7107E8B1BA2F614001F3B38 /* STUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUser.h; sourceTree = "<group>"; };
 		A7107E8C1BA2F614001F3B38 /* STUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUser.m; sourceTree = "<group>"; };
+		A71166121C872C8200ED4E44 /* LikeWishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeWishView.h; sourceTree = "<group>"; };
+		A71166131C872C8200ED4E44 /* LikeWishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeWishView.m; sourceTree = "<group>"; };
 		A7450D451BA4338E00DF83B8 /* STCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCategory.m; sourceTree = "<group>"; };
 		A7450D481BA44E9800DF83B8 /* HTTPResponseChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPResponseChecker.h; sourceTree = "<group>"; };
 		A7450D491BA44E9800DF83B8 /* HTTPResponseChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPResponseChecker.m; sourceTree = "<group>"; };
+		A75384CF1C84E32600328B79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A75AF2B21BA88F6700D74B9C /* strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strings.h; sourceTree = "<group>"; };
 		A75AF2B41BA893B000D74B9C /* STObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STObject.h; sourceTree = "<group>"; };
 		A75AF2B51BA893B000D74B9C /* STObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STObject.m; sourceTree = "<group>"; };
+		A75C1F621C88C329002D38F4 /* TargetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetView.h; sourceTree = "<group>"; };
+		A75C1F631C88C329002D38F4 /* TargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetView.m; sourceTree = "<group>"; };
+		A75C1F761C88E777002D38F4 /* TargetViewOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetViewOutline.h; sourceTree = "<group>"; };
+		A75C1F771C88E777002D38F4 /* TargetViewOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetViewOutline.m; sourceTree = "<group>"; };
 		A76611861C347565009013C1 /* IntentionalErrorsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionalErrorsWithoutLogin.m; sourceTree = "<group>"; };
 		A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601.h"; sourceTree = "<group>"; };
 		A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
@@ -113,8 +115,11 @@
 		A76DFE2E1BC5AF2800017C32 /* StomtRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtRequest.h; sourceTree = "<group>"; };
 		A76DFE2F1BC5AF2800017C32 /* StomtRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtRequest.m; sourceTree = "<group>"; };
 		A7833CFF1BB46B1100A3F13B /* STFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STFeed.m; sourceTree = "<group>"; };
+		A78A1A1E1C8632CD0076E266 /* DoubleSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleSideView.h; sourceTree = "<group>"; };
+		A78A1A1F1C8632CD0076E266 /* DoubleSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleSideView.m; sourceTree = "<group>"; };
 		A78B2E6B1BA419BC00A9E7D0 /* STStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STStats.h; sourceTree = "<group>"; };
 		A78B2E6C1BA419BC00A9E7D0 /* STStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STStats.m; sourceTree = "<group>"; };
+		A7B397AA1C81EC920076A94F /* ValidateCredentialsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateCredentialsWithoutLogin.m; sourceTree = "<group>"; };
 		A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSearchFilterKeywords.h; sourceTree = "<group>"; };
 		A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSearchFilterKeywords.m; sourceTree = "<group>"; };
 		A7C039B71BB6FDCF006A8135 /* STCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCategory.h; sourceTree = "<group>"; };
@@ -123,28 +128,14 @@
 		A7C039BD1BB6FEC1006A8135 /* Stomt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stomt.h; sourceTree = "<group>"; };
 		A7C217491BE17A6B00F8EB52 /* STAuthenticationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAuthenticationDelegate.h; sourceTree = "<group>"; };
 		A7C47BEF1C396034003D27D1 /* StomtRequest_PrivateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtRequest_PrivateTests.h; sourceTree = "<group>"; };
-		A7E2482C1BC3253E00811B36 /* STCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationViewController.h; sourceTree = "<group>"; };
-		A7E2482D1BC3253E00811B36 /* STCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationViewController.m; sourceTree = "<group>"; };
-		A7E2482E1BC3253E00811B36 /* STCreationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationView.h; sourceTree = "<group>"; };
-		A7E2482F1BC3253E00811B36 /* STCreationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationView.m; sourceTree = "<group>"; };
-		A7E248341BC3254A00811B36 /* STCreationTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCreationTop.h; sourceTree = "<group>"; };
-		A7E248371BC3254A00811B36 /* STCreationTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCreationTop.m; sourceTree = "<group>"; };
-		A7E2483D1BC3255D00811B36 /* STTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTextView.h; sourceTree = "<group>"; };
-		A7E2483E1BC3255D00811B36 /* STTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTextView.m; sourceTree = "<group>"; };
-		A7E2483F1BC3255D00811B36 /* STCharCountLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCharCountLabel.h; sourceTree = "<group>"; };
-		A7E248401BC3255D00811B36 /* STCharCountLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCharCountLabel.m; sourceTree = "<group>"; };
-		A7E248461BC3256A00811B36 /* STLikeOrWishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLikeOrWishView.h; sourceTree = "<group>"; };
-		A7E248471BC3256A00811B36 /* STLikeOrWishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLikeOrWishView.m; sourceTree = "<group>"; };
-		A7E248481BC3256A00811B36 /* STQualifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STQualifierView.h; sourceTree = "<group>"; };
-		A7E248491BC3256A00811B36 /* STQualifierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQualifierView.m; sourceTree = "<group>"; };
-		A7E2484F1BC3257700811B36 /* STTargetDisplayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTargetDisplayer.h; sourceTree = "<group>"; };
-		A7E248501BC3257700811B36 /* STTargetDisplayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTargetDisplayer.m; sourceTree = "<group>"; };
-		A7E248511BC3257700811B36 /* STTargetDisplayerContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTargetDisplayerContainer.h; sourceTree = "<group>"; };
-		A7E248521BC3257700811B36 /* STTargetDisplayerContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTargetDisplayerContainer.m; sourceTree = "<group>"; };
-		A7E248581BC3258400811B36 /* STButtonLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STButtonLabel.h; sourceTree = "<group>"; };
-		A7E248591BC3258400811B36 /* STButtonLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STButtonLabel.m; sourceTree = "<group>"; };
-		A7EB48021BC81172008B34C9 /* STTargetNameRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTargetNameRectangle.h; sourceTree = "<group>"; };
-		A7EB48031BC81172008B34C9 /* STTargetNameRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTargetNameRectangle.m; sourceTree = "<group>"; };
+		A7CB51FA1C94C90600DCF7A3 /* SimpleButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButtonDelegate.h; sourceTree = "<group>"; };
+		A7D4A5861C9326E400B7E78C /* CharCounterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharCounterLabel.h; sourceTree = "<group>"; };
+		A7D4A5871C9326E400B7E78C /* CharCounterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharCounterLabel.m; sourceTree = "<group>"; };
+		A7D4A58A1C9374E400B7E78C /* StomtCreationAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtCreationAccessoryView.h; sourceTree = "<group>"; };
+		A7D4A58B1C9374E400B7E78C /* StomtCreationAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtCreationAccessoryView.m; sourceTree = "<group>"; };
+		A7FF4FE21C8372A10050F849 /* StomtCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtCreationViewController.h; sourceTree = "<group>"; };
+		A7FF4FE31C8372A10050F849 /* StomtCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtCreationViewController.m; sourceTree = "<group>"; };
+		A7FF4FE41C8372A10050F849 /* StomtCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StomtCreationViewController.xib; sourceTree = "<group>"; };
 		FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtWithLogin.m; sourceTree = "<group>"; };
 		FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtsWithoutLogin.m; sourceTree = "<group>"; };
 		FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveSingleStomtWithoutLogin.m; sourceTree = "<group>"; };
@@ -178,6 +169,7 @@
 		A708849F1BA1F43300758049 = {
 			isa = PBXGroup;
 			children = (
+				A75384CF1C84E32600328B79 /* Images.xcassets */,
 				A70884AB1BA1F43300758049 /* StomtiOS */,
 				A778CA1D1BB1E42600B5783D /* UI */,
 				A70884B81BA1F43300758049 /* StomtiOSTests */,
@@ -325,20 +317,11 @@
 		A76DFE321BC6F7D400017C32 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				A7FF4FE11C8372710050F849 /* Stomt Creation */,
+				A78A1A221C8632D10076E266 /* DoubleSideView */,
 				A71C9E1D1BC9675C00398B0B /* Authentication */,
-				A778CA1C1BB1E41800B5783D /* CreateStomt */,
 			);
 			name = Private;
-			sourceTree = "<group>";
-		};
-		A778CA1C1BB1E41800B5783D /* CreateStomt */ = {
-			isa = PBXGroup;
-			children = (
-				A7E2482B1BC3252A00811B36 /* Components */,
-				A7E2482A1BC3252200811B36 /* CoreGraphics */,
-				A7E248291BC3251F00811B36 /* Core */,
-			);
-			name = CreateStomt;
 			sourceTree = "<group>";
 		};
 		A778CA1D1BB1E42600B5783D /* UI */ = {
@@ -350,87 +333,42 @@
 			path = StomtiOS;
 			sourceTree = "<group>";
 		};
+		A78A1A221C8632D10076E266 /* DoubleSideView */ = {
+			isa = PBXGroup;
+			children = (
+				A78A1A1E1C8632CD0076E266 /* DoubleSideView.h */,
+				A78A1A1F1C8632CD0076E266 /* DoubleSideView.m */,
+			);
+			name = DoubleSideView;
+			sourceTree = "<group>";
+		};
 		A7C217481BE17A0600F8EB52 /* Stomt Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				A7C217491BE17A6B00F8EB52 /* STAuthenticationDelegate.h */,
+				A7CB51FA1C94C90600DCF7A3 /* SimpleButtonDelegate.h */,
 			);
 			name = "Stomt Delegates";
 			sourceTree = "<group>";
 		};
-		A7E248291BC3251F00811B36 /* Core */ = {
+		A7FF4FE11C8372710050F849 /* Stomt Creation */ = {
 			isa = PBXGroup;
 			children = (
-				A7E2482C1BC3253E00811B36 /* STCreationViewController.h */,
-				A7E2482D1BC3253E00811B36 /* STCreationViewController.m */,
-				A7E2482E1BC3253E00811B36 /* STCreationView.h */,
-				A7E2482F1BC3253E00811B36 /* STCreationView.m */,
+				A75C1F761C88E777002D38F4 /* TargetViewOutline.h */,
+				A75C1F771C88E777002D38F4 /* TargetViewOutline.m */,
+				A7FF4FE21C8372A10050F849 /* StomtCreationViewController.h */,
+				A7FF4FE31C8372A10050F849 /* StomtCreationViewController.m */,
+				A7FF4FE41C8372A10050F849 /* StomtCreationViewController.xib */,
+				A71166121C872C8200ED4E44 /* LikeWishView.h */,
+				A71166131C872C8200ED4E44 /* LikeWishView.m */,
+				A75C1F621C88C329002D38F4 /* TargetView.h */,
+				A75C1F631C88C329002D38F4 /* TargetView.m */,
+				A7D4A5861C9326E400B7E78C /* CharCounterLabel.h */,
+				A7D4A5871C9326E400B7E78C /* CharCounterLabel.m */,
+				A7D4A58A1C9374E400B7E78C /* StomtCreationAccessoryView.h */,
+				A7D4A58B1C9374E400B7E78C /* StomtCreationAccessoryView.m */,
 			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		A7E2482A1BC3252200811B36 /* CoreGraphics */ = {
-			isa = PBXGroup;
-			children = (
-				A7E248341BC3254A00811B36 /* STCreationTop.h */,
-				A7EB48021BC81172008B34C9 /* STTargetNameRectangle.h */,
-				A7EB48031BC81172008B34C9 /* STTargetNameRectangle.m */,
-				A7E248371BC3254A00811B36 /* STCreationTop.m */,
-			);
-			name = CoreGraphics;
-			sourceTree = "<group>";
-		};
-		A7E2482B1BC3252A00811B36 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				A7E248571BC3257F00811B36 /* Top */,
-				A7E2484E1BC3257100811B36 /* TargetDisplayer */,
-				A7E248451BC3255F00811B36 /* QualifierView */,
-				A7E2483C1BC3255400811B36 /* Text */,
-			);
-			name = Components;
-			sourceTree = "<group>";
-		};
-		A7E2483C1BC3255400811B36 /* Text */ = {
-			isa = PBXGroup;
-			children = (
-				A7E2483D1BC3255D00811B36 /* STTextView.h */,
-				A7E2483E1BC3255D00811B36 /* STTextView.m */,
-				A7E2483F1BC3255D00811B36 /* STCharCountLabel.h */,
-				A7E248401BC3255D00811B36 /* STCharCountLabel.m */,
-			);
-			name = Text;
-			sourceTree = "<group>";
-		};
-		A7E248451BC3255F00811B36 /* QualifierView */ = {
-			isa = PBXGroup;
-			children = (
-				A7E248461BC3256A00811B36 /* STLikeOrWishView.h */,
-				A7E248471BC3256A00811B36 /* STLikeOrWishView.m */,
-				A7E248481BC3256A00811B36 /* STQualifierView.h */,
-				A7E248491BC3256A00811B36 /* STQualifierView.m */,
-			);
-			name = QualifierView;
-			sourceTree = "<group>";
-		};
-		A7E2484E1BC3257100811B36 /* TargetDisplayer */ = {
-			isa = PBXGroup;
-			children = (
-				A7E2484F1BC3257700811B36 /* STTargetDisplayer.h */,
-				A7E248501BC3257700811B36 /* STTargetDisplayer.m */,
-				A7E248511BC3257700811B36 /* STTargetDisplayerContainer.h */,
-				A7E248521BC3257700811B36 /* STTargetDisplayerContainer.m */,
-			);
-			name = TargetDisplayer;
-			sourceTree = "<group>";
-		};
-		A7E248571BC3257F00811B36 /* Top */ = {
-			isa = PBXGroup;
-			children = (
-				A7E248581BC3258400811B36 /* STButtonLabel.h */,
-				A7E248591BC3258400811B36 /* STButtonLabel.m */,
-			);
-			name = Top;
+			name = "Stomt Creation";
 			sourceTree = "<group>";
 		};
 		FEA5D0AC1BBC491D00274390 /* RetrieveStomts */ = {
@@ -446,6 +384,7 @@
 		FEA5D0AD1BBC493B00274390 /* CreateStomts */ = {
 			isa = PBXGroup;
 			children = (
+				A7B397AA1C81EC920076A94F /* ValidateCredentialsWithoutLogin.m */,
 				FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */,
 				FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */,
 			);
@@ -459,18 +398,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7E2484C1BC3256A00811B36 /* STQualifierView.h in Headers */,
+				A71166141C872C8200ED4E44 /* LikeWishView.h in Headers */,
 				A70D8DA81BE3F5440099BAB8 /* STAuthenticationController.h in Headers */,
+				A78A1A201C8632CD0076E266 /* DoubleSideView.h in Headers */,
 				A70884DD1BA1F4A400758049 /* declarations.h in Headers */,
-				A7E2484A1BC3256A00811B36 /* STLikeOrWishView.h in Headers */,
-				A7E248431BC3255D00811B36 /* STCharCountLabel.h in Headers */,
-				A7E2485A1BC3258400811B36 /* STButtonLabel.h in Headers */,
+				A75C1F641C88C329002D38F4 /* TargetView.h in Headers */,
 				A70884DC1BA1F4A400758049 /* dbg.h in Headers */,
-				A7E248381BC3254A00811B36 /* STCreationTop.h in Headers */,
-				A7E248551BC3257700811B36 /* STTargetDisplayerContainer.h in Headers */,
 				A76DFE281BC57CC200017C32 /* STImageView.h in Headers */,
 				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
 				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
+				A7D4A58C1C9374E400B7E78C /* StomtCreationAccessoryView.h in Headers */,
 				A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */,
 				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,
 				A76DFE2D1BC5AF1E00017C32 /* STTarget.h in Headers */,
@@ -478,15 +415,14 @@
 				A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */,
 				A7C2174A1BE17A6B00F8EB52 /* STAuthenticationDelegate.h in Headers */,
 				A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */,
+				A7D4A5881C9326E400B7E78C /* CharCounterLabel.h in Headers */,
 				A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */,
 				A76DFE301BC5AF2800017C32 /* StomtRequest.h in Headers */,
-				A7E248321BC3253E00811B36 /* STCreationView.h in Headers */,
-				A7EB48041BC81172008B34C9 /* STTargetNameRectangle.h in Headers */,
+				A7CB51FB1C94C90600DCF7A3 /* SimpleButtonDelegate.h in Headers */,
 				A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */,
 				A75AF2B31BA88F6700D74B9C /* strings.h in Headers */,
-				A7E248411BC3255D00811B36 /* STTextView.h in Headers */,
-				A7E248301BC3253E00811B36 /* STCreationViewController.h in Headers */,
-				A7E248531BC3257700811B36 /* STTargetDisplayer.h in Headers */,
+				A75C1F781C88E777002D38F4 /* TargetViewOutline.h in Headers */,
+				A7FF4FE51C8372A10050F849 /* StomtCreationViewController.h in Headers */,
 				A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */,
 				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
 			);
@@ -572,6 +508,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75384D01C84E32600328B79 /* Images.xcassets in Resources */,
+				A7FF4FE71C8372A10050F849 /* StomtCreationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,30 +527,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7EB48051BC81172008B34C9 /* STTargetNameRectangle.m in Sources */,
+				A75C1F791C88E777002D38F4 /* TargetViewOutline.m in Sources */,
+				A7FF4FE61C8372A10050F849 /* StomtCreationViewController.m in Sources */,
+				A78A1A211C8632CD0076E266 /* DoubleSideView.m in Sources */,
 				A70D8DA91BE3F5440099BAB8 /* STAuthenticationController.m in Sources */,
 				A70884D41BA1F47400758049 /* Stomt.m in Sources */,
 				A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */,
-				A7E2483B1BC3254A00811B36 /* STCreationTop.m in Sources */,
-				A7E2485B1BC3258400811B36 /* STButtonLabel.m in Sources */,
 				A76DFE2C1BC5AF1E00017C32 /* STTarget.m in Sources */,
-				A7E248331BC3253E00811B36 /* STCreationView.m in Sources */,
+				A7D4A58D1C9374E400B7E78C /* StomtCreationAccessoryView.m in Sources */,
 				A76DFE311BC5AF2800017C32 /* StomtRequest.m in Sources */,
-				A7E248561BC3257700811B36 /* STTargetDisplayerContainer.m in Sources */,
 				A7C039A31BB5A340006A8135 /* STSearchFilterKeywords.m in Sources */,
-				A7E248541BC3257700811B36 /* STTargetDisplayer.m in Sources */,
-				A7E248311BC3253E00811B36 /* STCreationViewController.m in Sources */,
 				A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */,
 				A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */,
-				A7E248441BC3255D00811B36 /* STCharCountLabel.m in Sources */,
+				A7D4A5891C9326E400B7E78C /* CharCounterLabel.m in Sources */,
 				A768D76E1BA9EB6000466AFB /* STImage.m in Sources */,
-				A7E2484B1BC3256A00811B36 /* STLikeOrWishView.m in Sources */,
+				A71166151C872C8200ED4E44 /* LikeWishView.m in Sources */,
 				A75AF2B71BA893B000D74B9C /* STObject.m in Sources */,
-				A7E248421BC3255D00811B36 /* STTextView.m in Sources */,
 				A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */,
+				A75C1F651C88C329002D38F4 /* TargetView.m in Sources */,
 				A7833D011BB46B1100A3F13B /* STFeed.m in Sources */,
 				A76DFE291BC57CC200017C32 /* STImageView.m in Sources */,
-				A7E2484D1BC3256A00811B36 /* STQualifierView.m in Sources */,
 				A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -664,6 +598,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -712,6 +647,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
