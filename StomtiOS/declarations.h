@@ -15,6 +15,10 @@ typedef enum{
 }kState;
 
 typedef enum{
+	kSTAuthenticationRouteFacebook = 1
+}kSTAuthenticationRoute;
+
+typedef enum{
 	kAuthRequest,
 	kStomtCreationRequest,
 	kImageUploadRequest,
@@ -24,11 +28,14 @@ typedef enum{
 	kTargetRequest,
 	kBasicTargetRequest,
 	kFacebookAuthenticationRequest,
-	kAvailabilityRequest
+	kExternalAuthenticationRequest,
+	kAvailabilityRequest,
+	kBasicSignupRequest,
+	kLoginRequest
 }RequestType;
 
 typedef enum{
-	OK=200,ERR,OLD_TOKEN=419,WRONG_APPID=500,NOT_FOUND=404,POST_ALR=413
+	OK=200,ERR,OLD_TOKEN=419,WRONG_APPID=401,NOT_FOUND=404,POST_ALR=413
 }HTTPERCode;
 
 typedef enum{

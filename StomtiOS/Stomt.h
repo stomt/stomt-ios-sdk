@@ -20,6 +20,7 @@
 #import "STFeed.h"
 #import "STSearchFilterKeywords.h"
 #import "STAuthenticationDelegate.h"
+#import "AuthenticationDispatch.h"
 
 @class STUser;
 @class STTarget;
@@ -51,6 +52,8 @@
 @property (nonatomic,readonly) BOOL isAuthenticated;
 
 @property (nonatomic,strong) STUser* loggedUser;
+
+@property (nonatomic,strong) id<STAuthenticationDelegate> authenticationDelegate;
 
 + (instancetype)sharedInstance;
 + (void)setAppID:(NSString *)appid;
@@ -114,6 +117,16 @@
  */
 + (void)presentStomtCreationPanelWithTargetID:(NSString*)targetID defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion;
 
+/*!
+ * @brief Handle different authentication methods
+ * @discussion You may find a complete explanation of the implementation here: https://rest.stomt.com/#authentication
+ *
+ * @param authenticationRoute Gives information to the method on what parameters to expect. @see declarations.h
+ * @param parameters Parameters needed in order to authenticate to the stomt's servers.
+ */
++ (void)handleLoginFromExternalRoute:(kSTAuthenticationRoute)authenticationRoute withParameters:(NSDictionary*)parameters;
+
+/// To be called in AppDelegate in order to perform an OAuth login.
 - (BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 
 @end

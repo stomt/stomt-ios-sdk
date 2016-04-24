@@ -27,17 +27,17 @@ if(ERR){\
 	if([ERR localizedDescription])_warn("%s",[[ERR localizedDescription] UTF8String]);\
 	if([ERR localizedFailureReason])_warn("%s",[[ERR localizedFailureReason] UTF8String]);\
 	if([ERR localizedFailureReason])_warn("%s",[[ERR localizedRecoverySuggestion] UTF8String]);\
-	return;\
 }
+
 #define handleResponseErrors(ERRNO,DATA,COMP,...) if(ERRNO != OK){\
 	NSError* err = [HTTPResponseChecker errorWithResponseCode:ERRNO withData:DATA];\
-	if(COMP) { COMP(err,nil); return; }\
+	if(COMP) { COMP(err,nil); }\
 	if(err){\
 		if([err localizedDescription])_warn("%s",[[err localizedDescription] UTF8String]);\
-		if([err localizedFailureReason])_warn("%s",[[err localizedFailureReason] UTF8String]);\
+		if([err userInfo]){[[err userInfo] enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {_warn("%s: %s",[key UTF8String],[[NSString stringWithFormat:@"%@",obj] UTF8String]);}];}\
 		if([err localizedFailureReason])_warn("%s",[[err localizedRecoverySuggestion] UTF8String]);\
 		return;\
-	}\
+	} return;\
 }
 /* Private use only */
 
@@ -339,7 +339,7 @@ error:
 	
 	if(accessToken && userID)
 	{
-		apiRequest =  [StomtRequest generateBasePOSTRequestWithPath:kFacebookLoginPath];
+		apiRequest =  [StomtRequest generateBasePOSTRequestWithPath:kGeneralLoginPath];
 		dictBody = [NSMutableDictionary dictionary];
 		
 		[dictBody setObject:@"facebook" forKey:@"login_method"];
@@ -380,6 +380,86 @@ error:
 	apiRequest = [StomtRequest generateBaseGETRequestWithPath:kAvailabilityPath parametersPair:@{@"property":@"email",@"value":email}];
 	
 	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kAvailabilityRequest];
+	
+error:
+	return nil;
+}
+
+
++ (StomtRequest*)externalLoginRequestForRoute:(kSTAuthenticationRoute)authenticationRoute withParameters:(NSDictionary *)parameters
+{
+	NSMutableURLRequest* apiRequest;
+	
+	NSString *accesstoken;
+	NSString* login_method; //stomt backend convention
+	
+	//Temp --
+	NSString* state;
+	// --
+	
+	NSMutableDictionary* bodyDictionary;
+	
+	if(!parameters || !authenticationRoute) _err("Incorrect args for +[externalLoginRequestForRoute:withParameters:]. Aborting...");
+	
+	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kLoginPath];
+	
+	switch (authenticationRoute) {
+		
+		//Facebook ----
+		case kSTAuthenticationRouteFacebook:
+			@try {
+				
+				accesstoken = [parameters objectForKey:@"access_token"];
+				login_method = @"facebook";
+				
+				state = [parameters objectForKey:@"state"];
+				
+				bodyDictionary = [NSMutableDictionary dictionaryWithDictionary:NSDictionaryOfVariableBindings(accesstoken,login_method,state)];
+				
+			}
+			@catch (NSException *exception) {
+				NSLog(@"Error in parsing dictionary. Aborting...");
+				NSLog(@"%@",exception);
+				_err("");
+			}
+			break;
+			
+		
+	}
+	
+	if(bodyDictionary)
+		[apiRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:bodyDictionary options:0 error:nil]];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kExternalAuthenticationRequest];
+	
+error:
+	return nil;
+}
+
++ (StomtRequest*)signupUserRequestWithName:(NSString *)displayname username:(NSString *)username email:(NSString *)email
+{
+	NSMutableURLRequest* apiRequest;
+	if(!displayname || !username || !email) _err("Incorrect args. Aborting...");
+	
+	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kBasicRegisterPath];
+	[apiRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:NSDictionaryOfVariableBindings(displayname,username,email) options:0 error:nil]];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kBasicSignupRequest];
+	
+error:
+	return nil;
+}
+
++ (StomtRequest*)loginRequestWithUsernameOrEmail:(NSString *)emailusername passsword:(NSString *)password
+{
+	NSMutableURLRequest* apiRequest;
+	NSString* login_method = @"normal"; //stomt's conventions
+	if(!emailusername || !password) _err("Incorrect args. Aborting...");
+	
+	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kGeneralLoginPath];
+	[apiRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:NSDictionaryOfVariableBindings(emailusername,password,login_method) options:0 error:nil]];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kLoginRequest];
 	
 error:
 	return nil;
@@ -626,7 +706,7 @@ error:
 		}] resume];
 		
 		return;
-//		
+		
 	}_err("Authentication request not available for this instance.");
 error:
 	return;
@@ -660,6 +740,120 @@ error:
 		
 	}_err("Availability request not available for this instance");
 
+error:
+	return;
+}
+
+- (void)authenticateWithExternalRouteWithBlock:(AuthenticationBlock)completion
+{
+	if(self.requestType == kExternalAuthenticationRequest)
+	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		  {
+			  checkConnectionErrors(connectionError,completion);
+			  handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
+			  if([HTTPResponseChecker checkResponseCode:response] == OK)
+			  {
+				  NSDictionary* dataDict;
+				  if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				  if(dataDict)
+				  {
+					  NSError* error;
+					  STUser* user = [STUser initWithDataDictionary:[dataDict objectForKey:@"data"]];
+					  if(!user) error = [NSError errorWithDomain:@"Authentication error" code:0 userInfo:@{@"info":@"Could not instantiate an STUser."}];
+					  
+					  [Stomt sharedInstance].accessToken = user.accessToken;
+					  [Stomt sharedInstance].refreshToken = user.refreshToken;
+					  [[Stomt sharedInstance] setLoggedUser:user];
+					  
+					  if(completion) completion(error,user);
+					  return;
+					  
+				  }
+			  }
+		  }] resume];
+		
+		return;
+		
+	}_err("Authentication request not available for this instance.");
+error:
+	return;
+}
+
+- (void)registerInBackgroundWithBlock:(AuthenticationBlock)completion
+{
+	if(self.requestType == kBasicSignupRequest)
+	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		  {
+			  checkConnectionErrors(connectionError,completion);
+			  handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
+			  if([HTTPResponseChecker checkResponseCode:response] == OK)
+			  {
+				  NSDictionary* dataDict;
+				  if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				  if(dataDict)
+				  {
+					  NSError* error;
+					  STUser* user = [STUser initWithDataDictionary:[dataDict objectForKey:@"data"]];
+					  if(!user) error = [NSError errorWithDomain:@"Authentication error" code:0 userInfo:@{@"info":@"Could not instantiate an STUser."}];
+					  
+					  [Stomt sharedInstance].accessToken = user.accessToken;
+					  [Stomt sharedInstance].refreshToken = user.refreshToken;
+					  [[Stomt sharedInstance] setLoggedUser:user];
+					  
+					  if(completion) completion(error,user);
+					  return;
+					  
+				  }
+			  }
+		  }] resume];
+		
+		return;
+		
+	}_err("Register request not available for this instance.");
+error:
+	return;
+}
+
+- (void)loginInBackgroundWithBlock:(AuthenticationBlock)completion
+{
+	if(self.requestType == kLoginRequest)
+	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		  {
+			  checkConnectionErrors(connectionError,completion);
+			  handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
+			  if([HTTPResponseChecker checkResponseCode:response] == OK)
+			  {
+				  NSDictionary* dataDict;
+				  if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				  if(dataDict)
+				  {
+					  NSError* error;
+					  STUser* user = [STUser initWithDataDictionary:[dataDict objectForKey:@"data"]];
+					  if(!user) error = [NSError errorWithDomain:@"Authentication error" code:0 userInfo:@{@"info":@"Could not instantiate an STUser."}];
+					  
+					  [Stomt sharedInstance].accessToken = user.accessToken;
+					  [Stomt sharedInstance].refreshToken = user.refreshToken;
+					  [[Stomt sharedInstance] setLoggedUser:user];
+					  
+					  if(completion) completion(error,user);
+					  return;
+					  
+				  }
+			  }
+		  }] resume];
+		
+		return;
+		
+	}_err("Register request not available for this instance.");
 error:
 	return;
 }

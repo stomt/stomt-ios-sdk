@@ -30,5 +30,24 @@
  * @return An instance of STImageView
  */
 - (instancetype)initWithImage:(STImage*)stImage placeholder:(UIImage*)placeholder;
+
+/*!
+ * @brief Creates an STImageView instance with the given STImage and placeholder.
+ *
+ * @param STImage @see STImage
+ * @param placeholder The UIImage instance to be displayed when the desired image is downloading or missing.
+ * @param frame The frame of the STImageView
+ *
+ * @return An instance of STImageView
+ */
 - (instancetype)initWithFrame:(CGRect)frame STImage:(STImage*)stImage placeholder:(UIImage*)placeholder;
+
+/*!
+ * @brief Sets up an STImageView with an STImage instance and a placeholder.
+ *
+ * @param STImage @see STImage
+ * @param placeholder The UIImage instance to be displayed when the desired image is downloading or missing.
+ */
+- (void)setupWithImage:(STImage*)stImage placeholder:(UIImage*)placeholder;
+
 @end

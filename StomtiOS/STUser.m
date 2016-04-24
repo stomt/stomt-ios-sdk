@@ -21,9 +21,9 @@
 	else
 		self = [super initWithDataDictionary:data];
 	
-	self.accessToken = [data objectForKey:kD_AccessToken];
-	self.refreshToken = [data objectForKey:kD_RefreshToken];
-	self.isNewUser = [[data objectForKey:kD_NewUser] boolValue];
+	_accessToken = [data objectForKey:kD_AccessToken];
+	_refreshToken = [data objectForKey:kD_RefreshToken];
+	_isNewUser = [[data objectForKey:kD_NewUser] boolValue];
 	return self;
 	
 error:
@@ -80,9 +80,9 @@ error:
 	
 #define ezIn(X,Y) if(X) [dict setObject:X forKey:Y];
 	
-	ezIn(self.accessToken, @"accessToken");
-	ezIn(self.refreshToken, @"refreshToken");
-	ezIn([NSNumber numberWithBool:self.isNewUser], @"isNewUser");
+	ezIn(_accessToken, @"accessToken");
+	ezIn(_refreshToken, @"refreshToken");
+	ezIn([NSNumber numberWithBool:_isNewUser], @"isNewUser");
 
 #undef ezIn
 	if(dict) return dict;
@@ -95,12 +95,12 @@ error:
 {
 	[super encodeWithCoder:aCoder];
 	
-	if(self.accessToken)
-		[aCoder encodeObject:self.accessToken forKey:@"accessToken"];
-	if(self.refreshToken)
-		[aCoder encodeObject:self.refreshToken forKey:@"refreshToken"];
+	if(_accessToken)
+		[aCoder encodeObject:_accessToken forKey:@"accessToken"];
+	if(_refreshToken)
+		[aCoder encodeObject:_refreshToken forKey:@"refreshToken"];
 	
-	[aCoder encodeBool:self.isNewUser forKey:@"isNewUser"];
+	[aCoder encodeBool:_isNewUser forKey:@"isNewUser"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -108,9 +108,9 @@ error:
 	self = [super initWithCoder:aDecoder];
 	if(self)
 	{
-		self.accessToken = [aDecoder decodeObjectForKey:@"accessToken"];
-		self.refreshToken = [aDecoder decodeObjectForKey:@"refreshToken"];
-		self.isNewUser = [aDecoder decodeBoolForKey:@"isNewUser"];
+		_accessToken = [aDecoder decodeObjectForKey:@"accessToken"];
+		_refreshToken = [aDecoder decodeObjectForKey:@"refreshToken"];
+		_isNewUser = [aDecoder decodeBoolForKey:@"isNewUser"];
 		
 		return self;
 		
@@ -123,7 +123,7 @@ error:
 
 - (NSString*)description
 {
-	NSString* name = self.displayName ? self.displayName : @"Anonymous user";
+	NSString* name = (self.displayName) ? self.displayName : @"Anonymous user";
 	return [NSString stringWithFormat:@"<STUser: %@>",name];
 }
 

@@ -43,7 +43,7 @@
 
 - (void)setup
 {
-	kAPIURL = @"https://rest.stomt.com";
+	kAPIURL = @"https://test.rest.stomt.com";
 }
 
 + (void)setAppID:(NSString *)appid
@@ -128,6 +128,19 @@ error:
 	return;
 }
 
+
+- (BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+	if(self.authController)
+	{
+		return [self.authController application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+	}_err("No authentication controller set. Aborting...");
+	
+error:
+	return NO;
+}
+
+
 #pragma mark TODO
 
 // NOT YET IMPLEMENTED -----------
@@ -147,6 +160,7 @@ error:
 // NOT YET IMPLEMENTED -----------
 
 #pragma mark Private
+
 + (void)setAPIHost:(NSString *)host
 {
 	kAPIURL = host;
@@ -154,6 +168,10 @@ error:
 
 - (void)setLoggedUser:(STUser *)user
 {
+	//Local copy
+	loggedUser = user;
+	
+	//Archive
 	NSData *usr = [NSKeyedArchiver archivedDataWithRootObject:user];
 	[[NSUserDefaults standardUserDefaults] setObject:usr forKey:kCurrentUser];
 	[[NSUserDefaults standardUserDefaults] synchronize];
@@ -277,15 +295,30 @@ error:
 	}
 }
 
-- (BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+#pragma mark External Authentication Routes
+
++ (void)handleLoginFromExternalRoute:(kSTAuthenticationRoute)authenticationRoute withParameters:(NSDictionary*)parameters
 {
-	if(self.authController)
-	{
-		return [self.authController application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-	}_err("No authentication controller set. Aborting...");
-	
-error:
-	return NO;
+	@synchronized(self) {
+		
+		if(!parameters || !authenticationRoute)
+		{
+			NSLog(@"Error in passing args. Aborting...");
+			return;
+		}
+		
+		StomtRequest* authRequest = [StomtRequest externalLoginRequestForRoute:authenticationRoute withParameters:parameters];
+		[authRequest authenticateWithExternalRouteWithBlock:^(NSError *error, STUser *user) {
+			NSLog(@"%@",user);
+		}];
+		
+	}
 }
+
+
+
+
+
+
 
 @end

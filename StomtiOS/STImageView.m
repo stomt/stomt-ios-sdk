@@ -16,65 +16,107 @@
 
 - (instancetype)initWithFrame:(CGRect)frame STImage:(STImage*)stImage placeholder:(UIImage*)placeholder
 {
-	self = [super initWithFrame:frame];
-	
-	if(stImage)
+	if(!stImage) _err("No STImage passed, aborting...");
+	if(self = [self initWithFrame:frame])
 	{
-		self.downloadManager = stImage;
-		if(placeholder) self.placeholder = placeholder;
-		
-		self.image = self.placeholder;
-		
-		[self.downloadManager downloadInBackgroundWithBlock:^(NSError* error, NSNumber* success){
+		_downloadManager = stImage;
+		_placeholder = (placeholder) ? placeholder : nil;
 			
+		self.image = (_placeholder) ? _placeholder : nil; //[UIImage image]
+			
+		[_downloadManager downloadInBackgroundWithBlock:^(NSError* error, NSNumber* success){
+				
+			//Asynchronous block ||
 			dispatch_async(dispatch_get_main_queue(), ^{
+					
 				if(success)
-					self.image = self.downloadManager.image;
+					self.image = _downloadManager.image;
 				
 			});
-			
+			//!Asynchronous block ||
+				
 		}];
 		
 		self.contentMode = UIViewContentModeScaleAspectFill;
 		self.layer.cornerRadius = self.frame.size.width/2;
 		self.layer.masksToBounds = YES;
+		
 		return self;
-	}
+	} _err("Error in instantiating STImageView. Aborting...");
 
-error: //FT INTENDED
+//Fallthrough intended ->|
+error:
 	return nil;
 }
 
 
 - (instancetype)initWithImage:(STImage *)stImage placeholder:(UIImage *)placeholder
 {
-	self = [super init];
-	
-	if(stImage)
+	if(!stImage) _err("No STImage passed, aborting...");
+	if(self = [self init])
 	{
-		self.downloadManager = stImage;
-		if(placeholder) self.placeholder = placeholder;
+		_downloadManager = stImage;
+		_placeholder = (placeholder) ? placeholder : nil;
 		
-		self.image = self.placeholder;
+		self.image = (_placeholder) ? _placeholder : nil; //[UIImage image]
 		
-		[self.downloadManager downloadInBackgroundWithBlock:^(NSError* error, NSNumber* success){
+		[_downloadManager downloadInBackgroundWithBlock:^(NSError* error, NSNumber* success){
 			
+			//Asynchronous block ||
 			dispatch_async(dispatch_get_main_queue(), ^{
+				
 				if(success)
-					self.image = self.downloadManager.image;
+					self.image = _downloadManager.image;
 				
 			});
+			//!Asynchronous block ||
 			
 		}];
 		
 		self.contentMode = UIViewContentModeScaleAspectFill;
 		self.layer.cornerRadius = self.frame.size.width/2;
 		self.layer.masksToBounds = YES;
+		
 		return self;
+	} _err("Error in instantiating STImageView. Aborting...");
+	
+//Fallthrough intended ->|
+error:
+	return nil;
+}
+
+- (void)setupWithImage:(STImage *)stImage placeholder:(UIImage *)placeholder
+{
+	//Refactor someday
+	if(!stImage)
+	{
+		_warn("No STImage passed, aborting...");
+		return;
 	}
 	
-error: //FT INTENDED
-	return nil;
+	_downloadManager = stImage;
+	_placeholder = (placeholder) ? _placeholder : nil;
+	
+	self.image = _placeholder;
+	
+	[_downloadManager downloadInBackgroundWithBlock:^(NSError* error, NSNumber* success){
+		
+		//Asynchronous block ||
+		dispatch_async(dispatch_get_main_queue(), ^{
+			
+			if(success)
+				self.image = _downloadManager.image;
+			
+		});
+		//!Asynchronous block ||
+	}];
+	
+	// May be unnecessary but just in case
+	self.contentMode = UIViewContentModeScaleAspectFill;
+	self.layer.cornerRadius = self.frame.size.width/2;
+	self.layer.masksToBounds = YES;
+	// May be unnecessary but just in case
+	
 }
 
 @end

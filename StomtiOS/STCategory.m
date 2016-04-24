@@ -28,16 +28,16 @@ error:
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-	[aCoder encodeObject:self.identifier forKey:@"identifier"];
-	[aCoder encodeObject:self.displayName forKey:@"displayName"];
+	[aCoder encodeObject:_identifier forKey:@"identifier"];
+	[aCoder encodeObject:_displayName forKey:@"displayName"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super init];
 	if(self)
 	{
-		self.identifier = [aDecoder decodeObjectForKey:@"identifier"];
-		self.displayName = [aDecoder decodeObjectForKey:@"displayName"];
+		_identifier = [aDecoder decodeObjectForKey:@"identifier"];
+		_displayName = [aDecoder decodeObjectForKey:@"displayName"];
 		return self;
 	} _err("Could not init with coder. Aborting...");
 error:
@@ -46,6 +46,6 @@ error:
 
 - (NSString*)description
 {
-	return [NSString stringWithFormat:@"<STCategory: %@>",self.displayName];
+	return [NSString stringWithFormat:@"<STCategory: %@>",_displayName];
 }
 @end

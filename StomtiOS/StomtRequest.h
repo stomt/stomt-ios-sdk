@@ -141,6 +141,37 @@
  */
 + (StomtRequest*)availabilityRequestForEmail:(NSString*)email;
 
+/*!
+ * @brief Login to stomt's servers using external routes. (Facebook, Reddit, Twitter...)
+ *
+ * @param authenticationRoute Gives information to the method on what parameters to expect. @see declarations.h
+ * @param parameters Parameters needed in order to authenticate to the stomt's servers.
+ *
+ * @return StomtRequest instance with type kExternalAuthenticationRequest
+ */
++ (StomtRequest*)externalLoginRequestForRoute:(kSTAuthenticationRoute)authenticationRoute withParameters:(NSDictionary*)parameters;
+
+/*!
+ * @brief Register to stomt using credentials
+ *
+ * @param name Your name
+ * @param username Your username
+ * @param email Your email
+ *
+ * @return StomtRequest instance with type kBasicSignupRequest
+ */
++ (StomtRequest*)signupUserRequestWithName:(NSString*)name username:(NSString*)username email:(NSString*)email;
+
+/*!
+ * @brief Login to stomt with email/username and password
+ *
+ * @param email/username Your email or username
+ * @param password Your password
+ *
+ * @return StomtRequest instance with type kLoginRequest
+ */
++ (StomtRequest*)loginRequestWithUsernameOrEmail:(NSString*)emailusername passsword:(NSString*)password;
+
 //-----------------------------------------------------------------------------
 // Request senders
 //-----------------------------------------------------------------------------
@@ -192,8 +223,20 @@
 - (void)authenticateWithFacebookInBackgroundWithBlock:(AuthenticationBlock)completion;
 
 /*!
- * @brief Chech whether username or email are available
+ * @brief Chech whether username or email are available.
  */
 - (void)requestUserCredentialsAvailabilityWithBlock:(UserAvailabilityBlock)completion;
+
+/*!
+ * @brief Login with third party route.
+ */
+- (void)authenticateWithExternalRouteWithBlock:(AuthenticationBlock)completion;
+
+- (void)registerInBackgroundWithBlock:(AuthenticationBlock)completion;
+
+/*!
+ * @brief Login with normal route
+ */
+- (void)loginInBackgroundWithBlock:(AuthenticationBlock)completion;
 
 @end

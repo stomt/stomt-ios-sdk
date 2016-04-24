@@ -10,6 +10,8 @@
 #import "dbg.h"
 #import "Stomt.h"
 
+#define __DGB__
+
 @implementation HTTPResponseChecker
 
 + (HTTPERCode)checkResponseCode:(NSURLResponse*)response;
@@ -39,7 +41,7 @@
 				_warn("Access token expired, logging out...");
 				break;
 			}
-			case 500:
+			case 401:
 			{
 				rt = WRONG_APPID;
 				_warn("Your APPID is not valid. Request a new one on stomt.com");
@@ -76,7 +78,7 @@ error:
 			}
 			case WRONG_APPID:
 			{
-				rt = [[NSError alloc] initWithDomain:@"StomtWrongAppIDDomain" code:WRONG_APPID userInfo:@{@"NSLocalizedDescriptionKey":@"The used appID is not valid.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Request a new appID from stomt's app section."}];
+				rt = [[NSError alloc] initWithDomain:@"StomtWrongAppIDDomain" code:WRONG_APPID userInfo:@{@"NSLocalizedDescriptionKey":@"Unauthorized. The provided appID is not valid.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Request a new appID from stomt's app section."}];
 				break;
 			}
 			case POST_ALR:

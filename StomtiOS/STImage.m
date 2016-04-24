@@ -26,31 +26,29 @@ error:
 
 - (instancetype)initWithStomtImageName:(NSString *)name
 {
-	self = [super init];
-	if(!self) _err("Could not instantiate STImage.");
-	if(!name) _err("Could not instantiate STImage. Name is not valid.");
-	self.imageName = name;
-	self.url = nil;
+	if(self = [super init])
+	{
+		if(!self) _err("Could not instantiate STImage.");
+		if(!name) _err("Could not instantiate STImage. Name is not valid.");
+		_imageName = name;
+		_url = nil;
+	}
 	
-	return self;
-
+//Fallthrough intended ->|
 error:
-	return nil;
+	return self;
 }
 
 - (instancetype)initWithUrl:(NSURL*)imageUrl
 {
-	self = [super init];
+	if(!imageUrl) _err("Image URL not provided. Aborting...");
 	
-	if(imageUrl)
-	{
-		self.url = imageUrl;
-		return self;
-	}
+	if(self = [super init])
+		_url = imageUrl;
 	
-	_err("Could not instantiate STImage. ImageUrl not valid.");
+//Fallthrough intended ->|
 error:
-	return nil;
+	return self;
 }
 
 - (void)downloadInBackgroundWithBlock:(BooleanCompletion)completion
@@ -58,19 +56,38 @@ error:
 	@synchronized(self)
 	{
 		dispatch_async(dispatch_get_global_queue(0,0), ^{
-			NSData * data = [[NSData alloc] initWithContentsOfURL: self.url];
+			
+			//Asynchronous block ||
+			
+			NSData * data = [[NSData alloc] initWithContentsOfURL: _url];
 			dispatch_async(dispatch_get_main_queue(), ^{
+				
+				//Asynchronous block ||
+				
 				if(data)
 				{
 					self.image = [UIImage imageWithData:data];
 					if(completion) completion(nil, [NSNumber numberWithBool:YES]);
 					return;
 				}
-				else fprintf(stderr,"Could not retrieve data from async request for STImage.");
-				NSError* err = [NSError errorWithDomain:@"StomtConnectionDomain" code:0 userInfo:@{@"NSLocalizedDescriptionKey":@"The image could not be retrieved from remote server.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Check your firewall and connection. If the error persists, contact @H3xept"}];
+				
+				_warn("Could not retrieve data from async request for STImage.");
+				NSError* err = [NSError errorWithDomain:@"StomtConnectionDomain"
+												   code:0
+											   userInfo:@{@"NSLocalizedDescriptionKey":@"The image could not be retrieved from remote server.",
+														  @"NSLocalizedFailureReasonErrorKey":[NSNull null],
+														  @"NSLocalizedRecoverySuggestionErrorKey":@"Check your firewall and connection. If the error persists, contact @H3xept"}];
 				if(completion) completion(err, [NSNumber numberWithBool:NO]);
+				
+				//!Asynchronous block ||
+				
 			});
+			
+			
+			//!Asynchronous block ||
+			
 		});
+		
 	}
 }
 

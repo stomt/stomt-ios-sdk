@@ -23,10 +23,10 @@
 	self = [super init];
 	if(self)
 	{
-		self.followers =
-		self.follows =
-		self.createdStomts =
-		self.receivedStomts = 0;
+		_followers =
+		_follows =
+		_createdStomts =
+		_receivedStomts = 0;
 	}
 	return self;
 }
@@ -39,10 +39,10 @@
 	self = [super init];
 	if(self)
 	{
-		self.followers = followers;
-		self.follows = follows;
-		self.createdStomts = cStomts;
-		self.receivedStomts = rStomts;
+		_followers = followers;
+		_follows = follows;
+		_createdStomts = cStomts;
+		_receivedStomts = rStomts;
 	}
 	return self;
 }
@@ -62,8 +62,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-	self = [super init];
-	if(self)
+	if(self = [super init])
 	{
 		
 #define ezOut(X,Y) self.X = [aDecoder decodeIntegerForKey:Y];
@@ -101,13 +100,15 @@ error:
 	if(statsObject)
 		return statsObject;
 	else _err("Could not create stats object.");
-error: //FT INTENDED
+
+//Fallthrough intended ->|
+error:
 	return nil;
 }
 
 - (NSString*)description
 {
-	return [NSString stringWithFormat:@"<STTats Object\nFollowers: %ld\nFollows:%ld\nCreated stomts:%ld\nReceived stomts:%ld\n>",(long)self.followers,(long)self.follows,(long)self.createdStomts,(long)self.receivedStomts];
+	return [NSString stringWithFormat:@"<STTats Object\nFollowers: %ld\nFollows:%ld\nCreated stomts:%ld\nReceived stomts:%ld\n>",(long)_followers,(long)_follows,(long)_createdStomts,(long)_receivedStomts];
 }
 
 @end

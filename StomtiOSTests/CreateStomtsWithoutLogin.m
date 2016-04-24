@@ -18,6 +18,9 @@
 @implementation CreateStomtsWithoutLogin
 
 - (void)testSimple {
+	
+	[Stomt logout];
+	
     // new request
     NSString *textBody = @"would create a simple anonym stomt. #iOSUnitTest";
     NSString *targetID = @"stomt-ios";
@@ -41,6 +44,7 @@
 }
 
 - (void)nontestWithLocation {
+
     // new request
     NSString *textBody = @"would create a anonym stomt with location. #iOSUnitTest";
     NSString *targetID = @"stomt-ios";
@@ -67,6 +71,9 @@
 }
 
 - (void)testWithUrl {
+	
+	[Stomt logout];
+	
     // new request
     NSString *textBody = @"would create a anonym stomt with url. #iOSUnitTest";
     NSString *targetID = @"stomt-ios";
@@ -94,6 +101,9 @@
 
 
 - (void)testWithImage {
+	
+	[Stomt logout];
+	
     UIImage *image = [self createImage];
     
     StomtRequest* uploadImage = [StomtRequest imageUploadRequestWithImage:image forTargetID:nil withImageCategory:kSTImageCategoryStomt];

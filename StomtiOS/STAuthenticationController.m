@@ -149,9 +149,13 @@ error:
 	if(self.completion){ self.completion(error,user); }
 	if(self.privDelegate)
 	{
-		if(succeeded){ if([self.privDelegate respondsToSelector:@selector(authenticationController:successfullyLoggedInWithUser:)]){
-			[self.privDelegate authenticationController:self successfullyLoggedInWithUser:user];
-		}}
+		if(succeeded)
+		{
+			if([self.privDelegate respondsToSelector:@selector(authenticationController:successfullyLoggedInWithUser:)])
+			{
+				[self.privDelegate authenticationController:self successfullyLoggedInWithUser:user];
+			}
+		}
 		else
 		{
 			if([self.privDelegate respondsToSelector:@selector(authenticationController:loginFailedWithResponse:receivedData:error:)])
