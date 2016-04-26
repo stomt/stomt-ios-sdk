@@ -158,7 +158,7 @@ error:
 	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kStomtCreationPath];
 	anonymous = YES;
 	
-	if([Stomt sharedInstance].accessToken)
+	if([Stomt sharedInstance].isAuthenticated)
 	{
 		[apiRequest setValue:[Stomt sharedInstance].accessToken forHTTPHeaderField:@"accesstoken"];
 		anonymous = NO;
@@ -170,7 +170,7 @@ error:
 	[requestBody setObject:[NSNumber numberWithBool:stomtObject.positive] forKey:@"positive"];
 	[requestBody setObject:stomtObject.text forKey:@"text"];
 	if(stomtObject.url) [requestBody setObject:[stomtObject.url absoluteString] forKey:@"url"];
-	[requestBody setObject:[NSNumber numberWithBool:anonymous] forKey:@"anonymous"];
+	[requestBody setObject:[NSNumber numberWithBool:anonymous] forKey:@"anonym"];
 	if(stomtObject.image) [requestBody setObject:stomtObject.image.imageName forKey:@"img_name"];
 	
 	if(stomtObject.geoLocation) [requestBody setObject:[NSString stringWithFormat:@"%f,%f",stomtObject.geoLocation.coordinate.longitude,stomtObject.geoLocation.coordinate.latitude] forKey:@"lonlat"];
