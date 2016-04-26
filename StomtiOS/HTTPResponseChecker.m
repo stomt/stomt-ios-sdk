@@ -19,7 +19,7 @@
 	@synchronized(self)
 	{
 		if(!response) _err("No response object given! Aborting...");
-		HTTPERCode rt = ERR;
+		HTTPERCode rt;
 		NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
 		NSInteger statusCode = [httpResponse statusCode];
 		
@@ -29,22 +29,26 @@
 				rt = OK;
 				break;
 			}
-			case 403:
+			case 409:
 			{
-				rt = POST_ALR;
-				_warn("Stomt already posted.");
+				rt = CONFLICT;
 				break;
 			}
-			case 419:
+			case 400:
 			{
-				rt = OLD_TOKEN;
-				_warn("Access token expired, logging out...");
+				rt = BAD_REQUEST;
+				break;
+			}
+			case 403:
+			{
+				rt = FORBIDDEN;
+				_warn("Forbidden.");
 				break;
 			}
 			case 401:
 			{
-				rt = WRONG_APPID;
-				_warn("Your APPID is not valid. Request a new one on stomt.com");
+				rt = UNAUTH;
+				_warn("Unauthorized.");
 				break;
 			}
 			case 404:
@@ -71,19 +75,14 @@ error:
 			{
 				break;
 			}
-		case OLD_TOKEN:
+			case UNAUTH:
 			{
-				rt = [[NSError alloc] initWithDomain:@"StomtInvalidTokenDomain" code:OLD_TOKEN userInfo:@{@"NSLocalizedDescriptionKey":@"The Access Token used for this session has expired.",@"NSLocalizedFailureReasonErrorKey":@"You may have recently logged in somewhere else.",@"NSLocalizedRecoverySuggestionErrorKey":@"Refresh your Access Token with +requestNewAccessTokenInBackgroundWithBlock: Stomt class method. If the error persists, logout and then sign in again."}];
+				rt = [[NSError alloc] initWithDomain:@"StomtUnauthorizedDomain" code:UNAUTH userInfo:@{@"NSLocalizedDescriptionKey":@"Unauthorized. The provided appID/token/credentials are not valid or connection timeout has occurred.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Request a new appID from stomt's app section or try to login again."}];
 				break;
 			}
-			case WRONG_APPID:
+			case CONFLICT:
 			{
-				rt = [[NSError alloc] initWithDomain:@"StomtWrongAppIDDomain" code:WRONG_APPID userInfo:@{@"NSLocalizedDescriptionKey":@"Unauthorized. The provided appID is not valid.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Request a new appID from stomt's app section."}];
-				break;
-			}
-			case POST_ALR:
-			{
-				rt = [[NSError alloc] initWithDomain:@"StomtAlreadyPostedDomain" code:POST_ALR userInfo:@{@"NSLocalizedDescriptionKey":@"The stomt you are trying to send has already been posted.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Change the stomt's text body."}];
+				rt = [[NSError alloc] initWithDomain:@"StomtAlreadyPostedDomain" code:CONFLICT userInfo:@{@"NSLocalizedDescriptionKey":@"The resource you are trying to create already exists.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Create a unique resource."}];
 				break;
 			}
 			case NOT_FOUND:
@@ -91,9 +90,19 @@ error:
 				rt = [[NSError alloc] initWithDomain:@"StomtResourceNotFoundDomain" code:NOT_FOUND userInfo:@{@"NSLocalizedDescriptionKey":@"The requested resource couldn't be found in stomt's servers.",@"NSLocalizedFailureReasonErrorKey":[NSNull null],@"NSLocalizedRecoverySuggestionErrorKey":@"Try requesting another resource and/or check your request parameters."}];
 				break;
 			}
+			case BAD_REQUEST:
+			{
+				rt = [[NSError alloc] initWithDomain:@"StomtBadRequestErrorDomain" code:400	userInfo:@{@"NSLocalizedDescriptionKey":@"BAD REQUEST",@"NSLocalizedFailureReasonErrorKey":[NSString stringWithFormat:@"%s",data.bytes],@"NSLocalizedRecoverySuggestionErrorKey":@"Contact @H3xept for further details."}];
+				break;
+			}
+			case FORBIDDEN:
+			{
+				rt = [[NSError alloc] initWithDomain:@"StomtForbiddenDomain" code:403 userInfo:@{@"NSLocalizedDescriptionKey":@"Forbidden",@"NSLocalizedFailureReasonErrorKey":[NSString stringWithFormat:@"%@ - %@",@"The requested resource cannot be accessed.",[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]],@"NSLocalizedRecoverySuggestionErrorKey":@""}];
+				break;
+			}
 			default:
 			{
-				rt = [[NSError alloc] initWithDomain:@"StomtUnknownErrorDomain" code:0 userInfo:@{@"NSLocalizedDescriptionKey":@"UNKNOWN ERROR",@"NSLocalizedFailureReasonErrorKey":[NSString stringWithFormat:@"%s",data.bytes],@"NSLocalizedRecoverySuggestionErrorKey":@"Contact @H3xept for further details."}];
+				rt = [[NSError alloc] initWithDomain:@"StomtUnknownErrorDomain" code:0 userInfo:@{@"NSLocalizedDescriptionKey":@"Internal server error.",@"NSLocalizedFailureReasonErrorKey":[NSString stringWithFormat:@"%s",data.bytes],@"NSLocalizedRecoverySuggestionErrorKey":@"Contact @H3xept for further details."}];
 				break;
 			}
 		}

@@ -30,12 +30,13 @@
                     ];
     StomtRequest* sendStomt = [StomtRequest stomtCreationRequestWithStomtObject:ob];
     
-    
+//    
     // perform request
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-		if(error.code == POST_ALR) { _info("Stomt already sent, continuing..."); return; }
+		//403 Temporary!
+		if(error.code == CONFLICT || error.code == 403) { _info("Stomt already sent, continuing..."); return; }
         XCTAssertFalse(stomt.anonym);
         XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
             
@@ -92,7 +93,8 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"Handler called"];
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-		if(error.code == POST_ALR) { _info("Stomt already sent, continuing..."); return; }
+		//Temporary!
+		if(error.code == CONFLICT || error.code == 403) { _info("Stomt already sent, continuing..."); return; }
         XCTAssertFalse(stomt.anonym);
         XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
 			
@@ -133,7 +135,8 @@
     // perform request
     [sendStomt sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
         [expectation fulfill];
-        if(error.code == POST_ALR) { _info("Stomt already sent, continuing..."); return; }
+		//Temporary!
+		if(error.code == CONFLICT || error.code == 403) { _info("Stomt already sent, continuing..."); return; }
         XCTAssertFalse(stomt.anonym);
         XCTAssertEqualObjects(stomt.creator.identifier, [Stomt loggedUser].identifier);
             

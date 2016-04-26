@@ -43,7 +43,8 @@
 
 - (void)setup
 {
-	kAPIURL = @"https://test.rest.stomt.com";
+	//Default api URL
+	_apiURL = @"https://rest.stomt.com";
 }
 
 + (void)setAppID:(NSString *)appid
@@ -163,7 +164,7 @@ error:
 
 + (void)setAPIHost:(NSString *)host
 {
-	kAPIURL = host;
+	[Stomt sharedInstance].apiURL = host;
 }
 
 - (void)setLoggedUser:(STUser *)user

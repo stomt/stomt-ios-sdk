@@ -13,8 +13,6 @@
 #define kRToken @"[STOMT]RefreshToken"
 #define kCurrentUser @"[STOMT]CurrentUser"
 
-const NSString* kAPIURL;
-
 #define kLoginPath @"/authentication/authorize/token"
 #define kStomtCreationPath @"/stomts"
 #define kImageUploadPath @"/images"

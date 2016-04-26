@@ -35,6 +35,8 @@
  */
 @property (nonatomic,strong) NSString* appid;
 
+@property (nonatomic,strong) NSString* apiURL;
+
 /*!
  * @brief The access token.
  */

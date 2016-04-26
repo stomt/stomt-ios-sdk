@@ -85,7 +85,7 @@ error:
 		
 		if(!path) _err("No path provided for base POST request creation. Aborting...");
 		
-		apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIURL,path]];
+		apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Stomt sharedInstance].apiURL,path]];
 		apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
 		[apiRequest setHTTPMethod:@"POST"];
 		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
@@ -129,7 +129,7 @@ error:
 			}
 		}
 		
-		apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",kAPIURL,path,paramString]];
+		apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",[Stomt sharedInstance].apiURL,path,paramString]];
 		apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
 		[apiRequest setHTTPMethod:@"GET"];
 		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
@@ -839,6 +839,8 @@ error:
 					  NSError* error;
 					  STUser* user = [STUser initWithDataDictionary:[dataDict objectForKey:@"data"]];
 					  if(!user) error = [NSError errorWithDomain:@"Authentication error" code:0 userInfo:@{@"info":@"Could not instantiate an STUser."}];
+					  
+					  if(!error) _info("Logged in!");
 					  
 					  [Stomt sharedInstance].accessToken = user.accessToken;
 					  [Stomt sharedInstance].refreshToken = user.refreshToken;

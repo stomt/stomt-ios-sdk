@@ -15,6 +15,7 @@
 #import "STUser.h"
 #import "dbg.h"
 #import "STAuthenticationDelegate.h"
+#import "Stomt.h"
 
 @interface STAuthenticationController ()
 @property (nonatomic,strong) NSString* clientID;
@@ -39,7 +40,7 @@ error:
 
 - (instancetype)initWithAppID:(NSString *)appID redirectURI:(NSString *)redirectURI completionBlock:(AuthenticationBlock)completion
 {
-	NSURL* authorizationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@",[NSString stringWithFormat:@"%@%@",kAPIURL,kAuthorizePath],appID,redirectURI]];
+	NSURL* authorizationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@",[NSString stringWithFormat:@"%@%@",[Stomt sharedInstance].apiURL,kAuthorizePath],appID,redirectURI]];
 	
 	self = [super initWithURL:authorizationURL];
 	if(self)
@@ -81,7 +82,7 @@ error:
 		NSURLSession *session = [NSURLSession sharedSession];
 		NSMutableDictionary* bodyDict;
 		NSError* error;
-		NSMutableURLRequest* apiRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIURL,kLoginPath]]];
+		NSMutableURLRequest* apiRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[Stomt sharedInstance].apiURL,kLoginPath]]];
 		
 		[apiRequest setHTTPMethod:@"POST"];
 		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
