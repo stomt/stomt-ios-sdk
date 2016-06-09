@@ -17,8 +17,9 @@
 #import "StomtCreationAccessoryView.h"
 #import "SimpleButtonDelegate.h"
 #import "TempLikeWishView.h"
+#import "LikeWishDelegate.h"
 
-@interface StomtCreationViewController () <UITextViewDelegate,SimpleButtonDelegate> {
+@interface StomtCreationViewController () <UITextViewDelegate,SimpleButtonDelegate,LikeWishDelegate> {
 	CGPoint offset;
 }
 
@@ -119,12 +120,13 @@
 	
 	
 	[_likeOrWishView setupWithFrontView:_likeOrWish];
-		
+	_likeOrWishView.delegate = self;
+	
 	_userProfileImage.layer.cornerRadius = _userProfileImage.bounds.size.width/2;
 	_userProfileImage.layer.masksToBounds = YES;
 	_userProfileImage.contentMode = UIViewContentModeScaleAspectFit;
 	
-	_userNameLabel.text = _currentUser.displayName ? _currentUser.displayName : @"Anonymous user" ;
+	_userNameLabel.text = _currentUser.displayName ? _currentUser.displayName : @"Anonymous User" ;
 	_userNameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 	
 	_anonymousButton.alpha = (_currentUser) ? .54f : .24f;
@@ -257,6 +259,23 @@
 			[self dismissViewControllerAnimated:YES completion:nil];
 		}
 	}];
+}
+
+- (void)likeWishView:(TempLikeWishView *)likeWishView changedToState:(int)likeOrWish
+{
+	NSString* currentString = _textView.text;
+	NSMutableArray* words = [NSMutableArray arrayWithArray:[currentString componentsSeparatedByString:@" "]];
+	if([[words objectAtIndex:0] isEqualToString:@"would"])
+	{
+		[words setObject:@"because" atIndexedSubscript:0];
+	}
+	else if([[words objectAtIndex:0] isEqualToString:@"because"])
+	{
+		[words setObject:@"would" atIndexedSubscript:0];
+	}
+	
+	NSString* newString = [words componentsJoinedByString:@" "];
+	_textView.text = newString;
 }
 
 - (void)simpleDismiss

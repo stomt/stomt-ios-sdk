@@ -46,6 +46,7 @@
 		A78A1A211C8632CD0076E266 /* DoubleSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A78A1A1F1C8632CD0076E266 /* DoubleSideView.m */; };
 		A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STStats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STStats.m */; };
+		A79F97BE1D09DA9700E91033 /* LikeWishDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A79F97BD1D09DA9700E91033 /* LikeWishDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039A31BB5A340006A8135 /* STSearchFilterKeywords.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */; };
 		A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B71BB6FDCF006A8135 /* STCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -125,6 +126,7 @@
 		A78A1A1F1C8632CD0076E266 /* DoubleSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleSideView.m; sourceTree = "<group>"; };
 		A78B2E6B1BA419BC00A9E7D0 /* STStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STStats.h; sourceTree = "<group>"; };
 		A78B2E6C1BA419BC00A9E7D0 /* STStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STStats.m; sourceTree = "<group>"; };
+		A79F97BD1D09DA9700E91033 /* LikeWishDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeWishDelegate.h; sourceTree = "<group>"; };
 		A7B397AA1C81EC920076A94F /* ValidateCredentialsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateCredentialsWithoutLogin.m; sourceTree = "<group>"; };
 		A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSearchFilterKeywords.h; sourceTree = "<group>"; };
 		A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSearchFilterKeywords.m; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				A7D4A5871C9326E400B7E78C /* CharCounterLabel.m */,
 				A7D4A58A1C9374E400B7E78C /* StomtCreationAccessoryView.h */,
 				A7D4A58B1C9374E400B7E78C /* StomtCreationAccessoryView.m */,
+				A79F97BD1D09DA9700E91033 /* LikeWishDelegate.h */,
 			);
 			name = "Stomt Creation";
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				A7D4A5881C9326E400B7E78C /* CharCounterLabel.h in Headers */,
 				A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */,
 				A76DFE301BC5AF2800017C32 /* StomtRequest.h in Headers */,
+				A79F97BE1D09DA9700E91033 /* LikeWishDelegate.h in Headers */,
 				A7CB51FB1C94C90600DCF7A3 /* SimpleButtonDelegate.h in Headers */,
 				A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */,
 				A7325ACC1CA719DE00B2BB31 /* AuthenticationDispatch.h in Headers */,

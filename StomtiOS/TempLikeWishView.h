@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LikeWishDelegate.h"
 
 @interface TempLikeWishView : UIView
-
+@property (nonatomic,strong) id <LikeWishDelegate> delegate;
 @property (nonatomic,strong) UIView* topView;
 @property (nonatomic,strong) UIView* botView;
 - (instancetype)initWithTopView:(int)likeOrWish;

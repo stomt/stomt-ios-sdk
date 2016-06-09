@@ -52,6 +52,8 @@
 	
 	_likeOrWish = (_likeOrWish == kSTObjectLike) ? kSTObjectWish : kSTObjectLike;
 	
+	if(_delegate) [_delegate likeWishView:self changedToState:_likeOrWish];
+	
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
