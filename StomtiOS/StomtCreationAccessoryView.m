@@ -18,7 +18,7 @@
 
 - (instancetype)initWithCharCounter:(CharCounterLabel*)charCounter
 {
-	if([super initWithFrame:CGRectMake(0, 0, 0, 40)])
+	if(self = [super initWithFrame:CGRectMake(0, 0, 0, 40)])
 	{
 		_sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[_sendButton setImage:[UIImage imageNamed:@"SendButton" inBundle:[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];

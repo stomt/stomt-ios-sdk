@@ -16,6 +16,7 @@
 #import "CharCounterLabel.h"
 #import "StomtCreationAccessoryView.h"
 #import "SimpleButtonDelegate.h"
+#import "TempLikeWishView.h"
 
 @interface StomtCreationViewController () <UITextViewDelegate,SimpleButtonDelegate> {
 	CGPoint offset;

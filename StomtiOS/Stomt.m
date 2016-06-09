@@ -267,9 +267,10 @@ error:
 		
 		cont = [[StomtCreationViewController alloc] initWithNibName:@"StomtCreationViewController" bundle:[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] target:target defaultText:defaultText likeOrWish:likeOrWish];
 		
-		[[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:cont
-																					 animated:YES
-																				   completion:nil];
+//		[[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:cont
+//																					 animated:YES
+//																				   completion:nil];
+		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:cont animated:YES completion:nil];
 error:
 	return;
 		

@@ -21,6 +21,7 @@
 #import "STSearchFilterKeywords.h"
 #import "STAuthenticationDelegate.h"
 #import "AuthenticationDispatch.h"
+#import "TempLikeWishView.h"
 
 @class STUser;
 @class STTarget;
