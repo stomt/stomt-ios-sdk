@@ -33,9 +33,7 @@
 @property (nonatomic,strong) IBOutlet UILabel* userNameLabel;
 @property (nonatomic,strong) STUser* currentUser;
 @property (nonatomic,strong) STTarget* target;
-@property (nonatomic,strong) IBOutlet DoubleSideView* likeOrWishView;
-@property (nonatomic,strong) LikeWishView* likeView;
-@property (nonatomic,strong) LikeWishView* wishView;
+@property (nonatomic,strong) IBOutlet TempLikeWishView* likeOrWishView;
 @property (nonatomic,strong) IBOutlet TargetView* targetView;
 @property (nonatomic,strong) IBOutlet UITextView* textView;
 @property (nonatomic,strong) CharCounterLabel* charCounter;
@@ -119,30 +117,8 @@
 	else
 		_userProfileImage.image = [UIImage imageNamed:@"AnonymousUserImage" inBundle:[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] compatibleWithTraitCollection:nil];
 	
-	_likeView = [[LikeWishView alloc] init];
-	_wishView = [[LikeWishView alloc] init];
-	_likeView.translatesAutoresizingMaskIntoConstraints = NO;
-	_wishView.translatesAutoresizingMaskIntoConstraints = NO;
-	_likeView.userInteractionEnabled = YES;
-	_wishView.userInteractionEnabled = YES;
 	
-	[_likeView setupWithIdentifier:kSTObjectLike];
-	[_wishView setupWithIdentifier:kSTObjectWish];
-	
-	if(_likeOrWish == kSTObjectWish)
-	{
-		_likeOrWishView.topView = _wishView;
-		_likeOrWishView.botView = _likeView;
-	}
-	else
-	{
-		_likeOrWishView.topView = _likeView;
-		_likeOrWishView.botView = _wishView;
-	}
-	
-	_likeOrWishView.layer.masksToBounds = YES;
-	_likeOrWishView.layer.cornerRadius = _likeOrWishView.bounds.size.width/20;
-	_likeOrWishView.distance = 16;
+	[_likeOrWishView setupWithFrontView:_likeOrWish];
 		
 	_userProfileImage.layer.cornerRadius = _userProfileImage.bounds.size.width/2;
 	_userProfileImage.layer.masksToBounds = YES;

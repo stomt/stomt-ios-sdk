@@ -60,12 +60,12 @@
                         <constraint firstAttribute="height" constant="1" id="mGT-VK-bdL"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZN-eZ-05e" customClass="DoubleSideView">
-                    <rect key="frame" x="16" y="97" width="96" height="32"/>
-                    <color key="backgroundColor" red="1" green="0.15770537013376029" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZN-eZ-05e" customClass="TempLikeWishView">
+                    <rect key="frame" x="16" y="97" width="64" height="32"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsw-4V-dNh" customClass="TargetView">
-                    <rect key="frame" x="120" y="97" width="464" height="32"/>
+                    <rect key="frame" x="88" y="97" width="496" height="32"/>
                     <color key="backgroundColor" red="1" green="0.66525154434205291" blue="0.22597504370735499" alpha="0.0" colorSpace="calibratedRGB"/>
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-Sr-Zyp">
@@ -89,7 +89,7 @@
                 <constraint firstItem="fsw-4V-dNh" firstAttribute="height" secondItem="uZN-eZ-05e" secondAttribute="height" id="864-iM-vdg"/>
                 <constraint firstItem="Udh-Sr-Zyp" firstAttribute="top" secondItem="uZN-eZ-05e" secondAttribute="bottom" constant="8" id="F5R-2d-Tm1"/>
                 <constraint firstItem="KEk-5q-Jid" firstAttribute="centerY" secondItem="gEM-S4-5IG" secondAttribute="centerY" constant="-0.5" id="FpM-AV-XS5"/>
-                <constraint firstItem="uZN-eZ-05e" firstAttribute="width" secondItem="gEM-S4-5IG" secondAttribute="width" multiplier="3" id="HQ8-R0-ZXD"/>
+                <constraint firstItem="uZN-eZ-05e" firstAttribute="width" secondItem="gEM-S4-5IG" secondAttribute="width" multiplier="2" id="HQ8-R0-ZXD"/>
                 <constraint firstItem="CoN-B4-OMH" firstAttribute="width" secondItem="Tc6-UP-Zs7" secondAttribute="width" id="HWh-RL-g4T"/>
                 <constraint firstItem="gEM-S4-5IG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="JPa-s6-BnN"/>
                 <constraint firstItem="uZN-eZ-05e" firstAttribute="top" secondItem="Ssc-96-EXx" secondAttribute="bottom" constant="21" id="OgX-6J-YYT"/>

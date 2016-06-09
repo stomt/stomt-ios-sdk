@@ -13,6 +13,7 @@
 @property (nonatomic) kSTObjectQualifier likeOrWish;
 @property (nonatomic,strong) UILabel* topLabel;
 @property (nonatomic,strong) UILabel* botLabel;
+- (void)switchViews;
 @end
 
 @implementation TempLikeWishView
@@ -34,6 +35,28 @@
 	finalView.backgroundColor = color;
 	
 	return finalView;
+}
+
+- (void)setupWithFrontView:(int)likeOrWish;
+{
+	_likeOrWish = likeOrWish;
+}
+
+- (void)switchViews
+{
+	_topLabel.text = (_likeOrWish == kSTObjectLike) ? @"I wish" : @"I like";
+	_botLabel.text = (_likeOrWish != kSTObjectLike) ? @"I wish" : @"I like";
+	
+	_topView.backgroundColor = (_likeOrWish == kSTObjectLike) ?  [UIColor colorWithRed:0.61 green:0.05 blue:1.00 alpha:1.0] : [UIColor colorWithRed:0.35 green:0.91 blue:0.79 alpha:1.0];
+	_botView.backgroundColor = (_likeOrWish != kSTObjectLike) ?  [UIColor colorWithRed:0.61 green:0.05 blue:1.00 alpha:1.0] : [UIColor colorWithRed:0.35 green:0.91 blue:0.79 alpha:1.0];
+	
+	_likeOrWish = (_likeOrWish == kSTObjectLike) ? kSTObjectWish : kSTObjectLike;
+	
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+	[self switchViews];
 }
 
 - (void)drawRect:(CGRect)rect
