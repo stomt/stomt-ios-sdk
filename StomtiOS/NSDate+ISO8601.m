@@ -22,4 +22,11 @@
 error:
 	return nil;
 }
+
+- (NSString *)iso8601Date
+{
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
+	return [dateFormatter stringFromDate:self];
+}
 @end

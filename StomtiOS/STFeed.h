@@ -28,6 +28,7 @@
  */
 @property (nonatomic,strong) NSMutableDictionary* params;
 
+@property (nonatomic,strong) NSString* pathForStandardFeed;
 
 /*!
  * @brief Return a filtered STFeed object.
@@ -120,5 +121,5 @@
  */
 + (instancetype)feedWithStomtsArray:(NSArray*)array;
 
-
++ (instancetype)standardFeed:(STStandardFeed)feedType stomtsNewerThan:(NSString *)date alreadyDownloadedStomts:(int)offset;
 @end

@@ -115,13 +115,12 @@
  * You will have to provide properties contained in the 'FBSDKProfile' class and in the 'FBSDKAccessToken' class.
  *
  * @param accessToken The access token retrieved by the +[FBSDKAccessToken currentAccessToken] method in the Facebook SDK.
- * @param userID The user identifier retrieved by the @userID property in the FacebookSDK (FBSDKProfile class).
  *
  * @warning This documentation refers to the Facebook SDK version '20151007'.
  *
  * @return StomtRequest instance with type kFacebookAuthenticationRequest
  */
-+ (StomtRequest*)facebookAuthenticationRequestWithAccessToken:(NSString*)accessToken userID:(NSString*)userID;
++ (StomtRequest*)facebookAuthenticationRequestWithAccessToken:(NSString*)accessToken;
 
 /*!
  * @brief Check whether a specific username is available.
@@ -160,7 +159,7 @@
  *
  * @return StomtRequest instance with type kBasicSignupRequest
  */
-+ (StomtRequest*)signupUserRequestWithName:(NSString*)name username:(NSString*)username email:(NSString*)email;
++ (StomtRequest*)signupUserRequestWithName:(NSString*)name username:(NSString*)username email:(NSString*)email password:(NSString*)password;
 
 /*!
  * @brief Login to stomt with email/username and password
@@ -171,6 +170,8 @@
  * @return StomtRequest instance with type kLoginRequest
  */
 + (StomtRequest*)loginRequestWithUsernameOrEmail:(NSString*)emailusername passsword:(NSString*)password;
+
++ (StomtRequest*)standardFeedRequestWithStomtFeedObject:(STFeed*)feed;
 
 //-----------------------------------------------------------------------------
 // Request senders

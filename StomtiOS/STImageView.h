@@ -49,5 +49,4 @@
  * @param placeholder The UIImage instance to be displayed when the desired image is downloading or missing.
  */
 - (void)setupWithImage:(STImage*)stImage placeholder:(UIImage*)placeholder;
-
 @end

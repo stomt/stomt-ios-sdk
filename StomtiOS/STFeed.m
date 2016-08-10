@@ -22,7 +22,7 @@
 			  containsLabels:(NSArray *)labels;
 
 - (instancetype)initFeedWithStomtsArray:(NSArray*)array;
-
+- (instancetype)initWithStandardFeed:(STStandardFeed)feedType stomtsNewerThan:(NSString *)date alreadyDownloadedStomts:(int)offset;
 @end
 
 @implementation STFeed
@@ -233,6 +233,27 @@ error:
 			else [labelsStr appendString:[NSString stringWithFormat:@"%@,",[labels objectAtIndex:c]]];
 		}
 		[self.params setObject:labelsStr forKey:@"label"];
+	}
+	return self;
+}
+
++ (instancetype)standardFeed:(STStandardFeed)feedType stomtsNewerThan:(NSString *)date alreadyDownloadedStomts:(int)offset
+{
+	@synchronized(self) {
+		return [[STFeed alloc] initWithStandardFeed:feedType stomtsNewerThan:date alreadyDownloadedStomts:(int)offset];
+	}
+}
+
+- (instancetype)initWithStandardFeed:(STStandardFeed)feedType stomtsNewerThan:(NSString *)date alreadyDownloadedStomts:(int)offset
+{
+	if((self = [super init]))
+	{
+		NSString* computedType = (feedType == 0) ? @"home" : @"discovery";
+		_pathForStandardFeed = computedType;
+		
+		self.params = [NSMutableDictionary dictionary];
+		if(offset) [self.params setObject:@(offset) forKey:@"offset"];
+		if(date) [self.params setObject:date forKey:@"newer_than"];
 	}
 	return self;
 }

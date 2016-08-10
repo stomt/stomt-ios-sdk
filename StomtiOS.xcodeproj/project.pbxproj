@@ -20,6 +20,7 @@
 		A71166151C872C8200ED4E44 /* LikeWishView.m in Sources */ = {isa = PBXBuildFile; fileRef = A71166131C872C8200ED4E44 /* LikeWishView.m */; };
 		A7325ACC1CA719DE00B2BB31 /* AuthenticationDispatch.h in Headers */ = {isa = PBXBuildFile; fileRef = A7325ACA1CA719DE00B2BB31 /* AuthenticationDispatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7325ACD1CA719DE00B2BB31 /* AuthenticationDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A7325ACB1CA719DE00B2BB31 /* AuthenticationDispatch.m */; };
+		A737D0C11D1928EA009B196F /* STImagePoolDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A737D0C01D1928EA009B196F /* STImagePoolDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D451BA4338E00DF83B8 /* STCategory.m */; };
 		A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = A7450D481BA44E9800DF83B8 /* HTTPResponseChecker.h */; };
 		A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = A7450D491BA44E9800DF83B8 /* HTTPResponseChecker.m */; };
@@ -32,7 +33,7 @@
 		A75C1F781C88E777002D38F4 /* TargetViewOutline.h in Headers */ = {isa = PBXBuildFile; fileRef = A75C1F761C88E777002D38F4 /* TargetViewOutline.h */; };
 		A75C1F791C88E777002D38F4 /* TargetViewOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = A75C1F771C88E777002D38F4 /* TargetViewOutline.m */; };
 		A76611871C347565009013C1 /* IntentionalErrorsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = A76611861C347565009013C1 /* IntentionalErrorsWithoutLogin.m */; };
-		A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */; };
+		A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */; };
 		A768D76E1BA9EB6000466AFB /* STImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D76C1BA9EB6000466AFB /* STImage.m */; };
 		A76DFE281BC57CC200017C32 /* STImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DFE261BC57CC200017C32 /* STImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -100,6 +101,7 @@
 		A71166131C872C8200ED4E44 /* LikeWishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeWishView.m; sourceTree = "<group>"; };
 		A7325ACA1CA719DE00B2BB31 /* AuthenticationDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationDispatch.h; sourceTree = "<group>"; };
 		A7325ACB1CA719DE00B2BB31 /* AuthenticationDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationDispatch.m; sourceTree = "<group>"; };
+		A737D0C01D1928EA009B196F /* STImagePoolDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImagePoolDelegate.h; sourceTree = "<group>"; };
 		A7450D451BA4338E00DF83B8 /* STCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCategory.m; sourceTree = "<group>"; };
 		A7450D481BA44E9800DF83B8 /* HTTPResponseChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPResponseChecker.h; sourceTree = "<group>"; };
 		A7450D491BA44E9800DF83B8 /* HTTPResponseChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPResponseChecker.m; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			children = (
 				A7C217491BE17A6B00F8EB52 /* STAuthenticationDelegate.h */,
 				A7CB51FA1C94C90600DCF7A3 /* SimpleButtonDelegate.h */,
+				A737D0C01D1928EA009B196F /* STImagePoolDelegate.h */,
 			);
 			name = "Stomt Delegates";
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
 				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
 				A7D4A58C1C9374E400B7E78C /* StomtCreationAccessoryView.h in Headers */,
+				A737D0C11D1928EA009B196F /* STImagePoolDelegate.h in Headers */,
 				A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */,
 				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,
 				A76DFE2D1BC5AF1E00017C32 /* STTarget.h in Headers */,
@@ -707,6 +711,7 @@
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = StomtiOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.h3xept.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -725,6 +730,7 @@
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = StomtiOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.h3xept.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

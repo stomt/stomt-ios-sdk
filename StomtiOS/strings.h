@@ -25,6 +25,8 @@
 #define kAuthorizePath @"/authentication/authorize"
 #define kAvailabilityPath @"/authentication/checkAvailability"
 #define kBasicRegisterPath @"/authentication"
+#define kHomeFeed @"/feeds/home"
+#define kDiscoverFeed @"/feeds/discover"
 
 #define kD_Id @"id"
 #define kD_DisplayName @"displayname"

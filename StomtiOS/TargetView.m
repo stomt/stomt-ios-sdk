@@ -25,24 +25,29 @@
 	}
 	
 	_target = target;
+	
 	STImage* dImage = [[STImage alloc] initWithUrl:_target.profileImage];
 	[dImage downloadInBackgroundWithBlock:nil];
 	UIImage* placeholderImage = [UIImage imageNamed:@"AnonymousUserImage" inBundle:[NSBundle bundleWithIdentifier:@"com.h3xept.stomtiOS"] compatibleWithTraitCollection:nil];
 	
-	_targetImage = [[STImageView alloc] initWithImage:dImage placeholder:placeholderImage];
+	if(!_targetImage)
+	{
+		_targetImage = [[STImageView alloc] initWithImage:dImage placeholder:placeholderImage];
+		_targetImage.translatesAutoresizingMaskIntoConstraints = NO;
+		[self addSubview:_targetImage];
+	}
 	
-	_targetName = [[UILabel alloc] init];
-	_targetName.font = [UIFont systemFontOfSize:14];
-	_targetName.textColor = [UIColor blackColor];
-	_targetName.alpha = .54f;
-	_targetName.text = _target.displayName;
-	_targetName.lineBreakMode = NSLineBreakByTruncatingTail;
-	
-	_targetName.translatesAutoresizingMaskIntoConstraints = NO;
-	_targetImage.translatesAutoresizingMaskIntoConstraints = NO;
-	
-	[self addSubview:_targetImage];
-	[self addSubview:_targetName];
+	if(!_targetName)
+	{
+		_targetName = [[UILabel alloc] init];
+		_targetName.font = [UIFont systemFontOfSize:14];
+		_targetName.textColor = [UIColor blackColor];
+		_targetName.alpha = .54f;
+		_targetName.text = _target.displayName;
+		_targetName.lineBreakMode = NSLineBreakByTruncatingTail;
+		_targetName.translatesAutoresizingMaskIntoConstraints = NO;
+		[self addSubview:_targetName];
+	}
 	
 }
 

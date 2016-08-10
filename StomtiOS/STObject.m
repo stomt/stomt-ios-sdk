@@ -200,8 +200,7 @@ error:
 
 - (void)setText:(NSString *)text
 {
-	//NSInteger chars_required = (self.positive == YES) ? 92 : 94;
-	NSInteger chars_required = 100;
+	NSInteger chars_required = 120;
 	
 	if(!([text length] <= chars_required))
 		_err("Maximum chars for this stomt: %ld",(long)chars_required);

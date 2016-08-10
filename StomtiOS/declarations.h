@@ -54,4 +54,8 @@ typedef enum{
 	STKeywordFilterUrl = 1 << 4
 }STKeywordFilter;
 
+typedef enum{
+	STStandardFeedHome,
+	STStandardFeedDiscover
+}STStandardFeed;
 #endif

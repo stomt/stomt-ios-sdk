@@ -129,7 +129,10 @@ error:
 			}
 		}
 		
-		apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",[Stomt sharedInstance].apiURL,path,paramString]];
+		NSString* apiString = [NSString stringWithFormat:@"%@%@%@",[Stomt sharedInstance].apiURL,path,paramString];
+		apiUrl = [NSURL URLWithString:apiString];
+		
+			
 		apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
 		[apiRequest setHTTPMethod:@"GET"];
 		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
@@ -302,6 +305,22 @@ error:
 	return nil;
 }
 
++ (StomtRequest*)standardFeedRequestWithStomtFeedObject:(STFeed*)feed
+{
+	NSMutableURLRequest* apiRequest;
+	
+	NSString* path = ([feed.pathForStandardFeed isEqualToString:@"home"]) ? kHomeFeed : kDiscoverFeed;
+	
+	if(!feed) _err("No feed object provided. Aborting...");
+	
+	apiRequest = [StomtRequest generateBaseGETRequestWithPath:path parametersPair:feed.params];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kFeedRequest];
+	
+error:
+	return nil;
+}
+
 + (StomtRequest*)targetRequestWithTargetID:(NSString *)targetID
 {
 	NSMutableURLRequest* apiRequest;
@@ -330,21 +349,20 @@ error:
 	return nil;
 }
 
-+ (StomtRequest*)facebookAuthenticationRequestWithAccessToken:(NSString *)accessToken userID:(NSString *)userID
++ (StomtRequest*)facebookAuthenticationRequestWithAccessToken:(NSString *)accessToken
 {
 	NSMutableURLRequest* apiRequest;
 	NSMutableDictionary* dictBody;
 	NSData* jsonData;
 	NSError* error;
 	
-	if(accessToken && userID)
+	if(accessToken)
 	{
 		apiRequest =  [StomtRequest generateBasePOSTRequestWithPath:kGeneralLoginPath];
 		dictBody = [NSMutableDictionary dictionary];
 		
 		[dictBody setObject:@"facebook" forKey:@"login_method"];
 		[dictBody setObject:accessToken forKey:@"accesstoken"];
-		//[dictBody setObject:userID forKey:@"fb_user_id"];
 		
 		jsonData = [NSJSONSerialization dataWithJSONObject:dictBody options:0 error:&error];
 		if(error) _err("Error while creating jsonData. Aborting...");
@@ -436,13 +454,13 @@ error:
 	return nil;
 }
 
-+ (StomtRequest*)signupUserRequestWithName:(NSString *)displayname username:(NSString *)username email:(NSString *)email
++ (StomtRequest*)signupUserRequestWithName:(NSString *)displayname username:(NSString *)username email:(NSString *)email password:(NSString *)password
 {
 	NSMutableURLRequest* apiRequest;
-	if(!displayname || !username || !email) _err("Incorrect args. Aborting...");
+	if(!displayname || !username || !email || !password) _err("Incorrect args. Aborting...");
 	
 	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:kBasicRegisterPath];
-	[apiRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:NSDictionaryOfVariableBindings(displayname,username,email) options:0 error:nil]];
+	[apiRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:NSDictionaryOfVariableBindings(displayname,username,email,password) options:0 error:nil]];
 	
 	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kBasicSignupRequest];
 	

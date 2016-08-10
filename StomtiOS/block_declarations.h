@@ -14,6 +14,8 @@
 @class STImage;
 @class STFeed;
 @class STTarget;
+@class UIImage;
+
 
 typedef void (^ BooleanCompletion)(NSError* error, NSNumber* succeeded);
 typedef void (^ AuthenticationBlock)(NSError* error, STUser* user);
@@ -22,4 +24,5 @@ typedef void (^ ImageUploadBlock)(NSError* error, STImage* image);
 typedef void (^ FeedRequestBlock)(NSError* error, STFeed* feed);
 typedef void (^ TargetRequestBlock)(NSError* error, STTarget* target);
 typedef void (^ UserAvailabilityBlock)(NSError* error, NSNumber* available);
+typedef void (^ ImageDownloadBlock)(NSError* error, UIImage* image);
 #endif

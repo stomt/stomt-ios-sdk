@@ -10,4 +10,5 @@
 
 @interface NSDate (ISO8601)
 + (NSDate*)dateWithISO8601String:(NSString*)date;
+- (NSString *)iso8601Date;
 @end
