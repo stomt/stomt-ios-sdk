@@ -97,3 +97,9 @@ We would love to see you contributing to our iOS SDK. Feel free to fork it and w
 
 * [Leonardo Cascianelli](https://github.com/h3xept)
 * [Max Klenk](https://github.com/maxklenk)
+
+## More about stomt
+
+* On the web [www.stomt.com](https://www.stomt.com)
+* [stomt for iOS](http://stomt.co/ios)
+* [stomt for Android](http://stomt.co/android)
