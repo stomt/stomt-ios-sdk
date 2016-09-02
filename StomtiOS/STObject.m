@@ -15,7 +15,6 @@
 #import "STTarget.h"
 #import "dbg.h"
 
-
 @interface STObject () //Internal use only. Use class methods.
 
 - (instancetype)initObjectWithTextBody:(NSString *)body
@@ -154,7 +153,7 @@ error:
 	return nil;
 }
 
-- (instancetype)initWithDataDictionary:(NSDictionary *)hDict
+- (nonnull instancetype)initWithDataDictionary:(NSDictionary *)hDict
 {
 	self = [super init];
 	self.identifier = [hDict objectForKey:@"id"];
@@ -167,25 +166,30 @@ error:
     // parse urls to url
     if([hDict objectForKey:@"urls"] != [NSNull null]) {
         NSArray *urls = [hDict objectForKey:@"urls"];
-        for (NSURL *oneUrl in urls) {
-            self.url = oneUrl;
+        for (NSString *oneUrl in urls) {
+            self.url = [NSURL URLWithString:oneUrl];
         }
     }
-    
-	@try {
-		NSDictionary* imagesDict = [NSDictionary dictionaryWithDictionary:[hDict objectForKey:@"images"]];
+
+		NSDictionary* imagesDict;
+		id expectedDictionary = [hDict objectForKey:@"images"];
+		if(([expectedDictionary isKindOfClass:[NSDictionary class]])){
+		imagesDict = expectedDictionary;
 		NSDictionary* stomtImageDict = [NSDictionary dictionaryWithDictionary:[imagesDict objectForKey:@"stomt"]];
-		NSURL* imgUrl = [NSURL URLWithString:[stomtImageDict objectForKey:@"url"]];
+			NSURL* imgUrl = ([stomtImageDict objectForKey:@"thumb"]) ? [NSURL URLWithString:[stomtImageDict objectForKey:@"thumb"]] : [NSURL URLWithString:[stomtImageDict objectForKey:@"url"]];
 		if(imgUrl)
 		{
 			self.image = [[STImage alloc] initWithUrl:imgUrl];
-			[self.image downloadInBackgroundWithBlock:nil];
+			//[self.image downloadInBackgroundWithBlock:nil];
 		}
-	}
-	@catch (NSException *exception) {
-		self.image = nil;
-	}
-	
+		if(stomtImageDict)
+		{
+			CGFloat height = [[stomtImageDict objectForKey:@"h"] floatValue];
+			CGFloat width = [[stomtImageDict objectForKey:@"w"] floatValue];
+			self.stomtImageSize = CGSizeMake(width,height);
+		}
+		} else self.image = nil;
+
 	if([hDict objectForKey:@"creator"] != [NSNull null])
 		self.creator = [STUser initWithDataDictionary:[hDict objectForKey:@"creator"]];
 	if([hDict objectForKey:@"target"] != [NSNull null])
@@ -200,7 +204,7 @@ error:
 
 - (void)setText:(NSString *)text
 {
-	NSInteger chars_required = 120;
+	NSInteger chars_required = 160;
 	
 	if(!([text length] <= chars_required))
 		_err("Maximum chars for this stomt: %ld",(long)chars_required);
@@ -215,4 +219,5 @@ error:
 {
 	return [NSString stringWithFormat:@"<STObject: %@>",self.text];
 }
+
 @end

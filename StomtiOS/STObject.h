@@ -14,6 +14,8 @@
 @class STImage;
 @class CLLocation;
 
+@import CoreGraphics;
+
 /*!
  * The actual stomt object, which at least contains text, targetID and a type qualifier.
  * The STObject class represents the actual stomt object that can be created on the stomt.com website.
@@ -104,6 +106,7 @@
  */
 @property (nonatomic) BOOL agreed;
 
+@property (nonatomic) CGSize stomtImageSize;
 
 //-----------------------------------------------------------------------------
 // Overloaded constructors

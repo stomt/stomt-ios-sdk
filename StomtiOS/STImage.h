@@ -32,7 +32,6 @@
  */
 @property (nonatomic,strong) NSURL* url;
 
-
 /*!
  * @brief Creates STImage instance by providing the image name.
  *

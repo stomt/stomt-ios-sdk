@@ -171,8 +171,8 @@ error:
 	for(NSDictionary* stDict in array)
 	{
 		STObject* obj = [STObject objectWithDataDictionary:stDict];
-		
-		[self.stomts addObject:obj];
+		if(obj)
+			[self.stomts addObject:obj];
 	}
 	return self;
 }
