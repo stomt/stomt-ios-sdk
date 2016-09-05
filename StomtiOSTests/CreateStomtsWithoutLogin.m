@@ -94,7 +94,7 @@
         XCTAssertTrue(stomt.anonym);
         XCTAssertEqualObjects(stomt.text, textBody);
         XCTAssertEqualObjects(stomt.target.identifier, targetID);
-        XCTAssertEqualObjects(stomt.url, url);
+        XCTAssertEqualObjects([stomt.url absoluteString], url);
     }];
     [self waitForExpectationsWithTimeout:self.timeout handler:nil];
 }
