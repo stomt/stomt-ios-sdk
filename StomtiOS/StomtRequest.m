@@ -110,39 +110,37 @@ error:
 		
 		if(path && pPair)
 		{
-		paramString = [NSMutableString string];
-		keys = [NSMutableArray array];
-		args = [NSMutableArray array];
-		[pPair enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-			[keys addObject:(NSString*)key];
-			[args addObject:(NSString*)obj];
-		}];
-		for(int g_c = 0; g_c < [keys count]; g_c++)
-		{
-			if([[keys objectAtIndex:g_c] isEqualToString:[keys firstObject]]) //First Obj
+			paramString = [NSMutableString string];
+			keys = [NSMutableArray array];
+			args = [NSMutableArray array];
+			[pPair enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+				[keys addObject:(NSString*)key];
+				[args addObject:(NSString*)obj];
+			}];
+			for(int g_c = 0; g_c < [keys count]; g_c++)
 			{
-				[paramString appendString:[NSString stringWithFormat:@"?%@=%@",[keys objectAtIndex:g_c],[args objectAtIndex:g_c]]];
+				if([[keys objectAtIndex:g_c] isEqualToString:[keys firstObject]]) //First Obj
+				{
+					[paramString appendString:[NSString stringWithFormat:@"?%@=%@",[keys objectAtIndex:g_c],[args objectAtIndex:g_c]]];
+				}
+				else
+				{
+					[paramString appendString:[NSString stringWithFormat:@"&%@=%@",[keys objectAtIndex:g_c],[args objectAtIndex:g_c]]];
+				}
 			}
-			else
-			{
-				[paramString appendString:[NSString stringWithFormat:@"&%@=%@",[keys objectAtIndex:g_c],[args objectAtIndex:g_c]]];
-			}
+		
+			NSString* apiString = [NSString stringWithFormat:@"%@%@%@",[Stomt sharedInstance].apiURL,path,paramString];
+			apiUrl = [NSURL URLWithString:apiString];
+		
 		}
 		
-		NSString* apiString = [NSString stringWithFormat:@"%@%@%@",[Stomt sharedInstance].apiURL,path,paramString];
-		apiUrl = [NSURL URLWithString:apiString];
-		
-			
+		if(!apiUrl) apiUrl = [NSURL URLWithString:path];
 		apiRequest = [NSMutableURLRequest requestWithURL:apiUrl];
 		[apiRequest setHTTPMethod:@"GET"];
 		[apiRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
 		[apiRequest setValue:[Stomt sharedInstance].appid forHTTPHeaderField:@"appid"];
 		
 		return apiRequest;
-		}_err("Invalid args for GET request creation. Aborting...");
-		
-error:
-	return nil;
 		
 	}
 }
@@ -478,6 +476,21 @@ error:
 	[apiRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:NSDictionaryOfVariableBindings(emailusername,password,login_method) options:0 error:nil]];
 	
 	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kLoginRequest];
+	
+error:
+	return nil;
+}
+
++ (StomtRequest*)commentsRequestForStomtWithID:(NSString *)stomtID
+{
+	NSMutableURLRequest* apiRequest;
+	NSString* path;
+	if(!stomtID) _err("No stomtID given. Aborting...");
+	
+	path = [NSString stringWithFormat:@"%@/stomts/%@/comments",[Stomt sharedInstance].apiURL,stomtID];
+	apiRequest = [StomtRequest generateBaseGETRequestWithPath:path parametersPair:nil];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kCommentsRequest];
 	
 error:
 	return nil;
@@ -867,6 +880,36 @@ error:
 					  if(completion) completion(error,user);
 					  return;
 					  
+				  }
+			  }
+		  }] resume];
+		
+		return;
+		
+	}_err("Register request not available for this instance.");
+error:
+	return;
+}
+
+- (void)requestCommentsInBackgroundWithBlock:(CommentsRequestBlock)completion
+{
+	if(self.requestType == kCommentsRequest)
+	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		  {
+			  checkConnectionErrors(connectionError,completion);
+			  handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
+			  if([HTTPResponseChecker checkResponseCode:response] == OK)
+			  {
+				  NSDictionary* dataDict;
+				  if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				  if(dataDict)
+				  {
+					  NSArray* commentsArray = [dataDict objectForKey:@"data"];
+					  if(completion)
+						  completion(nil,commentsArray);
 				  }
 			  }
 		  }] resume];

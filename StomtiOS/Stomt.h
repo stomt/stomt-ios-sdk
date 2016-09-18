@@ -24,6 +24,7 @@
 #import "TempLikeWishView.h"
 #import "NSDate+ISO8601.h"
 #import "STImagePoolDelegate.h"
+#import "STComment.h"
 
 @class STUser;
 @class STTarget;

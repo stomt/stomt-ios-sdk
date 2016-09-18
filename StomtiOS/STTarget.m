@@ -26,10 +26,14 @@
 		self.category = [STCategory initWithIdentifier:[categoryDict objectForKey:kD_Id]
 										   displayName:[categoryDict objectForKey:kD_DisplayName]];
 		
+		
 		// TODO: Optimize -> Images array
-		self.profileImage = [NSURL URLWithString:[[[data objectForKey:kD_Images] objectForKey:kD_Profile] objectForKey:kD_Url]];
+		id imagesDict = [data objectForKey:kD_Images];
+		if([imagesDict isKindOfClass:[NSDictionary class]]){
+			self.profileImage = [NSURL URLWithString:[[imagesDict objectForKey:kD_Profile] objectForKey:kD_Url]];
 		if(!self.profileImage)
 			self.profileImage = [NSURL URLWithString:[[[data objectForKey:kD_Images] objectForKey:kD_Avatar] objectForKey:kD_Url]];
+		}
 		// --
 		
 		self.stats = [STStats initWithStatsDictionary:[data objectForKey:kD_Stats]];

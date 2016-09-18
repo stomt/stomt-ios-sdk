@@ -173,6 +173,8 @@
 
 + (StomtRequest*)standardFeedRequestWithStomtFeedObject:(STFeed*)feed;
 
++ (StomtRequest*)commentsRequestForStomtWithID:(NSString*)stomtID;
+
 //-----------------------------------------------------------------------------
 // Request senders
 //-----------------------------------------------------------------------------
@@ -240,4 +242,5 @@
  */
 - (void)loginInBackgroundWithBlock:(AuthenticationBlock)completion;
 
+- (void)requestCommentsInBackgroundWithBlock:(CommentsRequestBlock)completion;
 @end

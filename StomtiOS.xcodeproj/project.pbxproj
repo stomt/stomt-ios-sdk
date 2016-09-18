@@ -48,6 +48,9 @@
 		A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STStats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STStats.m */; };
 		A79F97BE1D09DA9700E91033 /* LikeWishDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A79F97BD1D09DA9700E91033 /* LikeWishDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7BB73771D8D96B300A5CF75 /* STComment.h in Headers */ = {isa = PBXBuildFile; fileRef = A7BB73751D8D96B300A5CF75 /* STComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7BB73781D8D96B300A5CF75 /* STComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BB73761D8D96B300A5CF75 /* STComment.m */; };
+		A7BB73791D8D9CBC00A5CF75 /* STComment.m in Headers */ = {isa = PBXBuildFile; fileRef = A7BB73761D8D96B300A5CF75 /* STComment.m */; };
 		A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C039A31BB5A340006A8135 /* STSearchFilterKeywords.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */; };
 		A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039B71BB6FDCF006A8135 /* STCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -130,6 +133,8 @@
 		A78B2E6C1BA419BC00A9E7D0 /* STStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STStats.m; sourceTree = "<group>"; };
 		A79F97BD1D09DA9700E91033 /* LikeWishDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeWishDelegate.h; sourceTree = "<group>"; };
 		A7B397AA1C81EC920076A94F /* ValidateCredentialsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateCredentialsWithoutLogin.m; sourceTree = "<group>"; };
+		A7BB73751D8D96B300A5CF75 /* STComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STComment.h; sourceTree = "<group>"; };
+		A7BB73761D8D96B300A5CF75 /* STComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STComment.m; sourceTree = "<group>"; };
 		A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSearchFilterKeywords.h; sourceTree = "<group>"; };
 		A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSearchFilterKeywords.m; sourceTree = "<group>"; };
 		A7C039B71BB6FDCF006A8135 /* STCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCategory.h; sourceTree = "<group>"; };
@@ -313,6 +318,8 @@
 				A76DFE271BC57CC200017C32 /* STImageView.m */,
 				A7C039A01BB5A340006A8135 /* STSearchFilterKeywords.h */,
 				A7C039A11BB5A340006A8135 /* STSearchFilterKeywords.m */,
+				A7BB73751D8D96B300A5CF75 /* STComment.h */,
+				A7BB73761D8D96B300A5CF75 /* STComment.m */,
 			);
 			name = "Helper Objects";
 			sourceTree = "<group>";
@@ -431,6 +438,7 @@
 				A75C1F641C88C329002D38F4 /* TargetView.h in Headers */,
 				A70884DC1BA1F4A400758049 /* dbg.h in Headers */,
 				A76DFE281BC57CC200017C32 /* STImageView.h in Headers */,
+				A7BB73771D8D96B300A5CF75 /* STComment.h in Headers */,
 				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
 				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
 				A7D4A58C1C9374E400B7E78C /* StomtCreationAccessoryView.h in Headers */,
@@ -443,6 +451,7 @@
 				A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */,
 				A7C2174A1BE17A6B00F8EB52 /* STAuthenticationDelegate.h in Headers */,
 				A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */,
+				A7BB73791D8D9CBC00A5CF75 /* STComment.m in Headers */,
 				A7D4A5881C9326E400B7E78C /* CharCounterLabel.h in Headers */,
 				A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */,
 				A76DFE301BC5AF2800017C32 /* StomtRequest.h in Headers */,
@@ -573,6 +582,7 @@
 				A7D4A5891C9326E400B7E78C /* CharCounterLabel.m in Sources */,
 				A7325ACD1CA719DE00B2BB31 /* AuthenticationDispatch.m in Sources */,
 				A768D76E1BA9EB6000466AFB /* STImage.m in Sources */,
+				A7BB73781D8D96B300A5CF75 /* STComment.m in Sources */,
 				A71166151C872C8200ED4E44 /* LikeWishView.m in Sources */,
 				A75AF2B71BA893B000D74B9C /* STObject.m in Sources */,
 				A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */,
