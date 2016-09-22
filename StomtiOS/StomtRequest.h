@@ -99,6 +99,8 @@
  */
 + (StomtRequest*)targetRequestWithTargetID:(NSString*)targetID;
 
++ (StomtRequest*)commentCreationRequestWithStomtID:(NSString*)stomtID parentCommentID:(NSString*)parentID text:(NSString*)text reaction:(BOOL)reaction;
+
 /*!
  * @brief Create a request to retrieve a Target with basic properties.
  * @discussion The target will contain its identifier, display name, images array and category.
@@ -243,4 +245,5 @@
 - (void)loginInBackgroundWithBlock:(AuthenticationBlock)completion;
 
 - (void)requestCommentsInBackgroundWithBlock:(CommentsRequestBlock)completion;
+- (void)requestCommentCreationWithBlock:(CommentCreationBlock)completion;
 @end

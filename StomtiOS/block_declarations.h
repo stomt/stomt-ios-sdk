@@ -15,6 +15,7 @@
 @class STFeed;
 @class STTarget;
 @class UIImage;
+@class STComment;
 
 
 typedef void (^ BooleanCompletion)(NSError* error, NSNumber* succeeded);
@@ -26,4 +27,5 @@ typedef void (^ TargetRequestBlock)(NSError* error, STTarget* target);
 typedef void (^ UserAvailabilityBlock)(NSError* error, NSNumber* available);
 typedef void (^ ImageDownloadBlock)(NSError* error, UIImage* image);
 typedef void (^ CommentsRequestBlock)(NSError* error, NSArray* comments);
+typedef void (^ CommentCreationBlock)(NSError* error, STComment* comment);
 #endif

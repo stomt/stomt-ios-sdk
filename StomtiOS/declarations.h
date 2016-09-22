@@ -32,7 +32,8 @@ typedef enum{
 	kAvailabilityRequest,
 	kBasicSignupRequest,
 	kLoginRequest,
-	kCommentsRequest
+	kCommentsRequest,
+	kCommentCreationRequest
 }RequestType;
 
 typedef enum{

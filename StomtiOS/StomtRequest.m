@@ -496,6 +496,31 @@ error:
 	return nil;
 }
 
++ (StomtRequest*)commentCreationRequestWithStomtID:(NSString *)stomtID parentCommentID:(NSString *)parentID text:(NSString *)text reaction:(BOOL)reaction
+{
+	NSMutableURLRequest* apiRequest;
+	NSString* path;
+	
+	NSString* parent_id = parentID;
+	NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+	if(parent_id)[dict setObject:parent_id forKey:@"parent_id"];
+	if(text)[dict setObject:text forKey:@"text"];
+	if(reaction)[dict setObject:@(reaction) forKey:@"reaction"];
+	
+	if(!stomtID) _err("No stomtID given. Aborting...");
+	if(!text) _err("No text given. Aborting...");
+	
+	path = [NSString stringWithFormat:@"/stomts/%@/comments",stomtID];
+	apiRequest = [StomtRequest generateBasePOSTRequestWithPath:path];
+	[apiRequest setValue:[Stomt sharedInstance].accessToken forHTTPHeaderField:@"accesstoken"];
+	[apiRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:dict options:0 error:nil]];
+	
+	return [[StomtRequest alloc] initWithApiRequest:apiRequest requestType:kCommentCreationRequest];
+	
+error:
+	return nil;
+}
+
 #pragma mark Send Requests
 
 - (void)sendStomtInBackgroundWithBlock:(StomtCreationBlock)completion
@@ -921,6 +946,36 @@ error:
 	return;
 }
 
+- (void)requestCommentCreationWithBlock:(CommentCreationBlock)completion
+{
+	if(self.requestType == kCommentCreationRequest)
+	{
+		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting request...");
+		
+		NSLog(@"%@", [Stomt accessToken]);
+		[[[NSURLSession sharedSession] dataTaskWithRequest:self.apiRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError)
+		  {
+			  checkConnectionErrors(connectionError,completion);
+			  handleResponseErrors([HTTPResponseChecker checkResponseCode:response], data, completion);
+			  if([HTTPResponseChecker checkResponseCode:response] == OK)
+			  {
+				  NSDictionary* dataDict;
+				  if(data) dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				  if(dataDict)
+				  {
+					  STComment* comment = [STComment initWithDictionary:[dataDict objectForKey:@"data"]];
+					  if(completion)
+						  completion(nil,comment);
+				  }
+			  }
+		  }] resume];
+		
+		return;
+		
+	}_err("Register request not available for this instance.");
+error:
+	return;
+}
 - (NSString*)description
 {
 	return [NSString stringWithFormat:@"<StomtRequest: %d>",self.requestType];
