@@ -108,12 +108,20 @@
 	_accessoryView = [[StomtCreationAccessoryView alloc] initWithCharCounter:_charCounter];
 	_accessoryView.delegate = self;
 	
-	STImage* userImage;
 	if(_currentUser)
 	{
-		userImage = [[STImage alloc] initWithUrl:_currentUser.profileImage];
-		[userImage downloadInBackgroundWithBlock:nil];
-		_userProfileImage.image = userImage.image;
+		[[[NSURLSession sharedSession] downloadTaskWithURL:_currentUser.profileImage completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+			if(location)
+			{
+				NSData* imageData = [NSData dataWithContentsOfURL:location];
+				UIImage* image = [UIImage imageWithData:imageData];
+				if(image){
+					dispatch_async(dispatch_get_main_queue(), ^{
+						_userProfileImage.image = image;
+					});
+				}
+			}
+		}] resume];
 	}
 	else
 		_userProfileImage.image = [UIImage imageNamed:@"AnonymousUserImage" inBundle:[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] compatibleWithTraitCollection:nil];
@@ -153,12 +161,20 @@
 	if([text containsString:@"\n"])
 		return rt;
 	
-	if(range.length > 0 && [_charCounter decreaseCharsBy:range.length] == YES)
+	NSLog(@"%d %d '%@'",range.length,text.length,text);
+	
+	if((text.length == 0 || text.length < range.length) && [_charCounter decreaseCharsBy:(range.length - text.length)] == YES)
+	{
+		NSLog(@"Decrease");
+		rt = YES;
+	}
+	else if(range.length == 1 && [text isEqualToString:@". "])
 	{
 		rt = YES;
 	}
-	else if([_charCounter increaseCharsBy:text.length] == YES)
+	else if([_charCounter increaseCharsBy:(text.length - range.length)] == YES)
 	{
+				NSLog(@"Increase");
 		rt = YES;
 	}
 	
@@ -249,15 +265,17 @@
 	STObject* object = [STObject objectWithTextBody:_textView.text likeOrWish:_likeOrWish targetID:_target.identifier];
 	StomtRequest* stomtRequest = [StomtRequest stomtCreationRequestWithStomtObject:object];
 	[stomtRequest sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
-		if(stomt)
-		{
-			[self dismissViewControllerAnimated:YES completion:nil];
-		}
-		else
-		{
-			fprintf(stderr, "[!] Error in sending stomt. Aborting...");
-			[self dismissViewControllerAnimated:YES completion:nil];
-		}
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if(stomt)
+			{
+				[self dismissViewControllerAnimated:YES completion:nil];
+			}
+			else
+			{
+				fprintf(stderr, "[!] Error in sending stomt. Aborting...");
+				[self dismissViewControllerAnimated:YES completion:nil];
+			}
+		});
 	}];
 }
 

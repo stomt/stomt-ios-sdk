@@ -10,7 +10,9 @@
 #import "Stomt.h"
 #import "TargetViewOutline.h"
 
-@interface TargetView ()
+@interface TargetView (){
+	NSURL* imageURL;
+}
 @property (nonatomic,strong) STTarget* target;
 @end
 
@@ -26,13 +28,27 @@
 	
 	_target = target;
 	
-	STImage* dImage = [[STImage alloc] initWithUrl:_target.profileImage];
-	[dImage downloadInBackgroundWithBlock:nil];
+	self->imageURL = _target.profileImage;
+	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+		
+		[[[NSURLSession sharedSession] downloadTaskWithURL:self->imageURL completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+			UIImage* image;
+			if(location){
+				NSData* imageData = [NSData dataWithContentsOfURL:location];
+				image = [UIImage imageWithData:imageData];
+			}
+			dispatch_async(dispatch_get_main_queue(), ^(void){
+				if(image) _targetImage.image = image;
+			});
+		}] resume];
+		
+	});
+	
 	UIImage* placeholderImage = [UIImage imageNamed:@"AnonymousUserImage" inBundle:[NSBundle bundleWithIdentifier:@"com.h3xept.stomtiOS"] compatibleWithTraitCollection:nil];
 	
 	if(!_targetImage)
 	{
-		_targetImage = [[STImageView alloc] initWithImage:dImage placeholder:placeholderImage];
+		_targetImage = [[UIImageView alloc] initWithImage:placeholderImage];
 		_targetImage.translatesAutoresizingMaskIntoConstraints = NO;
 		[self addSubview:_targetImage];
 	}
