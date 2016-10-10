@@ -161,11 +161,8 @@
 	if([text containsString:@"\n"])
 		return rt;
 	
-	NSLog(@"%d %d '%@'",range.length,text.length,text);
-	
 	if((text.length == 0 || text.length < range.length) && [_charCounter decreaseCharsBy:(range.length - text.length)] == YES)
 	{
-		NSLog(@"Decrease");
 		rt = YES;
 	}
 	else if(range.length == 1 && [text isEqualToString:@". "])
@@ -174,7 +171,6 @@
 	}
 	else if([_charCounter increaseCharsBy:(text.length - range.length)] == YES)
 	{
-				NSLog(@"Increase");
 		rt = YES;
 	}
 	
