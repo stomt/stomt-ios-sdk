@@ -14,6 +14,6 @@
 
 @protocol STAuthenticationDelegate <NSObject>
 @optional
-- (void)authenticationController:(STAuthenticationController*)authController successfullyLoggedInWithUser:(STUser*)user;
-- (void)authenticationController:(STAuthenticationController*)authController loginFailedWithResponse:(NSURLResponse*)response receivedData:(NSData*)data error:(NSError*)error;
+- (void)authenticationController:(NSObject*)authController successfullyLoggedInWithUser:(STUser*)user;
+- (void)authenticationController:(NSObject*)authController loginFailedWithResponse:(NSURLResponse*)response receivedData:(NSData*)data error:(NSError*)error;
 @end

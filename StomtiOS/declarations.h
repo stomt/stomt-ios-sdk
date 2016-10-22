@@ -60,4 +60,5 @@ typedef enum{
 	STStandardFeedHome,
 	STStandardFeedDiscover
 }STStandardFeed;
+
 #endif

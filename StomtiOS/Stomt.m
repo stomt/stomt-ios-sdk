@@ -15,12 +15,12 @@
 #import "strings.h"
 #import "STTarget.h"
 #import "STUser.h"
-#import "STAuthenticationController.h"
+#import "STAuthenticationManager.h"
 #import "STAuthenticationDelegate.h"
 #import "StomtCreationViewController.h"
 
 @interface Stomt ()
-@property (nonatomic,strong) STAuthenticationController* authController;
+@property (nonatomic,strong) STAuthenticationManager* authController;
 - (void)setup;
 @end
 
@@ -64,7 +64,7 @@ error:
 	{
 		if([Stomt sharedInstance].authController) [Stomt sharedInstance].authController = nil;
 		
-		[Stomt sharedInstance].authController = [[STAuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(NSError *error, STUser *user) {
+		[Stomt sharedInstance].authController = [[STAuthenticationManager alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(NSError *error, STUser *user) {
 			if(user)
 			{
 				[[Stomt sharedInstance] setAccessToken:user.accessToken];
@@ -72,7 +72,10 @@ error:
 				if(user) [[Stomt sharedInstance] setLoggedUser:user];
 			}if(completion) completion(error,user);
 		}];
-		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
+		
+		[[Stomt sharedInstance].authController presentAvailableAuthenticationRoute];
+		
+//		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
 	}
 	else _info("Already logged in. Continuing execution...");
 	return;
@@ -88,7 +91,7 @@ error:
 	{
 		if([Stomt sharedInstance].authController) [Stomt sharedInstance].authController = nil;
 		
-		[Stomt sharedInstance].authController = [[STAuthenticationController alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(NSError *error, STUser *user) {
+		[Stomt sharedInstance].authController = [[STAuthenticationManager alloc] initWithAppID:[Stomt appID] redirectURI:@"stomtAPI://" completionBlock:^(NSError *error, STUser *user) {
 			if(user)
 			{
 				[[Stomt sharedInstance] setAccessToken:user.accessToken];
@@ -97,7 +100,7 @@ error:
 			}
 		}];
 		[Stomt sharedInstance].authController.privDelegate = delegate;
-		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
+//		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
 		
 	}else _info("Already logged in. Continuing execution...");
 	return;

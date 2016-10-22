@@ -65,6 +65,8 @@
 		A7D4A5891C9326E400B7E78C /* CharCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D4A5871C9326E400B7E78C /* CharCounterLabel.m */; };
 		A7D4A58C1C9374E400B7E78C /* StomtCreationAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D4A58A1C9374E400B7E78C /* StomtCreationAccessoryView.h */; };
 		A7D4A58D1C9374E400B7E78C /* StomtCreationAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D4A58B1C9374E400B7E78C /* StomtCreationAccessoryView.m */; };
+		A7E4E9561DBBD323007A619F /* STAuthenticationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E4E9541DBBD323007A619F /* STAuthenticationManager.h */; };
+		A7E4E9571DBBD323007A619F /* STAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E4E9551DBBD323007A619F /* STAuthenticationManager.m */; };
 		A7FF4FE51C8372A10050F849 /* StomtCreationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FF4FE21C8372A10050F849 /* StomtCreationViewController.h */; };
 		A7FF4FE61C8372A10050F849 /* StomtCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FF4FE31C8372A10050F849 /* StomtCreationViewController.m */; };
 		A7FF4FE71C8372A10050F849 /* StomtCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7FF4FE41C8372A10050F849 /* StomtCreationViewController.xib */; };
@@ -150,6 +152,8 @@
 		A7D4A5871C9326E400B7E78C /* CharCounterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharCounterLabel.m; sourceTree = "<group>"; };
 		A7D4A58A1C9374E400B7E78C /* StomtCreationAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtCreationAccessoryView.h; sourceTree = "<group>"; };
 		A7D4A58B1C9374E400B7E78C /* StomtCreationAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtCreationAccessoryView.m; sourceTree = "<group>"; };
+		A7E4E9541DBBD323007A619F /* STAuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAuthenticationManager.h; sourceTree = "<group>"; };
+		A7E4E9551DBBD323007A619F /* STAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAuthenticationManager.m; sourceTree = "<group>"; };
 		A7FF4FE21C8372A10050F849 /* StomtCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtCreationViewController.h; sourceTree = "<group>"; };
 		A7FF4FE31C8372A10050F849 /* StomtCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtCreationViewController.m; sourceTree = "<group>"; };
 		A7FF4FE41C8372A10050F849 /* StomtCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StomtCreationViewController.xib; sourceTree = "<group>"; };
@@ -301,6 +305,8 @@
 				A70D8DA71BE3F5440099BAB8 /* STAuthenticationController.m */,
 				A7325ACA1CA719DE00B2BB31 /* AuthenticationDispatch.h */,
 				A7325ACB1CA719DE00B2BB31 /* AuthenticationDispatch.m */,
+				A7E4E9541DBBD323007A619F /* STAuthenticationManager.h */,
+				A7E4E9551DBBD323007A619F /* STAuthenticationManager.m */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 				A7FF4FE51C8372A10050F849 /* StomtCreationViewController.h in Headers */,
 				A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */,
 				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
+				A7E4E9561DBBD323007A619F /* STAuthenticationManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +597,7 @@
 				A7833D011BB46B1100A3F13B /* STFeed.m in Sources */,
 				A76DFE291BC57CC200017C32 /* STImageView.m in Sources */,
 				A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */,
+				A7E4E9571DBBD323007A619F /* STAuthenticationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
