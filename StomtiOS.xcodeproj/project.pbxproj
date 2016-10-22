@@ -12,8 +12,6 @@
 		A70884DC1BA1F4A400758049 /* dbg.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884D91BA1F4A400758049 /* dbg.h */; };
 		A70884DD1BA1F4A400758049 /* declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DA1BA1F4A400758049 /* declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DB1BA1F4A400758049 /* block_declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A70D8DA81BE3F5440099BAB8 /* STAuthenticationController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D8DA61BE3F5440099BAB8 /* STAuthenticationController.h */; };
-		A70D8DA91BE3F5440099BAB8 /* STAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D8DA71BE3F5440099BAB8 /* STAuthenticationController.m */; };
 		A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7107E8B1BA2F614001F3B38 /* STUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7107E8C1BA2F614001F3B38 /* STUser.m */; };
 		A71166141C872C8200ED4E44 /* LikeWishView.h in Headers */ = {isa = PBXBuildFile; fileRef = A71166121C872C8200ED4E44 /* LikeWishView.h */; };
@@ -98,8 +96,6 @@
 		A70884D91BA1F4A400758049 /* dbg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dbg.h; sourceTree = "<group>"; };
 		A70884DA1BA1F4A400758049 /* declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = declarations.h; sourceTree = "<group>"; };
 		A70884DB1BA1F4A400758049 /* block_declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block_declarations.h; sourceTree = "<group>"; };
-		A70D8DA61BE3F5440099BAB8 /* STAuthenticationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAuthenticationController.h; sourceTree = "<group>"; };
-		A70D8DA71BE3F5440099BAB8 /* STAuthenticationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAuthenticationController.m; sourceTree = "<group>"; };
 		A7107E8B1BA2F614001F3B38 /* STUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUser.h; sourceTree = "<group>"; };
 		A7107E8C1BA2F614001F3B38 /* STUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUser.m; sourceTree = "<group>"; };
 		A71166121C872C8200ED4E44 /* LikeWishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeWishView.h; sourceTree = "<group>"; };
@@ -301,8 +297,6 @@
 		A71C9E1D1BC9675C00398B0B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				A70D8DA61BE3F5440099BAB8 /* STAuthenticationController.h */,
-				A70D8DA71BE3F5440099BAB8 /* STAuthenticationController.m */,
 				A7325ACA1CA719DE00B2BB31 /* AuthenticationDispatch.h */,
 				A7325ACB1CA719DE00B2BB31 /* AuthenticationDispatch.m */,
 				A7E4E9541DBBD323007A619F /* STAuthenticationManager.h */,
@@ -438,7 +432,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A71166141C872C8200ED4E44 /* LikeWishView.h in Headers */,
-				A70D8DA81BE3F5440099BAB8 /* STAuthenticationController.h in Headers */,
 				A78A1A201C8632CD0076E266 /* DoubleSideView.h in Headers */,
 				A70884DD1BA1F4A400758049 /* declarations.h in Headers */,
 				A75C1F641C88C329002D38F4 /* TargetView.h in Headers */,
@@ -576,7 +569,6 @@
 				A75C1F791C88E777002D38F4 /* TargetViewOutline.m in Sources */,
 				A7FF4FE61C8372A10050F849 /* StomtCreationViewController.m in Sources */,
 				A78A1A211C8632CD0076E266 /* DoubleSideView.m in Sources */,
-				A70D8DA91BE3F5440099BAB8 /* STAuthenticationController.m in Sources */,
 				A70884D41BA1F47400758049 /* Stomt.m in Sources */,
 				A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */,
 				A76DFE2C1BC5AF1E00017C32 /* STTarget.m in Sources */,
