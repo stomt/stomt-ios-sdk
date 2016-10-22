@@ -74,8 +74,6 @@ error:
 		}];
 		
 		[[Stomt sharedInstance].authController presentAvailableAuthenticationRoute];
-		
-//		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
 	}
 	else _info("Already logged in. Continuing execution...");
 	return;
@@ -102,8 +100,6 @@ error:
 		[Stomt sharedInstance].authController.privDelegate = delegate;
 		[[Stomt sharedInstance].authController presentAvailableAuthenticationRoute];
 		
-//		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
-		
 	}else _info("Already logged in. Continuing execution...");
 	return;
 error:
@@ -127,7 +123,6 @@ error:
         [Stomt sharedInstance].refreshToken = nil;
 		[Stomt sharedInstance].loggedUser = nil;
 		
-
 	}
 	
 error:
@@ -262,7 +257,7 @@ error:
 
 #pragma mark UI
 
-+ (void)presentStomtCreationPanelWithTarget:(STTarget*)target defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion
++ (void)presentStomtCreationPanelWithTarget:(STTarget*)target defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish fromViewController:(UIViewController* _Nonnull)viewController completionBlock:(StomtCreationBlock)completion
 {
 	@synchronized(self)
 	{
@@ -272,14 +267,14 @@ error:
 		
 		cont = [[StomtCreationViewController alloc] initWithNibName:@"StomtCreationViewController" bundle:[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] target:target defaultText:defaultText likeOrWish:likeOrWish];
 
-		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:cont animated:YES completion:nil];
+		[viewController presentViewController:cont animated:YES completion:nil];
 error:
 	return;
 		
 	}
 }
 
-+ (void)presentStomtCreationPanelWithTargetID:(NSString*)targetID defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish completionBlock:(StomtCreationBlock)completion
++ (void)presentStomtCreationPanelWithTargetID:(NSString*)targetID defaultText:(NSString*)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish fromViewController:(UIViewController* _Nonnull)viewController completionBlock:(StomtCreationBlock)completion
 {
 	@synchronized(self)
 	{
@@ -290,7 +285,7 @@ error:
 		[STTarget retrieveEssentialTargetWithTargetID:targetID completionBlock:^(NSError *error, STTarget *target) {
 			if(target){
 				dispatch_sync(dispatch_get_main_queue(), ^{
-					[Stomt presentStomtCreationPanelWithTarget:target defaultText:__defaultText likeOrWish:__likeOrWish completionBlock:__completion];
+					[Stomt presentStomtCreationPanelWithTarget:target defaultText:__defaultText likeOrWish:__likeOrWish  fromViewController:viewController completionBlock:__completion];
 				});
 			}
 			else

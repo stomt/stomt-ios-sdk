@@ -49,13 +49,12 @@ error:
 	NSURL* authorizationURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@",[NSString stringWithFormat:@"%@%@",[Stomt sharedInstance].apiURL,kAuthorizePath],appID,redirectURI]];
 	_authorizationURL = authorizationURL;
 	
-	if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")){
-		_safariViewController = [[SFSafariViewController alloc] initWithURL:authorizationURL];
-	}
-	
 	self = [super init];
 	if(self)
 	{
+		if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")){
+			_safariViewController = [[SFSafariViewController alloc] initWithURL:authorizationURL];
+		}
 		self.clientID = appID;
 		self.completion = completion;
 		return self;
