@@ -100,6 +100,8 @@ error:
 			}
 		}];
 		[Stomt sharedInstance].authController.privDelegate = delegate;
+		[[Stomt sharedInstance].authController presentAvailableAuthenticationRoute];
+		
 //		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:[Stomt sharedInstance].authController animated:YES completion:nil];
 		
 	}else _info("Already logged in. Continuing execution...");
@@ -269,10 +271,7 @@ error:
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting stomt creation modal presentation...");
 		
 		cont = [[StomtCreationViewController alloc] initWithNibName:@"StomtCreationViewController" bundle:[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] target:target defaultText:defaultText likeOrWish:likeOrWish];
-		
-//		[[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:cont
-//																					 animated:YES
-//																				   completion:nil];
+
 		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:cont animated:YES completion:nil];
 error:
 	return;
