@@ -7,7 +7,7 @@
 //
 
 #import "TempLikeWishView.h"
-#import <StomtiOS/Stomt.h>
+#import "Stomt.h"
 
 @interface TempLikeWishView ()
 @property (nonatomic) kSTObjectQualifier likeOrWish;
