@@ -6,7 +6,7 @@
 //  Copyright © 2016 Leonardo Cascianelli. All rights reserved.
 //
 
-#import <StomtiOS/Stomt.h>
+#import "Stomt.h"
 #import "AuthenticationDispatch.h"
 
 @interface AuthenticationDispatch ()
