@@ -21,7 +21,7 @@ pod 'Stomt-iOS-SDK', '~> 0.0.x'
 
 ### Versioning for pod
 
-From version *2.0.1* the pod works for iOS 8/9/10 seamlessly.
+From version *2.0.2* the pod works for iOS 8/9/10 seamlessly.
 
 ### Manually
 
