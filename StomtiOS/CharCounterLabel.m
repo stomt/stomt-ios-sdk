@@ -27,7 +27,7 @@
 		_displayChars = _maxChars;
 		_restricted = NO;
 		
-		self.text = [NSString stringWithFormat:@"%d",_displayChars];
+		self.text = [NSString stringWithFormat:@"%ld",(long)_displayChars];
 	}
 	
 	return self;
@@ -53,7 +53,7 @@
 	_charNumber += integer;
 	_displayChars -= integer;
 	
-	self.text = [NSString stringWithFormat:@"%d",_displayChars];
+	self.text = [NSString stringWithFormat:@"%ld",(long)_displayChars];
 	
 	return YES;
 }
@@ -78,7 +78,7 @@
 	_charNumber -= integer;
 	_displayChars += integer;
 	
-	self.text = [NSString stringWithFormat:@"%d",_displayChars];
+	self.text = [NSString stringWithFormat:@"%ld",(long)_displayChars];
 	
 	return YES;
 }
