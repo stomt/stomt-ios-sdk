@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.author             = { "H3xept" => "h3xept@gmail.com" }
   s.social_media_url   = "http://twitter.com/H3xept"
 
-  s.platform     = :ios
+  s.platform     = :ios,"8.4"
   s.source       = { :git => "https://github.com/stomt/stomt-ios-sdk.git", :tag => 'v2.0.1'}
   s.source_files  = "StomtiOS/*.{h,m}"
   s.framework  = "UIKit"
