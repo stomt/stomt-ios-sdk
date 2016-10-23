@@ -21,12 +21,7 @@ pod 'Stomt-iOS-SDK', '~> 0.0.x'
 
 ### Versioning for pod
 
-If you are including the SDK with CocoaPods, be sure to use the desired version. 
-
-- iOS8 version --> `pod 'Stomt-iOS-SDK', '< 2.0.0'`
-- iOS9 version --> `pod 'Stomt-iOS-SDK', '~> 2.0.0'`
-
-This will ensure you to have the latest version of the desired OS.
+From version *2.0.1* the pod works for iOS 8/9/10 seamlessly.
 
 ### Manually
 
@@ -72,17 +67,33 @@ The most common action while using the SDK is to send a Stomt.
 // -> the targetID is your pages identifier you can copy it from the pages url
 //    https://www.stomt.com/stomt-ios-sdk -> stomt-ios-sdk
 //
-[Stomt presentStomtCreationPanelWithTargetID:@"stomt-ios-sdk"
-							defaultText:@" "
-							likeOrWish:kSTObjectWish
-							 completionBlock:^(NSError *error, STObject *stomt) {
-							 	//Completion block
-							 }];
+[Stomt presentStomtCreationPanelWithTargetID:@"target-id" 
+				defaultText:@"..."
+				 likeOrWish:kSTObjectWish 
+			 fromViewController:self 
+			    completionBlock:^(NSError *error, STObject *stomt) {
+
+				}];
 ```
 ####Authenticate
 Authentication to Stomt can be accomplished in two ways: 
 
 Via normal OAuth flow, using the handy class method `+[Stomt promptAuthenticationIfNecessaryWithCompletionBlock:]`
+You also have to provide your app with the url schema "stomtAPI" and override the following methods in your *AppDelegate*
+
+```
+//For iOS 8
+- (BOOL)application:(UIApplication*)application openURL:(nonnull NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation
+{
+	return [[Stomt sharedInstance] application:application openURL:url sourceApplication:nil annotation:nil];
+}
+//For iOS 9 or higher
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<NSString *,id> *)options
+{
+	return [[Stomt sharedInstance] application:application openURL:url sourceApplication:nil annotation:nil];
+}
+```
+*This is still on development. It will be updated soon, please check for updates.*
 
 Or via **Facebook connect**.
 
