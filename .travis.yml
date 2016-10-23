@@ -1,8 +1,10 @@
 language: objective-c
-osx_image: xcode8
 env:
   matrix:
     - TEST_SDK=iphonesimulator9.1
     - TEST_SDK=iphonesimulator10.0
+    - TEST_XCODE_VERSION=xcode7.3
+    - TEST_XCODE_VERSION=xcode8
+osx_image: $TEST_XCODE_VERSION
 script:
   - xcodebuild -project StomtiOS.xcodeproj -scheme StomtiOS -sdk $TEST_SDK -destination 'platform=iOS Simulator,name=iPhone 6' ONLY_ACTIVE_ARCH=NO build test
