@@ -1,7 +1,7 @@
 language: objective-c
 env:
   matrix:
-    - TEST_SDK=iphonesimulator9.1 TEST_XCODE_VERSION=xcode7.3
+    - TEST_SDK=iphonesimulator9.1 TEST_XCODE_VERSION=xcode7.1
     - TEST_SDK=iphonesimulator10.0 TEST_XCODE_VERSION=xcode8
 osx_image: $TEST_XCODE_VERSION
 script:
