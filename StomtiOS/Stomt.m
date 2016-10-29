@@ -262,7 +262,7 @@ error:
 	@synchronized(self)
 	{
 		StomtCreationViewController* cont;
-		NSBundle* bundle = ([NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"]) ? [NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] : [NSBundle bundleWithIdentifier:@"Stomt-iOS-SDK"];
+		NSBundle* bundle = ([NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"]) ? [NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] : [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"Stomt-iOS-SDK" ofType:@"bundle"]];
 		
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting stomt creation modal presentation...");
 		

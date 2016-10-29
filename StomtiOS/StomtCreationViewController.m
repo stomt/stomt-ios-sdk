@@ -71,7 +71,7 @@
 	UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	scrollView.contentSize = [[UIScreen mainScreen] bounds].size;
 	
-	UIView* mainView = [[[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] loadNibNamed:@"StomtCreationViewController" owner:self options:nil] firstObject];
+	UIView* mainView = [[self.nibBundle loadNibNamed:@"StomtCreationViewController" owner:self options:nil] firstObject];
 	
 	mainView.frame = scrollView.frame;
 	[mainView layoutIfNeeded];
@@ -123,8 +123,10 @@
 			}
 		}] resume];
 	}
-	else
-		_userProfileImage.image = [UIImage imageNamed:@"AnonymousUserImage" inBundle:[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] compatibleWithTraitCollection:nil];
+	else{
+		NSBundle* designedBundle = [NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] ? [NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] : [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"Stomt-iOS-SDK" ofType:@"bundle"]];
+		_userProfileImage.image = [UIImage imageNamed:@"AnonymousUserImage" inBundle:designedBundle compatibleWithTraitCollection:nil];
+	}
 	
 	
 	[_likeOrWishView setupWithFrontView:_likeOrWish];
@@ -231,10 +233,11 @@
 	[self.view setNeedsDisplay];
 	[_targetView setNeedsDisplay];
 	
+	NSLog(@"%@",NSStringFromCGRect(self.view.frame));
 	
 	if(size.width > size.height)
 	{
-		_topOffsetUserProfileImage.constant -= 15;
+		_topOffsetUserProfileImage.constant = 10;
 		[self.view layoutIfNeeded];
 		
 		if(_keyboardShown == YES)
@@ -250,7 +253,7 @@
 		}
 	}
 	else
-		_topOffsetUserProfileImage.constant += 15;
+		_topOffsetUserProfileImage.constant = 25;
 }
 
 - (void)buttonTouchUpInside:(UIButton *)button

@@ -21,7 +21,10 @@
 	if(self = [super initWithFrame:CGRectMake(0, 0, 0, 40)])
 	{
 		_sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[_sendButton setImage:[UIImage imageNamed:@"SendButton" inBundle:[NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+
+		NSBundle* designedBundle = [NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] ? [NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] : [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"Stomt-iOS-SDK" ofType:@"bundle"]];
+		
+		[_sendButton setImage:[UIImage imageNamed:@"SendButton" inBundle:designedBundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
 		_sendButton.translatesAutoresizingMaskIntoConstraints = NO;
 		[_sendButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
 		self.backgroundColor = [UIColor whiteColor];

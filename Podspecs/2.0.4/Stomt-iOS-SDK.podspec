@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 s.resource_bundles = {
     'Stomt-iOS-SDK' => [
         'StomtiOS/*.xib',
-        "*.xcassets"
+        "Images.xcassets/*.*/*.png"
     ]
   }
   s.source       = { :git => "https://github.com/stomt/stomt-ios-sdk.git", :tag => 'v2.0.4'}
