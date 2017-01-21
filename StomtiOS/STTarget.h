@@ -64,7 +64,7 @@
  * @brief Create a STTarget instance with target dictionary representation.
  * @discussion This method should be used exclusively to retrieve a target previously stored into an NSDictionary with the 'dictionaryRepresentation' instance method.
  *
- * @param NSDictionary representation of the target
+ * @param dict representation of the target
  *
  * @return A newly created STTarget instance
  */
@@ -74,7 +74,7 @@
  * @brief Create a STTarget instance with given paramenters.
  *
  * @param displayName The extended name of the target.
- * @param targetID The identifier of the target.
+ * @param identifier The identifier of the target.
  *
  * @return A newly created STTarget instance.
  */
@@ -85,7 +85,7 @@
  * @discussion Retrieve an instance of STTarget containing its identifier, display name, images array and category.
  * 
  * @param identifier The identifier of the desired target
- * @param completionBlock A completion block to be called when the request is completed.
+ * @param completion A completion block to be called when the request is completed.
  */
 + (void)retrieveEssentialTargetWithTargetID:(NSString*)identifier completionBlock:(TargetRequestBlock)completion;
 /*!

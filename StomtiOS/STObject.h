@@ -131,7 +131,7 @@
  * @param body The text body of the stomt.
  * @param likeOrWish A type qualifier which specifies whether the stomt will be a "like" type or "wish" type.
  * @param targetID The ID of the target of the stomt.
- * @param image The image associated with the stomt object @see STImage
+ * @param img The image associated with the stomt object @see STImage
  *
  * @return An instance of STObject.
  */
@@ -180,7 +180,7 @@
  * @param body The text body of the stomt.
  * @param likeOrWish A type qualifier which specifies whether the stomt will be a "like" type or "wish" type.
  * @param targetID The ID of the target of the stomt.
- * @param image The image associated with the stomt object @see STImage
+ * @param img The image associated with the stomt object @see STImage
  * @param geoLocation The location point in terms of latitude and longitude associated with the stomt object.
  * @param url The url associated with the stomt object.
  *
