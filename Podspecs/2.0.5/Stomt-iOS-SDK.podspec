@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Stomt-iOS-SDK"
-  s.version      = "2.0.4"
+  s.version      = "2.0.5"
   s.summary      = "Integrate your iOS app with stomt.com"
   s.description  = <<-DESC
 
@@ -18,10 +18,10 @@ Pod::Spec.new do |s|
 s.resource_bundles = {
     'Stomt-iOS-SDK' => [
         'StomtiOS/*.xib',
-        "/*.*/*.png"
+        "Images.xcassets/*.*/*.png"
     ]
   }
-  s.source       = { :git => "https://github.com/stomt/stomt-ios-sdk.git", :tag => 'v2.0.4'}
+  s.source       = { :git => "https://github.com/stomt/stomt-ios-sdk.git", :tag => 'v2.0.5'}
   s.source_files  = "StomtiOS/*.{h,m}"
   s.framework  = "UIKit"
   s.requires_arc = true
