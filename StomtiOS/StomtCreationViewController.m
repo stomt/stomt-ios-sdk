@@ -233,8 +233,6 @@
 	[self.view setNeedsDisplay];
 	[_targetView setNeedsDisplay];
 	
-	NSLog(@"%@",NSStringFromCGRect(self.view.frame));
-	
 	if(size.width > size.height)
 	{
 		_topOffsetUserProfileImage.constant = 10;
