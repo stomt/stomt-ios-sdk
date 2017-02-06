@@ -115,7 +115,6 @@
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
 {
     NSDictionary* dict = [NSDictionary dictionaryWithDictionary:message.body];
-    
     if(![dict objectForKey:@"event"] || ![dict objectForKey:@"stomt"])
         [self handleStomtProcessComplete:nil error:[NSError errorWithDomain:@"RESPONSE ERROR" code:400 userInfo:@{@"error":@"There has been a problem in the received dictionary. Please contact @h3xept for further details."}]];
     
