@@ -11,19 +11,6 @@
 
 @import WebKit;
 
-@interface MessageHandler : WKScriptMessage <WKScriptMessageHandler>
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message;
-@end
-
-@implementation MessageHandler
-
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
-{
-    NSLog(@"%@",message);
-}
-
-@end
-
 @interface StomtCreationViewController () <WKNavigationDelegate>
 @property (nonatomic,weak) WKWebView* webView;
 @property (nonatomic,strong) WKUserContentController* contentController;
@@ -60,11 +47,6 @@
     self.navigationItem.title = @"Feedback via STOMT";
     // --
     
-    //Setup message handler
-    _contentController = [[WKUserContentController alloc] init];
-    MessageHandler*  handler = [[MessageHandler alloc] init];
-    [_contentController addScriptMessageHandler:handler name:@"notification"];
-    // --
 }
 
 - (NSString*)craftString
@@ -80,7 +62,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //Setup message handler
+
+    if(!_contentController)
+        _contentController = [[WKUserContentController alloc] init];
+    [_contentController addScriptMessageHandler:self name:@"notification"];
+    
     WKWebViewConfiguration* config = [[WKWebViewConfiguration alloc] init];
+    config.userContentController = _contentController;
+    // --
+    
     WKWebView* webView = [[WKWebView alloc] initWithFrame:[UIScreen mainScreen].bounds configuration:config];
     webView.navigationDelegate = self;
     [self.view addSubview:webView];
@@ -88,12 +79,8 @@
 
     NSString* string = [self craftString];
     NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    
     [_webView loadRequest:request];
-}
-
-- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation
-{
-    NSLog(@"%@",[Stomt loggedUser]);
 }
 
 - (void)dismissViaButton:(UIBarButtonItem*)button
@@ -123,6 +110,16 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             _completion(error,stomt);
         });
+}
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
+{
+    if(![message.body containsValueForKey:@"event"] || ![message.body containsValueForKey:@"stomt"])
+        [self handleStomtProcessComplete:nil error:[NSError errorWithDomain:@"RESPONSE ERROR" code:400 userInfo:@{@"error":@"There has been a problem in the received dictionary. Please contact @h3xept for further details."}]];
+    
+    if([[message.body objectForKey:@"event"] isEqualToString:@"stomtCreated"]){
+        [self handleStomtProcessComplete:[message.body objectForKey:@"stomt"] error:nil];
+    }
 }
 
 
