@@ -74,7 +74,7 @@
 /*!
  * @brief Create a request to retrieve a stomt from stomt.com
  *
- * @param identifierOrUrl The ID of the stomt or it's complete URL.
+ * @param location of the stomt or it's complete URL.
  *
  * @return StomtRequest instance with type kStomtRequest
  */
@@ -84,7 +84,7 @@
  * @brief Create a request to retrieve a Stomts feed. @see STFeed
  * @discussion The feed will be filtered with the parameters passed while creating the STFeed object.
  *
- * @param feedObject A STFeed object. @see STFeed
+ * @param feed object. @see STFeed
  *
  * @return StomtRequest instance with type kFeedRequest
  */
@@ -166,7 +166,7 @@
 /*!
  * @brief Login to stomt with email/username and password
  *
- * @param email/username Your email or username
+ * @param emailusername Your email or username
  * @param password Your password
  *
  * @return StomtRequest instance with type kLoginRequest

@@ -17,7 +17,7 @@
 #import "STUser.h"
 #import "STAuthenticationManager.h"
 #import "STAuthenticationDelegate.h"
-#import "StomtCreationViewController.h"
+#import "StomtCreationNavigationController.h"
 
 @interface Stomt ()
 @property (nonatomic,strong) STAuthenticationManager* authController;
@@ -261,14 +261,16 @@ error:
 {
 	@synchronized(self)
 	{
-		StomtCreationViewController* cont;
-		NSBundle* bundle = ([NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"]) ? [NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] : [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"Stomt-iOS-SDK" ofType:@"bundle"]];
-		
+        StomtCreationViewController* vc;
+        UINavigationController* nav;
+        
 		if(![Stomt sharedInstance].appid) _err("No AppID set. Aborting stomt creation modal presentation...");
-		
-		cont = [[StomtCreationViewController alloc] initWithNibName:@"StomtCreationViewController" bundle:bundle target:target defaultText:defaultText likeOrWish:likeOrWish];
-
-		[viewController presentViewController:cont animated:YES completion:nil];
+        
+        vc = [[StomtCreationViewController alloc] initWithTargetID:target.identifier defaultText:defaultText likeOrWish:likeOrWish];
+        vc.completion = completion;
+        nav = [[StomtCreationNavigationController alloc] initWithRootViewController:vc];
+        [viewController presentViewController:nav animated:YES completion:nil];
+        
 error:
 	return;
 		

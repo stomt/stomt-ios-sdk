@@ -29,7 +29,7 @@
  * @brief Initializes a @p STCategory object with an identifier and a display name.
  * 
  * @param identifier The category identifier.
- * @param displayName The category display name.
+ * @param name The category display name.
  *
  * @return Newly created instance of STCategory.
  */

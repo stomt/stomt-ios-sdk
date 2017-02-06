@@ -21,7 +21,7 @@
 #import "STSearchFilterKeywords.h"
 #import "STAuthenticationDelegate.h"
 #import "AuthenticationDispatch.h"
-#import "TempLikeWishView.h"
+#import "StomtCreationViewController.h"
 #import "NSDate+ISO8601.h"
 #import "STImagePoolDelegate.h"
 #import "STComment.h"

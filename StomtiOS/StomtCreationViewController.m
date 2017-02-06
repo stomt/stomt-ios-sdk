@@ -2,314 +2,134 @@
 //  StomtCreationViewController.m
 //  StomtiOS
 //
-//  Created by Leonardo Cascianelli on 28/02/16.
-//  Copyright © 2016 Leonardo Cascianelli. All rights reserved.
+//  Created by Leonardo Cascianelli on 21/01/2017.
+//  Copyright © 2017 Leonardo Cascianelli. All rights reserved.
 //
-
 
 #import "StomtCreationViewController.h"
 #import "Stomt.h"
-#import "DoubleSideView.h"
-#import "LikeWishView.h"
-#import "TargetView.h"
-#import "TargetViewOutline.h"
-#import "CharCounterLabel.h"
-#import "StomtCreationAccessoryView.h"
-#import "SimpleButtonDelegate.h"
-#import "TempLikeWishView.h"
-#import "LikeWishDelegate.h"
+#import "StomtCreationNavigationController.h"
 
-@interface StomtCreationViewController () <UITextViewDelegate,SimpleButtonDelegate,LikeWishDelegate> {
-	CGPoint offset;
-}
+@import WebKit;
 
-@property (nonatomic) BOOL keyboardShown;
-@property (nonatomic) kSTObjectQualifier likeOrWish;
+@interface StomtCreationViewController () <WKNavigationDelegate>
+@property (nonatomic,weak) WKWebView* webView;
+@property (nonatomic,strong) WKUserContentController* contentController;
 @property (nonatomic,strong) NSString* defaultText;
-
-@property (nonatomic,strong) IBOutlet UIImageView* userProfileImage;
-@property (nonatomic,strong) IBOutlet NSLayoutConstraint* topOffsetUserProfileImage;
-@property (nonatomic,strong) IBOutlet UIImageView* closeButton;
-@property (nonatomic,strong) IBOutlet UIImageView* anonymousButton;
-@property (nonatomic,strong) IBOutlet UILabel* userNameLabel;
-@property (nonatomic,strong) STUser* currentUser;
-@property (nonatomic,strong) STTarget* target;
-@property (nonatomic,strong) IBOutlet TempLikeWishView* likeOrWishView;
-@property (nonatomic,strong) IBOutlet TargetView* targetView;
-@property (nonatomic,strong) IBOutlet UITextView* textView;
-@property (nonatomic,strong) CharCounterLabel* charCounter;
-@property (nonatomic,strong) StomtCreationAccessoryView* accessoryView;
-
-- (void)simpleDismiss;
-
+@property (nonatomic) kSTObjectQualifier likeOrWish;
+@property (nonatomic,strong) NSString* identifier;
+- (NSString*)craftString;
+- (void)dismissViaButton:(UIBarButtonItem*)button;
+- (void)setup;
+- (void)handleStomtProcessComplete:(STObject*)stomt error:(NSError*)error;
 @end
 
 @implementation StomtCreationViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil target:(STTarget *)target defaultText:(NSString *)defaultText likeOrWish:(kSTObjectQualifier)likeOrWish
+- (instancetype)initWithTargetID:(nonnull NSString*)identifier defaultText:(nullable NSString *)defaultText likeOrWish:(NSInteger)likeOrWish
 {
-	if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
-	{
-		_currentUser = [Stomt loggedUser];
-		if(!target)
-		{
-			fprintf(stderr, "[!] No target provided. Aborting...");
-			return nil;
-		}
-		
-		_target = target;
-		_defaultText = defaultText;
-		_likeOrWish = likeOrWish;
-
-	}
-	
-	return  self;
+    if((self = [super init]))
+    {
+        _defaultText = defaultText;
+        _likeOrWish = (kSTObjectQualifier)likeOrWish;
+        _identifier = identifier;
+        _dismissOnSend = NO;
+        [self setup];
+    }
+    return self;
 }
 
-- (void)loadView
+- (void)setup
 {
-	UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	scrollView.contentSize = [[UIScreen mainScreen] bounds].size;
-	
-	UIView* mainView = [[self.nibBundle loadNibNamed:@"StomtCreationViewController" owner:self options:nil] firstObject];
-	
-	mainView.frame = scrollView.frame;
-	[mainView layoutIfNeeded];
-	
-	scrollView.backgroundColor = [UIColor whiteColor];
-	scrollView.scrollEnabled = YES;
-	scrollView.alwaysBounceVertical = YES;
-	scrollView.bounces = YES;
-	scrollView.showsHorizontalScrollIndicator = NO;
-	scrollView.showsVerticalScrollIndicator = NO;
-	scrollView.contentMode = UIViewContentModeScaleAspectFill;
-	scrollView.delegate = self;
-	scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
-	[scrollView addSubview:mainView];
-	
-	self.view = scrollView;
-	
+    //Setup navigation item
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                             style:UIBarButtonItemStyleDone
+                                                                            target:self action:@selector(dismissViaButton:)];
+    self.navigationItem.title = @"Feedback via STOMT";
+    // --
+    
 }
+
+- (NSString*)craftString
+{
+    NSMutableString* string;
+    string = [NSMutableString stringWithFormat:@"%@/widget?to=%@",[[Stomt sharedInstance].apiURL stringByReplacingOccurrencesOfString:@"rest." withString:@""],_identifier];
+    if(_defaultText){ [string appendFormat:@"&text=%@",_defaultText]; }
+    if(_likeOrWish == kSTObjectLike){ [string appendFormat:@"&positive=%@",@"true"];}
+    if([Stomt loggedUser]){ [string appendFormat:@"&access_token=%@",[Stomt loggedUser].accessToken]; }
+    return string;
+}
+
 - (void)viewDidLoad {
-	
     [super viewDidLoad];
-
-	_textView.delegate = self;
-	if(_defaultText)
-		_textView.text = _defaultText;
-	else
-		_textView.text = (_likeOrWish == kSTObjectWish) ? @"would " : @"because ";
-	
-	_charCounter = [[CharCounterLabel alloc] init];
-	[_charCounter setupWithDefaultText:_defaultText];
-	_charCounter.font = [UIFont systemFontOfSize:12];
-	_charCounter.alpha = .59f;
-	
-	_accessoryView = [[StomtCreationAccessoryView alloc] initWithCharCounter:_charCounter];
-	_accessoryView.delegate = self;
-	
-	if(_currentUser)
-	{
-		[[[NSURLSession sharedSession] downloadTaskWithURL:_currentUser.profileImage completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-			if(location)
-			{
-				NSData* imageData = [NSData dataWithContentsOfURL:location];
-				UIImage* image = [UIImage imageWithData:imageData];
-				if(image){
-					dispatch_async(dispatch_get_main_queue(), ^{
-						_userProfileImage.image = image;
-					});
-				}
-			}
-		}] resume];
-	}
-	else{
-		NSBundle* designedBundle = [NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] ? [NSBundle bundleWithIdentifier:@"com.h3xept.StomtiOS"] : [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"Stomt-iOS-SDK" ofType:@"bundle"]];
-		_userProfileImage.image = [UIImage imageNamed:@"AnonymousUserImage" inBundle:designedBundle compatibleWithTraitCollection:nil];
-	}
-	
-	
-	[_likeOrWishView setupWithFrontView:_likeOrWish];
-	_likeOrWishView.delegate = self;
-	
-	_userProfileImage.layer.cornerRadius = _userProfileImage.bounds.size.width/2;
-	_userProfileImage.layer.masksToBounds = YES;
-	_userProfileImage.contentMode = UIViewContentModeScaleAspectFit;
-	
-	_userNameLabel.text = _currentUser.displayName ? _currentUser.displayName : @"Anonymous User" ;
-	_userNameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-	
-	_anonymousButton.alpha = (_currentUser) ? .54f : .24f;
-	_anonymousButton.userInteractionEnabled = (_currentUser) ? YES : NO;
-	
-	//Temporary
-	[_closeButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(simpleDismiss)]];
-	
-	[_targetView setupWithTarget:_target];
-
+    
+    //Setup message handler
+    
+    if(!_contentController)
+        _contentController = [[WKUserContentController alloc] init];
+    [_contentController addScriptMessageHandler:self name:@"notification"];
+    
+    WKWebViewConfiguration* config = [[WKWebViewConfiguration alloc] init];
+    config.userContentController = _contentController;
+    // --
+    
+    WKWebView* webView = [[WKWebView alloc] initWithFrame:[UIScreen mainScreen].bounds configuration:config];
+    webView.navigationDelegate = self;
+    [self.view addSubview:webView];
+    _webView = webView;
+    
+    NSString* string = [self craftString];
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    
+    _webView.scrollView.layer.masksToBounds = NO;
+    [_webView loadRequest:request];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)dismissViaButton:(UIBarButtonItem*)button
 {
-	[super viewDidAppear:animated];
-	
-	[_textView becomeFirstResponder];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
-	BOOL rt = NO;
-	
-	if([text containsString:@"\n"])
-		return rt;
-	
-	if((text.length == 0 || text.length < range.length) && [_charCounter decreaseCharsBy:(range.length - text.length)] == YES)
-	{
-		rt = YES;
-	}
-	else if(range.length == 1 && [text isEqualToString:@". "])
-	{
-		rt = YES;
-	}
-	else if([_charCounter increaseCharsBy:(text.length - range.length)] == YES)
-	{
-		rt = YES;
-	}
-	
-	return rt;
-}
-
-- (BOOL)canBecomeFirstResponder{
-	return YES;
-}
-
-- (UIView *)inputAccessoryView{
-	return _accessoryView;
-}
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-	_keyboardShown = YES;
-	
-	if([[UIScreen mainScreen] bounds].size.width > [[UIScreen mainScreen] bounds].size.height)
-	{
-		self->offset = ((UIScrollView*)self.view).contentOffset;
-		CGPoint pt;
-		CGRect rc = [textView bounds];
-		rc = [textView convertRect:rc toView:(UIScrollView*)self.view];
-		pt = rc.origin;
-		pt.x = 0;
-		pt.y -= 60;
-		[(UIScrollView*)self.view setContentOffset:pt animated:NO];
-	}
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-	[self.view setNeedsLayout];
-	_keyboardShown = NO;
-}
-
-//Offset related
-
-- (void)textViewDidChange:(UITextView *)textView
-{
-	if([[UIScreen mainScreen] bounds].size.width > [[UIScreen mainScreen] bounds].size.height)
-	{
-		self->offset = ((UIScrollView*)self.view).contentOffset;
-		CGPoint pt;
-		CGRect rc = [textView bounds];
-		rc = [textView convertRect:rc toView:(UIScrollView*)self.view];
-		pt = rc.origin;
-		pt.x = 0;
-		pt.y -= 60;
-		[(UIScrollView*)self.view setContentOffset:pt animated:YES];
-	}
+    [webView setNeedsDisplay];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-	((UIScrollView*)self.view).contentSize = size;
-	[self.view setNeedsDisplay];
-	[_targetView setNeedsDisplay];
-	
-	if(size.width > size.height)
-	{
-		_topOffsetUserProfileImage.constant = 10;
-		[self.view layoutIfNeeded];
-		
-		if(_keyboardShown == YES)
-		{
-			self->offset = ((UIScrollView*)self.view).contentOffset;
-			CGPoint pt;
-			CGRect rc = [_textView bounds];
-			rc = [_textView convertRect:rc toView:(UIScrollView*)self.view];
-			pt = rc.origin;
-			pt.x = 0;
-			pt.y -= 60;
-			[(UIScrollView*)self.view setContentOffset:pt animated:YES];
-		}
-	}
-	else
-		_topOffsetUserProfileImage.constant = 25;
+    _webView.frame = CGRectMake(0, 0, size.width, size.height);
+    [_webView setNeedsDisplay];
 }
 
-- (void)buttonTouchUpInside:(UIButton *)button
+- (void)handleStomtProcessComplete:(STObject *)stomt error:(NSError *)error
 {
-	if([_textView.text isEqualToString:@""] || ([[_textView.text componentsSeparatedByString:@" "] count] == 2 && [[[_textView.text componentsSeparatedByString:@" "] lastObject] isEqualToString:@""]) || ([[_textView.text lowercaseString] isEqualToString:@"would"] || [[_textView.text lowercaseString] isEqualToString:@"because"]))
-	   return;
-	   
-	STObject* object = [STObject objectWithTextBody:_textView.text likeOrWish:_likeOrWish targetID:_target.identifier];
-	StomtRequest* stomtRequest = [StomtRequest stomtCreationRequestWithStomtObject:object];
-	[stomtRequest sendStomtInBackgroundWithBlock:^(NSError *error, STObject *stomt) {
-		dispatch_async(dispatch_get_main_queue(), ^{
-			if(stomt)
-			{
-				[self dismissViewControllerAnimated:YES completion:nil];
-			}
-			else
-			{
-				fprintf(stderr, "[!] Error in sending stomt. Aborting...");
-				[self dismissViewControllerAnimated:YES completion:nil];
-			}
-		});
-	}];
+    if(_dismissOnSend){
+        [self dismissViewControllerAnimated:YES completion:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _completion(error,stomt);
+            });
+        }];
+        return;
+    }
+    
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViaButton:)];
+    if(_completion)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _completion(error,stomt);
+        });
 }
 
-- (void)likeWishView:(TempLikeWishView *)likeWishView changedToState:(int)likeOrWish
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
 {
-	NSString* currentString = _textView.text;
-	NSMutableArray* words = [NSMutableArray arrayWithArray:[currentString componentsSeparatedByString:@" "]];
-	if([[words objectAtIndex:0] isEqualToString:@"would"])
-	{
-		[words setObject:@"because" atIndexedSubscript:0];
-	}
-	else if([[words objectAtIndex:0] isEqualToString:@"because"])
-	{
-		[words setObject:@"would" atIndexedSubscript:0];
-	}
-	
-	NSString* newString = [words componentsJoinedByString:@" "];
-	_textView.text = newString;
+    NSDictionary* dict = [NSDictionary dictionaryWithDictionary:message.body];
+    if(![dict objectForKey:@"event"] || ![dict objectForKey:@"stomt"])
+        [self handleStomtProcessComplete:nil error:[NSError errorWithDomain:@"RESPONSE ERROR" code:400 userInfo:@{@"error":@"There has been a problem in the received dictionary. Please contact @h3xept for further details."}]];
+    
+    if([[message.body objectForKey:@"event"] isEqualToString:@"stomtCreated"]){
+        [self handleStomtProcessComplete:[message.body objectForKey:@"stomt"] error:nil];
+    }
 }
 
-- (void)simpleDismiss
-{
-	[_textView resignFirstResponder];
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-		[self dismissViewControllerAnimated:YES completion:nil];
-	});
-	
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
