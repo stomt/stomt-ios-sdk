@@ -35,16 +35,16 @@
 /*!
  * @brief Creates STImage instance by providing the image name.
  *
- * @params name
+ * @params name The name of the image on stomt servers.
  *
  * @return Newly created UIImage instance.
  */
 - (instancetype)initWithStomtImageName:(NSString *)name;
 
 /*!
- * @brief
+ * @brief Creat an image given an url.
  *
- * @params imageUrl
+ * @params imageUrl The URL of the image.
  *
  * @return Newly created UIImage instance.
  */
@@ -53,7 +53,7 @@
 /*!
  * @brief Asynchronously download the image.
  *
- * @param The completion block to be called after the download process is completed.
+ * @param completion The completion block to be called after the download process is completed.
  */
 - (void)downloadInBackgroundWithBlock:(BooleanCompletion)completion;
 

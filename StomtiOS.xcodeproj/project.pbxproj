@@ -14,8 +14,6 @@
 		A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */ = {isa = PBXBuildFile; fileRef = A70884DB1BA1F4A400758049 /* block_declarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7107E8B1BA2F614001F3B38 /* STUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7107E8C1BA2F614001F3B38 /* STUser.m */; };
-		A71166141C872C8200ED4E44 /* LikeWishView.h in Headers */ = {isa = PBXBuildFile; fileRef = A71166121C872C8200ED4E44 /* LikeWishView.h */; };
-		A71166151C872C8200ED4E44 /* LikeWishView.m in Sources */ = {isa = PBXBuildFile; fileRef = A71166131C872C8200ED4E44 /* LikeWishView.m */; };
 		A7325ACC1CA719DE00B2BB31 /* AuthenticationDispatch.h in Headers */ = {isa = PBXBuildFile; fileRef = A7325ACA1CA719DE00B2BB31 /* AuthenticationDispatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7325ACD1CA719DE00B2BB31 /* AuthenticationDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A7325ACB1CA719DE00B2BB31 /* AuthenticationDispatch.m */; };
 		A737D0C11D1928EA009B196F /* STImagePoolDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A737D0C01D1928EA009B196F /* STImagePoolDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,10 +24,6 @@
 		A75AF2B31BA88F6700D74B9C /* strings.h in Headers */ = {isa = PBXBuildFile; fileRef = A75AF2B21BA88F6700D74B9C /* strings.h */; };
 		A75AF2B61BA893B000D74B9C /* STObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A75AF2B41BA893B000D74B9C /* STObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A75AF2B71BA893B000D74B9C /* STObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A75AF2B51BA893B000D74B9C /* STObject.m */; };
-		A75C1F641C88C329002D38F4 /* TargetView.h in Headers */ = {isa = PBXBuildFile; fileRef = A75C1F621C88C329002D38F4 /* TargetView.h */; };
-		A75C1F651C88C329002D38F4 /* TargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = A75C1F631C88C329002D38F4 /* TargetView.m */; };
-		A75C1F781C88E777002D38F4 /* TargetViewOutline.h in Headers */ = {isa = PBXBuildFile; fileRef = A75C1F761C88E777002D38F4 /* TargetViewOutline.h */; };
-		A75C1F791C88E777002D38F4 /* TargetViewOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = A75C1F771C88E777002D38F4 /* TargetViewOutline.m */; };
 		A76611871C347565009013C1 /* IntentionalErrorsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = A76611861C347565009013C1 /* IntentionalErrorsWithoutLogin.m */; };
 		A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */ = {isa = PBXBuildFile; fileRef = A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */; };
@@ -45,7 +39,6 @@
 		A78A1A211C8632CD0076E266 /* DoubleSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A78A1A1F1C8632CD0076E266 /* DoubleSideView.m */; };
 		A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */ = {isa = PBXBuildFile; fileRef = A78B2E6B1BA419BC00A9E7D0 /* STStats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */ = {isa = PBXBuildFile; fileRef = A78B2E6C1BA419BC00A9E7D0 /* STStats.m */; };
-		A79F97BE1D09DA9700E91033 /* LikeWishDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A79F97BD1D09DA9700E91033 /* LikeWishDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7BB73771D8D96B300A5CF75 /* STComment.h in Headers */ = {isa = PBXBuildFile; fileRef = A7BB73751D8D96B300A5CF75 /* STComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7BB73781D8D96B300A5CF75 /* STComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BB73761D8D96B300A5CF75 /* STComment.m */; };
 		A7BB73791D8D9CBC00A5CF75 /* STComment.m in Headers */ = {isa = PBXBuildFile; fileRef = A7BB73761D8D96B300A5CF75 /* STComment.m */; };
@@ -57,17 +50,10 @@
 		A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C039BD1BB6FEC1006A8135 /* Stomt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C2174A1BE17A6B00F8EB52 /* STAuthenticationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C217491BE17A6B00F8EB52 /* STAuthenticationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7CB51FB1C94C90600DCF7A3 /* SimpleButtonDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CB51FA1C94C90600DCF7A3 /* SimpleButtonDelegate.h */; };
-		A7CED90D1D099F2F0065846C /* TempLikeWishView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CED90B1D099F2F0065846C /* TempLikeWishView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7CED90E1D099F2F0065846C /* TempLikeWishView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CED90C1D099F2F0065846C /* TempLikeWishView.m */; };
-		A7D4A5881C9326E400B7E78C /* CharCounterLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D4A5861C9326E400B7E78C /* CharCounterLabel.h */; };
-		A7D4A5891C9326E400B7E78C /* CharCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D4A5871C9326E400B7E78C /* CharCounterLabel.m */; };
-		A7D4A58C1C9374E400B7E78C /* StomtCreationAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D4A58A1C9374E400B7E78C /* StomtCreationAccessoryView.h */; };
-		A7D4A58D1C9374E400B7E78C /* StomtCreationAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D4A58B1C9374E400B7E78C /* StomtCreationAccessoryView.m */; };
+		A7D773921E3380F1006C27FE /* StomtCreationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D773901E3380F1006C27FE /* StomtCreationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7D773931E3380F1006C27FE /* StomtCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D773911E3380F1006C27FE /* StomtCreationViewController.m */; };
 		A7E4E9561DBBD323007A619F /* STAuthenticationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E4E9541DBBD323007A619F /* STAuthenticationManager.h */; };
 		A7E4E9571DBBD323007A619F /* STAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E4E9551DBBD323007A619F /* STAuthenticationManager.m */; };
-		A7FF4FE51C8372A10050F849 /* StomtCreationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FF4FE21C8372A10050F849 /* StomtCreationViewController.h */; };
-		A7FF4FE61C8372A10050F849 /* StomtCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FF4FE31C8372A10050F849 /* StomtCreationViewController.m */; };
-		A7FF4FE71C8372A10050F849 /* StomtCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7FF4FE41C8372A10050F849 /* StomtCreationViewController.xib */; };
 		FEA5D0A41BBC28A500274390 /* CreateStomtWithLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */; };
 		FEA5D0A61BBC2C0900274390 /* CreateStomtsWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */; };
 		FEA5D0A81BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */; };
@@ -98,8 +84,6 @@
 		A70884DB1BA1F4A400758049 /* block_declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block_declarations.h; sourceTree = "<group>"; };
 		A7107E8B1BA2F614001F3B38 /* STUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUser.h; sourceTree = "<group>"; };
 		A7107E8C1BA2F614001F3B38 /* STUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUser.m; sourceTree = "<group>"; };
-		A71166121C872C8200ED4E44 /* LikeWishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeWishView.h; sourceTree = "<group>"; };
-		A71166131C872C8200ED4E44 /* LikeWishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeWishView.m; sourceTree = "<group>"; };
 		A7325ACA1CA719DE00B2BB31 /* AuthenticationDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationDispatch.h; sourceTree = "<group>"; };
 		A7325ACB1CA719DE00B2BB31 /* AuthenticationDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationDispatch.m; sourceTree = "<group>"; };
 		A737D0C01D1928EA009B196F /* STImagePoolDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STImagePoolDelegate.h; sourceTree = "<group>"; };
@@ -110,10 +94,6 @@
 		A75AF2B21BA88F6700D74B9C /* strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strings.h; sourceTree = "<group>"; };
 		A75AF2B41BA893B000D74B9C /* STObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STObject.h; sourceTree = "<group>"; };
 		A75AF2B51BA893B000D74B9C /* STObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STObject.m; sourceTree = "<group>"; };
-		A75C1F621C88C329002D38F4 /* TargetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetView.h; sourceTree = "<group>"; };
-		A75C1F631C88C329002D38F4 /* TargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetView.m; sourceTree = "<group>"; };
-		A75C1F761C88E777002D38F4 /* TargetViewOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetViewOutline.h; sourceTree = "<group>"; };
-		A75C1F771C88E777002D38F4 /* TargetViewOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetViewOutline.m; sourceTree = "<group>"; };
 		A76611861C347565009013C1 /* IntentionalErrorsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentionalErrorsWithoutLogin.m; sourceTree = "<group>"; };
 		A768D7671BA9DA1600466AFB /* NSDate+ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601.h"; sourceTree = "<group>"; };
 		A768D7681BA9DA1600466AFB /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
@@ -129,7 +109,6 @@
 		A78A1A1F1C8632CD0076E266 /* DoubleSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleSideView.m; sourceTree = "<group>"; };
 		A78B2E6B1BA419BC00A9E7D0 /* STStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STStats.h; sourceTree = "<group>"; };
 		A78B2E6C1BA419BC00A9E7D0 /* STStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STStats.m; sourceTree = "<group>"; };
-		A79F97BD1D09DA9700E91033 /* LikeWishDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeWishDelegate.h; sourceTree = "<group>"; };
 		A7B397AA1C81EC920076A94F /* ValidateCredentialsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateCredentialsWithoutLogin.m; sourceTree = "<group>"; };
 		A7BB73751D8D96B300A5CF75 /* STComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STComment.h; sourceTree = "<group>"; };
 		A7BB73761D8D96B300A5CF75 /* STComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STComment.m; sourceTree = "<group>"; };
@@ -142,17 +121,10 @@
 		A7C217491BE17A6B00F8EB52 /* STAuthenticationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAuthenticationDelegate.h; sourceTree = "<group>"; };
 		A7C47BEF1C396034003D27D1 /* StomtRequest_PrivateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtRequest_PrivateTests.h; sourceTree = "<group>"; };
 		A7CB51FA1C94C90600DCF7A3 /* SimpleButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButtonDelegate.h; sourceTree = "<group>"; };
-		A7CED90B1D099F2F0065846C /* TempLikeWishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempLikeWishView.h; sourceTree = "<group>"; };
-		A7CED90C1D099F2F0065846C /* TempLikeWishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempLikeWishView.m; sourceTree = "<group>"; };
-		A7D4A5861C9326E400B7E78C /* CharCounterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharCounterLabel.h; sourceTree = "<group>"; };
-		A7D4A5871C9326E400B7E78C /* CharCounterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharCounterLabel.m; sourceTree = "<group>"; };
-		A7D4A58A1C9374E400B7E78C /* StomtCreationAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtCreationAccessoryView.h; sourceTree = "<group>"; };
-		A7D4A58B1C9374E400B7E78C /* StomtCreationAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtCreationAccessoryView.m; sourceTree = "<group>"; };
+		A7D773901E3380F1006C27FE /* StomtCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtCreationViewController.h; sourceTree = "<group>"; };
+		A7D773911E3380F1006C27FE /* StomtCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtCreationViewController.m; sourceTree = "<group>"; };
 		A7E4E9541DBBD323007A619F /* STAuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAuthenticationManager.h; sourceTree = "<group>"; };
 		A7E4E9551DBBD323007A619F /* STAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAuthenticationManager.m; sourceTree = "<group>"; };
-		A7FF4FE21C8372A10050F849 /* StomtCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StomtCreationViewController.h; sourceTree = "<group>"; };
-		A7FF4FE31C8372A10050F849 /* StomtCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StomtCreationViewController.m; sourceTree = "<group>"; };
-		A7FF4FE41C8372A10050F849 /* StomtCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StomtCreationViewController.xib; sourceTree = "<group>"; };
 		FEA5D0A31BBC28A500274390 /* CreateStomtWithLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtWithLogin.m; sourceTree = "<group>"; };
 		FEA5D0A51BBC2C0900274390 /* CreateStomtsWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStomtsWithoutLogin.m; sourceTree = "<group>"; };
 		FEA5D0A71BBC433600274390 /* RetrieveSingleStomtWithoutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveSingleStomtWithoutLogin.m; sourceTree = "<group>"; };
@@ -338,10 +310,9 @@
 		A76DFE321BC6F7D400017C32 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				A7FF4FE11C8372710050F849 /* Stomt Creation */,
+				A7D7738B1E337ED6006C27FE /* Stomt Creation */,
 				A78A1A221C8632D10076E266 /* DoubleSideView */,
 				A71C9E1D1BC9675C00398B0B /* Authentication */,
-				A7CED90F1D099F360065846C /* TempLikeWishView */,
 			);
 			name = Private;
 			sourceTree = "<group>";
@@ -374,32 +345,11 @@
 			name = "Stomt Delegates";
 			sourceTree = "<group>";
 		};
-		A7CED90F1D099F360065846C /* TempLikeWishView */ = {
+		A7D7738B1E337ED6006C27FE /* Stomt Creation */ = {
 			isa = PBXGroup;
 			children = (
-				A7CED90B1D099F2F0065846C /* TempLikeWishView.h */,
-				A7CED90C1D099F2F0065846C /* TempLikeWishView.m */,
-			);
-			name = TempLikeWishView;
-			sourceTree = "<group>";
-		};
-		A7FF4FE11C8372710050F849 /* Stomt Creation */ = {
-			isa = PBXGroup;
-			children = (
-				A75C1F761C88E777002D38F4 /* TargetViewOutline.h */,
-				A75C1F771C88E777002D38F4 /* TargetViewOutline.m */,
-				A7FF4FE21C8372A10050F849 /* StomtCreationViewController.h */,
-				A7FF4FE31C8372A10050F849 /* StomtCreationViewController.m */,
-				A7FF4FE41C8372A10050F849 /* StomtCreationViewController.xib */,
-				A71166121C872C8200ED4E44 /* LikeWishView.h */,
-				A71166131C872C8200ED4E44 /* LikeWishView.m */,
-				A75C1F621C88C329002D38F4 /* TargetView.h */,
-				A75C1F631C88C329002D38F4 /* TargetView.m */,
-				A7D4A5861C9326E400B7E78C /* CharCounterLabel.h */,
-				A7D4A5871C9326E400B7E78C /* CharCounterLabel.m */,
-				A7D4A58A1C9374E400B7E78C /* StomtCreationAccessoryView.h */,
-				A7D4A58B1C9374E400B7E78C /* StomtCreationAccessoryView.m */,
-				A79F97BD1D09DA9700E91033 /* LikeWishDelegate.h */,
+				A7D773901E3380F1006C27FE /* StomtCreationViewController.h */,
+				A7D773911E3380F1006C27FE /* StomtCreationViewController.m */,
 			);
 			name = "Stomt Creation";
 			sourceTree = "<group>";
@@ -431,36 +381,29 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A71166141C872C8200ED4E44 /* LikeWishView.h in Headers */,
 				A78A1A201C8632CD0076E266 /* DoubleSideView.h in Headers */,
 				A70884DD1BA1F4A400758049 /* declarations.h in Headers */,
-				A75C1F641C88C329002D38F4 /* TargetView.h in Headers */,
 				A70884DC1BA1F4A400758049 /* dbg.h in Headers */,
 				A76DFE281BC57CC200017C32 /* STImageView.h in Headers */,
 				A7BB73771D8D96B300A5CF75 /* STComment.h in Headers */,
 				A7107E8D1BA2F614001F3B38 /* STUser.h in Headers */,
 				A75AF2B61BA893B000D74B9C /* STObject.h in Headers */,
-				A7D4A58C1C9374E400B7E78C /* StomtCreationAccessoryView.h in Headers */,
 				A737D0C11D1928EA009B196F /* STImagePoolDelegate.h in Headers */,
 				A78B2E6D1BA419BC00A9E7D0 /* STStats.h in Headers */,
 				A70884DE1BA1F4A400758049 /* block_declarations.h in Headers */,
 				A76DFE2D1BC5AF1E00017C32 /* STTarget.h in Headers */,
-				A7CED90D1D099F2F0065846C /* TempLikeWishView.h in Headers */,
 				A768D7691BA9DA1600466AFB /* NSDate+ISO8601.h in Headers */,
 				A7C039B81BB6FDCF006A8135 /* STCategory.h in Headers */,
 				A7C2174A1BE17A6B00F8EB52 /* STAuthenticationDelegate.h in Headers */,
 				A7C039BC1BB6FEB5006A8135 /* STImage.h in Headers */,
 				A7BB73791D8D9CBC00A5CF75 /* STComment.m in Headers */,
-				A7D4A5881C9326E400B7E78C /* CharCounterLabel.h in Headers */,
 				A7C039BA1BB6FEA3006A8135 /* STFeed.h in Headers */,
 				A76DFE301BC5AF2800017C32 /* StomtRequest.h in Headers */,
-				A79F97BE1D09DA9700E91033 /* LikeWishDelegate.h in Headers */,
+				A7D773921E3380F1006C27FE /* StomtCreationViewController.h in Headers */,
 				A7CB51FB1C94C90600DCF7A3 /* SimpleButtonDelegate.h in Headers */,
 				A7C039BE1BB6FEC1006A8135 /* Stomt.h in Headers */,
 				A7325ACC1CA719DE00B2BB31 /* AuthenticationDispatch.h in Headers */,
 				A75AF2B31BA88F6700D74B9C /* strings.h in Headers */,
-				A75C1F781C88E777002D38F4 /* TargetViewOutline.h in Headers */,
-				A7FF4FE51C8372A10050F849 /* StomtCreationViewController.h in Headers */,
 				A7C039A21BB5A340006A8135 /* STSearchFilterKeywords.h in Headers */,
 				A7450D4A1BA44E9800DF83B8 /* HTTPResponseChecker.h in Headers */,
 				A7E4E9561DBBD323007A619F /* STAuthenticationManager.h in Headers */,
@@ -512,7 +455,7 @@
 		A70884A01BA1F43300758049 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Leonardo Cascianelli";
 				TargetAttributes = {
 					A70884A81BA1F43300758049 = {
@@ -548,7 +491,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A75384D01C84E32600328B79 /* Images.xcassets in Resources */,
-				A7FF4FE71C8372A10050F849 /* StomtCreationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,26 +508,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A75C1F791C88E777002D38F4 /* TargetViewOutline.m in Sources */,
-				A7FF4FE61C8372A10050F849 /* StomtCreationViewController.m in Sources */,
 				A78A1A211C8632CD0076E266 /* DoubleSideView.m in Sources */,
 				A70884D41BA1F47400758049 /* Stomt.m in Sources */,
 				A7107E8E1BA2F614001F3B38 /* STUser.m in Sources */,
 				A76DFE2C1BC5AF1E00017C32 /* STTarget.m in Sources */,
-				A7CED90E1D099F2F0065846C /* TempLikeWishView.m in Sources */,
-				A7D4A58D1C9374E400B7E78C /* StomtCreationAccessoryView.m in Sources */,
 				A76DFE311BC5AF2800017C32 /* StomtRequest.m in Sources */,
 				A7C039A31BB5A340006A8135 /* STSearchFilterKeywords.m in Sources */,
 				A7450D471BA4338E00DF83B8 /* STCategory.m in Sources */,
 				A78B2E6E1BA419BC00A9E7D0 /* STStats.m in Sources */,
-				A7D4A5891C9326E400B7E78C /* CharCounterLabel.m in Sources */,
 				A7325ACD1CA719DE00B2BB31 /* AuthenticationDispatch.m in Sources */,
+				A7D773931E3380F1006C27FE /* StomtCreationViewController.m in Sources */,
 				A768D76E1BA9EB6000466AFB /* STImage.m in Sources */,
 				A7BB73781D8D96B300A5CF75 /* STComment.m in Sources */,
-				A71166151C872C8200ED4E44 /* LikeWishView.m in Sources */,
 				A75AF2B71BA893B000D74B9C /* STObject.m in Sources */,
 				A768D76A1BA9DA1600466AFB /* NSDate+ISO8601.m in Sources */,
-				A75C1F651C88C329002D38F4 /* TargetView.m in Sources */,
 				A7833D011BB46B1100A3F13B /* STFeed.m in Sources */,
 				A76DFE291BC57CC200017C32 /* STImageView.m in Sources */,
 				A7450D4B1BA44E9800DF83B8 /* HTTPResponseChecker.m in Sources */,
@@ -632,8 +568,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -645,6 +583,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -657,7 +596,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MODULEMAP_FILE = Modules/module.modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -681,8 +620,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -693,13 +634,14 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MODULEMAP_FILE = Modules/module.modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -714,6 +656,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -733,6 +676,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
