@@ -11,8 +11,8 @@
 
 /*!
  * STSearchFilterKeywords class provides filters for STFeed objects.
- * STSearchFilterKeywords is an helper class which is used to create STFeed objects. It provides the
- * possibility to add positive an negative filters in order to obtain the desired STObject(s) array.
+ * STSearchFilterKeywords is a helper class which is used to create STFeed objects. It provides the
+ * possibility to add positive a negative filters in order to obtain the desired STObject(s) array.
  */
 @interface STSearchFilterKeywords : NSObject
 

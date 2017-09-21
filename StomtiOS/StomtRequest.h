@@ -112,7 +112,7 @@
 + (StomtRequest*)basicTargetRequestWithTargetID:(NSString*)targetID;
 
 /*!
- * @brief Authenticate or register an user via Facebook login.
+ * @brief Authenticate or register a user via Facebook login.
  * @discussion This method accepts raw data retrieved by a successuful login using the Facebook SDK.
  * You will have to provide properties contained in the 'FBSDKProfile' class and in the 'FBSDKAccessToken' class.
  *

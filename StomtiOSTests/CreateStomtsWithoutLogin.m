@@ -46,7 +46,7 @@
 - (void)nontestWithLocation {
 
     // new request
-    NSString *textBody = @"would create a anonym stomt with location. #iOSUnitTest";
+    NSString *textBody = @"would create an anonym stomt with location. #iOSUnitTest";
     NSString *targetID = @"stomt-ios";
     CLLocation* location = [[CLLocation alloc] initWithLatitude:43.564523 longitude:56.234453];
     STObject *ob = [STObject
@@ -75,7 +75,7 @@
 	[Stomt logout];
 	
     // new request
-    NSString *textBody = @"would create a anonym stomt with url. #iOSUnitTest";
+    NSString *textBody = @"would create an anonym stomt with url. #iOSUnitTest";
     NSString *targetID = @"stomt-ios";
     NSString *url = @"https://stomt.com";
     STObject *ob = [STObject
@@ -118,7 +118,7 @@
 - (void)createStomtWithImage:(STImage *)image
                  expectation:(XCTestExpectation *) expectation {
     // new request
-    NSString *textBody = @"would create a anonym stomt with image. #iOSUnitTest";
+    NSString *textBody = @"would create an anonym stomt with image. #iOSUnitTest";
     NSString *targetID = @"stomt-ios";
     STObject *ob = [STObject
                     objectWithTextBody: textBody
