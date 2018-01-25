@@ -1,3 +1,5 @@
+# DEPRECATED! [NEW SWIFT SDK AVAILABLE](https://github.com/stomt/stomt-swift-sdk)
+
 # stomt iOS-SDK [![Build Status](https://travis-ci.org/stomt/stomt-ios-sdk.svg?branch=master)](https://travis-ci.org/stomt/stomt-ios-sdk) [![Stomt API](https://img.shields.io/badge/stomt-v2.10.X-brightgreen.svg)](https://rest.stomt.com/) [![CocoaPod](https://img.shields.io/cocoapods/v/Stomt-iOS-SDK.svg)](https://github.com/stomt/ios-sdk)
 
 <img alt="Easy integration" src="https://github.com/stomt/stomt-ios-sdk/blob/master/createStomt.gif" align="right" width="300">
